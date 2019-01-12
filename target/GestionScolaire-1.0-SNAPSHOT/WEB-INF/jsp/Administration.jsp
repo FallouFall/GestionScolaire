@@ -35,7 +35,19 @@
     <body id="page-top">
         
         
-     
+            <%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+      
+}
+}
+if(userName == null) response.sendRedirect("index.htm");
+%>
+
       
         <%@include file="HeaderUser.jsp" %>
 
@@ -142,7 +154,7 @@
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="GererRessources.htm"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="ressources.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">

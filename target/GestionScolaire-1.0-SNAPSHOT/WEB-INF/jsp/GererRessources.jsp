@@ -159,7 +159,7 @@
                         <h5 class="modal-title" id="exampleModalLabel">Ajouter Classe</h5>
                         <br><br>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                     
                         </button>
                 
                     </div>
@@ -238,7 +238,7 @@
                                                         </i> Enregistrer</button>
                                                 </div>
                                                 <div class=" form-group col-md-6">   
-                                                    <button type="reset"  class="btn btn-secondary">
+                                                 <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
                                                         <i class="ti-trash">
 
                                                         </i> Annuler</button>
@@ -266,7 +266,7 @@
                         <h5 class="modal-title" id="exampleModalLabel">Ajouter Filiere</h5>
                         <br><br>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                         
                         </button>
                 
                     </div>
@@ -322,7 +322,7 @@
                                                         </i> Enregistrer</button>
                                                 </div>
                                                 <div class=" form-group col-md-6">   
-                                                    <button type="reset"  class="btn btn-secondary">
+                                                    <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
                                                         <i class="ti-trash">
 
                                                         </i> Annuler</button>
@@ -399,7 +399,20 @@
 
 
 
+  <style>
+     .image--cover {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin: 5px;
 
+  object-fit: cover;
+  object-position: center right;
+}
+
+        </style>
+        
 
 
 

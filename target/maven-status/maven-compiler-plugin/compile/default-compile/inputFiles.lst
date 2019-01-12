@@ -2,6 +2,7 @@ C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\obji
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\GererComptableController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\EtudiantController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\GererAdminController.java
+C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\HeaderUserController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\domain\User.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\AdministrationController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\DirecteurController.java
@@ -11,6 +12,7 @@ C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\obji
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\ComptableController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\config\Connexion.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\GererProfesseurController.java
+C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\GererRessourcesController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\GererSecretaireController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\LoginController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\objis\gestionscolaire\controller\SecretaireController.java

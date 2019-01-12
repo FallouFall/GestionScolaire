@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
-import sn.objis.gestionscolaire.domain.Account;
-import sn.objis.gestionscolaire.domain.Profil;
 import sn.objis.gestionscolaire.domain.User;
 
 /**
@@ -28,15 +26,15 @@ import sn.objis.gestionscolaire.domain.User;
  * @author Fallou
  */
 @Controller
-public class GererProfesseurController {
+public class GererRessourcesController {
     Connexion con = new Connexion();
     JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
     public ModelAndView mav = new ModelAndView();
     
 
-    @RequestMapping("GererProfesseur.htm")
+    @RequestMapping("GererAdmin.htm")
     public ModelAndView welcome() {
-        
+     
         String sql="SELECT distinct nom,prenom, adresse,telephone,photo from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
         List<String> image=new ArrayList<>();
         List<User> actors =new ArrayList<>();
@@ -63,50 +61,9 @@ public class GererProfesseurController {
        mav.addObject("listeImage", image);
         return mav;
     }
-    @RequestMapping(value = "AjouterProfesseur.htm",method = RequestMethod.GET)
-    public  void ajouterAdmin()          
-    {
-        ModelAndView mav=new ModelAndView("redirect:/AjouterAdmin.htm");
-        
-      
-    }
+   
     
-       @RequestMapping(value="AjouterProfesseur.htm",method = RequestMethod.POST)
-    public  void saveAdmin(HttpServletRequest req)          
-    {
-        try {
-            
-      
-       User user= new User();
-       user.setNom(req.getParameter("nom"));
-       user.setPrenom(req.getParameter("prenom"));
-       user.setAdresse(req.getParameter("adresse"));
-       user.setTelephone(req.getParameter("telephone"));
-       user.setTelephone(req.getParameter("mail"));
-        Account account =new Account(1);
-       
-       Profil profil=new Profil();
-       profil.setIdaccount(account);
-       profil.setPassword(req.getParameter("password"));
-       profil.setUsername(req.getParameter("username"));
-       user.setIdprofil(profil);
-       
-       String sql="insert into profil values (?,?,?)";
-      int of= jdtbcTemplate.update(sql,profil.getIdaccount().getId(),profil.getPassword(),profil.getUsername());
-            System.out.println(of+"");
-       
-       sql="insert into user values (?,?,?,?,?)";
-       jdtbcTemplate.update(sql,user.getAdresse(),user.getNom(),user.getPrenom(),user.getTelephone(),user.getIdprofil().getId());
-       
-  } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        
-      
-    }
-    
-     @RequestMapping(value = "GererProfesseur.htm",method = RequestMethod.POST)
+    @RequestMapping(value = "index.htm",method = RequestMethod.POST)
     public void deconnection(HttpServletRequest req,HttpServletResponse rep) throws IOException
     {
 	Cookie loginCookie = null;

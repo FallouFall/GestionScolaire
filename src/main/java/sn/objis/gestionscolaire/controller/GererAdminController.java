@@ -5,14 +5,15 @@
  */
 package sn.objis.gestionscolaire.controller;
 
+import java.io.IOException;
 import org.apache.commons.codec.binary.Base64;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +36,7 @@ public class GererAdminController {
 
     @RequestMapping("GererAdmin.htm")
     public ModelAndView welcome() {
-        
+     
         String sql="SELECT distinct nom,prenom, adresse,telephone,photo from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
         List<String> image=new ArrayList<>();
         List<User> actors =new ArrayList<>();
@@ -103,5 +104,28 @@ public class GererAdminController {
 
         
       
+    }
+    
+    @RequestMapping(value = "GererAdmin.htm",method = RequestMethod.POST)
+    public void deconnection(HttpServletRequest req,HttpServletResponse rep) throws IOException
+    {
+	Cookie loginCookie = null;
+    	Cookie[] cookies = req.getCookies();
+    	if(cookies != null){
+    	for(Cookie cookie : cookies){
+    		if(cookie.getName().equals("user")){
+    			loginCookie = cookie;
+                      
+    			break;
+    		}
+    	}
+    	}
+       
+    	if(loginCookie != null){
+    		loginCookie.setMaxAge(0);
+        	rep.addCookie(loginCookie);
+    	}
+         rep.sendRedirect("index.htm");
+   
     }
 }

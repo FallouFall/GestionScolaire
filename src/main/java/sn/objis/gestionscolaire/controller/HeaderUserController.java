@@ -22,55 +22,14 @@ import sn.objis.gestionscolaire.config.Connexion;
  * @author Fallou
  */
 @Controller
-public class AdministrationController {
+public class HeaderUserController {
     Connexion con=new Connexion();
     JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
     ModelAndView mav = new ModelAndView();
     
-    @RequestMapping("administration.htm")
-    public ModelAndView welcome(HttpServletRequest req)
-    {
-        ModelAndView mav = new ModelAndView();
-        HttpSession session = req.getSession();
-        String  photo = (String) session.getAttribute("photo");   
-        mav.setViewName("Administration");
-        return mav.addObject("photo", photo);
-    }
-    
-      
-    @RequestMapping("GererProfesseur.htm")
-    public ModelAndView professeur(HttpServletRequest req)
-    {         
-        mav.setViewName("GererProfesseur");
-        return mav;
-    }
-     @RequestMapping("GererSecretaire.htm")
-    public ModelAndView secretaire(HttpServletRequest req)
-    {         
-        mav.setViewName("GererSecretaire");
-        return mav;
-    }
-    
-     @RequestMapping("GererComptable.htm")
-    public ModelAndView comptable(HttpServletRequest req)
-    {         
-        mav.setViewName("GererComptable");
-        return mav;
-    }
-     @RequestMapping("GererDirecteur.htm")
-    public ModelAndView directeur(HttpServletRequest req)
-    {         
-        mav.setViewName("GererDirecteur");
-        return mav;
-    }
-    
-     @RequestMapping("ressources.htm")
-    public ModelAndView ressources(HttpServletRequest req)
-    {         
-        mav.setViewName("GererRessources");
-        return mav;
-    }
-      @RequestMapping(value = "administration.htm",method = RequestMethod.POST)
+   
+   
+      @RequestMapping(value = "headerUser.htm",method = RequestMethod.POST)
     public void deconnection(HttpServletRequest req,HttpServletResponse rep) throws IOException
     {
 	Cookie loginCookie = null;

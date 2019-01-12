@@ -20,19 +20,7 @@
 
     </head>
     <body >
-           <%
-String userName = null;
-Cookie[] cookies = request.getCookies();
-
-if(cookies !=null){
-for(Cookie cookie : cookies){
-	if(cookie.getName().equals("user")) userName = cookie.getValue();
-      
-}
-}
-if(userName == null) response.sendRedirect("index.htm");
-%>
-
+    
         <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
 
             <a class="navbar-brand mr-1" href="administration.htm" style="color: #fff; font-family: titilliumWeb-italic;    font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
@@ -67,10 +55,12 @@ if(userName == null) response.sendRedirect("index.htm");
                         
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="index.htm" data-toggle="modal" data-target="#logoutModal">
+                        <form method="POST">
+                        <a class="dropdown-item" href="headerUser.htm" data-toggle="modal" data-target="#logoutModal">
                             <span class="ti-direction"> </span>
                             Se deconncter
                         </a>
+                            </form>
                     </div>
                 </li>
             </ul>

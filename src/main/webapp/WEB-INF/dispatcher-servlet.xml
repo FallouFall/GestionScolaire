@@ -20,25 +20,28 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">loginController</prop>
+                 <prop key="headerUser.htm">headerUserController</prop>
                 <prop key="administration.htm">administrationController</prop>
                 <prop key="secretaire.htm">secretaireController</prop>
                 <prop key="comptable.htm">comptableController</prop>
                 <prop key="professeur.htm">professeurController</prop>
                 <prop key="directeur.htm">directeurController</prop>
                 <prop key="etudiant.htm">etudiantController</prop>
+                <prop key="ressources.htm">administrationController</prop>
+                
                 <prop key="GererAdmin.htm">gererAdminController</prop>
-               
-                <prop key=" GererProfesseur.htm">administrationController</prop>
-                <prop key=" GererSecretaire.htm">administrationController</prop>
-                <prop key=" GererDirecteur.htm">administrationController</prop>
-                <prop key=" GererComptable.htm">administrationController</prop>
-                <prop key=" GererSecretaire.htm">administrationController</prop>
+                <prop key=" GererProfesseur.htm">gererProfesseurController</prop>
+                <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
+                <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
+                <prop key=" GererComptable.htm">gererComptableController</prop>
+            
                 
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
                 <prop key=" AjouterSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" AjouterDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" AjouterComptable.htm">gererComptableController</prop>
+                <prop key="GererRessources.htm">gererRessourcesController</prop>
             
             </props>
         </property>
@@ -54,6 +57,9 @@
     -->
     <bean name="loginController"
      class="sn.objis.gestionscolaire.controller.LoginController"
+    />
+     <bean name="headerUserController"
+     class="sn.objis.gestionscolaire.controller.HeaderUserController"
     />
     <bean name="administrationController"
     class="sn.objis.gestionscolaire.controller.AdministrationController"
@@ -89,6 +95,9 @@
     />
       <bean name="gererComptableController"
     class="sn.objis.gestionscolaire.controller.GererComptableController"
+    />
+          <bean name="gererRessourcesController"
+    class="sn.objis.gestionscolaire.controller.GererRessourcesController"
     />
  
 
