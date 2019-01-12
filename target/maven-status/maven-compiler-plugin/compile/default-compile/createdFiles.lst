@@ -1,0 +1,17 @@
+sn\objis\gestionscolaire\controller\ComptableController.class
+sn\objis\gestionscolaire\controller\GererDirecteurController.class
+sn\objis\gestionscolaire\controller\GererSecretaireController.class
+sn\objis\gestionscolaire\controller\DirecteurController.class
+sn\objis\gestionscolaire\controller\GererComptableController.class
+sn\objis\gestionscolaire\controller\LoginController$1.class
+sn\objis\gestionscolaire\controller\ProfesseurController.class
+sn\objis\gestionscolaire\config\Connexion.class
+sn\objis\gestionscolaire\domain\User.class
+sn\objis\gestionscolaire\controller\EtudiantController.class
+sn\objis\gestionscolaire\controller\SecretaireController.class
+sn\objis\gestionscolaire\controller\GererProfesseurController.class
+sn\objis\gestionscolaire\domain\Account.class
+sn\objis\gestionscolaire\controller\LoginController.class
+sn\objis\gestionscolaire\controller\GererAdminController.class
+sn\objis\gestionscolaire\domain\Profil.class
+sn\objis\gestionscolaire\controller\AdministrationController.class

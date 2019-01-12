@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">loginController</prop>
+                <prop key="administration.htm">administrationController</prop>
+                <prop key="secretaire.htm">secretaireController</prop>
+                <prop key="comptable.htm">comptableController</prop>
+                <prop key="professeur.htm">professeurController</prop>
+                <prop key="directeur.htm">directeurController</prop>
+                <prop key="etudiant.htm">etudiantController</prop>
+                <prop key="GererAdmin.htm">gererAdminController</prop>
+               
+                <prop key=" GererProfesseur.htm">administrationController</prop>
+                <prop key=" GererSecretaire.htm">administrationController</prop>
+                <prop key=" GererDirecteur.htm">administrationController</prop>
+                <prop key=" GererComptable.htm">administrationController</prop>
+                <prop key=" GererSecretaire.htm">administrationController</prop>
+                
+                <prop key="AjouterAdmin.htm">gererAdminController</prop>
+                <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
+                <prop key=" AjouterSecretaire.htm">gererSecretaireController</prop>
+                <prop key=" AjouterDirecteur.htm">gererDirecteurController</prop>
+                <prop key=" AjouterComptable.htm">gererComptableController</prop>
+            
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+    <bean name="loginController"
+     class="sn.objis.gestionscolaire.controller.LoginController"
+    />
+    <bean name="administrationController"
+    class="sn.objis.gestionscolaire.controller.AdministrationController"
+    />
+    <bean name="secretaireController"
+    class="sn.objis.gestionscolaire.controller.SecretaireController"
+    />
+    <bean name="comptableController"
+    class="sn.objis.gestionscolaire.controller.ComptableController"
+    />
+    <bean name="professeurController"
+      class="sn.objis.gestionscolaire.controller.ProfesseurController"
+    />
+    <bean name="directeurController"
+    class="sn.objis.gestionscolaire.controller.DirecteurController"
+    />
+    <bean name="etudiantController"
+     class="sn.objis.gestionscolaire.controller.EtudiantController"
+    />
+                       
+    <bean name="gererAdminController"
+    class="sn.objis.gestionscolaire.controller.GererAdminController"
+    />
+                       
+    <bean name="gererProfesseurController"
+    class="sn.objis.gestionscolaire.controller.GererProfesseurController"
+    />
+    <bean name="gererSecretaireController"
+    class="sn.objis.gestionscolaire.controller.GererSecretaireController"
+    />
+     <bean name="gererDirecteurController"
+    class="sn.objis.gestionscolaire.controller.GererDirecteurController"
+    />
+      <bean name="gererComptableController"
+    class="sn.objis.gestionscolaire.controller.GererComptableController"
+    />
+ 
+
+</beans>

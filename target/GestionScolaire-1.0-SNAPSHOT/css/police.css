@@ -1,0 +1,51 @@
+@import "../fonts/dax/dax-bold.ttf";
+@import "../fonts/dax/dax-extrabold.ttf";
+@import "../fonts/dax/dax-italic.ttf";
+@import "../fonts/dax/dax-medium.ttf";
+@import "../fonts/dax/dax-mediumitalic.ttf";
+@import "../fonts/titillium/TitilliumWeb-LightItalic.ttf";
+@import "../fonts/titillium/TitilliumWeb-Light.ttf";
+@import "../fonts/titillium/TitilliumWeb-Bold.ttf";
+@import "../fonts/titillium/TitilliumWeb-Regular.ttf";
+@import "../fonts/titillium/TitilliumWeb-SemiBold.ttf";
+
+
+@font-face {
+  font-family: titilliumWeb-light;
+  src: url(../fonts/titillium/TitilliumWeb-Light.ttf) format("opentype");
+}
+@font-face {
+  font-family: titilliumWeb-regular;
+  src: url(../fonts/titillium/TitilliumWeb-Regular.ttf) format("opentype");
+}
+@font-face {
+  font-family: titilliumWeb-bold;
+  src: url(../fonts/titillium/TitilliumWeb-Bold.ttf)  format("opentype");
+}
+@font-face {
+  font-family: titilliumWeb-italic;
+  src: url(../fonts/titillium/TitilliumWeb-Italic.ttf)  format("opentype");
+}
+@font-face {
+  font-family: titilliumWeb-semi-bold;
+  src: url(../fonts/titillium/TitilliumWeb-Bold.ttf)  format("opentype");
+}
+@font-face {
+  font-family: dax-bold;
+  src: url(../fonts/dax/dax-bold.ttf) format("opentype");
+}
+@font-face {
+  font-family: dax-italic;
+  src: url(../fonts/dax/dax-italic.ttf) format("opentype");
+}
+       .modal-header{
+             background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%
+                 ,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
+          
+             
+            }
+         
+            .modal-title{
+                font-family: dax-bold;    font-size: 1.4rem;
+                color: #fff;
+            }
