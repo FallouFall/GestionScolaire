@@ -13,12 +13,14 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
+import sn.objis.gestionscolaire.domain.Filiere;
 import sn.objis.gestionscolaire.domain.User;
 
 /**
@@ -62,6 +64,42 @@ public class GererRessourcesController {
         return mav;
     }
    
+     @RequestMapping("gererclasse.htm")
+    public ModelAndView listeClasse(HttpServletRequest req)
+    {
+        ModelAndView mav = new ModelAndView();
+     
+        mav.setViewName("ListeClasses");
+        return mav;
+    }
+    
+    
+      @RequestMapping("gererfiliere.htm")
+    public ModelAndView listeFiliere(HttpServletRequest req)
+    {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("ListeFiliere");
+        
+        
+          String sql = "SELECT * from filiere  ";
+      List<Filiere>  filieres = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Filiere c = new Filiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+               
+                
+                    return c;
+                });
+        mav.setViewName("ListeFiliere");
+        mav.addObject("filieres", filieres);
+        return mav;
+      
+    }
+    
     
     @RequestMapping(value = "index.htm",method = RequestMethod.POST)
     public void deconnection(HttpServletRequest req,HttpServletResponse rep) throws IOException

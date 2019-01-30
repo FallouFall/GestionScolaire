@@ -18,9 +18,9 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Bienvenue</title>
 
-          <link rel="stylesheet"  type="text/css" href="./css/police.css" >
+        <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -37,13 +37,13 @@
 
     </head>
 
-    <body>
+    <body >
 
         <%@include file="Header.jsp" %>
 
 
     </div>
-    
+
     <div id="wrapper">
 
 
@@ -57,36 +57,43 @@
 
                     <div class="card card-login mx-auto mt-5 " style="    box-shadow: none;  text-align: center;">
                         <div class="card-header" style="background-color: rgba(12,12,12,0.0); ">
-                            <span class="ti-rss-alt slide-in"  style="font-size: 4em; color: #5a6169; "></span>
+                       
                         </div>
-                        <h4 class="slide-in"  style="font-family: titilliumWeb-regular;">Bienvenue</h4>
+                        <h4 class="slide-in "  style="color: #54a2d9;font-family: titilliumWeb-light;font-size: 3em;"><b style="font-size: 1.5em;font-family: titilliumWeb-light; ">B</b>onjour</h4>
                         <div class="card-body">
 
                             <form method="POST">
 
+                                
+                                <br>
                                 <div class="form-group">
-                                    <div class="form-label-group">
-                                        <input type="email" id="inputEmail"  required="true" class="form-control" placeholder="Username" name="username"  autofocus="autofocus">
-                                        <label for="inputEmail">Email address</label>
-                                    </div>
+                                     <div class="input-group with-addon-icon-left">
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-user"></i>
+                                                            </span>
+                                         <input type="email" class="form-control " name="username" id="nom" placeholder="E-Mail" required="true" minlength="2" maxlength="30">
+                                                        </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="form-label-group">
-                                        <input type="password" id="inputPassword" required="true" name="password" class="form-control" placeholder="Password" >
-                                        <label for="inputPassword">Password</label>
-                                    </div>
+                                    <div class="input-group with-addon-icon-left">
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-lock"></i>
+                                                            </span>
+                                                            <input type="password" class="form-control " name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
+                                                        </div>
                                 </div>
 
 
 
-                                   <div class="form-group">
+                                <br>
+                                 <div class="form-group">
                                     <div class="form-label-group">   
                                         <button type="submit" class="btn btn-primary" style="background-color: #0272bd   ;">
                                         <i class="ti-world">
 
-                                        </i> Connecter</button>
-                                </div> 
+                                        </i>Se Connecter</button>
+                                </div>
                                    </div>
 
 
@@ -108,10 +115,10 @@
 
             <!-- Sticky Footer -->
 
-            <footer class="sticky-footer" style="background-color: rgba(12,12,12,0.0); width: 100%;">
+            <footer class="sticky-footer" style=" width: 100%;background-color: #fff;   height: 120px;">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span style="font-family: titilliumWeb-light;">Copyright © Fallou Fall 2019</span>
+                        <span style="font-family: titilliumWeb-light;margin-top: 20px;margin-left: -70px;position: absolute;">Copyright © Fallou Fall 2019</span>
                     </div>
                 </div>
             </footer>
@@ -126,37 +133,25 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js" ></script>
+    <script src="js/demo.min.js"></script>
+    <script src="js/shards.min.js"></script>
 
-<script src="vendor/jquery/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js" ></script>
-        <script src="js/demo.min.js"></script>
-        <script src="js/shards.min.js"></script>
-    
-        <script src="js/sb-admin.min.js"></script>
-  
+    <script src="js/sb-admin.min.js"></script>
+
 
 
 </body>
 <style>
-   
+   footer{
+          background-image: url("images/footer.png");
+          background-repeat: round;
+          background-color: transparent;
+       
+          color: #fff;
+          
+    }
     .input{
         border-right: 2em;
     }

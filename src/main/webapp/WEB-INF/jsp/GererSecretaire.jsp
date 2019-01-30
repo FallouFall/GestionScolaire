@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Tables</title>
+    <title>Gestion des Secretaires</title>
 
     <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -85,52 +85,63 @@
                                   
 
                             </span>  </div>
+                 
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr  style="text-align: center;vertical-align: middle;">
-                                            <th>Image</th>
+                                          <th></th>
+                                              <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Adresse</th>
                                             <th>Telephone</th>
-                                             <th>Modifier</th>
+                                            <th>Modifier</th>
 
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr style="text-align: center;vertical-align: middle;">
-                                            <th>Image</th>
+                                            <th></th>
+                                            <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Adresse</th>
                                             <th>Telephone</th>
-                                                 <th>Modifier</th>
-                                           
-                                         
+                                            <th>Modifier</th>
+
+
 
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="element" items="${liste}">
-                                             <c:forEach var="img" items="${listeImage}">
-                                                 <tr style="text-align: center;vertical-align: middle;">
-                                             
+
+                                            <tr style="text-align: center;vertical-align: middle;">
+
                                                 <td> 
-                                                    
-                                                    <img alt="" class="image--cover" src="data:image/jpeg;base64,${img} " width="54">
+                                                    <c:if test="${element.imageId != null}">
+                                                          <img alt="" class="image--cover" src="data:image/jpeg;base64,${element.imageId} " width="54">
+                                                    </c:if>
+                                                          
+                                                    <c:if test="${element.imageId == null}">
+                                                        <span class="ti-user" style="font-size: 3.8em;"></span>
+                                                    </c:if>
+                                                   
+
                                                 </td>
+                                                <td>${element.matricule}</td>
                                                 <td>${element.nom}</td>
                                                 <td>${element.prenom}</td>
                                                 <td>${element.adresse}</td>
                                                 <td>${element.telephone}</td>
-                                                <td>       <a class="ti-reload" href="login"></a> </td>
-                                              
+                                                <td> <a class="ti-reload" href="update"></a> </td>
+
 
 
                                             </tr>
-                                              </c:forEach>
+
                                         </c:forEach>
                                     </tbody>
                                 </table>

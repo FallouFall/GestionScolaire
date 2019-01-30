@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Gestion des Ressources</title>
 
 
 
@@ -68,7 +68,7 @@
                     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                         <h6 class="dropdown-header">Gerer Classes</h6>
                         <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addClasse">Ajouter</a>
-                        <a class="dropdown-item" href="ListeClasses.jsp">Lister</a>
+                        <a class="dropdown-item" href="gererclasse.htm">Lister</a>
 
 
                     </div>
@@ -81,7 +81,7 @@
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
                         <h6 class="dropdown-header">Gerer Filiere</h6>
                         <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="#">Lister</a>
+                        <a class="dropdown-item" href="gererfiliere.htm">Lister</a>
 
 
                     </div>
@@ -113,24 +113,7 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="index.htm">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+ 
 
         <div class="modal fade" id="logoutModalClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelClasse" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -275,7 +258,7 @@
                         <div class="container-fluid">
                             <div class="example col-md-12 ml-auto mr-auto">
                                 <div class="row " >
-                                    <form>
+                                   <form method="POST">
                                         <br>
                                         <div class="form-group">
                                             <div class="form-row">
@@ -284,36 +267,24 @@
                                                         <span class="input-group-addon">
                                                             <i class="ti-tag"></i>
                                                         </span>
-                                                        <input type="text" class="form-control " id="nomFiliere" placeholder="Nom " required="true">
+                                                        <input type="text" class="form-control " id="nomMatiere"  name="nomFiliere" placeholder="Nom " required="true">
                                                     </div>
                                                 </div>
 
-                                                <div class=" form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <input type="text" class="form-control" id="datepicker-example-1" placeholder="Date de Creation" >
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-calendar"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                         
 
                                                 <div class="form-group col-md-6">
                                                     <div class="input-group with-addon-icon-left">
                                                         <span class="input-group-addon">
                                                             <i class="ti-info"></i>
                                                         </span>
-                                                        <input type="text" class="form-control" id="descriptionFiliere" placeholder="Description" required="true">
+                                                        <input type="text" class="form-control"  name="descriptionFiliere" id="descriptionMatiere" placeholder="Description" required="true">
                                                     </div>
                                                 </div>
+                                                
+                                             
 
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-alert"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control" id="descriptionFiliere" placeholder="Condition Admission" required="true">
-                                                    </div>
-                                                </div>
+                                         
 
                                                 <div class=" form-group col-md-6">       
                                                     <button type="submit" class="btn btn-primary">

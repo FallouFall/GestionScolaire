@@ -37,30 +37,30 @@ public class GererProfesseurController {
     @RequestMapping("GererProfesseur.htm")
     public ModelAndView welcome() {
         
-        String sql="SELECT distinct nom,prenom, adresse,telephone,photo from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
-        List<String> image=new ArrayList<>();
+        String sql="SELECT distinct matricule,nom,prenom, adresse,telephone,photo from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
+     
         List<User> actors =new ArrayList<>();
         
         
         actors = jdtbcTemplate.query(sql,
                 new Object[]{1}, (ResultSet rs, int rowNum) -> {
                     User c = new User();
-                    
-                    c.setNom(rs.getString(1));
-                    c.setPrenom(rs.getString(2));
-                    c.setAdresse(rs.getString(3));
-                    c.setTelephone(rs.getString(4));
+                    c.setMatricule(rs.getString(1));
+                    c.setNom(rs.getString(2));
+                    c.setPrenom(rs.getString(3));
+                    c.setAdresse(rs.getString(4));
+                    c.setTelephone(rs.getString(5));
                     
                     try {
-                        String encodeBase64 = Base64.encodeBase64String(rs.getBytes(5));
-                        image.add(encodeBase64);
+                        String encodeBase64 = Base64.encodeBase64String(rs.getBytes(6));
+                c.setImageId(encodeBase64);
                     } catch (Exception e) {
                     }
                     return c;
         });
       
        mav.addObject("liste", actors);
-       mav.addObject("listeImage", image);
+
         return mav;
     }
     @RequestMapping(value = "AjouterProfesseur.htm",method = RequestMethod.GET)

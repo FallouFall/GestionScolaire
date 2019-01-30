@@ -10,28 +10,29 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-          <link rel="stylesheet"  type="text/css" href="./css/police.css" >
+        <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link rel="stylesheet" href="css/themify-icons.css">
         <link rel="stylesheet" href="css/shards.min.css">
         <link rel="shortcut icon" href="images/webIcone.jpg"/>
         <link rel="stylesheet" href="./css/cardeffects.css">
     </head>
     <body>
-        <nav class="navbar navbar-light" style=" height: 12vh;background-image:linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
-          
-               <a class="navbar-brand mr-1" href="#" style="color: #fff; font-family: titilliumWeb-italic;    font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
-                  <a class="navbar-brand mr-1" href="#" style="color: #fff;    font-size: 4vh;   letter-spacing: .5rem; " >     <i class="ti-book"></i></a>
+        <nav class="navbar navbar-light" style=" height: 12vh;
+             border-bottom: 1px solid #1f72b8 ;">
 
-           
+            <a class="navbar-brand mr-1" href="#" style="color: #1f72b8; font-family: titilliumWeb-italic;    font-size: 6vh;   letter-spacing: .5rem; " >ISI</a>
+            <a class="navbar-brand mr-1" href="#" style="color: #1f72b8;    font-size: 6vh;   letter-spacing: .5rem; " >     <i class="ti-book"></i></a>
+
+
         </nav>
-         <style>
+        <style>
             .modal-header{
-             background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%
-                 ,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
-          
-             
+                background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%
+                    ,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
+
+
             }
-         
+
             .modal-title{
                 font-family: dax-bold;    font-size: 1.4rem;
                 color: #fff;

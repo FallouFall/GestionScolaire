@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Ajout Directeur</title>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/themify-icons.css" rel="stylesheet">
@@ -95,7 +95,7 @@ if(userName == null) response.sendRedirect("index.htm");
 
                             </span>  </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form method="POST">
                                             <div class="form-group">
                                                 <div class="form-row">
 
@@ -106,12 +106,12 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             <span class="input-group-addon">
                                                                 <i class="ti-user"></i>
                                                             </span>
-                                                            <input type="text" class="form-control " id="nom" placeholder="Nom" required="true">
+                                                            <input type="text" class="form-control " name="nom" id="nom" placeholder="Nom" required="true" minlength="2" maxlength="15">
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" id="prenom" placeholder="Prenom" required="true">
+                                                            <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prenom" required="true" minlength="2" maxlength="15">
                                                             <span class="input-group-addon">
                                                                 <i class="ti-user"></i>
                                                             </span>
@@ -123,12 +123,12 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             <span class="input-group-addon">
                                                                 <i class="ti-home"></i>
                                                             </span>
-                                                            <input type="text" class="form-control" id="adresse" placeholder="Adresse" required="true">
+                                                            <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true" minlength="2" maxlength="20">
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                                            <input type="email" class="form-control"  name="mail" id="inputEmail4" placeholder="Email" minlength="5" maxlength="30">
                                                             <span class="input-group-addon">
                                                                 <i class="ti-email"></i>
                                                             </span>
@@ -137,7 +137,7 @@ if(userName == null) response.sendRedirect("index.htm");
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" id="datepicker-example-1" placeholder="Date de Naissance" >
+                                                            <input type="text" class="form-control" name="naissance" id="datepicker-example-1" placeholder="Date de Naissance" >
                                                             <span class="input-group-addon">
                                                                 <i class="ti-calendar"></i>
                                                             </span>
@@ -147,7 +147,7 @@ if(userName == null) response.sendRedirect("index.htm");
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="number" class="form-control" id="telephone" placeholder="Telephone" min="6" max="9"      >
+                                                            <input type="number" class="form-control" name="telephone" id="telephone" placeholder="Telephone" minlength="9" maxlength="9"    >
                                                             <span class="input-group-addon">
                                                                 <i class="ti-mobile"></i>
                                                             </span>
@@ -156,7 +156,7 @@ if(userName == null) response.sendRedirect("index.htm");
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" id="login" placeholder="Login"  required="true">
+                                                            <input type="text" class="form-control" id="login" placeholder="Username"  name="username" required="true" minlength="5" maxlength="15">
                                                             <span class="input-group-addon">
                                                                 <i class="ti-link"></i>
                                                             </span>
@@ -166,7 +166,7 @@ if(userName == null) response.sendRedirect("index.htm");
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="password" class="form-control" data-minlength="6" id="password" placeholder="Password" required="true" >
+                                                            <input type="password" class="form-control" name="password"  id="password" placeholder="Password" required="true"  minlength="5" maxlength="15">
                                                             <span class="input-group-addon">
                                                                 <i class="ti-lock"></i>
                                                             </span>
@@ -204,27 +204,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                     </div>
                                 </div>
 
-   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                     
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current sessionsss.</div>
-                    <div class="modal-footer">
-                        <form method="POST">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    
-                        <button type="submit" class="btn btn-primary">Logout</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
                             </div>
                         </div>
                     </div>
@@ -280,10 +260,14 @@ if(userName == null) response.sendRedirect("index.htm");
 
         </style>
         
+   
         <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="./js/bootstrap.min.js" ></script>
+        <script src="js/demo.min.js"></script>
+        <script src="js/shards.min.js"></script>
 
+
+        <script src="js/sb-admin.min.js"></script>
 
 
 

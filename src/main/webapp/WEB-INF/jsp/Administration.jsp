@@ -18,14 +18,14 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Centre Administration</title>
 
 
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/sb-admin.css" rel="stylesheet">
-        <link rel="shortcut icon" href="images/webIcone.jpg"/>
-
+       
+        <%@include file="HeaderUser.jsp" %>
       
 
 
@@ -49,7 +49,7 @@ if(userName == null) response.sendRedirect("index.htm");
 %>
 
       
-        <%@include file="HeaderUser.jsp" %>
+   
 
 
         <div id="wrapper">

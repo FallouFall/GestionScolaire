@@ -20,7 +20,7 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">loginController</prop>
-                 <prop key="headerUser.htm">headerUserController</prop>
+                
                 <prop key="administration.htm">administrationController</prop>
                 <prop key="secretaire.htm">secretaireController</prop>
                 <prop key="comptable.htm">comptableController</prop>
@@ -42,7 +42,15 @@
                 <prop key=" AjouterDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" AjouterComptable.htm">gererComptableController</prop>
                 <prop key="GererRessources.htm">gererRessourcesController</prop>
-            
+                <prop key="gererclasse.htm">gererRessourcesController</prop>
+                <prop key="gererfiliere.htm">gererRessourcesController</prop>
+                <!-- gerer unites enseignement et matiere!-->
+                <prop key="gererue.htm">gererDirecteurController</prop>
+                <prop key="listeMatiere.htm">gererDirecteurController</prop>
+                 <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
+                
+                <prop key="InscriptionEtudiant.htm">gererComptableController</prop>
+              
             </props>
         </property>
     </bean>
@@ -58,9 +66,9 @@
     <bean name="loginController"
      class="sn.objis.gestionscolaire.controller.LoginController"
     />
-     <bean name="headerUserController"
-     class="sn.objis.gestionscolaire.controller.HeaderUserController"
-    />
+ 
+    
+   
     <bean name="administrationController"
     class="sn.objis.gestionscolaire.controller.AdministrationController"
     />

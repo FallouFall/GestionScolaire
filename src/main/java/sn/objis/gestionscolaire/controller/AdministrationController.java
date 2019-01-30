@@ -64,6 +64,7 @@ public class AdministrationController {
         return mav;
     }
     
+    
      @RequestMapping("ressources.htm")
     public ModelAndView ressources(HttpServletRequest req)
     {         

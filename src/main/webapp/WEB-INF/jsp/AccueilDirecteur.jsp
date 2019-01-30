@@ -31,7 +31,7 @@
         <link rel="shortcut icon" href="images/webIcone.jpg"/>
         <link rel="stylesheet" href="./css/cardeffects.css">
 
-      
+        <%@include file="HeaderUser.jsp" %>
 
 
 
@@ -49,41 +49,7 @@ for(Cookie cookie : cookies){
 if(userName == null) response.sendRedirect("index.htm");
 %>
     <body id="page-top">
-    <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
-
-            <a class="navbar-brand mr-1" href="#" style="color: #fff; font-family: titilliumWeb-italic;    font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
-
-
-
-        
-
-            <!-- Navbar Search -->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-
-                    <div class="input-group-append">
-
-                    </div>
-                </div>
-            </form>
-
-            <!-- Navbar -->
-            <ul class="navbar-nav ml-auto ml-md-0">
-
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="ti-user" style="font-size:2em; color: #fff"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-
-
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Se deconncter</a>
-                    </div>
-                </li>
-            </ul>
-
-        </nav>
+    
 
 
         <div id="wrapper">
@@ -116,12 +82,12 @@ if(userName == null) response.sendRedirect("index.htm");
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="#"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="gererue.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
                                             <p>     <span class=" ti-bookmark-alt"   style="font-size: 3em;"></span></p>
-                                            <h4 class="card-title">Serie</h4>
+                                            <h4 class="card-title">UE & Matiere</h4>
 
 
                                         </div>
@@ -170,7 +136,7 @@ if(userName == null) response.sendRedirect("index.htm");
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="#"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="gererfiliere.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
@@ -272,6 +238,7 @@ if(userName == null) response.sendRedirect("index.htm");
             }
             .modal-content{
                 margin-top: 100px;
+                 
             }
         </style>
     </body>

@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Tables</title>
+    <title>Ajout Professeur</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="css/themify-icons.css" rel="stylesheet">
@@ -144,7 +144,7 @@
                                   
                                         <div class=" form-group col-md-6">
                                             <div class="input-group with-addon-icon-left">
-                                                <input type="text" class="form-control" id="login" placeholder="Login"  required="true">
+                                                <input type="text" class="form-control" id="login" placeholder="Username"  required="true">
                                                 <span class="input-group-addon">
                                                     <i class="ti-link"></i>
                                                 </span>
@@ -283,28 +283,15 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="index.htm">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+ 
 
         <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-        <script src="js/sb-admin.min.js"></script>
+        <script src="./js/bootstrap.min.js" ></script>
+        <script src="js/demo.min.js"></script>
+        <script src="js/shards.min.js"></script>
 
+
+        <script src="js/sb-admin.min.js"></script>
                   <style>
      .image--cover {
   width: 70px;

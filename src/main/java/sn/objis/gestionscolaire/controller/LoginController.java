@@ -48,7 +48,7 @@ public class LoginController {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        String sql = "SELECT nom,prenom,adresse,telephone, photo, idaccount from user, profil,account where username=? AND password=? AND account.id=profil.idaccount and user.idprofil=profil.id";
+        String sql = "SELECT matricule,nom,prenom,adresse,telephone, photo, idaccount from user, profil,account where username=? AND password=? AND account.id=profil.idaccount and user.idprofil=profil.id";
 
         List<User> actors = jdtbcTemplate.query(
                 sql,
@@ -56,18 +56,18 @@ public class LoginController {
                 new RowMapper<User>() {
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                 User c = new User();
-
-                c.setNom(rs.getString(1));
-                c.setPrenom(rs.getString(2));
-                c.setAdresse(rs.getString(3));
-                c.setTelephone(rs.getString(4));
-                c.setPhoto(rs.getBytes(5));
+                c.setMatricule(rs.getString(1));
+                c.setNom(rs.getString(2));
+                c.setPrenom(rs.getString(3));
+                c.setAdresse(rs.getString(4));
+                c.setTelephone(rs.getString(5));
+                c.setPhoto(rs.getBytes(6));
 
                 Profil p = new Profil();
                 p.setUsername(username);
                 p.setPassword(password);
 
-                Account account = new Account(rs.getInt(6));
+                Account account = new Account(rs.getInt(7));
                 p.setIdaccount(account);
                 c.setIdprofil(p);
 

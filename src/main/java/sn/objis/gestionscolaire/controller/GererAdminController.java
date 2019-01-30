@@ -37,30 +37,33 @@ public class GererAdminController {
     @RequestMapping("GererAdmin.htm")
     public ModelAndView welcome() {
      
-        String sql="SELECT distinct nom,prenom, adresse,telephone,photo from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
-        List<String> image=new ArrayList<>();
+        String sql="SELECT matricule,nom,prenom,adresse,telephone, photo, idaccount from user, profil,account where account.id=profil.idaccount and user.idprofil=profil.id and account.id=? ";
+   
         List<User> actors =new ArrayList<>();
         
         
         actors = jdtbcTemplate.query(sql,
                 new Object[]{1}, (ResultSet rs, int rowNum) -> {
                     User c = new User();
-                    
-                    c.setNom(rs.getString(1));
-                    c.setPrenom(rs.getString(2));
-                    c.setAdresse(rs.getString(3));
-                    c.setTelephone(rs.getString(4));
+                    c.setMatricule(rs.getString(1));
+                    c.setNom(rs.getString(2));
+                    c.setPrenom(rs.getString(3));
+                    c.setAdresse(rs.getString(4));
+                    c.setTelephone(rs.getString(5));
                     
                     try {
-                        String encodeBase64 = Base64.encodeBase64String(rs.getBytes(5));
-                        image.add(encodeBase64);
+                        String encodeBase64 = Base64.encodeBase64String(rs.getBytes(6));
+                        c.setImageId(encodeBase64);
+                       
+                       
                     } catch (Exception e) {
                     }
                     return c;
         });
       
        mav.addObject("liste", actors);
-       mav.addObject("listeImage", image);
+
+       
         return mav;
     }
     @RequestMapping(value = "AjouterAdmin.htm",method = RequestMethod.GET)
@@ -76,14 +79,15 @@ public class GererAdminController {
     {
         try {
             
-      
+       
        User user= new User();
        user.setNom(req.getParameter("nom"));
        user.setPrenom(req.getParameter("prenom"));
        user.setAdresse(req.getParameter("adresse"));
        user.setTelephone(req.getParameter("telephone"));
        user.setTelephone(req.getParameter("mail"));
-        Account account =new Account(1);
+       
+       Account account =new Account(1);
        
        Profil profil=new Profil();
        profil.setIdaccount(account);
@@ -91,12 +95,19 @@ public class GererAdminController {
        profil.setUsername(req.getParameter("username"));
        user.setIdprofil(profil);
        
-       String sql="insert into profil values (?,?,?)";
-      int of= jdtbcTemplate.update(sql,profil.getIdaccount().getId(),profil.getPassword(),profil.getUsername());
-            System.out.println(of+"");
-       
-       sql="insert into user values (?,?,?,?,?)";
-       jdtbcTemplate.update(sql,user.getAdresse(),user.getNom(),user.getPrenom(),user.getTelephone(),user.getIdprofil().getId());
+       String sql="insert into profil values (?,?,?,?)";
+       jdtbcTemplate.update(sql,null,profil.getIdaccount().getId(),profil.getPassword(),profil.getUsername());
+      
+       sql="Select Max(id) from profil";
+       boolean result=false;
+       int count=jdtbcTemplate.queryForObject(sql, new Object[]{},Integer.class);
+       if(count>0)
+       {
+           result= true;
+       }
+ 
+     sql="insert into user values (?,?,?,?,?,?,?)";
+      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count);
        
   } catch (Exception e) {
             System.out.println(e);
@@ -105,6 +116,7 @@ public class GererAdminController {
         
       
     }
+ 
     
     @RequestMapping(value = "GererAdmin.htm",method = RequestMethod.POST)
     public void deconnection(HttpServletRequest req,HttpServletResponse rep) throws IOException

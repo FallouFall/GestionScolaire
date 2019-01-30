@@ -35,7 +35,7 @@
 
          <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
 
-             <a class="navbar-brand mr-1" href="Comptable.htm" style="color: #fff;    font-family: titilliumWeb-italic; font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
+             <a class="navbar-brand mr-1" href="comptable.htm" style="color: #fff;    font-family: titilliumWeb-italic; font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -78,7 +78,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="Comptable.htm">
+                    <a class="nav-link" href="comptable.htm">
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>

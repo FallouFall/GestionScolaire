@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Liste des classes</title>
 
          <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -71,8 +71,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                         <h6 class="dropdown-header">Gerer Classes</h6>
-                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addClasse">Ajouter</a>
-                        <a class="dropdown-item" href="#">Lister</a>
+                        <a  class="dropdown-item" href="GererRessources.htm" data-toggle="modal" data-target="#addClasse">Ajouter</a>
+                        <a class="dropdown-item" href="gererclasse.htm">Lister</a>
 
 
                     </div>
@@ -84,8 +84,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
                         <h6 class="dropdown-header">Gerer Filiere</h6>
-                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="ListeFiliere.jsp">Lister</a>
+                        <a  class="dropdown-item" href="GererRessources.htm" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
+                        <a class="dropdown-item" href="gererfiliere.htm">Lister</a>
 
 
                     </div>
@@ -619,25 +619,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="logoutModalClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelClasse" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelClasse">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" href="index.htm">Logout</a>
                     </div>
                 </div>
             </div>
@@ -645,15 +627,19 @@
 
 
 
+
+
+ 
         <div class="modal fade" id="addClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" >
                         <h5 class="modal-title" id="exampleModalLabel">Ajouter Classe</h5>
                         <br><br>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                     
                         </button>
+                
                     </div>
                     <div id="content-wrapper">
 
@@ -661,22 +647,23 @@
                             <div class="example col-md-12 ml-auto mr-auto">
                                 <div class="row " >
                                     <form>
+                                                <br>
                                         <div class="form-group">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6 ">
                                                     <div class="input-group with-addon-icon-left">
                                                         <span class="input-group-addon">
-                                                            <i class="ti-user"></i>
+                                                            <i class="ti-tag"></i>
                                                         </span>
                                                         <input type="text" class="form-control " id="nomClasse" placeholder="Nom " required="true">
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group col-md-6">
+                                                <div class=" form-group col-md-6">
                                                     <div class="input-group with-addon-icon-left">
-                                                        <input type="date" class="form-control" id="dateClasse" placeholder="Date de Creation" required="true">
+                                                        <input type="text" class="form-control" id="datepicker-example-1" placeholder="Date de Creation" >
                                                         <span class="input-group-addon">
-                                                            <i class="ti-user"></i>
+                                                            <i class="ti-calendar"></i>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -684,7 +671,7 @@
                                                 <div class="form-group col-md-6">
                                                     <div class="input-group with-addon-icon-left">
                                                         <span class="input-group-addon">
-                                                            <i class="ti-home"></i>
+                                                            <i class="ti-info"></i>
                                                         </span>
                                                         <input type="text" class="form-control" id="descriptionClasse" placeholder="Description" required="true">
                                                     </div>
@@ -712,20 +699,32 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                        <span class="input-group-addon">
+                                                            <i class="ti-alert"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" id="PrixInscription" placeholder="Condition Admission" >
+                                                    </div>
+                                                </div>
 
+
+                                                <div class=" form-group col-md-6">       
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="ti-save">
+
+                                                        </i> Enregistrer</button>
+                                                </div>
+                                                <div class=" form-group col-md-6">   
+                                                 <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
+                                                        <i class="ti-trash">
+
+                                                        </i> Annuler</button>
+                                                </div>
 
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="ti-save">
 
-                                            </i> Enregistrer</button>
-                                        <button class="btn btn-secondary" type="button" data-dismiss="modal" >
-                                            <i class="ti-trash">
-
-                                            </i> 
-                                            Annuler
-                                        </button>
 
                                     </form>
                                     <br>
@@ -738,15 +737,16 @@
             </div>
         </div>
 
-        <div class="modal fade" id="addFiliere" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addFiliere"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" >
                         <h5 class="modal-title" id="exampleModalLabel">Ajouter Filiere</h5>
                         <br><br>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                         
                         </button>
+                
                     </div>
                     <div id="content-wrapper">
 
@@ -754,22 +754,23 @@
                             <div class="example col-md-12 ml-auto mr-auto">
                                 <div class="row " >
                                     <form>
+                                        <br>
                                         <div class="form-group">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6 ">
                                                     <div class="input-group with-addon-icon-left">
                                                         <span class="input-group-addon">
-                                                            <i class="ti-user"></i>
+                                                            <i class="ti-tag"></i>
                                                         </span>
                                                         <input type="text" class="form-control " id="nomFiliere" placeholder="Nom " required="true">
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group col-md-6">
+                                                <div class=" form-group col-md-6">
                                                     <div class="input-group with-addon-icon-left">
-                                                        <input type="date" class="form-control" id="dateFiliere" placeholder="Date de Creation" required="true">
+                                                        <input type="text" class="form-control" id="datepicker-example-1" placeholder="Date de Creation" >
                                                         <span class="input-group-addon">
-                                                            <i class="ti-user"></i>
+                                                            <i class="ti-calendar"></i>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -777,26 +778,35 @@
                                                 <div class="form-group col-md-6">
                                                     <div class="input-group with-addon-icon-left">
                                                         <span class="input-group-addon">
-                                                            <i class="ti-home"></i>
+                                                            <i class="ti-info"></i>
                                                         </span>
                                                         <input type="text" class="form-control" id="descriptionFiliere" placeholder="Description" required="true">
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                        <span class="input-group-addon">
+                                                            <i class="ti-alert"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" id="descriptionFiliere" placeholder="Condition Admission" required="true">
+                                                    </div>
+                                                </div>
 
+                                                <div class=" form-group col-md-6">       
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="ti-save">
+
+                                                        </i> Enregistrer</button>
+                                                </div>
+                                                <div class=" form-group col-md-6">   
+                                                    <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
+                                                        <i class="ti-trash">
+
+                                                        </i> Annuler</button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="ti-save">
-
-                                            </i> Enregistrer</button>
-
-                                        <button class="btn btn-secondary" type="button" data-dismiss="modal" >
-                                            <i class="ti-trash">
-
-                                            </i> 
-                                            Annuler
-                                        </button>
 
                                     </form>
                                     <br>
@@ -810,25 +820,11 @@
         </div>
 
 
+    
 
 
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
 
 
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -843,7 +839,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" href="index.htm">Logout</a>
                     </div>
                 </div>
             </div>

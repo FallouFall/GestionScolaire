@@ -17,13 +17,16 @@
         <link rel="stylesheet" href="css/shards.min.css">
         <link rel="shortcut icon" href="images/webIcone.jpg"/>
         <link rel="stylesheet" href="./css/cardeffects.css">
+        <link href="css/sb-admin.css" rel="stylesheet">
+   
 
     </head>
     <body >
+
     
         <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
 
-            <a class="navbar-brand mr-1" href="administration.htm" style="color: #fff; font-family: titilliumWeb-italic;    font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
+            <a class="navbar-brand mr-1" href="#" style="color: #fff; font-family: titilliumWeb-italic;    font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
                  <!-- Navbar Search -->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -39,9 +42,17 @@
 
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span  >
+                           <c:if test="${photo != null}">
+                               <span >
                                <img alt="" class="image--cover" src="data:image/jpeg;base64,${photo} " width="54">
-                        </span>
+                              </span>
+                            </c:if>
+                                                          
+                             <c:if test="${photo == null}">
+                              <span class="ti-user" style="font-size: 2.8em;color: #fff;"></span>
+                              </c:if>
+                        
+                      
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
@@ -56,6 +67,10 @@
                         </a>
                         <div class="dropdown-divider"></div>
                         <form method="POST">
+                             <a class="dropdown-item" href="#" >
+                            <span class="ti-star"> </span>
+                           Mon Profil
+                        </a>
                         <a class="dropdown-item" href="headerUser.htm" data-toggle="modal" data-target="#logoutModal">
                             <span class="ti-direction"> </span>
                             Se deconncter
@@ -70,6 +85,7 @@
             .modal-header{
              background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%
                  ,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
+                 height: 50px;
           
              
             }
@@ -88,6 +104,20 @@
     position: absolute;
     margin-top: -10px;
 }
+  .image--cover {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin: 5px;
+
+  object-fit: cover;
+  object-position: center right;
+}
+
         </style>
+             
+   
+     
     </body>
 </html>

@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Gestion des Administrateurs</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -43,41 +43,45 @@
     </head>
 
     <body id="page-top">
-       <%
-String userName = null;
-Cookie[] cookies = request.getCookies();
+        <%
+            String userName = null;
+            Cookie[] cookies = request.getCookies();
 
-if(cookies !=null){
-for(Cookie cookie : cookies){
-	if(cookie.getName().equals("user")) userName = cookie.getValue();
-      
-}
-}
-if(userName == null) response.sendRedirect("index.htm");
-%>
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("user")) {
+                        userName = cookie.getValue();
+                    }
+
+                }
+            }
+            if (userName == null) {
+                response.sendRedirect("index.htm");
+            }
+        %>
 
 
         <%@include  file="HeaderUser.jsp" %>
-    
+
 
         <div id="wrapper">
 
             <!-- Sidebar -->
-            
+
             <ul class="sidebar navbar-nav" >
-              
-                   
-           
-           
-                  <li class="nav-item" >
-                       <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-                        
-                 <i class="fas fa-bars">    </i>
-                           
+
+
+
+
+                <li class="nav-item" >
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
                     </a>
                 </li>
-                
-                
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -127,47 +131,57 @@ if(userName == null) response.sendRedirect("index.htm");
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr  style="text-align: center;vertical-align: middle;">
-                                            <th>Image</th>
+                                          <th></th>
+                                              <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Adresse</th>
                                             <th>Telephone</th>
-                                             <th>Modifier</th>
+                                            <th>Modifier</th>
 
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr style="text-align: center;vertical-align: middle;">
-                                            <th>Image</th>
+                                            <th></th>
+                                            <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Adresse</th>
                                             <th>Telephone</th>
-                                                 <th>Modifier</th>
-                                           
-                                         
+                                            <th>Modifier</th>
+
+
 
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="element" items="${liste}">
-                                             <c:forEach var="img" items="${listeImage}">
-                                                 <tr style="text-align: center;vertical-align: middle;">
-                                             
+
+                                            <tr style="text-align: center;vertical-align: middle;">
+
                                                 <td> 
-                                                    
-                                                    <img alt="" class="image--cover" src="data:image/jpeg;base64,${img} " width="54">
+                                                    <c:if test="${element.imageId != null}">
+                                                          <img alt="" class="image--cover" src="data:image/jpeg;base64,${element.imageId} " width="54">
+                                                    </c:if>
+                                                          
+                                                    <c:if test="${element.imageId == null}">
+                                                        <span class="ti-user" style="font-size: 3.8em;"></span>
+                                                    </c:if>
+                                                   
+
                                                 </td>
+                                                <td>${element.matricule}</td>
                                                 <td>${element.nom}</td>
                                                 <td>${element.prenom}</td>
                                                 <td>${element.adresse}</td>
                                                 <td>${element.telephone}</td>
-                                                <td>       <a class="ti-reload" href="login"></a> </td>
-                                              
+                                                <td> <a class="ti-reload" href="update"></a> </td>
+
 
 
                                             </tr>
-                                              </c:forEach>
+
                                         </c:forEach>
                                     </tbody>
                                 </table>
@@ -194,11 +208,11 @@ if(userName == null) response.sendRedirect("index.htm");
         </a>
 
         <!-- Logout Modal-->
-     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                     
+
                         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
@@ -207,9 +221,9 @@ if(userName == null) response.sendRedirect("index.htm");
                     <div class="modal-body">Select "Logout" below if you are ready to end your current sessionsss.</div>
                     <div class="modal-footer">
                         <form method="POST">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    
-                        <button type="submit" class="btn btn-primary">Logout</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+                            <button type="submit" class="btn btn-primary">Logout</button>
                         </form>
                     </div>
                 </div>
@@ -234,17 +248,17 @@ if(userName == null) response.sendRedirect("index.htm");
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
 
-         <style>
-     .image--cover {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  margin: 5px;
+        <style>
+            .image--cover {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                margin: 5px;
 
-  object-fit: cover;
-  object-position: center right;
-}
+                object-fit: cover;
+                object-position: center right;
+            }
 
         </style>
 

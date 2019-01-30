@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sn.objis.gestionscolaire.domain;
 
 import java.io.Serializable;
@@ -12,23 +16,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Fallou
- * @since 12-12-2018
- * @version 1.0
  */
 @Entity
 @Table(name = "profil")
-
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Profil.findAll", query = "SELECT p FROM Profil p")
+    , @NamedQuery(name = "Profil.findById", query = "SELECT p FROM Profil p WHERE p.id = :id")
+    , @NamedQuery(name = "Profil.findByPassword", query = "SELECT p FROM Profil p WHERE p.password = :password")
+    , @NamedQuery(name = "Profil.findByUsername", query = "SELECT p FROM Profil p WHERE p.username = :username")})
 public class Profil implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 15)
@@ -42,95 +58,59 @@ public class Profil implements Serializable {
     @JoinColumn(name = "idaccount", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Account idaccount;
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "nom")
-    private String nom;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idprofil")
     private List<User> userList;
 
-    /**
-     *Constructeur sans parametre
-     */
     public Profil() {
     }
 
-    /**
-     *
-     * @param id
-     */
     public Profil(Integer id) {
         this.id = id;
     }
 
-    /**
-     * Constructeur avec parametres
-     * @param id
-     * @param nom
-     * @param username
-     * @param password
-     */
-    public Profil(Integer id, String nom, String username, String password) {
+    public Profil(Integer id, String password, String username) {
         this.id = id;
-        this.nom = nom;
-        this.username = username;
         this.password = password;
+        this.username = username;
     }
 
-    /**
-     *
-     * @return
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     *
-     * @param id
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getNom() {
-        return nom;
+    public String getPassword() {
+        return password;
     }
 
-    /**
-     *
-     * @param nom
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
-    /**
-     *
-     * @return
-     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Account getIdaccount() {
+        return idaccount;
+    }
+
+    public void setIdaccount(Account idaccount) {
+        this.idaccount = idaccount;
+    }
+
     @XmlTransient
     public List<User> getUserList() {
         return userList;
     }
 
-    /**
-     *
-     * @param userList
-     */
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
@@ -157,31 +137,7 @@ public class Profil implements Serializable {
 
     @Override
     public String toString() {
-        return  id + " ";
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Account getIdaccount() {
-        return idaccount;
-    }
-
-    public void setIdaccount(Account idaccount) {
-        this.idaccount = idaccount;
+        return "sn.objis.gestionscolaire.domain.Profil[ id=" + id + " ]";
     }
     
 }
