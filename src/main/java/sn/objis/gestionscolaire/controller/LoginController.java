@@ -48,7 +48,7 @@ public class LoginController {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        String sql = "SELECT matricule,nom,prenom,adresse,telephone, photo, idaccount from user, profil,account where username=? AND password=? AND account.id=profil.idaccount and user.idprofil=profil.id";
+        String sql = "SELECT user.id,matricule,nom,prenom,adresse,telephone, photo, idaccount,type,profil.id from user, profil,account where username=? AND password=? AND account.id=profil.idaccount and user.idprofil=profil.id";
 
         List<User> actors = jdtbcTemplate.query(
                 sql,
@@ -56,31 +56,49 @@ public class LoginController {
                 new RowMapper<User>() {
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                 User c = new User();
-                c.setMatricule(rs.getString(1));
-                c.setNom(rs.getString(2));
-                c.setPrenom(rs.getString(3));
-                c.setAdresse(rs.getString(4));
-                c.setTelephone(rs.getString(5));
-                c.setPhoto(rs.getBytes(6));
+                c.setId(rs.getInt(1));
+                c.setMatricule(rs.getString(2));
+                c.setNom(rs.getString(3));
+                c.setPrenom(rs.getString(4));
+                c.setAdresse(rs.getString(5));
+                c.setTelephone(rs.getString(6));
+                c.setPhoto(rs.getBytes(7));
 
                 Profil p = new Profil();
+                p.setId(rs.getInt(10));
                 p.setUsername(username);
                 p.setPassword(password);
 
-                Account account = new Account(rs.getInt(7));
+                Account account = new Account(rs.getInt(8));
+                account.setType(rs.getString(9));
                 p.setIdaccount(account);
                 c.setIdprofil(p);
+                
 
                 HttpSession session = req.getSession();
                 String encodeBase64 = Base64.encodeBase64String(c.getPhoto());
+                System.out.println(c.getIdprofil().getIdaccount().getType());
+                //session
                 session.setAttribute("photo", encodeBase64);
                 session.setAttribute("user", c.getPrenom()+" "+c.getNom());
+               session.setAttribute("nom",c.getNom());
+               session.setAttribute("id",c.getId()+"");
+               session.setAttribute("idprofil",p.getId()+"");
+            
+                session.setAttribute("prenom",c.getPrenom());
+                session.setAttribute("adresse", c.getAdresse());
+                session.setAttribute("telephone", c.getTelephone());
+                session.setAttribute("adresse", c.getAdresse());
+                session.setAttribute("login", c.getIdprofil().getUsername());
+                session.setAttribute("password", c.getIdprofil().getPassword());
+                session.setAttribute("profil", c.getIdprofil().getIdaccount().getType());
                 session.setMaxInactiveInterval(30 * 60);
                 
                         Cookie loginCookie = new Cookie("user","user");			
 			loginCookie.setMaxAge(30*60);
 			rep.addCookie(loginCookie);
                         
+                      
                       
                 return c;
             }

@@ -35,8 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Matiere.findByMatricule", query = "SELECT m FROM Matiere m WHERE m.matricule = :matricule")
     , @NamedQuery(name = "Matiere.findByNom", query = "SELECT m FROM Matiere m WHERE m.nom = :nom")
     , @NamedQuery(name = "Matiere.findByCreation", query = "SELECT m FROM Matiere m WHERE m.creation = :creation")
-    , @NamedQuery(name = "Matiere.findByDescription", query = "SELECT m FROM Matiere m WHERE m.description = :description")
-    , @NamedQuery(name = "Matiere.findByCoefficient", query = "SELECT m FROM Matiere m WHERE m.coefficient = :coefficient")})
+    , @NamedQuery(name = "Matiere.findByDescription", query = "SELECT m FROM Matiere m WHERE m.description = :description")})
 public class Matiere implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,7 +63,6 @@ public class Matiere implements Serializable {
     @Column(name = "description")
     private String description;
 
-
     public Matiere() {
     }
 
@@ -72,12 +70,11 @@ public class Matiere implements Serializable {
         this.id = id;
     }
 
-    public Matiere(Integer id, String matricule, String nom, Date creationt) {
+    public Matiere(Integer id, String matricule, String nom, Date creation) {
         this.id = id;
         this.matricule = matricule;
         this.nom = nom;
         this.creation = creation;
-     
     }
 
     public Integer getId() {
@@ -120,8 +117,6 @@ public class Matiere implements Serializable {
         this.description = description;
     }
 
-
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -144,7 +139,7 @@ public class Matiere implements Serializable {
 
     @Override
     public String toString() {
-        return "sn.objis.gestionscolaire.domain.Matiere[ id=" + id + " ]";
+        return "gs.serveurecole.model.Matiere[ id=" + id + " ]";
     }
     
 }

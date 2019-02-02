@@ -124,7 +124,7 @@ public class Serie implements Serializable {
 
     @Override
     public String toString() {
-        return "sn.objis.gestionscolaire.domain.Serie[ id=" + id + " ]";
+        return "gs.serveurecole.model.Serie[ id=" + id + " ]";
     }
     
 }

@@ -30,13 +30,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "filiere")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Matiere.findAll", query = "SELECT m FROM Matiere m")
-    , @NamedQuery(name = "Matiere.findById", query = "SELECT m FROM Matiere m WHERE m.id = :id")
-    , @NamedQuery(name = "Matiere.findByMatricule", query = "SELECT m FROM Matiere m WHERE m.matricule = :matricule")
-    , @NamedQuery(name = "Matiere.findByNom", query = "SELECT m FROM Matiere m WHERE m.nom = :nom")
-    , @NamedQuery(name = "Matiere.findByCreation", query = "SELECT m FROM Matiere m WHERE m.creation = :creation")
-    , @NamedQuery(name = "Matiere.findByDescription", query = "SELECT m FROM Matiere m WHERE m.description = :description")
-    , @NamedQuery(name = "Matiere.findByCoefficient", query = "SELECT m FROM Matiere m WHERE m.coefficient = :coefficient")})
+    @NamedQuery(name = "Filiere.findAll", query = "SELECT f FROM Filiere f")
+    , @NamedQuery(name = "Filiere.findById", query = "SELECT f FROM Filiere f WHERE f.id = :id")
+    , @NamedQuery(name = "Filiere.findByMatricule", query = "SELECT f FROM Filiere f WHERE f.matricule = :matricule")
+    , @NamedQuery(name = "Filiere.findByNom", query = "SELECT f FROM Filiere f WHERE f.nom = :nom")
+    , @NamedQuery(name = "Filiere.findByCreation", query = "SELECT f FROM Filiere f WHERE f.creation = :creation")
+    , @NamedQuery(name = "Filiere.findByDescription", query = "SELECT f FROM Filiere f WHERE f.description = :description")})
 public class Filiere implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,7 +63,6 @@ public class Filiere implements Serializable {
     @Column(name = "description")
     private String description;
 
-
     public Filiere() {
     }
 
@@ -72,12 +70,11 @@ public class Filiere implements Serializable {
         this.id = id;
     }
 
-    public Filiere(Integer id, String matricule, String nom, Date creationt) {
+    public Filiere(Integer id, String matricule, String nom, Date creation) {
         this.id = id;
         this.matricule = matricule;
         this.nom = nom;
         this.creation = creation;
-     
     }
 
     public Integer getId() {
@@ -120,8 +117,6 @@ public class Filiere implements Serializable {
         this.description = description;
     }
 
-
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -144,7 +139,7 @@ public class Filiere implements Serializable {
 
     @Override
     public String toString() {
-        return "sn.objis.gestionscolaire.domain.Filiere[ id=" + id + " ]";
+        return "gs.serveurecole.model.Filiere[ id=" + id + " ]";
     }
     
 }

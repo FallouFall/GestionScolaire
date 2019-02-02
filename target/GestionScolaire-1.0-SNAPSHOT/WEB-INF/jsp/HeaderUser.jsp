@@ -52,6 +52,7 @@
                               <span class="ti-user" style="font-size: 2.8em;color: #fff;"></span>
                               </c:if>
                         
+       
                       
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
@@ -66,8 +67,8 @@
                         
                         </a>
                         <div class="dropdown-divider"></div>
-                        <form method="POST">
-                             <a class="dropdown-item" href="#" >
+                        <form >
+                             <a class="dropdown-item" href="profil.htm" >
                             <span class="ti-star"> </span>
                            Mon Profil
                         </a>

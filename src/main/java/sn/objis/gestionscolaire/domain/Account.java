@@ -7,9 +7,7 @@ package sn.objis.gestionscolaire.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +15,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -61,8 +57,6 @@ public class Account implements Serializable {
     @NotNull
     @Column(name = "status")
     private int status;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccount")
-    private List<Profil> profilList;
 
     public Account() {
     }
@@ -110,15 +104,6 @@ public class Account implements Serializable {
         this.status = status;
     }
 
-    @XmlTransient
-    public List<Profil> getProfilList() {
-        return profilList;
-    }
-
-    public void setProfilList(List<Profil> profilList) {
-        this.profilList = profilList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -141,7 +126,7 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "sn.objis.gestionscolaire.domain.Account[ id=" + id + " ]";
+        return "gs.serveurecole.model.Account[ id=" + id + " ]";
     }
     
 }

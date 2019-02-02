@@ -33,37 +33,7 @@
 
     <body id="page-top" >
 
-         <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
-
-             <a class="navbar-brand mr-1" href="comptable.htm" style="color: #fff;    font-family: titilliumWeb-italic; font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Navbar Search -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-         
-          <div class="input-group-append">
-           
-          </div>
-        </div>
-      </form>
-
-      <!-- Navbar -->
-      <ul class="navbar-nav ml-auto ml-md-0" >
-       
-        <li class="nav-item dropdown no-arrow">
-        
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-          </div>
-        </li>
-      </ul>
-
-    </nav>
+        <%@include file="HeaderUser.jsp" %>
 
         <div id="wrapper">
 
@@ -105,10 +75,15 @@
                         <div class="example col-md-12 ml-auto mr-auto">
                             <div class="row "  >
 
-                                <div class="card card-signin mx-auto mt-5">
-                                    <div class="card-header"  style=" background-color:#5a6169;color: #fff;font-size: 1.4rem;">
-                                        <span style="font-family: dax-bold;">Inscription Etudiant</span> 
-                                    </div>
+                                 <div class="card mb-3 " id="ue" style=" margin-top: 40px;">
+                        <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
+
+                            <span style="font-family: dax-bold;    font-size: 2rem;">
+                                Inscription
+
+
+                            </span>  </div>
+
                                     <div class="card-body">
                                         <form>
                                             <div class="form-group">
@@ -317,22 +292,28 @@
             </div>
         </div>
 
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+       <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js" ></script>
+        <script src="js/demo.min.js"></script>
+        <script src="js/shards.min.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/bootstrap3-typeahead.js"></script>
+        
+  
+
+
+
         <script>
-            var $input = $(".classe");
+            var $input = $(".filiere");
 
             $input.typeahead({
                 source: [
-                    {id: "someId1", name: "jQueryScript.Net"},
-                    {id: "someId2", name: "Angular Components"},
-                    {id: "someId3", name: "React Components"},
-                    {id: "someId4", name: "Vue.js Components"},
-                    {id: "someId5", name: "Native JavaScript"},
-                    {id: "someId6", name: "jQuery Plugins"},
-                    {id: "someId7", name: "Vanilla JavaScript"}
+                    <c:forEach var="element" items="${filieres}">
+                          {id: '${element.matricule}', name: '${element.nom}'},  
+                                 
+                          
+                    </c:forEach>
+                  
                 ],
                 autoSelect: true
             });
@@ -354,7 +335,7 @@
         </script>
 
         <script>
-            var $input = $(".filiere");
+            var $input = $(".classe");
 
             $input.typeahead({
                 source: [

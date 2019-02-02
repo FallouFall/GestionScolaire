@@ -8,6 +8,7 @@ package sn.objis.gestionscolaire.controller;
 import java.io.IOException;
 import org.apache.commons.codec.binary.Base64;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.Cookie;
@@ -99,6 +100,27 @@ public class GererRessourcesController {
         return mav;
       
     }
+    
+      @RequestMapping(value = "gererfiliere.htm", method = RequestMethod.POST)
+    public ModelAndView saveFilieres(HttpServletRequest req) {
+        try {
+           
+            Filiere filiere = new Filiere();
+            filiere.setNom(req.getParameter("nomFiliere"));
+            filiere.setDescription(req.getParameter("descriptionFiliere"));
+            filiere.setMatricule("FLR" + (int) (Math.random() * 9999999));
+            filiere.setCreation(java.sql.Date.valueOf(LocalDate.now()));
+            String sql = "insert into filiere values (?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, filiere.getMatricule(), filiere.getNom(), filiere.getCreation(), filiere.getDescription());
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return new ModelAndView("ListeFiliere");
+        
+    }
+    
+    
     
     
     @RequestMapping(value = "index.htm",method = RequestMethod.POST)

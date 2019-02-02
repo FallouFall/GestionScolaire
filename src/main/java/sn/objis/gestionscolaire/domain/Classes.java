@@ -185,7 +185,7 @@ public class Classes implements Serializable {
 
     @Override
     public String toString() {
-        return "sn.objis.gestionscolaire.domain.Classes[ id=" + id + " ]";
+        return "gs.serveurecole.model.Classes[ id=" + id + " ]";
     }
     
 }

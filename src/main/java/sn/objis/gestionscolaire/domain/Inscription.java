@@ -55,9 +55,6 @@ public class Inscription implements Serializable {
     @JoinColumn(name = "idclasse", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Classes idclasse;
-    @JoinColumn(name = "idetudiant", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private User idetudiant;
 
     public Inscription() {
     }
@@ -104,14 +101,6 @@ public class Inscription implements Serializable {
         this.idclasse = idclasse;
     }
 
-    public User getIdetudiant() {
-        return idetudiant;
-    }
-
-    public void setIdetudiant(User idetudiant) {
-        this.idetudiant = idetudiant;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -134,7 +123,7 @@ public class Inscription implements Serializable {
 
     @Override
     public String toString() {
-        return "sn.objis.gestionscolaire.domain.Inscription[ id=" + id + " ]";
+        return "gs.serveurecole.model.Inscription[ id=" + id + " ]";
     }
     
 }

@@ -32,7 +32,7 @@
       
 
 
-              <%@include file="HeaderComptable.jsp" %>
+        <%@include file="HeaderUser.jsp" %>
    
         <div id="wrapper"> <div id="content-wrapper">
 

@@ -124,7 +124,7 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "sn.objis.gestionscolaire.domain.Customer[ customerId=" + customerId + " ]";
+        return "gs.serveurecole.model.Customer[ customerId=" + customerId + " ]";
     }
     
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
 import sn.objis.gestionscolaire.domain.Account;
+import sn.objis.gestionscolaire.domain.Filiere;
 import sn.objis.gestionscolaire.domain.Profil;
 import sn.objis.gestionscolaire.domain.User;
 
@@ -112,11 +113,27 @@ public class GererComptableController {
         }
 
     }
-    
+     
          
     @RequestMapping("InscriptionEtudiant.htm")
     public ModelAndView professeur(HttpServletRequest req)
-    {         
+    {   
+          String sql = "SELECT * from filiere  ";
+          List<Filiere>  filieres = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Filiere c = new Filiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+               
+                 
+                    return c;
+                });
+   
+        mav.addObject("filieres", filieres);
+      
         mav.setViewName("InscriptionEtudiant");
         return mav;
     }

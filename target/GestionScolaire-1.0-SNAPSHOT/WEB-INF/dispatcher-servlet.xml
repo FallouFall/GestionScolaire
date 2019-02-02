@@ -28,13 +28,13 @@
                 <prop key="directeur.htm">directeurController</prop>
                 <prop key="etudiant.htm">etudiantController</prop>
                 <prop key="ressources.htm">administrationController</prop>
-                
+                <prop key="profil.htm">profilController</prop>
                 <prop key="GererAdmin.htm">gererAdminController</prop>
                 <prop key=" GererProfesseur.htm">gererProfesseurController</prop>
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" GererComptable.htm">gererComptableController</prop>
-            
+                <prop key="updateUser.htm">profilController</prop>
                 
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
@@ -48,7 +48,8 @@
                 <prop key="gererue.htm">gererDirecteurController</prop>
                 <prop key="listeMatiere.htm">gererDirecteurController</prop>
                  <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
-                
+                 <prop key="gererSalles.htm">gererDirecteurController</prop>
+                   <prop key="AjouterSalle.htm">gererDirecteurController</prop>
                 <prop key="InscriptionEtudiant.htm">gererComptableController</prop>
               
             </props>
@@ -107,6 +108,10 @@
           <bean name="gererRessourcesController"
     class="sn.objis.gestionscolaire.controller.GererRessourcesController"
     />
+                  <bean name="profilController"
+    class="sn.objis.gestionscolaire.controller.HeaderController"
+    />
+ 
  
 
 </beans>

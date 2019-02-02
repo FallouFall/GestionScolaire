@@ -286,8 +286,6 @@
         <script src="./js/bootstrap.min.js" ></script>
         <script src="js/demo.min.js"></script>
         <script src="js/shards.min.js"></script>
-
-
         <script src="js/sb-admin.min.js"></script>
 
         <style>
