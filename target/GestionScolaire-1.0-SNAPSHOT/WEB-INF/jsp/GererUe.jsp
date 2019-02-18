@@ -130,7 +130,7 @@
                 
                 
                    <li class="nav-item active">
-                       <a  class="nav-link" href="#">
+                       <a  class="nav-link" href="gererClasses.htm">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Gerer Classes</span>
                     </a>

@@ -7,24 +7,22 @@ package sn.objis.gestionscolaire.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -78,8 +76,12 @@ public class Classes implements Serializable {
     @NotNull
     @Column(name = "mensualite")
     private int mensualite;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idclasse")
-    private List<Inscription> inscriptionList;
+    @JoinColumn(name = "filiere", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Filiere filiere;
+
+  
+ 
 
     public Classes() {
     }
@@ -150,17 +152,18 @@ public class Classes implements Serializable {
         return mensualite;
     }
 
+ 
+
     public void setMensualite(int mensualite) {
         this.mensualite = mensualite;
     }
 
-    @XmlTransient
-    public List<Inscription> getInscriptionList() {
-        return inscriptionList;
+    public Filiere getFiliere() {
+        return filiere;
     }
 
-    public void setInscriptionList(List<Inscription> inscriptionList) {
-        this.inscriptionList = inscriptionList;
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
     }
 
     @Override

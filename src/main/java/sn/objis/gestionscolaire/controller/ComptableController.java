@@ -27,7 +27,7 @@ public class ComptableController {
     // String sql="SELECT * FROM user";
    //  List data = this.jdtbcTemplate.queryForList(sql);
     // mav.addObject("liste", data);
-        System.out.println("hee");
+    
         mav.setViewName("Comptable");
      return mav;
     }
@@ -38,7 +38,7 @@ public class ComptableController {
     // String sql="SELECT * FROM user";
    //  List data = this.jdtbcTemplate.queryForList(sql);
     // mav.addObject("liste", data);
-        System.out.println("hee");
+       
         mav.setViewName("index");
      return mav;
     }

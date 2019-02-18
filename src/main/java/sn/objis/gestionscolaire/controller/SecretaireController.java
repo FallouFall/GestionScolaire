@@ -27,7 +27,7 @@ public class SecretaireController {
     // String sql="SELECT * FROM user";
    //  List data = this.jdtbcTemplate.queryForList(sql);
     // mav.addObject("liste", data);
-        System.out.println("hee");
+   
         mav.setViewName("Secreteriat");
      return mav;
     }
@@ -37,7 +37,7 @@ public class SecretaireController {
     // String sql="SELECT * FROM user";
    //  List data = this.jdtbcTemplate.queryForList(sql);
     // mav.addObject("liste", data);
-        System.out.println("hee");
+     
         mav.setViewName("index");
      return mav;
     }

@@ -43,14 +43,16 @@ public class AdministrationController {
         String prenom = (String) session.getAttribute("prenom");
         String id = (String) session.getAttribute("id");
         String idprofil = (String) session.getAttribute("idprofil");
+        String url = (String) session.getAttribute("url");
         mav.setViewName("Administration");
         mav.addObject("tel", tel);
         mav.addObject("adresse", adresse);
         mav.addObject("login", login);
-         mav.addObject("id", id);
+        mav.addObject("id", id);
         mav.addObject("password", password);
         mav.addObject("profil",profil);
         mav.addObject("idprofil",idprofil);
+        mav.addObject("url",url);
         return mav.addObject("photo", photo);
     }
 

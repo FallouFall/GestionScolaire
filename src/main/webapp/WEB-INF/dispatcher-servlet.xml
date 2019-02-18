@@ -34,7 +34,6 @@
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" GererComptable.htm">gererComptableController</prop>
-                <prop key="updateUser.htm">profilController</prop>
                 
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
@@ -42,15 +41,18 @@
                 <prop key=" AjouterDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" AjouterComptable.htm">gererComptableController</prop>
                 <prop key="GererRessources.htm">gererRessourcesController</prop>
-                <prop key="gererclasse.htm">gererRessourcesController</prop>
+    
+                <prop key="gererClasses.htm">gererDirecteurController</prop>
                 <prop key="gererfiliere.htm">gererRessourcesController</prop>
+                 <prop key="updateUser.htm">profilController</prop>
                 <!-- gerer unites enseignement et matiere!-->
                 <prop key="gererue.htm">gererDirecteurController</prop>
                 <prop key="listeMatiere.htm">gererDirecteurController</prop>
-                 <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
-                 <prop key="gererSalles.htm">gererDirecteurController</prop>
-                   <prop key="AjouterSalle.htm">gererDirecteurController</prop>
+                <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
+                <prop key="gererSalles.htm">gererDirecteurController</prop>
+                <prop key="AjouterSalle.htm">gererDirecteurController</prop>
                 <prop key="InscriptionEtudiant.htm">gererComptableController</prop>
+                <prop key="ListeInscription.htm">gererComptableController</prop>
               
             </props>
         </property>
@@ -65,51 +67,51 @@
     The index controller.
     -->
     <bean name="loginController"
-     class="sn.objis.gestionscolaire.controller.LoginController"
+          class="sn.objis.gestionscolaire.controller.LoginController"
     />
  
     
    
     <bean name="administrationController"
-    class="sn.objis.gestionscolaire.controller.AdministrationController"
+          class="sn.objis.gestionscolaire.controller.AdministrationController"
     />
     <bean name="secretaireController"
-    class="sn.objis.gestionscolaire.controller.SecretaireController"
+          class="sn.objis.gestionscolaire.controller.SecretaireController"
     />
     <bean name="comptableController"
-    class="sn.objis.gestionscolaire.controller.ComptableController"
+          class="sn.objis.gestionscolaire.controller.ComptableController"
     />
     <bean name="professeurController"
-      class="sn.objis.gestionscolaire.controller.ProfesseurController"
+          class="sn.objis.gestionscolaire.controller.ProfesseurController"
     />
     <bean name="directeurController"
-    class="sn.objis.gestionscolaire.controller.DirecteurController"
+          class="sn.objis.gestionscolaire.controller.DirecteurController"
     />
     <bean name="etudiantController"
-     class="sn.objis.gestionscolaire.controller.EtudiantController"
+          class="sn.objis.gestionscolaire.controller.EtudiantController"
     />
                        
     <bean name="gererAdminController"
-    class="sn.objis.gestionscolaire.controller.GererAdminController"
+          class="sn.objis.gestionscolaire.controller.GererAdminController"
     />
                        
     <bean name="gererProfesseurController"
-    class="sn.objis.gestionscolaire.controller.GererProfesseurController"
+          class="sn.objis.gestionscolaire.controller.GererProfesseurController"
     />
     <bean name="gererSecretaireController"
-    class="sn.objis.gestionscolaire.controller.GererSecretaireController"
+          class="sn.objis.gestionscolaire.controller.GererSecretaireController"
     />
-     <bean name="gererDirecteurController"
-    class="sn.objis.gestionscolaire.controller.GererDirecteurController"
+    <bean name="gererDirecteurController"
+           class="sn.objis.gestionscolaire.controller.GererDirecteurController"
     />
-      <bean name="gererComptableController"
-    class="sn.objis.gestionscolaire.controller.GererComptableController"
+    <bean name="gererComptableController"
+            class="sn.objis.gestionscolaire.controller.GererComptableController"
     />
-          <bean name="gererRessourcesController"
-    class="sn.objis.gestionscolaire.controller.GererRessourcesController"
+    <bean name="gererRessourcesController"
+                class="sn.objis.gestionscolaire.controller.GererRessourcesController"
     />
-                  <bean name="profilController"
-    class="sn.objis.gestionscolaire.controller.HeaderController"
+    <bean name="profilController"
+                        class="sn.objis.gestionscolaire.controller.HeaderController"
     />
  
  

@@ -92,13 +92,14 @@ public class LoginController {
                 session.setAttribute("login", c.getIdprofil().getUsername());
                 session.setAttribute("password", c.getIdprofil().getPassword());
                 session.setAttribute("profil", c.getIdprofil().getIdaccount().getType());
+              
                 session.setMaxInactiveInterval(30 * 60);
                 
                         Cookie loginCookie = new Cookie("user","user");			
 			loginCookie.setMaxAge(30*60);
 			rep.addCookie(loginCookie);
                         
-                      
+                    
                       
                 return c;
             }
@@ -134,6 +135,8 @@ public class LoginController {
         } else {
             redirect = "redirect:/index.htm";
         }
+          HttpSession session = req.getSession();
+          session.setAttribute("url", redirect.substring(10));
         return new ModelAndView(redirect, "user", actors.get(0));
     }
 

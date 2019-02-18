@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
 import sn.objis.gestionscolaire.domain.Account;
+import sn.objis.gestionscolaire.domain.Classes;
 import sn.objis.gestionscolaire.domain.Filiere;
 import sn.objis.gestionscolaire.domain.Matiere;
 import sn.objis.gestionscolaire.domain.Profil;
@@ -68,6 +69,52 @@ public class GererDirecteurController {
         return mav;
 
     }
+    
+      @RequestMapping("gererClasses.htm")
+    public ModelAndView gestionsClasses(HttpServletRequest req)
+    {   
+           String sql = "SELECT * from filiere  ";
+        filieres = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Filiere c = new Filiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+        
+         sql = "SELECT * from classes  ";
+          List<Classes>  classes = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+                    Filiere f=new Filiere();
+                    f.setId(rs.getInt(8));
+               
+                   c.setFiliere(filieres.stream().filter(fil->fil.getId()==f.getId()).findFirst().orElse(null));
+                    
+                  
+                 
+                    return c;
+                });
+   
+        mav.addObject("classes", classes);
+      
+        mav.setViewName("ListeClasses");
+        return mav;
+    }
+    
+    
+    
+    
+    
     
     @RequestMapping("AjouterSalle.htm")
     public ModelAndView addSalle() {
@@ -158,7 +205,7 @@ public class GererDirecteurController {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return new ModelAndView("GererUe");
+            return listeMatiere();
 
     }
 
@@ -199,7 +246,7 @@ public class GererDirecteurController {
             System.out.println(e);
         }
 
-        return new ModelAndView("ListeMatiere");
+        return listeMatiere();
 
     }
 
@@ -219,8 +266,7 @@ public class GererDirecteurController {
             System.out.println(e);
         }
 
-        mav.addObject("filieres", filieres);
-        return mav;
+   return listeFiliere();
 
     }
 
@@ -239,8 +285,7 @@ public class GererDirecteurController {
         } catch (Exception e) {
             System.out.println(e);
         }
-        mav.addObject("filieres", filieres);
-        return mav;
+       return listeFiliere();
 
     }
 

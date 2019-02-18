@@ -58,9 +58,12 @@
 
         <div id="wrapper">
             
-         
+            <div class="form-label-group" style="margin-top: 100px;margin-left: 50px;position: absolute;font-size: 1.3em;">
+           <a class="ti-back-left" style="color: #1f72b8;text-decoration: none;" href="${url}">  Retour</a> 
+      
+     </div>
             <div class="content-wrapper" style="    margin: auto;">
-
+  
                 <div id="cards" class="container mb-2 " style="padding-bottom: 1px ; ">
 
 
@@ -103,7 +106,7 @@
                                                             </div>
                                                                <div class="form-label-group">
                                                                    <a class="ti-reload" style="color: #1f72b8;" href="updateUser.htm">  Modifier</a> 
-                                    </div>
+                                                              </div>
 
                                                         </div>
                                                     </div>

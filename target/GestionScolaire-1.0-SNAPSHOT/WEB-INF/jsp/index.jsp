@@ -57,44 +57,44 @@
 
                     <div class="card card-login mx-auto mt-5 " style="    box-shadow: none;  text-align: center;">
                         <div class="card-header" style="background-color: rgba(12,12,12,0.0); ">
-                       
+                            <span class="ti-face-smile slide-in" style="font-size: 3em; color: #1f72b8;"></span>
                         </div>
                         <h4 class="slide-in "  style="color: #54a2d9;font-family: titilliumWeb-light;font-size: 3em;"><b style="font-size: 1.5em;font-family: titilliumWeb-light; ">B</b>onjour</h4>
                         <div class="card-body">
 
                             <form method="POST">
 
-                                
+
                                 <br>
                                 <div class="form-group">
-                                     <div class="input-group with-addon-icon-left">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-user"></i>
-                                                            </span>
-                                         <input type="email" class="form-control " name="username" id="nom" placeholder="E-Mail" required="true" minlength="2" maxlength="30">
-                                                        </div>
+                                    <div class="input-group with-addon-icon-left">
+                                        <span class="input-group-addon">
+                                            <i class="ti-user"></i>
+                                        </span>
+                                        <input type="email" class="form-control "  value="${login}"  name="username" id="nom" placeholder="E-Mail" required="true" minlength="2" maxlength="30">
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="input-group with-addon-icon-left">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-lock"></i>
-                                                            </span>
-                                                            <input type="password" class="form-control " name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
-                                                        </div>
+                                        <span class="input-group-addon">
+                                            <i class="ti-lock"></i>
+                                        </span>
+                                        <input type="password"   value="${password}" class="form-control " name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
+                                    </div>
                                 </div>
 
 
 
                                 <br>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <div class="form-label-group">   
-                                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd   ;">
-                                        <i class="ti-world">
+                                        <button type="submit" class="btn btn-primary"  style="background-color: #0272bd   ;">
+                                            <i class="ti-world">
 
-                                        </i>Se Connecter</button>
+                                            </i>Se Connecter</button>
+                                    </div>
                                 </div>
-                                   </div>
 
 
                             </form>
@@ -144,13 +144,13 @@
 
 </body>
 <style>
-   footer{
-          background-image: url("images/footer.png");
-          background-repeat: round;
-          background-color: transparent;
-       
-          color: #fff;
-          
+    footer{
+        background-image: url("images/footer.png");
+        background-repeat: round;
+        background-color: transparent;
+
+        color: #fff;
+
     }
     .input{
         border-right: 2em;

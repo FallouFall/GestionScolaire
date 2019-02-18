@@ -130,7 +130,7 @@
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
 
-                        <a class="dropdown-item" href="#">Gerer Classes</a>
+                        <a class="dropdown-item" href="gererClasses.htm">Gerer Classes</a>
 
 
                     </div>

@@ -32,7 +32,19 @@ public class HeaderController {
     
        @RequestMapping("profil.htm")
     public ModelAndView  profil(HttpServletRequest req) {
-       
+         Cookie loginCookie = null;
+        Cookie[] cookies = req.getCookies();
+           if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("url")) {
+                    loginCookie = cookie;
+                    System.out.println(loginCookie);
+                    break;
+                }
+            }
+        }
+        
+         
         return new ModelAndView("Profil");
     }
    @RequestMapping("updateUser.htm")

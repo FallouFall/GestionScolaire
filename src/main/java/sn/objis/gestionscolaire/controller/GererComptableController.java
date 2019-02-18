@@ -8,6 +8,7 @@ package sn.objis.gestionscolaire.controller;
 import java.io.IOException;
 import org.apache.commons.codec.binary.Base64;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.Cookie;
@@ -20,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
 import sn.objis.gestionscolaire.domain.Account;
+import sn.objis.gestionscolaire.domain.Classes;
 import sn.objis.gestionscolaire.domain.Filiere;
+import sn.objis.gestionscolaire.domain.Inscription;
 import sn.objis.gestionscolaire.domain.Profil;
 import sn.objis.gestionscolaire.domain.User;
 
@@ -33,6 +36,9 @@ public class GererComptableController {
     Connexion con = new Connexion();
     JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
     public ModelAndView mav = new ModelAndView();
+      List<Classes>  classes;
+      List<Filiere>  filieres;
+       List<Inscription>  listeInscription;
     
 
     @RequestMapping("GererComptable.htm")
@@ -114,12 +120,86 @@ public class GererComptableController {
 
     }
      
+    
+    
+      @RequestMapping(value="InscriptionEtudiant.htm",method = RequestMethod.POST)
+    public  void saveEtudiant(HttpServletRequest req)          
+    {
+        try {
+       User user= new User();
+       user.setNom(req.getParameter("nom"));
+       user.setPrenom(req.getParameter("prenom"));
+       user.setAdresse(req.getParameter("adresse"));
+       user.setTelephone(req.getParameter("telephone"));
+       user.setPhoto(null);
+      
+       user.setMatricule( "ETU"+(int) (Math.random() * 9999999)+"");
+       
+       Account account =new Account(6);
+       
+       Profil profil=new Profil();
+       profil.setIdaccount(account);
+       profil.setPassword(user.getMatricule());
+       profil.setUsername(req.getParameter("mail"));
+       user.setIdprofil(profil);
+       
+     
+       String sql="insert into profil values (?,?,?,?)";
+       jdtbcTemplate.update(sql,null,profil.getIdaccount().getId(),profil.getPassword(),profil.getUsername());
+      
+       sql="Select Max(id) from profil";
+       boolean result=false;
+       int count=jdtbcTemplate.queryForObject(sql, new Object[]{},Integer.class);
+       if(count>0)
+       {
+           result= true;
+       }
+          
+            
+    sql="insert into user values (?,?,?,?,?,?,?,?)";
+    jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,user.getMatricule());
+      
+        Inscription inscription=new Inscription();
+        inscription.setDate(java.sql.Date.valueOf(LocalDate.now()));
+        inscription.setMatricule("INS"+(int) (Math.random() * 9999999)+"");
+        
+        String classe=req.getParameter("classe");
+        String filiere=req.getParameter("filiere");
+        
+        Classes c=new Classes();
+            for (Classes classe1 : classes) {
+                if(classe1.getNom().equalsIgnoreCase(classe))
+                c=classe1;
+            }
+            
+          
+       sql="Select Max(id) from user";
+      result=false;
+     count=jdtbcTemplate.queryForObject(sql, new Object[]{},Integer.class);
+       if(count>0)
+       {
+           result= true;
+       }
+       user.setId(count);
+      inscription.setIdclasse(c);
+      inscription.setIduser(user);
+      inscription.setValidite(null);
+     
+      
+        sql="insert into inscription values (?,?,?,?,?)";
+    jdtbcTemplate.update(sql,null,inscription.getMatricule(),inscription.getDate(),inscription.getIdclasse().getId(),user.getId());
+      
+  } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
          
     @RequestMapping("InscriptionEtudiant.htm")
-    public ModelAndView professeur(HttpServletRequest req)
+    public ModelAndView listeFiliere(HttpServletRequest req)
     {   
           String sql = "SELECT * from filiere  ";
-          List<Filiere>  filieres = jdtbcTemplate.query(sql,
+         filieres = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Filiere c = new Filiere();
                     c.setId(rs.getInt(1));
@@ -131,33 +211,93 @@ public class GererComptableController {
                  
                     return c;
                 });
+          
+          
+           sql = "SELECT * from classes  ";
+           classes = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+                    c.setInscription(rs.getInt(6));
+                     c.setMensualite(rs.getInt(7));
+               
+                 
+                    return c;
+                });
    
-        mav.addObject("filieres", filieres);
+        mav.addObject("classes", classes);
+        mav.setViewName("InscriptionEtudiant");
       
+        mav.addObject("filieres", filieres);
         mav.setViewName("InscriptionEtudiant");
         return mav;
     }
     
-     @RequestMapping(value = "GererComptable.htm",method = RequestMethod.POST)
-    public void deconnection(HttpServletRequest req,HttpServletResponse rep) throws IOException
-    {
-	Cookie loginCookie = null;
-    	Cookie[] cookies = req.getCookies();
-    	if(cookies != null){
-    	for(Cookie cookie : cookies){
-    		if(cookie.getName().equals("user")){
-    			loginCookie = cookie;
-                      
-    			break;
-    		}
-    	}
-    	}
+    
+      @RequestMapping("ListeInscription.htm")
+    public ModelAndView listeInscription(HttpServletRequest req)
+    {   
+          String sql = "SELECT User.matricule,User.nom,User.prenom, inscription.matricule,inscription.date,classes.nom ,filiere.nom  from user,inscription,classes,filiere WHERE user.id=inscription.id";
+         listeInscription = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Inscription c = new Inscription();
+                    User u= new User();
+                    u.setMatricule(rs.getString(1));
+                    u.setNom(rs.getString(2));
+                    u.setPrenom(rs.getString(3));
+                    c.setMatricule(rs.getString(4));
+                    c.setDate(rs.getDate(5));
+                    Classes s=new Classes();
+                    s.setNom(rs.getString(6));
+                    Filiere f=new Filiere();
+                    f.setNom(rs.getString(7));
+                    
+                    s.setFiliere(f);
+                    c.setIdclasse(s);
+                    c.setIduser(u);
+               
+               
+                 
+                    return c;
+                });
+          
+          
+         
        
-    	if(loginCookie != null){
-    		loginCookie.setMaxAge(0);
-        	rep.addCookie(loginCookie);
-    	}
-         rep.sendRedirect("index.htm");
-   
+        mav.addObject("inscriptions", listeInscription);
+        mav.setViewName("ListeInscription");
+        return mav;
     }
+    
+   
+   
+    
+//     @RequestMapping(value = "InscriptionEtudiant.htm",method = RequestMethod.POST)
+//    public void deconnection(HttpServletRequest req,HttpServletResponse rep) throws IOException
+//    {
+//	Cookie loginCookie = null;
+//    	Cookie[] cookies = req.getCookies();
+//    	if(cookies != null){
+//    	for(Cookie cookie : cookies){
+//    		if(cookie.getName().equals("user")){
+//    			loginCookie = cookie;
+//                      
+//    			break;
+//    		}
+//    	}
+//    	}
+//       
+//    	if(loginCookie != null){
+//    		loginCookie.setMaxAge(0);
+//        	rep.addCookie(loginCookie);
+//    	}
+//         rep.sendRedirect("index.htm");
+//   
+//    }
+//    
+    
 }
