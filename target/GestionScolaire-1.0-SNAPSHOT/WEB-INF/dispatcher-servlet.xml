@@ -34,7 +34,7 @@
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" GererComptable.htm">gererComptableController</prop>
-                
+                <prop key=" gererProgramme.htm">gererDirecteurController</prop>
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
                 <prop key=" AjouterSecretaire.htm">gererSecretaireController</prop>
@@ -53,7 +53,8 @@
                 <prop key="AjouterSalle.htm">gererDirecteurController</prop>
                 <prop key="InscriptionEtudiant.htm">gererComptableController</prop>
                 <prop key="ListeInscription.htm">gererComptableController</prop>
-              
+                <prop key="validerInscription.htm">gererDirecteurController</prop>
+                  <prop key="programme.htm">gererDirecteurController</prop>
             </props>
         </property>
     </bean>

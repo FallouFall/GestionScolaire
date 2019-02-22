@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,10 +23,11 @@ import sn.objis.gestionscolaire.config.Connexion;
 import sn.objis.gestionscolaire.domain.Account;
 import sn.objis.gestionscolaire.domain.Classes;
 import sn.objis.gestionscolaire.domain.Filiere;
+import sn.objis.gestionscolaire.domain.Inscription;
 import sn.objis.gestionscolaire.domain.Matiere;
 import sn.objis.gestionscolaire.domain.Profil;
+import sn.objis.gestionscolaire.domain.Programme;
 import sn.objis.gestionscolaire.domain.Salle;
-import sn.objis.gestionscolaire.domain.Salles;
 import sn.objis.gestionscolaire.domain.User;
 
 /**
@@ -41,7 +43,12 @@ public class GererDirecteurController {
     List<Matiere> matiere = new ArrayList<>();
     List<Filiere> filieres = new ArrayList<>();
     List<Salle> salles = new ArrayList<>();
-
+    List<Classes>  classes = new ArrayList<>();
+    List<Programme>  programmes = new ArrayList<>();
+    List<Inscription>  listeInscription;
+    String id;
+    
+    
     @RequestMapping("gererue.htm")
     public ModelAndView gererUe() {
         return new ModelAndView("GererUe");
@@ -71,7 +78,7 @@ public class GererDirecteurController {
     }
     
       @RequestMapping("gererClasses.htm")
-    public ModelAndView gestionsClasses(HttpServletRequest req)
+    public ModelAndView gestionsClasses()
     {   
            String sql = "SELECT * from filiere  ";
         filieres = jdtbcTemplate.query(sql,
@@ -87,7 +94,7 @@ public class GererDirecteurController {
                 });
         
          sql = "SELECT * from classes  ";
-          List<Classes>  classes = jdtbcTemplate.query(sql,
+        classes = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Classes c = new Classes();
                     c.setId(rs.getInt(1));
@@ -105,16 +112,115 @@ public class GererDirecteurController {
                     return c;
                 });
    
-        mav.addObject("classes", classes);
-      
+        mav.addObject("classes", classes);    
         mav.setViewName("ListeClasses");
         return mav;
     }
     
     
     
+     
+    @RequestMapping("programme.htm")
+    public ModelAndView Programme() {
+       
+     mav=gestionsClasses();
+     mav.setViewName("programme");
+     return mav;
+
+    }
+    
+      @RequestMapping(value = "gererProgramme.htm", method = RequestMethod.POST)
+    public ModelAndView addToProgramme(HttpServletRequest req) {
+        try {
+
+          
+         
+              String sql = "SELECT * from matiere  ";
+                  matiere = jdtbcTemplate.query(sql,
+                  new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Matiere c = new Matiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+                  
+            Programme programme = new Programme();     
+            programme.setHeures(Integer.valueOf( req.getParameter("heures")));
+            programme.setIdclasse(new Classes(Integer.valueOf( req.getParameter("id"))));
+            String mat=req.getParameter("nomMatiere");
+            matiere.stream().filter((mat1) -> (mat1.getNom().equalsIgnoreCase(mat))).forEachOrdered((mat1) -> {
+                programme.setIdmatiere(mat1);
+            });
+           
+          
+           sql = "insert into programme values (?,?,?,?)";
+       
+         jdtbcTemplate.update(sql, null, programme.getIdclasse().getId(),programme.getIdmatiere().getId(),programme.getHeures() );
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    
+        return gererProgramme(req);
+
+    }
+
     
     
+    @RequestMapping("/gererProgramme.htm")
+    public ModelAndView gererProgramme(HttpServletRequest req) {
+       
+        id=req.getParameter("id");
+        String sql = "SELECT * from classes where id=? ";
+        classes = jdtbcTemplate.query(sql,
+                new Object[]{id}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+                    Filiere f=new Filiere();
+                    f.setId(rs.getInt(8));
+               
+                   c.setFiliere(filieres.stream().filter(fil->fil.getId()==f.getId()).findFirst().orElse(null));
+                    
+                  
+                 
+                    return c;
+                });
+        sql = "SELECT  programme.idmatiere ,programme.heures, programme.idclasse  from programme  JOIN classes on programme.idclasse=classes.id WHERE classes.id=?";
+        programmes = jdtbcTemplate.query(sql,
+                new Object[]{2}, (ResultSet rs, int rowNum) -> {
+                    Programme p= new Programme();
+                 
+                  Classes cls=new Classes();
+                  cls.setId(Integer.valueOf(id));  
+                  cls.setNom(rs.getString(1));
+                  Matiere m=new Matiere();
+                  m.setId(rowNum);
+                  m.setNom(rs.getString(2));
+                  p.setIdclasse(cls);
+                  p.setIdmatiere(m);
+                  p.setHeures(rs.getInt(3));
+                
+                 
+                    return p;
+                });
+        
+        
+     mav=listeMatiere();
+     mav.addObject("classes",classes);
+     mav.addObject("programme",programmes); 
+     mav.addObject("cls",classes.get(0));
+     mav.setViewName("gererProgramme");
+     return mav;
+
+    }
     
     @RequestMapping("AjouterSalle.htm")
     public ModelAndView addSalle() {
@@ -331,7 +437,42 @@ public class GererDirecteurController {
         return mav;
 
     }
-
+  @RequestMapping("validerInscription.htm")
+    public ModelAndView listeInscription(HttpServletRequest req)
+    {   
+          String sql = "SELECT User.id,User.matricule,User.nom,User.prenom, inscription.matricule,inscription.date,classes.nom ,filiere.nom  from user,inscription,classes,filiere WHERE user.id=inscription.id";
+         listeInscription = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Inscription c = new Inscription();
+                    User u= new User();
+                    u.setId(rs.getInt(1));
+                    u.setMatricule(rs.getString(2));
+                    u.setNom(rs.getString(3));
+                    u.setPrenom(rs.getString(4));
+                    c.setMatricule(rs.getString(5));
+                    c.setDate(rs.getDate(6));
+                    Classes s=new Classes();
+                    s.setNom(rs.getString(7));
+                    Filiere f=new Filiere();
+                    f.setNom(rs.getString(8));
+                    
+                    s.setFiliere(f);
+                    c.setIdclasse(s);
+                    c.setIduser(u);
+               
+               
+                 
+                    return c;
+                });
+          
+          
+         
+       
+        mav.addObject("inscriptions", listeInscription);
+        mav.setViewName("validerInscription");
+        return mav;
+    }
+    
     @RequestMapping(value = "GererDirecteur.htm", method = RequestMethod.POST)
     public void deconnection(HttpServletRequest req, HttpServletResponse rep) throws IOException {
         Cookie loginCookie = null;

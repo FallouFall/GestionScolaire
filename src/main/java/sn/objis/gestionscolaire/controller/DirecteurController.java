@@ -5,11 +5,13 @@
  */
 package sn.objis.gestionscolaire.controller;
 
+import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
+import sn.objis.gestionscolaire.domain.Inscription;
 
 /**
  *
@@ -20,6 +22,7 @@ public class DirecteurController {
     Connexion con=new Connexion();
     JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
     ModelAndView mav = new ModelAndView();
+    
     
     @RequestMapping("directeur.htm")
     public ModelAndView welcome()

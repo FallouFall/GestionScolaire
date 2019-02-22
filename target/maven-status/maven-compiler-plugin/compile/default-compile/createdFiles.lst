@@ -1,9 +1,7 @@
 sn\objis\gestionscolaire\controller\ComptableController.class
 sn\objis\gestionscolaire\controller\GererSecretaireController.class
-sn\objis\gestionscolaire\controller\GererComptableController.class
 sn\objis\gestionscolaire\domain\Matiere.class
 sn\objis\gestionscolaire\controller\LoginController$1.class
-sn\objis\gestionscolaire\domain\Salles.class
 sn\objis\gestionscolaire\domain\User.class
 sn\objis\gestionscolaire\controller\EtudiantController.class
 sn\objis\gestionscolaire\domain\Serie.class
@@ -21,7 +19,6 @@ sn\objis\gestionscolaire\domain\Classes.class
 sn\objis\gestionscolaire\domain\Filiere.class
 sn\objis\gestionscolaire\controller\SecretaireController.class
 sn\objis\gestionscolaire\controller\GererProfesseurController.class
-sn\objis\gestionscolaire\domain\Customer.class
 sn\objis\gestionscolaire\controller\HeaderController.class
 sn\objis\gestionscolaire\domain\Profil.class
 sn\objis\gestionscolaire\controller\AdministrationController.class

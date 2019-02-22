@@ -5,15 +5,12 @@
  */
 package sn.objis.gestionscolaire.controller;
 
-import java.io.IOException;
 import org.apache.commons.codec.binary.Base64;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -183,7 +180,7 @@ public class GererComptableController {
        user.setId(count);
       inscription.setIdclasse(c);
       inscription.setIduser(user);
-      inscription.setValidite(null);
+    
      
       
         sql="insert into inscription values (?,?,?,?,?)";

@@ -64,12 +64,12 @@ if(userName == null) response.sendRedirect("index.htm");
                         <div class="row" style="margin-bottom: -100px; margin-top: 3px;">
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="#"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="programme.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
-                                            <p>     <span class="ti-user "   style="font-size: 3em;"></span></p>
-                                            <h4 class="card-title">Professeurs</h4>
+                                            <p>     <span class="ti-panel "   style="font-size: 3em;"></span></p>
+                                            <h4 class="card-title">Programmes</h4>
 
 
                                         </div>
@@ -122,8 +122,8 @@ if(userName == null) response.sendRedirect("index.htm");
                                 <div class="frontside">
                                     <div class="card " >
                                         <div class="card-body text-center">
-                                            <p>    <span class="ti-reload"style="font-size: 3em;"  ></span></p>
-                                            <h4 class="card-title">Cycles</h4>
+                                            <p>    <span class="ti-alarm-clock"style="font-size: 3em;"  ></span></p>
+                                            <h4 class="card-title">Emploi du Temps</h4>
 
 
                                         </div>
@@ -154,7 +154,7 @@ if(userName == null) response.sendRedirect("index.htm");
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="#"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="validerInscription.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">

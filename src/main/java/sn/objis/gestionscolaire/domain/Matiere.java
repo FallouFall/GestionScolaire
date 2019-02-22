@@ -18,8 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -45,21 +43,15 @@ public class Matiere implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 25)
     @Column(name = "matricule")
     private String matricule;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 25)
     @Column(name = "nom")
     private String nom;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "creation")
     @Temporal(TemporalType.DATE)
     private Date creation;
-    @Size(max = 150)
     @Column(name = "description")
     private String description;
 
@@ -139,7 +131,7 @@ public class Matiere implements Serializable {
 
     @Override
     public String toString() {
-        return "gs.serveurecole.model.Matiere[ id=" + id + " ]";
+        return nom;
     }
     
 }

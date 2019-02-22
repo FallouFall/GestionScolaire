@@ -20,8 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -38,30 +36,25 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Inscription.findByDate", query = "SELECT i FROM Inscription i WHERE i.date = :date")})
 public class Inscription implements Serializable {
 
-     private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
     @Column(name = "matricule")
     private String matricule;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
     @JoinColumn(name = "idclasse", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Classes idclasse;
-      @JoinColumn(name = "iduser", referencedColumnName = "id")
+    @JoinColumn(name = "iduser", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User iduser;
-    @Column(name = "validite")
-    private String validite;
 
     public Inscription() {
     }
@@ -74,7 +67,6 @@ public class Inscription implements Serializable {
         this.id = id;
         this.matricule = matricule;
         this.date = date;
-        this.validite=null;
     }
 
     public Integer getId() {
@@ -97,14 +89,6 @@ public class Inscription implements Serializable {
         return date;
     }
 
-    public User getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
-    }
-
     public void setDate(Date date) {
         this.date = date;
     }
@@ -113,16 +97,16 @@ public class Inscription implements Serializable {
         return idclasse;
     }
 
-        public String getValidite() {
-        return validite;
-    }
-
-    public void setValidite(String validite) {
-        this.validite = validite;
-    }
-
     public void setIdclasse(Classes idclasse) {
         this.idclasse = idclasse;
+    }
+
+    public User getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -147,7 +131,7 @@ public class Inscription implements Serializable {
 
     @Override
     public String toString() {
-        return "gs.serveurecole.model.Inscription[ id=" + id + " ]";
+        return "javaapplication28.Inscription[ id=" + id + " ]";
     }
     
 }

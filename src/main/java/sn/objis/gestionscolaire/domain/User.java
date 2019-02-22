@@ -21,8 +21,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -50,38 +48,27 @@ public class User implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+   
+    private String imageId ;
+    @Basic(optional = false)
     @Column(name = "adresse")
     private String adresse;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "nom")
     private String nom;
     @Lob
     @Column(name = "photo")
     private byte[] photo;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "prenom")
     private String prenom;
     @Basic(optional = false)
-   
-    @Size(min = 1, max = 255)
     @Column(name = "telephone")
     private String telephone;
-    
     @Basic(optional = false)
-    private String imageId;
-     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 23)
     @Column(name = "matricule")
     private String matricule;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idetudiant")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
     private List<Inscription> inscriptionList;
     @JoinColumn(name = "idprofil", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -176,15 +163,6 @@ public class User implements Serializable {
         this.idprofil = idprofil;
     }
 
-    public String getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
-    
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -207,7 +185,15 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "sn.objis.gestionscolaire.domain.User[ id=" + id + " ]";
+        return "javaapplication28.User[ id=" + id + " ]";
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
     
 }

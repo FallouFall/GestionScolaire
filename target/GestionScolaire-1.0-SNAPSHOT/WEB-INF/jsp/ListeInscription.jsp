@@ -66,14 +66,8 @@
 
         <div id="wrapper">
 
-            <!-- Sidebar -->
-
-            <ul class="sidebar navbar-nav" >
-
-
-
-
-                <li class="nav-item" >
+             <ul class="sidebar navbar-nav" >
+                 <li class="nav-item" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -91,19 +85,20 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="comptable.htm">
+                    <a class="nav-link" href="directeur.htm">
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="InscriptionEtudiant.htm">
-                        <i class="fas fa-plus"></i>
-                        <span>Ajouter </span></a>
-                </li>
+             
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="InscriptionEtudiant.htm">
+                        <i class="fas fa-plus"></i>
+                        <span>Ajouter </span></a>
                 </li>
             </ul>
 
@@ -112,11 +107,6 @@
                 <div class="container-fluid">
 
                     <div class="loader"><div class="page-loader"></div></div>
-
-
-
-
-                    <!-- DataTables Example -->
                     <div class="card mb-3 slide-in ">
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
@@ -138,6 +128,7 @@
                                             <th>Date</th>
                                             <th>Classe</th>
                                             <th>Filiere</th>
+                                            
 
                                         </tr>
                                     </thead>
@@ -164,16 +155,11 @@
                                               
                                                 <td>${element.iduser.matricule}</td>
                                                 <td>${element.iduser.nom}</td>
-                                              <td>${element.iduser.prenom}</td>
+                                                <td>${element.iduser.prenom}</td>
                                                 <td>${element.matricule}</td>
-                                                  <td>${element.date}</td>
-                                                    <td>${element.idclasse.nom}</td>
-                                                         <td>${element.idclasse.filiere.nom}</td>
-                                        
-                                            
-
-
-
+                                                <td>${element.date}</td>
+                                                <td>${element.idclasse.nom}</td>
+                                                <td>${element.idclasse.filiere.nom}</td>
                                             </tr>
 
                                         </c:forEach>
@@ -200,16 +186,6 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
-        <!-- Logout Modal-->
-     
-
-        <!-- Bootstrap core JavaScript-->
-
-
-
-
-
 
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js" ></script>

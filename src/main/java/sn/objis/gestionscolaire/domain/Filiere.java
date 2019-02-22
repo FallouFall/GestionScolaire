@@ -21,8 +21,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -42,33 +40,26 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Filiere.findByDescription", query = "SELECT f FROM Filiere f WHERE f.description = :description")})
 public class Filiere implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 25)
-    @Column(name = "matricule")
-    private String matricule;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 25)
-    @Column(name = "nom")
-    private String nom;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "creation")
-    @Temporal(TemporalType.DATE)
-    private Date creation;
-    @Size(max = 150)
-    @Column(name = "description")
-    private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "filiere")
-    private List<Classes> classesList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @Column(name = "matricule")
+    private String matricule;
+    @Basic(optional = false)
+    @Column(name = "nom")
+    private String nom;
+    @Basic(optional = false)
+    @Column(name = "creation")
+    @Temporal(TemporalType.DATE)
+    private Date creation;
+    @Column(name = "description")
+    private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "filiere")
+    private List<Classes> classesList;
 
     public Filiere() {
     }
@@ -90,32 +81,6 @@ public class Filiere implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Filiere)) {
-            return false;
-        }
-        Filiere other = (Filiere) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return nom;
     }
 
     public String getMatricule() {
@@ -157,6 +122,31 @@ public class Filiere implements Serializable {
 
     public void setClassesList(List<Classes> classesList) {
         this.classesList = classesList;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Filiere)) {
+            return false;
+        }
+        Filiere other = (Filiere) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "javaapplication28.Filiere[ id=" + id + " ]";
     }
     
 }
