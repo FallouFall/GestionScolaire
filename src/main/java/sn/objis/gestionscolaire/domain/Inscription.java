@@ -55,6 +55,9 @@ public class Inscription implements Serializable {
     @JoinColumn(name = "iduser", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User iduser;
+       @Basic(optional = false)
+    @Column(name = "validite")
+    private Integer validite;
 
     public Inscription() {
     }
@@ -67,6 +70,14 @@ public class Inscription implements Serializable {
         this.id = id;
         this.matricule = matricule;
         this.date = date;
+    }
+
+    public Integer getValidite() {
+        return validite;
+    }
+
+    public void setValidite(Integer validite) {
+        this.validite = validite;
     }
 
     public Integer getId() {

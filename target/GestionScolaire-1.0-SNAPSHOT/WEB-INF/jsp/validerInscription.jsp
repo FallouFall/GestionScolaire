@@ -154,10 +154,11 @@
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="element" items="${inscriptions}">
-                                            <c:url var="link" value="profil.htm">
-
-                                                <c:param name="id" value="${element.id}"/>
-                                            </c:url>
+                                                   <c:url var="link" value="detailInscription.htm">
+                                                     
+                                                       <c:param name="id" value="${element.iduser.id}"/>
+                                                      <c:param name="idInscription" value="${element.matricule}"/>
+                                                   </c:url>
                                             <tr style="text-align: center;vertical-align: middle;">
 
 

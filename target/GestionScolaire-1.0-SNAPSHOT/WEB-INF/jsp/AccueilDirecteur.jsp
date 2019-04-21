@@ -82,12 +82,12 @@ if(userName == null) response.sendRedirect("index.htm");
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="gererue.htm"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="gererClasses.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
                                             <p>     <span class=" ti-bookmark-alt"   style="font-size: 3em;"></span></p>
-                                            <h4 class="card-title">UE & Matiere</h4>
+                                            <h4 class="card-title"> Classes</h4>
 
 
                                         </div>
@@ -118,7 +118,7 @@ if(userName == null) response.sendRedirect("index.htm");
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="#"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="gererCalendrier.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card " >
                                         <div class="card-body text-center">
@@ -141,7 +141,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                     <div class="card ">
                                         <div class="card-body text-center">
                                             <p>      <span class="ti-layout-grid2"  style="font-size: 3em;"></span></p>
-                                            <h4 class="card-title">Classes & Filieres</h4>
+                                            <h4 class="card-title">Matieres & Filieres</h4>
 
 
                                         </div>

@@ -20,6 +20,9 @@
 
         <title>Bienvenue</title>
 
+
+
+
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,7 +35,7 @@
         <link rel="stylesheet" href="css/shards-demo.css?v=1.1.0">
         <link rel="stylesheet" href="css/cardeffects.css">
         <link rel="stylesheet" href="./css/themify-icons.css">
-
+        <link rel="stylesheet" href="css/toastNotification.css">
 
 
     </head>
@@ -54,11 +57,11 @@
 
 
                 <div class="container" style="margin-top: -30px">
+                
+              
 
                     <div class="card card-login mx-auto mt-5 " style="    box-shadow: none;  text-align: center;">
-                        <div class="card-header" style="background-color: rgba(12,12,12,0.0); ">
-                            <span class="ti-face-smile slide-in" style="font-size: 3em; color: #1f72b8;"></span>
-                        </div>
+
                         <h4 class="slide-in "  style="color: #54a2d9;font-family: titilliumWeb-light;font-size: 3em;"><b style="font-size: 1.5em;font-family: titilliumWeb-light; ">B</b>onjour</h4>
                         <div class="card-body">
 
@@ -93,6 +96,7 @@
                                             <i class="ti-world">
 
                                             </i>Se Connecter</button>
+                               
                                     </div>
                                 </div>
 
@@ -103,6 +107,8 @@
 
                                 <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -137,8 +143,17 @@
     <script src="./js/bootstrap.min.js" ></script>
     <script src="js/demo.min.js"></script>
     <script src="js/shards.min.js"></script>
-
+    <script src="/js/toast.js"></script>
     <script src="js/sb-admin.min.js"></script>
+    <script>
+    function launch_toast() {
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 5000);
+    }
+    </script>
 
 
 

@@ -108,19 +108,7 @@
 
                     </div>
                 </li>
-               <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>UE</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                      
-                          <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addClasse">Ajouter</a>
-                        <a class="dropdown-item" href="#">Lister</a>
-
-
-                    </div>
-                </li>
+             
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>

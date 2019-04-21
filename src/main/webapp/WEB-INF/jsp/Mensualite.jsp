@@ -6,6 +6,7 @@
 
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,29 +34,7 @@
 
     <body id="page-top" >
 
-        <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
-
-            <a class="navbar-brand mr-1" href="Comptable.htm" style="color: #fff;    font-family: titilliumWeb-italic; font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
-
-
-            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Navbar Search -->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-
-                    <div class="input-group-append">
-
-                    </div>
-                </div>
-            </form>
-
-
-
-        </nav>
-
+        <%@include file="HeaderUser.jsp" %> 
         <div id="wrapper">
 
             <!-- Sidebar -->
@@ -69,7 +48,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="Comptable.htm">
+                    <a class="nav-link" href="comptable.htm">
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
@@ -91,43 +70,131 @@
 
 
                     <div class="card mb-3 ">
-                        <div class="card-header" style=" background-color:#5a6169;color: #fff;">
-                            <i class="fas fa-table"></i>
-                            <span style="font-family: dax-bold;">Payement Mensualite</span> 
-                        </div>
-                          <div class="card-body">
-                  
-                     <form>
-                                                 <div class="form-group col-md-6">
+                        <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
+
+                            <span style="font-family: dax-bold;    font-size: 2rem;">
+                                Mensualite
+
+
+                            </span>  </div>
+                        <div class="card-body">
+
+                            <form method="POST">
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
                                             <div class="input-group with-addon-icon-left">
                                                 <span class="input-group-addon">
                                                     <i class="ti-tag"></i>
                                                 </span>
-                                                <input type="text" class="form-control" id="matricule" placeholder="Matricule" required="true">
+                                                <input type="text" class="form-control" name="matricule" id="matricule" placeholder="Matricule de l'etudiant" required="true">
                                             </div>
                                         </div>
-                         
-                                         <div class=" form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <input type="text" class="form-control" id="datepicker-example-1" placeholder="Mois" >
-                                                <span class="input-group-addon">
-                                                    <i class="ti-calendar"></i>
-                                                </span>
-                                            </div>
+                                        <div class=" form-group col-md-6">       
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="ti-search">
+
+                                                </i> Chercher</button>
                                         </div>
-                         <div class=" form-group col-md-6">
-                                <button  class="btn btn-primary" data-toggle="modal" data-target="#payeModal">
-                                    <i class="ti-save">
-                                    </i> Enregistrer</button>
-                               </div>
-                       </form>
-                          </div>
+
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    
+                    <c:if test="${findEtudiant!= null}">
+
+
+                        <div class="card  " style="width: 48%;float: left;" >
+                            <div class="card-header" style="text-align: center;background-color: #fff;">
+
+                                <div class="ibox-body">
+                                    <div class="flexbox" style="text-align: center;">
+                                        <div class="flexbox-b">
+                                            <div class="ml-5 mr-5">
+
+                                                <span class="ti-user" style="font-size: 3em;"></span>
+
+                                            </div>
+                                            <span style="font-size: 1.5em;font-family: dax-bold;">${findEtudiant.prenom} ${findEtudiant.nom} </span>   
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+
+                                        <div class="col-6 text-muted">Telephone :</div>
+                                        <div class="col-6">${findEtudiant.telephone}</div>
+                                        <div class="col-6 text-muted">Adresse :</div>
+                                        <div class="col-6">${findEtudiant.adresse}</div>
+
+
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card  " style="width: 48%;float: right;">
+                            <div class="card-header" style="text-align: center;background-color: #fff;">
+
+                                <div class="ibox-body">
+                                    <div class="flexbox" style="text-align: center;">
+                                        <div class="flexbox-b">
+                                            <div class="ml-5 mr-5">
+
+                                                <span class="ti-stats-up" style="font-size: 3em;"></span>
+
+                                            </div>
+                                            <span style="font-size: 1.5em;font-family: dax-bold;">Historiques </span>   
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="card-body" >
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+
+                                        <div class="col-6 text-muted">Telephone :</div>
+                                        <div class="col-6">${findEtudiant.telephone}</div>
+                                        <div class="col-6 text-muted">Adresse :</div>
+                                        <div class="col-6">${findEtudiant.adresse}</div>
+
+
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </c:if>
+
+                    <c:if test="${findEtudiant== null}">
+
+
+
+                    </c:if>
                 </div>
                 <!-- /.container-fluid -->
 
-             
+
 
             </div>
             <!-- /.content-wrapper -->
@@ -158,9 +225,9 @@
                 </div>
             </div>
         </div>
-        
-        
-         <div class="modal fade" id="payeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+        <div class="modal fade" id="payeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -171,33 +238,33 @@
                     </div>
                     <div class="modal-body">
                         <div class="col-lg-4 col-md-6 col-sm-12 mb-4" style="    margin-left: 20%;
-    text-align: center;">
-                            
-                     
+                             text-align: center;">
+
+
                             <span class="ti-user" style="font-size: 3em; text-align: "></span>
-                         
-                      </div>
-                                <h4 class="card-title" style="text-align: center;font-family:titilliumWeb-bold;; color: #1f72b8;">Mat :09162937</h4>
-                                <p class="card-text">Nom &  Prenom: Fall Fallou </p>                      
-                                <p class="card-text">Filiere & Classe : Gl  Master</p>
-                        
-                              
-                                <p class="card-text" style="font-family: titilliumWeb-semi-bold;">Paye le: 21/08/1993  </p>
-                                <p class="card-text" style="font-family: titilliumWeb-semi-bold;">Paye le: 100. 000 F </p>
-                              
-                          
-                     
+
+                        </div>
+                        <h4 class="card-title" style="text-align: center;font-family:titilliumWeb-bold;; color: #1f72b8;">Mat :09162937</h4>
+                        <p class="card-text">Nom &  Prenom: Fall Fallou </p>                      
+                        <p class="card-text">Filiere & Classe : Gl  Master</p>
+
+
+                        <p class="card-text" style="font-family: titilliumWeb-semi-bold;">Paye le: 21/08/1993  </p>
+                        <p class="card-text" style="font-family: titilliumWeb-semi-bold;">Paye le: 100. 000 F </p>
+
+
+
                     </div>
                     <div class="modal-footer">
-                      
+
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="Mensualite.htm">Logout</a>
                     </div>
                 </div>
             </div>
         </div>
-        
-         
+
+
 
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -266,14 +333,14 @@
             });
         </script>
 
-         <script> 
-        $("#datepicker-example-1").datepicker( {
-         
-    format: "MM",
-    viewMode: "months", 
-    minViewMode: "months"
-});
-  </script>
+        <script>
+            $("#datepicker-example-1").datepicker({
+
+                format: "MM",
+                viewMode: "months",
+                minViewMode: "months"
+            });
+        </script>
     </body>
 
 </html>

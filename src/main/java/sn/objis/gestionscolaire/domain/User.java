@@ -73,6 +73,17 @@ public class User implements Serializable {
     @JoinColumn(name = "idprofil", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Profil idprofil;
+    @Basic(optional = false)
+    @Column(name = "genre")
+    private String genre;
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
     public User() {
     }
@@ -185,7 +196,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "javaapplication28.User[ id=" + id + " ]";
+        return nom +" "+prenom;
     }
 
     public String getImageId() {

@@ -136,10 +136,9 @@
                                     <thead>
                                         <tr  style="text-align: center;vertical-align: middle;">
 
-                                     
-                                                <th>#</th>
-                                            <th>Matiere</th>
+                                             <th>#</th>
                                             <th>Heures</th>
+                                            <th>Matiere</th>
                                       
 
 
@@ -150,8 +149,9 @@
 
                                           
                                             <th>#</th>
-                                            <th>Matiere</th>
                                             <th>Heures</th>
+                                            <th>Matiere</th>
+                                       
                                           
 
 

@@ -146,7 +146,7 @@ public class Filiere implements Serializable {
 
     @Override
     public String toString() {
-        return "javaapplication28.Filiere[ id=" + id + " ]";
+        return  nom;
     }
     
 }

@@ -103,7 +103,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
-                        <span>UE</span>
+                        <span>Gerer Classes</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
 
@@ -122,19 +122,7 @@
 
 
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Classe</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
-
-
-                        <a class="dropdown-item" href="gererClasses.htm">Gerer Classes</a>
-
-
-                    </div>
-                </li>
+              
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -144,7 +132,7 @@
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
                         <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="#">Gerer Filieres</a>
+                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
 
 
                     </div>
@@ -185,6 +173,7 @@
                                             <th>Date Creation</th>
                                             <th>Description</th>
                                             <th>Filiere</th>
+                                             <th>Details</th>
 
 
 
@@ -198,7 +187,7 @@
                                             <th>Date Creation</th>
                                             <th>Description</th>
                                             <th>Filiere</th>
-                                    
+                                              <th>Details</th>
                                            
 
 
@@ -207,7 +196,15 @@
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="element" items="${classes}">
-
+                                            
+                             <c:url var="link" value="detailClasse.htm">
+                               <c:param name="id" value="${element.id}"/>
+                               <c:param name="matricule" value="${element.matricule}"/>
+                               <c:param name="nomClasse" value="${element.nom}"/>
+                               <c:param name="nomFiliere" value="${element.filiere}"/>
+                                  
+                              </c:url>
+                                            
                                             <tr style="text-align: center;vertical-align: middle;">
 
 
@@ -215,10 +212,15 @@
                                                 <td>${element.nom}</td>
                                                 <td>${element.creation}</td>
                                                 <td>${element.description}</td>
-                                                   <td>${element.filiere}</td>
+                                                 <td>${element.filiere}</td>
 
 
-
+                                                   <td>
+                                                    
+                                                    <div class="form-label-group">
+                                                        <a href="${link}" class="ti-id-badge"></a>
+                                                    </div>
+                                                </td>
 
                                             </tr>
 

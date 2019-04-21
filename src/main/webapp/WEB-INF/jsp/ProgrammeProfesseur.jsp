@@ -307,6 +307,7 @@
                 </li>
                
             </ul>
+      
             <div id="content-wrapper">
 
                 <div class="container-fluid ">
@@ -321,7 +322,8 @@
                     </section>
                 </div>
                         
-            </div>       
+            </div>  
+        </div>
                         
                         
                         

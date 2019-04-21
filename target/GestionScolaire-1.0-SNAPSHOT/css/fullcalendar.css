@@ -18,7 +18,7 @@
 html .fc,
 .fc table {
 	font-size: 1em;
-	font-family:  titilliumWeb-light;
+	font-family: "Helvetica Neue",Helvetica;
 
 	}
 	
@@ -56,16 +56,14 @@ html .fc,
 	display: inline-block;
 	vertical-align: top;
 	margin-top: -5px;
-         font-family: dax-bold;
 }
 	
 .fc-header-title h2 {
 	margin-top: 0;
 	white-space: nowrap;
-	font-size: 35px;
+	font-size: 32px;
     font-weight: 100;
     margin-bottom: 10px;
-    font-family: titilliumWeb-light;
 }
 	
 .fc .fc-header-space {
@@ -129,14 +127,14 @@ html .fc,
 	border: 1px solid #e5e5e5;
 	}
 .fc-widget-header{
-    border-bottom: 1px solid #0272bd; 
+    border-bottom: 1px solid #EEE; 
 }	
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
 	/* background: #fcf8e3; */
 }
 
 .fc-state-highlight > div > div.fc-day-number{
-    background-color: #0272bd;
+    background-color: #ff3b30;
     color: #FFFFFF;
     border-radius: 50%;
     margin: 4px;
@@ -213,8 +211,8 @@ html .fc,
 
 
 .fc-state-default {
-	border-color: #0272bd ;
-	color: #0272bd;	
+	border-color: #ff3b30;
+	color: #ff3b30;	
 }
 .fc-button-month.fc-state-default, .fc-button-agendaWeek.fc-state-default, .fc-button-agendaDay.fc-state-default{
     min-width: 67px;
@@ -227,11 +225,11 @@ html .fc,
 .fc-state-active,
 .fc-state-disabled {
 	color: #333333;
-	background-color: #fff ;
+	background-color: #FFE3E3;
 	}
 
 .fc-state-hover {
-	color: #0272bd;
+	color: #ff3b30;
 	text-decoration: none;
 	background-position: 0 -15px;
 	-webkit-transition: background-position 0.1s linear;
@@ -242,7 +240,7 @@ html .fc,
 
 .fc-state-down,
 .fc-state-active {
-	background-color: #0272bd;
+	background-color: #ff3b30;
 	background-image: none;
 	outline: 0;
 	color: #FFFFFF;
@@ -251,11 +249,11 @@ html .fc,
 .fc-state-disabled {
 	cursor: default;
 	background-image: none;
-	background-color: #FFF;
+	background-color: #FFE3E3;
 	filter: alpha(opacity=65);
 	box-shadow: none;
-	border:1px solid #0272bd;
-	color: #0272bd;
+	border:1px solid #FFE3E3;
+	color: #ff3b30;
 	}
 
 	
@@ -409,11 +407,10 @@ table.fc-border-separate {
 }
 .fc-border-separate tr.fc-last th{
     border-bottom-width: 1px;
-    border-color: #0272bd;
+    border-color: #cdcdcd;
     font-size: 16px;
     font-weight: 300;
 	line-height: 30px;
-        
 }
 .fc-border-separate tbody tr.fc-first td,
 .fc-border-separate tbody tr.fc-first th {
@@ -531,7 +528,7 @@ table.fc-border-separate {
 	}
 	
 .fc-widget-header .fc-agenda-divider-inner {
-	background-color: #0272bd;
+	background: #eee;
 	}
 	
 /* slot rows */
@@ -625,10 +622,7 @@ table.fc-border-separate {
 	}
 	
 thead tr.fc-first{
-   background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
-        color: #fff;
-            font-size: 3em;
-            	font-family:  titilliumWeb-regular !important;
+    background-color: #f7f7f7;
 }
 table.fc-header{
     background-color: #FFFFFF;

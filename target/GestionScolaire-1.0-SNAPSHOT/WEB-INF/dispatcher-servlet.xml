@@ -20,7 +20,7 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">loginController</prop>
-                
+                 <prop key="gererCalendrier.htm">gererDirecteurController</prop>
                 <prop key="administration.htm">administrationController</prop>
                 <prop key="secretaire.htm">secretaireController</prop>
                 <prop key="comptable.htm">comptableController</prop>
@@ -31,6 +31,7 @@
                 <prop key="profil.htm">profilController</prop>
                 <prop key="GererAdmin.htm">gererAdminController</prop>
                 <prop key=" GererProfesseur.htm">gererProfesseurController</prop>
+                 <prop key=" gererNote.htm">gererProfesseurController</prop>
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" GererComptable.htm">gererComptableController</prop>
@@ -41,7 +42,7 @@
                 <prop key=" AjouterDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" AjouterComptable.htm">gererComptableController</prop>
                 <prop key="GererRessources.htm">gererRessourcesController</prop>
-    
+                <prop key="Mensualite.htm">gererComptableController</prop>
                 <prop key="gererClasses.htm">gererDirecteurController</prop>
                 <prop key="gererfiliere.htm">gererRessourcesController</prop>
                  <prop key="updateUser.htm">profilController</prop>
@@ -49,6 +50,8 @@
                 <prop key="gererue.htm">gererDirecteurController</prop>
                 <prop key="listeMatiere.htm">gererDirecteurController</prop>
                 <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
+                 <prop key="detailInscription.htm">gererDirecteurController</prop>
+                 <prop key="detailClasse.htm">gererDirecteurController</prop>
                 <prop key="gererSalles.htm">gererDirecteurController</prop>
                 <prop key="AjouterSalle.htm">gererDirecteurController</prop>
                 <prop key="InscriptionEtudiant.htm">gererComptableController</prop>

@@ -129,15 +129,25 @@ public class LoginController {
                 default: {
                     // mav.addObject("Login ou Mot de pass invalid", null);
                     redirect = "redirect:/index.htm";
+                  
                     return new ModelAndView(redirect, "user", null);
+                   
                 }
             }
         } else {
             redirect = "redirect:/index.htm";
+            
         }
           HttpSession session = req.getSession();
           session.setAttribute("url", redirect.substring(10));
+          if(actors.isEmpty()==true)
+          {
+           
+                return new ModelAndView("redirect:/index.htm", "user", null);
+          }
+         
         return new ModelAndView(redirect, "user", actors.get(0));
+       
     }
 
 }
