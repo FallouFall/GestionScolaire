@@ -5,13 +5,11 @@
  */
 package sn.objis.gestionscolaire.controller;
 
-import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
-import sn.objis.gestionscolaire.domain.Inscription;
 
 /**
  *
@@ -27,20 +25,14 @@ public class DirecteurController {
     @RequestMapping("directeur.htm")
     public ModelAndView welcome()
     {
-    // String sql="SELECT * FROM user";
-   //  List data = this.jdtbcTemplate.queryForList(sql);
-    // mav.addObject("liste", data);
-      
+  
         mav.setViewName("AccueilDirecteur");
      return mav;
     }
       @RequestMapping("index.htm")
     public ModelAndView deconnection()
     {
-    // String sql="SELECT * FROM user";
-   //  List data = this.jdtbcTemplate.queryForList(sql);
-    // mav.addObject("liste", data);
-     
+   
         mav.setViewName("index");
      return mav;
     }

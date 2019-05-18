@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
-import sn.objis.gestionscolaire.domain.User;
 
 /**
  *

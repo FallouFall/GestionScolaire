@@ -14,10 +14,10 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -268,7 +268,35 @@ public class GererDirecteurController {
         return mav;
 
     }
+ @RequestMapping("GererDirecteur.htm")
+    public ModelAndView welcome() {
+     
+        String sql="SELECT matricule,nom,prenom,adresse,telephone, photo, idaccount from user, profil,account where account.id=profil.idaccount and user.idprofil=profil.id and account.id=? ";
+        List<User> actors =new ArrayList<>();
+           actors = jdtbcTemplate.query(sql,
+                new Object[]{5}, (ResultSet rs, int rowNum) -> {
+                    User c = new User();
+                    c.setMatricule(rs.getString(1));
+                    c.setNom(rs.getString(2));
+                    c.setPrenom(rs.getString(3));
+                    c.setAdresse(rs.getString(4));
+                    c.setTelephone(rs.getString(5));
+                    
+                    try {
+                        String encodeBase64 = Base64.encodeBase64String(rs.getBytes(6));
+                        c.setImageId(encodeBase64);
+                       
+                       
+                    } catch (Exception e) {
+                    }
+                    return c;
+        });
+           System.out.println(actors);
+       mav.addObject("liste", actors);
 
+       
+        return mav;
+    }
     @RequestMapping("AjouterSalle.htm")
     public ModelAndView addSalle() {
 
@@ -308,12 +336,12 @@ public class GererDirecteurController {
     public void saveAdmin(HttpServletRequest req) {
         try {
 
-            User user = new User();
-            user.setNom(req.getParameter("nom"));
-            user.setPrenom(req.getParameter("prenom"));
-            user.setAdresse(req.getParameter("adresse"));
-            user.setTelephone(req.getParameter("telephone"));
-            user.setTelephone(req.getParameter("mail"));
+        User user= new User();
+       user.setNom(req.getParameter("nom"));
+       user.setPrenom(req.getParameter("prenom"));
+       user.setAdresse(req.getParameter("adresse"));  
+       user.setTelephone(req.getParameter("telephone"));
+       user.setGenre(req.getParameter("genre"));
 
             Account account = new Account(5);
 
@@ -333,9 +361,8 @@ public class GererDirecteurController {
                 result = true;
             }
 
-            sql = "insert into user values (?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count);
-
+           sql="insert into user values (?,?,?,?,?,?,?,?,?)";
+      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"DG"+count,user.getGenre());
         } catch (Exception e) {
             System.out.println(e);
         }

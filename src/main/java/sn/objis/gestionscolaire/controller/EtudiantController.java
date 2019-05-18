@@ -24,20 +24,15 @@ public class EtudiantController {
     @RequestMapping("etudiant.htm")
     public ModelAndView welcome()
     {
-    // String sql="SELECT * FROM user";
-   //  List data = this.jdtbcTemplate.queryForList(sql);
-    // mav.addObject("liste", data);
-        System.out.println("hee");
+   
+      
         mav.setViewName("AccueilEtudiant");
      return mav;
     }
       @RequestMapping("index.htm")
     public ModelAndView deconnection()
     {
-    // String sql="SELECT * FROM user";
-   //  List data = this.jdtbcTemplate.queryForList(sql);
-    // mav.addObject("liste", data);
-        System.out.println("hee");
+ 
         mav.setViewName("index");
      return mav;
     }

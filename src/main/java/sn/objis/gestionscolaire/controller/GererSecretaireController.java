@@ -75,12 +75,12 @@ public class GererSecretaireController {
     {
         try {
             
-    User user= new User();
+       User user= new User();
        user.setNom(req.getParameter("nom"));
        user.setPrenom(req.getParameter("prenom"));
-       user.setAdresse(req.getParameter("adresse"));
+       user.setAdresse(req.getParameter("adresse"));  
        user.setTelephone(req.getParameter("telephone"));
-       user.setTelephone(req.getParameter("mail"));
+       user.setGenre(req.getParameter("genre"));
        
        Account account =new Account(3);
        
@@ -102,8 +102,9 @@ public class GererSecretaireController {
            result= true;
        }
  
-      sql="insert into user values (?,?,?,?,?,?,?)";
-      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count);
+         
+      sql="insert into user values (?,?,?,?,?,?,?,?,?)";
+      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"SC"+count,user.getGenre());
        
   } catch (Exception e) {
             System.out.println(e);

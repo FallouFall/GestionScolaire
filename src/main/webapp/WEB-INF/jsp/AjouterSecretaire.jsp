@@ -147,14 +147,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true" minlength="2" maxlength="30">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="email" class="form-control" name="mail" id="inputEmail4" placeholder="Email" minlength="10" maxlength="30">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-email"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
@@ -173,11 +166,11 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <div class=" form-group col-md-6">
+                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control"  name="username" id="login" placeholder="Username"  minlength="5" maxlength="15"required="true">
+                                                            <input type="email" class="form-control" id="login" placeholder="Email"  name="username" required="true" minlength="5" maxlength="30">
                                                             <span class="input-group-addon">
-                                                                <i class="ti-link"></i>
+                                                                <i class="ti-email"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -191,7 +184,16 @@ if(userName == null) response.sendRedirect("index.htm");
                                                         </div>
                                                     </div>
 
+                                                   <div class=" form-group col-md-6"> 
+                                                        <fieldset>
+                                                            <select class="custom-select w-100"  name="genre" required="true">
 
+                                                                <option value="">Genre</option>
+                                                                <option value="Masculin">Masculin</option>
+                                                                <option value="Feminin">Feminin</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
 
 
 
@@ -272,7 +274,13 @@ if(userName == null) response.sendRedirect("index.htm");
 
 
         <script src="js/sb-admin.min.js"></script>
-
+<style>
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
+</style>
 
     </body>
 

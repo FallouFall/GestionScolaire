@@ -114,14 +114,7 @@
                                                 <input type="text" class="form-control" id="adresse" placeholder="Adresse" required="true">
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                                                <span class="input-group-addon">
-                                                    <i class="ti-email"></i>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        
 
                                         <div class=" form-group col-md-6">
                                             <div class="input-group with-addon-icon-left">
@@ -142,26 +135,15 @@
                                             </div>
                                         </div>
                                   
-                                        <div class=" form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <input type="text" class="form-control" id="login" placeholder="Username"  required="true">
-                                                <span class="input-group-addon">
-                                                    <i class="ti-link"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    <div class=" form-group col-md-6"> 
-                                         <fieldset>
-                                <select class="custom-select w-100" required="true">
-                                   
-                                    <option value="">Specialite</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                
-                                </select>
-                            </fieldset>
-                            </div>
+                                         <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="email" class="form-control" id="login" placeholder="Email"  name="username" required="true" minlength="5" maxlength="30">
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-email"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                               
 
                                         <div class=" form-group col-md-6">
                                             <div class="input-group with-addon-icon-left">
@@ -171,15 +153,18 @@
                                                 </span>
                                             </div>
                                         </div> 
-                                          <div class=" form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <input type="text" class="form-control" data-minlength="6" id="password" placeholder="Experience" required="true" >
-                                                <span class="input-group-addon">
-                                                    <i class="ti-thought"></i>
-                                                </span>
-                                            </div>
-                                        </div> 
+                                       
                                     
+                                                             <div class=" form-group col-md-6"> 
+                                                        <fieldset>
+                                                            <select class="custom-select w-100"  name="genre"  required="true">
+
+                                                                <option value="">Genre</option>
+                                                                <option value="Masculin">Masculin</option>
+                                                                <option value="Feminin">Feminin</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
                                    
                                   
                                    <div class=" form-group col-md-6">       

@@ -127,14 +127,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true" minlength="2" maxlength="25">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="email" class="form-control" id="inputEmail4" name="mail" placeholder="Email" minlength="2" maxlength="30">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-email"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                   
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
@@ -157,7 +150,7 @@ if(userName == null) response.sendRedirect("index.htm");
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" name="username" id="login" placeholder="Username"  required="true" minlength="2" maxlength="15">
+                                                            <input type="email" class="form-control" name="username" id="login" placeholder="Email"  required="true" minlength="2" maxlength="15">
                                                             <span class="input-group-addon">
                                                                 <i class="ti-link"></i>
                                                             </span>
@@ -173,6 +166,17 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             </span>
                                                         </div>
                                                     </div> 
+                                                    
+                                                    <div class=" form-group col-md-6"> 
+                                                        <fieldset>
+                                                            <select class="custom-select w-100"  name="genre"  required="true">
+
+                                                                <option value="">Genre</option>
+                                                                <option value="Masculin">Masculin</option>
+                                                                <option value="Feminin">Feminin</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
 
 
                                                     
@@ -251,6 +255,12 @@ if(userName == null) response.sendRedirect("index.htm");
   object-fit: cover;
   object-position: center right;
 }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
 
         </style>
 

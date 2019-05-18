@@ -83,9 +83,9 @@ public class GererAdminController {
        User user= new User();
        user.setNom(req.getParameter("nom"));
        user.setPrenom(req.getParameter("prenom"));
-       user.setAdresse(req.getParameter("adresse"));
+       user.setAdresse(req.getParameter("adresse"));  
        user.setTelephone(req.getParameter("telephone"));
-       user.setTelephone(req.getParameter("mail"));
+       user.setGenre(req.getParameter("genre"));
        
        Account account =new Account(1);
        
@@ -106,8 +106,8 @@ public class GererAdminController {
            result= true;
        }
  
-     sql="insert into user values (?,?,?,?,?,?,?)";
-      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count);
+     sql="insert into user values (?,?,?,?,?,?,?,?,?)";
+      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"AD"+count,user.getGenre());
        
   } catch (Exception e) {
             System.out.println(e);

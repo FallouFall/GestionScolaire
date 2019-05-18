@@ -20,7 +20,7 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">loginController</prop>
-                 <prop key="gererCalendrier.htm">gererDirecteurController</prop>
+                <prop key="gererCalendrier.htm">gererDirecteurController</prop>
                 <prop key="administration.htm">administrationController</prop>
                 <prop key="secretaire.htm">secretaireController</prop>
                 <prop key="comptable.htm">comptableController</prop>
@@ -31,7 +31,7 @@
                 <prop key="profil.htm">profilController</prop>
                 <prop key="GererAdmin.htm">gererAdminController</prop>
                 <prop key=" GererProfesseur.htm">gererProfesseurController</prop>
-                 <prop key=" gererNote.htm">gererProfesseurController</prop>
+                <prop key=" gererNote.htm">gererProfesseurController</prop>
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" GererComptable.htm">gererComptableController</prop>
@@ -45,19 +45,19 @@
                 <prop key="Mensualite.htm">gererComptableController</prop>
                 <prop key="gererClasses.htm">gererDirecteurController</prop>
                 <prop key="gererfiliere.htm">gererRessourcesController</prop>
-                 <prop key="updateUser.htm">profilController</prop>
+                <prop key="updateUser.htm">profilController</prop>
                 <!-- gerer unites enseignement et matiere!-->
                 <prop key="gererue.htm">gererDirecteurController</prop>
                 <prop key="listeMatiere.htm">gererDirecteurController</prop>
                 <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
-                 <prop key="detailInscription.htm">gererDirecteurController</prop>
-                 <prop key="detailClasse.htm">gererDirecteurController</prop>
+                <prop key="detailInscription.htm">gererDirecteurController</prop>
+                <prop key="detailClasse.htm">gererDirecteurController</prop>
                 <prop key="gererSalles.htm">gererDirecteurController</prop>
                 <prop key="AjouterSalle.htm">gererDirecteurController</prop>
                 <prop key="InscriptionEtudiant.htm">gererComptableController</prop>
                 <prop key="ListeInscription.htm">gererComptableController</prop>
                 <prop key="validerInscription.htm">gererDirecteurController</prop>
-                  <prop key="programme.htm">gererDirecteurController</prop>
+                <prop key="programme.htm">gererDirecteurController</prop>
             </props>
         </property>
     </bean>
@@ -106,16 +106,16 @@
           class="sn.objis.gestionscolaire.controller.GererSecretaireController"
     />
     <bean name="gererDirecteurController"
-           class="sn.objis.gestionscolaire.controller.GererDirecteurController"
+          class="sn.objis.gestionscolaire.controller.GererDirecteurController"
     />
     <bean name="gererComptableController"
-            class="sn.objis.gestionscolaire.controller.GererComptableController"
+          class="sn.objis.gestionscolaire.controller.GererComptableController"
     />
     <bean name="gererRessourcesController"
-                class="sn.objis.gestionscolaire.controller.GererRessourcesController"
+          class="sn.objis.gestionscolaire.controller.GererRessourcesController"
     />
     <bean name="profilController"
-                        class="sn.objis.gestionscolaire.controller.HeaderController"
+          class="sn.objis.gestionscolaire.controller.HeaderController"
     />
  
  

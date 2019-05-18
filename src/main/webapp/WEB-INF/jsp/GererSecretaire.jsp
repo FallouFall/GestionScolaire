@@ -66,7 +66,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="GererSecretaire.htm">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Lister</span></a>
         </li>
       </ul>
 
@@ -126,7 +126,7 @@
                                                     </c:if>
                                                           
                                                     <c:if test="${element.imageId == null}">
-                                                        <span class="ti-user" style="font-size: 3.8em;"></span>
+                                                        <span class="ti-user" style="font-size: 1.5em; color: #1f72b8;"></span>
                                                     </c:if>
                                                    
 

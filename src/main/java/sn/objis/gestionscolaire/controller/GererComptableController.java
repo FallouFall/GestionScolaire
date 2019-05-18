@@ -23,6 +23,7 @@ import sn.objis.gestionscolaire.domain.Account;
 import sn.objis.gestionscolaire.domain.Classes;
 import sn.objis.gestionscolaire.domain.Filiere;
 import sn.objis.gestionscolaire.domain.Inscription;
+import sn.objis.gestionscolaire.domain.Mensualite;
 import sn.objis.gestionscolaire.domain.Profil;
 import sn.objis.gestionscolaire.domain.User;
 
@@ -39,6 +40,11 @@ public class GererComptableController {
     List<Classes> classes;
     List<Filiere> filieres;
     List<Inscription> listeInscription;
+    int idUser;
+    int idClasse;
+    int idFiliere;
+    int payement;
+    LocalDate date=LocalDate.now();
 
     @RequestMapping("GererComptable.htm")
     public ModelAndView welcomes() {
@@ -83,11 +89,11 @@ public class GererComptableController {
 
     }
 
-    @RequestMapping(value = "Mensualite.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "Mensualite.htm", method = RequestMethod.GET)
     public ModelAndView findEtudiant(HttpServletRequest req) {
         mav = new ModelAndView();
         String matricule = req.getParameter("matricule");
-        String sql = "SELECT user.id,matricule,nom,prenom,adresse,telephone from user where user.matricule =?";
+        String sql = "SELECT user.id,user.matricule,user.nom,prenom,adresse,telephone,inscription.matricule , inscription.idclasse,inscription.date,classes.mensualite,filiere.nom ,classes.nom from user,inscription,filiere,classes where user.matricule =? AND user.id=inscription.iduser AND filiere.id=classes.filiere";
 
         List<User> actors = jdtbcTemplate.query(
                 sql,
@@ -101,6 +107,29 @@ public class GererComptableController {
                 c.setPrenom(rs.getString(4));
                 c.setAdresse(rs.getString(5));
                 c.setTelephone(rs.getString(6));
+                
+                Inscription ins =new Inscription();
+                ins.setMatricule(rs.getString(7));
+                ins.setDate(rs.getDate(9));
+           
+                Classes s=new Classes();
+                s.setId(rs.getInt(8));
+                s.setMensualite(rs.getInt(10));
+                
+                Filiere f=new Filiere();
+                f.setNom(rs.getString(11));
+                
+                s.setFiliere(f);
+                ins.setIdclasse(s);
+                mav.addObject("fil", rs.getString(11));
+                mav.addObject("cls", rs.getString(12));
+                mav.addObject("mensu", rs.getInt(10));
+                mav.addObject("inscrip", ins);
+                
+//                idUser=ins.getId();
+                idClasse=ins.getIdclasse().getId();
+                payement=rs.getInt(10);
+                
                 return c;
             }
         });
@@ -116,15 +145,27 @@ public class GererComptableController {
 
     }
 
+    @RequestMapping(value = "Mensualite.htm", method = RequestMethod.POST)
+    public ModelAndView validerPayement(HttpServletRequest req) {
+     
+  String   sql = "insert into mensualite values (?,?,?,?,?,?)";
+            System.out.println(idUser);
+              System.out.println(idClasse);
+            jdtbcTemplate.update(sql, null,java.sql.Date.valueOf(date) , "Janvier", idUser, idClasse, 2);
+
+        return mav;
+
+    }
+
     @RequestMapping(value = "AjouterComptable.htm", method = RequestMethod.POST)
     public void saveAdmin(HttpServletRequest req) {
         try {
-            User user = new User();
-            user.setNom(req.getParameter("nom"));
-            user.setPrenom(req.getParameter("prenom"));
-            user.setAdresse(req.getParameter("adresse"));
-            user.setTelephone(req.getParameter("telephone"));
-            user.setTelephone(req.getParameter("mail"));
+          User user= new User();
+       user.setNom(req.getParameter("nom"));
+       user.setPrenom(req.getParameter("prenom"));
+       user.setAdresse(req.getParameter("adresse"));  
+       user.setTelephone(req.getParameter("telephone"));
+       user.setGenre(req.getParameter("genre"));
 
             Account account = new Account(2);
 
@@ -144,9 +185,9 @@ public class GererComptableController {
                 result = true;
             }
 
-            sql = "insert into user values (?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count);
-
+           sql="insert into user values (?,?,?,?,?,?,?,?,?)";
+      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"CP"+count,user.getGenre());
+       
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -179,9 +220,9 @@ public class GererComptableController {
             if (count > 0) {
                 result = true;
             }
-
-            sql = "insert into user values (?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule());
+            System.out.println(count);
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(),"Masculin");
 
             Inscription inscription = new Inscription();
             inscription.setDate(java.sql.Date.valueOf(LocalDate.now()));
@@ -282,5 +323,5 @@ public class GererComptableController {
         mav.setViewName("ListeInscription");
         return mav;
     }
- 
+
 }

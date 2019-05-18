@@ -48,7 +48,7 @@ public class GererProfesseurController {
         List<User> actors = new ArrayList<>();
 
         actors = jdtbcTemplate.query(sql,
-                new Object[]{1}, (ResultSet rs, int rowNum) -> {
+                new Object[]{4}, (ResultSet rs, int rowNum) -> {
                     User c = new User();
                     c.setMatricule(rs.getString(1));
                     c.setNom(rs.getString(2));
@@ -79,12 +79,12 @@ public class GererProfesseurController {
     public void saveAdmin(HttpServletRequest req) {
         try {
 
-            User user = new User();
-            user.setNom(req.getParameter("nom"));
-            user.setPrenom(req.getParameter("prenom"));
-            user.setAdresse(req.getParameter("adresse"));
-            user.setTelephone(req.getParameter("telephone"));
-            user.setTelephone(req.getParameter("mail"));
+            User user= new User();
+       user.setNom(req.getParameter("nom"));
+       user.setPrenom(req.getParameter("prenom"));
+       user.setAdresse(req.getParameter("adresse"));  
+       user.setTelephone(req.getParameter("telephone"));
+       user.setGenre(req.getParameter("genre"));
             Account account = new Account(1);
 
             Profil profil = new Profil();
@@ -95,11 +95,16 @@ public class GererProfesseurController {
 
             String sql = "insert into profil values (?,?,?)";
             int of = jdtbcTemplate.update(sql, profil.getIdaccount().getId(), profil.getPassword(), profil.getUsername());
-            System.out.println(of + "");
+            sql = "Select Max(id) from profil";
+            boolean result = false;
+            int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
+            if (count > 0) {
+                result = true;
+            }
 
-            sql = "insert into user values (?,?,?,?,?)";
-            jdtbcTemplate.update(sql, user.getAdresse(), user.getNom(), user.getPrenom(), user.getTelephone(), user.getIdprofil().getId());
-
+           sql="insert into user values (?,?,?,?,?,?,?,?,?)";
+      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"PROF"+count,user.getGenre());
+       
         } catch (Exception e) {
             System.out.println(e);
         }
