@@ -197,7 +197,7 @@
                                     <tbody>
                                         <c:forEach var="element" items="${classes}">
                                             
-                             <c:url var="link" value="detailClasse.htm">
+                                 <c:url var="link" value="detailClasse.htm">
                                <c:param name="id" value="${element.id}"/>
                                <c:param name="matricule" value="${element.matricule}"/>
                                <c:param name="nomClasse" value="${element.nom}"/>

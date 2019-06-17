@@ -124,7 +124,25 @@
                                                             </span>
                                                         </div>
                                                     </div>
+                                                                                              <div class=" form-group col-md-6"> 
+                                                        <fieldset>
+                                                            <select class="custom-select w-100" name="genre" required="true">
 
+                                                                <option value="" >Genre</option>
+                                                                <option value="Masculin">Masculin</option>
+                                                                <option value="Feminin">Feminin</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="text"  class="form-control" name="info" id="info" placeholder="Info Supp" >
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
                                                             <input type="text" class="form-control" name="naissance" id="datepicker-example-1" placeholder="Date de Naissance" >

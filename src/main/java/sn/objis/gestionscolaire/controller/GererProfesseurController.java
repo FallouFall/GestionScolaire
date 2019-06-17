@@ -176,7 +176,10 @@ public class GererProfesseurController {
          mav.addObject("findListEtudiants", null);
         String classe = req.getParameter("classe");
         String filiere = req.getParameter("filiere");
-        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom  from user ,classes,filiere where classes.nom =? and filiere.nom=?";
+           mav.addObject("classe", classe);
+              mav.addObject("filiere", filiere);
+        
+        String sql = "SELECT DISTINCT (user.id),user.matricule,user.nom,user.prenom  from user ,classes,filiere where classes.nom =? and filiere.nom=?";
 
         List<User> actors = jdtbcTemplate.query(
                 sql,

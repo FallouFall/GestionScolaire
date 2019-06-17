@@ -274,7 +274,23 @@
         </div>
 
 
+                            <c:forEach var="element" items="${matiere}">
 
+                                            <tr style="text-align: center;vertical-align: middle;">
+
+                                          
+                                                <td>${element.matricule}</td>
+                                                <td>${element.nom}</td>
+                                                <td>${element.creation}</td>
+                                                <td>${element.description}</td>
+                                             
+                                            
+
+
+
+                                            </tr>
+
+                                        </c:forEach>
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js" ></script>
         <script src="js/demo.min.js"></script>

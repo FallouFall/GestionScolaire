@@ -48,10 +48,10 @@ public class GererDirecteurController {
     List<Classes> classes = new ArrayList<>();
     List<Programme> programmes = new ArrayList<>();
     List<Inscription> listeInscription;
-      List<User> users;
+    List<User> users;
     String id;
     int nbHommes;
-      int nbFemmes;
+    int nbFemmes;
 
     @RequestMapping("gererue.htm")
     public ModelAndView gererUe() {
@@ -126,7 +126,8 @@ public class GererDirecteurController {
         return mav;
 
     }
-  @RequestMapping("gererCalendrier.htm")
+
+    @RequestMapping("gererCalendrier.htm")
     public ModelAndView gererCalendrier() {
 
         mav = gestionsClasses();
@@ -139,7 +140,8 @@ public class GererDirecteurController {
     public ModelAndView detailIscription(HttpServletRequest req) {
 
         String userId = req.getParameter("id");
-        String sql = "SELECT user.id,matricule,nom,prenom,adresse,telephone, photo, idaccount,type,profil.id from user, profil,account where user.id=?  AND account.id=profil.idaccount and user.idprofil=profil.id";
+        String matricule = req.getParameter("matricule");
+        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.adresse,user.telephone  from user,classes,inscription WHERE classes.matricule='" + matricule + "' AND inscription.iduser=user.id;";
 
         List<User> actors = jdtbcTemplate.query(
                 sql,
@@ -178,7 +180,7 @@ public class GererDirecteurController {
 
     @RequestMapping(value = "detailInscription.htm", method = RequestMethod.POST)
     public ModelAndView activerInscription(HttpServletRequest req) {
-        
+
         String sql = "update inscription set validite=? where matricule=?";
         jdtbcTemplate.update(sql, 1, req.getParameter("idInscription"));
         mav.setViewName("validerInscription");
@@ -268,12 +270,13 @@ public class GererDirecteurController {
         return mav;
 
     }
- @RequestMapping("GererDirecteur.htm")
+
+    @RequestMapping("GererDirecteur.htm")
     public ModelAndView welcome() {
-     
-        String sql="SELECT matricule,nom,prenom,adresse,telephone, photo, idaccount from user, profil,account where account.id=profil.idaccount and user.idprofil=profil.id and account.id=? ";
-        List<User> actors =new ArrayList<>();
-           actors = jdtbcTemplate.query(sql,
+
+        String sql = "SELECT matricule,nom,prenom,adresse,telephone, photo, idaccount from user, profil,account where account.id=profil.idaccount and user.idprofil=profil.id and account.id=? ";
+        List<User> actors = new ArrayList<>();
+        actors = jdtbcTemplate.query(sql,
                 new Object[]{5}, (ResultSet rs, int rowNum) -> {
                     User c = new User();
                     c.setMatricule(rs.getString(1));
@@ -281,22 +284,21 @@ public class GererDirecteurController {
                     c.setPrenom(rs.getString(3));
                     c.setAdresse(rs.getString(4));
                     c.setTelephone(rs.getString(5));
-                    
+
                     try {
                         String encodeBase64 = Base64.encodeBase64String(rs.getBytes(6));
                         c.setImageId(encodeBase64);
-                       
-                       
+
                     } catch (Exception e) {
                     }
                     return c;
-        });
-           System.out.println(actors);
-       mav.addObject("liste", actors);
+                });
+        System.out.println(actors);
+        mav.addObject("liste", actors);
 
-       
         return mav;
     }
+
     @RequestMapping("AjouterSalle.htm")
     public ModelAndView addSalle() {
 
@@ -336,12 +338,12 @@ public class GererDirecteurController {
     public void saveAdmin(HttpServletRequest req) {
         try {
 
-        User user= new User();
-       user.setNom(req.getParameter("nom"));
-       user.setPrenom(req.getParameter("prenom"));
-       user.setAdresse(req.getParameter("adresse"));  
-       user.setTelephone(req.getParameter("telephone"));
-       user.setGenre(req.getParameter("genre"));
+            User user = new User();
+            user.setNom(req.getParameter("nom"));
+            user.setPrenom(req.getParameter("prenom"));
+            user.setAdresse(req.getParameter("adresse"));
+            user.setTelephone(req.getParameter("telephone"));
+            user.setGenre(req.getParameter("genre"));
 
             Account account = new Account(5);
 
@@ -361,8 +363,8 @@ public class GererDirecteurController {
                 result = true;
             }
 
-           sql="insert into user values (?,?,?,?,?,?,?,?,?)";
-      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"DG"+count,user.getGenre());
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, "DG" + count, user.getGenre());
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -538,50 +540,52 @@ public class GererDirecteurController {
         mav.setViewName("validerInscription");
         return mav;
     }
-    
-    
-    
-    
-    
-     @RequestMapping("detailClasse.htm")
+
+    @RequestMapping("detailClasse.htm")
     public ModelAndView detailClasse(HttpServletRequest req) {
-        nbFemmes=nbHommes=0;
-        String matriculeClasse=req.getParameter("matricule");
-           String classeId=req.getParameter("id");
-          String nomClasse=req.getParameter("nomClasse");
-            String nomFiliere=req.getParameter("nomFiliere");
-        String sql = "SELECT DISTINCT User.id,User.matricule,User.nom,User.prenom,user.telephone,user.genre  from user,classes  WHERE classes.matricule='"+matriculeClasse+"'";
-        users = jdtbcTemplate.query(sql,
+
+        nbFemmes = nbHommes = 0;
+        String matriculeClasse = req.getParameter("matricule");
+        String classeId = req.getParameter("id");
+        String nomClasse = req.getParameter("nomClasse");
+        String nomFiliere = req.getParameter("nomFiliere");
+
+        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.id,inscription.date,classes.description FROM user,inscription,classes WHERE user.id=inscription.iduser and classes.id='"+classeId+"'";
+        listeInscription = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
-                   
+                    Inscription c = new Inscription();
                     User u = new User();
                     u.setId(rs.getInt(1));
                     u.setMatricule(rs.getString(2));
                     u.setNom(rs.getString(3));
                     u.setPrenom(rs.getString(4));
-                   u.setTelephone(rs.getString(5));
-              if("Masculin".equals(rs.getString(6)))
-                {
-                    nbHommes++;
-                }else
-                {
-              
-                  nbFemmes++;
-                }
-                  
+                    u.setTelephone(rs.getString(5));
+                    c.setMatricule(rs.getString(6));
+                    c.setDate(rs.getDate(8));
+                    c.setIduser(u);
+                    Classes s = new Classes();
+                    s.setDescription(rs.getString(9));
+                    s.setNom(rs.getString(9));
+                    c.setIdclasse(s);
 
-              
+                    if ("Masculin".equals(rs.getString(6))) {
+                        nbHommes++;
+                    } else {
 
-                    return u;
+                        nbFemmes++;
+                    }
+
+                    return c;
                 });
 
-            mav.addObject("users", users);
-            mav.addObject("nomFiliere", nomFiliere);
-            mav.addObject("nomClasse", nomClasse);
-            mav.addObject("nbFeminin", nbFemmes);
-            mav.addObject("nbMasculin", nbHommes);
-          mav.addObject("classeId", classeId);
-            mav.addObject("effectif",nbFemmes+nbHommes);
+        mav.addObject("inscriptions", listeInscription);
+        mav.addObject("users", users);
+        mav.addObject("nomFiliere", nomFiliere);
+        mav.addObject("nomClasse", nomClasse);
+        mav.addObject("nbFeminin", nbFemmes);
+        mav.addObject("nbMasculin", nbHommes);
+        mav.addObject("classeId", classeId);
+        mav.addObject("effectif", nbFemmes + nbHommes);
         mav.setViewName("detailClasse");
         return mav;
     }

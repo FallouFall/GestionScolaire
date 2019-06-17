@@ -141,7 +141,7 @@
                                            
                                          
                                                 <div class="col-6 text-muted">Password :</div>
-                                                <div class="col-6">${password}</div>
+                                                <div class="col-6">************</div>
                                        
 
                                          

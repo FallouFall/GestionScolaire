@@ -66,8 +66,8 @@
 
         <div id="wrapper">
 
-             <ul class="sidebar navbar-nav" >
-                 <li class="nav-item" >
+            <ul class="sidebar navbar-nav" >
+                <li class="nav-item" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -85,17 +85,17 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="directeur.htm">
+                    <a class="nav-link" href="comptable.htm">
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
-             
+
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>
-                  <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="InscriptionEtudiant.htm">
                         <i class="fas fa-plus"></i>
                         <span>Ajouter </span></a>
@@ -127,21 +127,20 @@
                                             <th>Inscription</th>
                                             <th>Date</th>
                                             <th>Classe</th>
-                                            <th>Filiere</th>
-                                            
+
 
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr style="text-align: center;vertical-align: middle;">
-                                          
+
                                             <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Inscription</th>
                                             <th>Date</th>
                                             <th>Classe</th>
-                                            <th>Filiere</th>
+
 
 
 
@@ -152,14 +151,14 @@
 
                                             <tr style="text-align: center;vertical-align: middle;">
 
-                                              
+
                                                 <td>${element.iduser.matricule}</td>
                                                 <td>${element.iduser.nom}</td>
                                                 <td>${element.iduser.prenom}</td>
                                                 <td>${element.matricule}</td>
                                                 <td>${element.date}</td>
                                                 <td>${element.idclasse.nom}</td>
-                                                <td>${element.idclasse.filiere.nom}</td>
+
                                             </tr>
 
                                         </c:forEach>

@@ -198,10 +198,12 @@ public class GererComptableController {
     public void saveEtudiant(HttpServletRequest req) {
         try {
             User user = new User();
+             user.setGenre(req.getParameter("genre"));
             user.setNom(req.getParameter("nom"));
             user.setPrenom(req.getParameter("prenom"));
             user.setAdresse(req.getParameter("adresse"));
             user.setTelephone(req.getParameter("telephone"));
+            
             user.setPhoto(null);
             user.setMatricule("ETU" + (int) (Math.random() * 9999999) + "");
             Account account = new Account(6);
@@ -222,11 +224,9 @@ public class GererComptableController {
             }
             System.out.println(count);
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(),"Masculin");
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(),user.getGenre());
 
-            Inscription inscription = new Inscription();
-            inscription.setDate(java.sql.Date.valueOf(LocalDate.now()));
-            inscription.setMatricule("INS" + (int) (Math.random() * 9999999) + "");
+      
 
             String classe = req.getParameter("classe");
             String filiere = req.getParameter("filiere");
@@ -245,11 +245,14 @@ public class GererComptableController {
                 result = true;
             }
             user.setId(count);
-            inscription.setIdclasse(c);
-            inscription.setIduser(user);
+            
+      
 
-            sql = "insert into inscription values (?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, inscription.getMatricule(), inscription.getDate(), inscription.getIdclasse().getId(), user.getId());
+            sql = "insert into inscription values (?,?,?,?,?,?)";
+          
+            
+            String matri="INS" + (int) (Math.random() * 9999999) + "";
+            jdtbcTemplate.update(sql, null, matri, java.sql.Date.valueOf(LocalDate.now()), c.getId(), user.getId(),1);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -297,24 +300,25 @@ public class GererComptableController {
 
     @RequestMapping("ListeInscription.htm")
     public ModelAndView listeInscription(HttpServletRequest req) {
-        String sql = "SELECT User.matricule,User.nom,User.prenom, inscription.matricule,inscription.date,classes.nom ,filiere.nom  from user,inscription,classes,filiere WHERE user.id=inscription.id";
+        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.id,inscription.date,classes.description FROM user,inscription,classes WHERE user.id=inscription.iduser and classes.id=inscription.idclasse";
         listeInscription = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Inscription c = new Inscription();
                     User u = new User();
-                    u.setMatricule(rs.getString(1));
-                    u.setNom(rs.getString(2));
-                    u.setPrenom(rs.getString(3));
-                    c.setMatricule(rs.getString(4));
-                    c.setDate(rs.getDate(5));
-                    Classes s = new Classes();
-                    s.setNom(rs.getString(6));
-                    Filiere f = new Filiere();
-                    f.setNom(rs.getString(7));
-
-                    s.setFiliere(f);
-                    c.setIdclasse(s);
+                    u.setId(rs.getInt(1));
+                    u.setMatricule(rs.getString(2));
+                    u.setNom(rs.getString(3));
+                    u.setPrenom(rs.getString(4));
+                    u.setTelephone(rs.getString(5));
+                    c.setMatricule(rs.getString(6));
+                       c.setDate(rs.getDate(8));
                     c.setIduser(u);
+                   Classes s=new Classes();
+                   s.setDescription(rs.getString(9));
+                   s.setNom(rs.getString(9));
+                   c.setIdclasse(s);
+                
+              
 
                     return c;
                 });
