@@ -69,46 +69,56 @@ public class GererProfesseurController {
         return mav;
     }
 
-    @RequestMapping(value = "AjouterProfesseur.htm", method = RequestMethod.GET)
-    public void ajouterAdmin() {
-        ModelAndView mav = new ModelAndView("redirect:/AjouterAdmin.htm");
 
+ @RequestMapping(value = "AjouterProfesseur.htm",method = RequestMethod.GET)
+    public  void ajouterAdmin()          
+    {
+        ModelAndView mav=new ModelAndView("redirect:/AjouterProfesseur.htm");
+        
+      
     }
-
-    @RequestMapping(value = "AjouterProfesseur.htm", method = RequestMethod.POST)
-    public void saveAdmin(HttpServletRequest req) {
+    
+       @RequestMapping(value="AjouterProfesseur.htm",method = RequestMethod.POST)
+    public  void saveAdmin(HttpServletRequest req)          
+    {
         try {
-
-            User user= new User();
+            
+       
+       User user= new User();
        user.setNom(req.getParameter("nom"));
        user.setPrenom(req.getParameter("prenom"));
        user.setAdresse(req.getParameter("adresse"));  
        user.setTelephone(req.getParameter("telephone"));
        user.setGenre(req.getParameter("genre"));
-            Account account = new Account(1);
-
-            Profil profil = new Profil();
-            profil.setIdaccount(account);
-            profil.setPassword(req.getParameter("password"));
-            profil.setUsername(req.getParameter("username"));
-            user.setIdprofil(profil);
-
-            String sql = "insert into profil values (?,?,?)";
-            int of = jdtbcTemplate.update(sql, profil.getIdaccount().getId(), profil.getPassword(), profil.getUsername());
-            sql = "Select Max(id) from profil";
-            boolean result = false;
-            int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
-            if (count > 0) {
-                result = true;
-            }
-
-           sql="insert into user values (?,?,?,?,?,?,?,?,?)";
-      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"PROF"+count,user.getGenre());
        
-        } catch (Exception e) {
+       Account account =new Account(4);
+       
+       Profil profil=new Profil();
+       profil.setIdaccount(account);
+       profil.setPassword(req.getParameter("password"));
+       profil.setUsername(req.getParameter("username"));
+       user.setIdprofil(profil);
+       
+       String sql="insert into profil values (?,?,?,?)";
+       jdtbcTemplate.update(sql,null,profil.getIdaccount().getId(),profil.getPassword(),profil.getUsername());
+      
+       sql="Select Max(id) from profil";
+       boolean result=false;
+       int count=jdtbcTemplate.queryForObject(sql, new Object[]{},Integer.class);
+       if(count>0)
+       {
+           result= true;
+       }
+ 
+     sql="insert into user values (?,?,?,?,?,?,?,?,?)";
+      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"AD"+count,user.getGenre());
+       
+  } catch (Exception e) {
             System.out.println(e);
         }
 
+        
+      
     }
 
     @RequestMapping(value = "GererProfesseur.htm", method = RequestMethod.POST)

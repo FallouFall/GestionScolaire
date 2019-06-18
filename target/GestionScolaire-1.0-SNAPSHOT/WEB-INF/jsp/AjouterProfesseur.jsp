@@ -83,59 +83,58 @@
 
                             </span>  </div>
                         <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <div class="form-row">
+                           <form method="POST">
+                                            <div class="form-group">
+                                                <div class="form-row">
 
 
 
-                                        <div class="form-group col-md-6 ">
-                                            <div class="input-group with-addon-icon-left">
-                                                <span class="input-group-addon">
-                                                    <i class="ti-user"></i>
-                                                </span>
-                                                <input type="text" class="form-control " id="nom" placeholder="Nom" required="true">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <input type="text" class="form-control" id="prenom" placeholder="Prenom" required="true">
-                                                <span class="input-group-addon">
-                                                    <i class="ti-user"></i>
-                                                </span>
-                                            </div>
-                                        </div>
 
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <span class="input-group-addon">
-                                                    <i class="ti-home"></i>
-                                                </span>
-                                                <input type="text" class="form-control" id="adresse" placeholder="Adresse" required="true">
-                                            </div>
-                                        </div>
-                                        
+                                                    <div class="form-group col-md-6 ">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-user"></i>
+                                                            </span>
+                                                            <input type="text" class="form-control " id="nom" name="nom" placeholder="Nom" required="true" minlength="2" maxlength="15">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom" required="true" minlength="2" maxlength="15">
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-user"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
 
-                                        <div class=" form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <input type="text" class="form-control" id="datepicker-example-1" placeholder="Date de Naissance" >
-                                                <span class="input-group-addon">
-                                                    <i class="ti-calendar"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                               
+                                                    <div class="form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-home"></i>
+                                                            </span>
+                                                            <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true" minlength="2" maxlength="20">
+                                                        </div>
+                                                    </div>
 
-                                        <div class=" form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <input type="number" class="form-control" id="telephone" placeholder="Telephone" min="6" max="9"      >
-                                                <span class="input-group-addon">
-                                                    <i class="ti-mobile"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                  
-                                         <div class=" form-group col-md-6">
+
+                                                    <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="text" class="form-control" name="naissance" id="datepicker-example-1" placeholder="Date de Naissance" >
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="number" class="form-control" id="telephone" name="telephone" placeholder="Telephone"  minlength="9" maxlength="9"    >
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-mobile"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
                                                             <input type="email" class="form-control" id="login" placeholder="Email"  name="username" required="true" minlength="5" maxlength="30">
                                                             <span class="input-group-addon">
@@ -143,54 +142,52 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                               
 
-                                        <div class=" form-group col-md-6">
-                                            <div class="input-group with-addon-icon-left">
-                                                <input type="password" class="form-control" data-minlength="6" id="password" placeholder="Password" required="true" >
-                                                <span class="input-group-addon">
-                                                    <i class="ti-lock"></i>
-                                                </span>
-                                            </div>
-                                        </div> 
-                                       
-                                    
-                                                             <div class=" form-group col-md-6"> 
+                                                    <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="password" class="form-control" name="password"data-minlength="6" id="password" placeholder="Password" required="true"  minlength="2" maxlength="10" >
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-lock"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class=" form-group col-md-6"> 
                                                         <fieldset>
-                                                            <select class="custom-select w-100"  name="genre"  required="true">
+                                                            <select class="custom-select w-100" name="genre" required="true">
 
-                                                                <option value="">Genre</option>
+                                                                <option value="" >Genre</option>
                                                                 <option value="Masculin">Masculin</option>
                                                                 <option value="Feminin">Feminin</option>
                                                             </select>
                                                         </fieldset>
                                                     </div>
-                                   
-                                  
-                                   <div class=" form-group col-md-6">       
-                                        <button type="submit" class="btn btn-primary" style="background-color:#1B81C5; font-family: titilliumWeb-regular;">
-                                    <i class="ti-save">
 
-                                    </i> Enregistrer</button>
-                                       </div>
-                                    <div class=" form-group col-md-6">   
-                                <button type="reset"  class="btn btn-secondary">
-                                    <i class="ti-trash">
 
-                                    </i> Annuler</button>
-                                    </div>
+                                                    <div class=" form-group col-md-6">       
+                                                        <button type="submit" class="btn btn-primary" style="background-color:#1B81C5; font-family: titilliumWeb-regular;">
+                                                            <i class="ti-save">
 
-                                    
-                                    
-                                </div>
+                                                            </i> Enregistrer</button>
+                                                    </div>
+                                                    <div class=" form-group col-md-6">   
+                                                        <button type="reset"  class="btn btn-secondary">
+                                                            <i class="ti-trash">
 
-                                    
-                                
-                                </div>
+                                                            </i> Annuler</button>
+                                                    </div>
 
 
 
-                            </form>
+
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                        </form>
 
                         </div>
                     </div>

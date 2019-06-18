@@ -126,7 +126,7 @@
                             <!-- Team member -->
                             
                                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="#"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="documents.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">

@@ -1,6 +1,0 @@
-projectKey=sn.objis:GestionScolaire
-serverUrl=http://localhost:9000
-serverVersion=7.4.0.18908
-dashboardUrl=http://localhost:9000/dashboard?id=sn.objis%3AGestionScolaire
-ceTaskId=AWtcpj38379Ud5V7pJWO
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AWtcpj38379Ud5V7pJWO

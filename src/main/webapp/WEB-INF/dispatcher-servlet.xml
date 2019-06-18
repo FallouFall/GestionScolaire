@@ -27,6 +27,8 @@
                 <prop key="professeur.htm">professeurController</prop>
                 <prop key="directeur.htm">directeurController</prop>
                 <prop key="etudiant.htm">etudiantController</prop>
+                  <prop key="documents.htm">etudiantController</prop>
+                   <prop key="documentsMath.htm">etudiantController</prop>
                 <prop key="ressources.htm">administrationController</prop>
                 <prop key="profil.htm">profilController</prop>
                 <prop key="GererAdmin.htm">gererAdminController</prop>
