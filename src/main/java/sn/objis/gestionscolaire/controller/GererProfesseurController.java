@@ -23,7 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
 import sn.objis.gestionscolaire.domain.Account;
 import sn.objis.gestionscolaire.domain.Classes;
+import sn.objis.gestionscolaire.domain.Documents;
 import sn.objis.gestionscolaire.domain.Filiere;
+import sn.objis.gestionscolaire.domain.Matiere;
 import sn.objis.gestionscolaire.domain.Profil;
 import sn.objis.gestionscolaire.domain.User;
 
@@ -33,12 +35,71 @@ import sn.objis.gestionscolaire.domain.User;
  */
 @Controller
 public class GererProfesseurController {
-
+   List<Documents> docs = new ArrayList<>();
     Connexion con = new Connexion();
     JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
     public ModelAndView mav = new ModelAndView();
     List<Classes> classes;
     List<Filiere> filieres;
+       List<Matiere> matiere = new ArrayList<>();
+
+    @RequestMapping("documentsProf.htm")
+    public ModelAndView upload() {
+        mav.setViewName("documentsProf");
+        return mav;
+    }
+    
+     @RequestMapping("AjouterDocuments.htm")
+    public ModelAndView uploadDocum() {
+           String sql = "SELECT * from matiere  ";
+            matiere = jdtbcTemplate.query(sql,
+                    new Object[]{}, (ResultSet rs, int rowNum) -> {
+                        Matiere c = new Matiere();
+                        c.setId(rs.getInt(1));
+                        c.setMatricule(rs.getString(2));
+                        c.setNom(rs.getString(3));
+                        c.setCreation(rs.getDate(4));
+                        c.setDescription(rs.getString(5));
+
+                        return c;
+                    });
+           mav.addObject("matiere", matiere);
+         
+        mav.setViewName("AjouterDocuments");
+        return mav;
+    }
+    
+    
+ @RequestMapping("documentsMathProf.htm")
+    public ModelAndView uploadMath() {
+          String sql = "SELECT * from documents where idmatiere=?";
+        docs = jdtbcTemplate.query(sql,
+                new Object[]{1}, (ResultSet rs, int rowNum) -> {
+                    Documents c = new Documents();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setPublue(rs.getString(3));
+                    c.setNom(rs.getString(4));
+                    c.setDate(rs.getDate(5));
+                  try {
+                        String encodeBase64 = Base64.encodeBase64String(rs.getBytes(6));
+                        c.setCover(encodeBase64);
+                       
+                       
+                    } catch (Exception e) {
+                    }
+                    return c;
+                });
+   
+     
+
+
+         mav.addObject("documents", docs);
+        mav.setViewName("documentsMathProf");
+        return mav;
+    }
+    
+
 
     @RequestMapping("GererProfesseur.htm")
     public ModelAndView welcome() {
@@ -69,56 +130,48 @@ public class GererProfesseurController {
         return mav;
     }
 
+    @RequestMapping(value = "AjouterProfesseur.htm", method = RequestMethod.GET)
+    public void ajouterAdmin() {
+        ModelAndView mav = new ModelAndView("redirect:/AjouterProfesseur.htm");
 
- @RequestMapping(value = "AjouterProfesseur.htm",method = RequestMethod.GET)
-    public  void ajouterAdmin()          
-    {
-        ModelAndView mav=new ModelAndView("redirect:/AjouterProfesseur.htm");
-        
-      
     }
-    
-       @RequestMapping(value="AjouterProfesseur.htm",method = RequestMethod.POST)
-    public  void saveAdmin(HttpServletRequest req)          
-    {
+
+    @RequestMapping(value = "AjouterProfesseur.htm", method = RequestMethod.POST)
+    public void saveAdmin(HttpServletRequest req) {
         try {
-            
-       
-       User user= new User();
-       user.setNom(req.getParameter("nom"));
-       user.setPrenom(req.getParameter("prenom"));
-       user.setAdresse(req.getParameter("adresse"));  
-       user.setTelephone(req.getParameter("telephone"));
-       user.setGenre(req.getParameter("genre"));
-       
-       Account account =new Account(4);
-       
-       Profil profil=new Profil();
-       profil.setIdaccount(account);
-       profil.setPassword(req.getParameter("password"));
-       profil.setUsername(req.getParameter("username"));
-       user.setIdprofil(profil);
-       
-       String sql="insert into profil values (?,?,?,?)";
-       jdtbcTemplate.update(sql,null,profil.getIdaccount().getId(),profil.getPassword(),profil.getUsername());
-      
-       sql="Select Max(id) from profil";
-       boolean result=false;
-       int count=jdtbcTemplate.queryForObject(sql, new Object[]{},Integer.class);
-       if(count>0)
-       {
-           result= true;
-       }
- 
-     sql="insert into user values (?,?,?,?,?,?,?,?,?)";
-      jdtbcTemplate.update(sql,null,user.getAdresse(),user.getNom(),user.getPhoto(),user.getPrenom(),user.getTelephone(),count,"AD"+count,user.getGenre());
-       
-  } catch (Exception e) {
+
+            User user = new User();
+            user.setNom(req.getParameter("nom"));
+            user.setPrenom(req.getParameter("prenom"));
+            user.setAdresse(req.getParameter("adresse"));
+            user.setTelephone(req.getParameter("telephone"));
+            user.setGenre(req.getParameter("genre"));
+
+            Account account = new Account(4);
+
+            Profil profil = new Profil();
+            profil.setIdaccount(account);
+            profil.setPassword(req.getParameter("password"));
+            profil.setUsername(req.getParameter("username"));
+            user.setIdprofil(profil);
+
+            String sql = "insert into profil values (?,?,?,?)";
+            jdtbcTemplate.update(sql, null, profil.getIdaccount().getId(), profil.getPassword(), profil.getUsername());
+
+            sql = "Select Max(id) from profil";
+            boolean result = false;
+            int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
+            if (count > 0) {
+                result = true;
+            }
+
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, "AD" + count, user.getGenre());
+
+        } catch (Exception e) {
             System.out.println(e);
         }
 
-        
-      
     }
 
     @RequestMapping(value = "GererProfesseur.htm", method = RequestMethod.POST)
@@ -183,12 +236,12 @@ public class GererProfesseurController {
 
     @RequestMapping(value = "gererNote.htm", method = RequestMethod.POST)
     public ModelAndView findEtudiants(HttpServletRequest req) {
-         mav.addObject("findListEtudiants", null);
+        mav.addObject("findListEtudiants", null);
         String classe = req.getParameter("classe");
         String filiere = req.getParameter("filiere");
-           mav.addObject("classe", classe);
-              mav.addObject("filiere", filiere);
-        
+        mav.addObject("classe", classe);
+        mav.addObject("filiere", filiere);
+
         String sql = "SELECT DISTINCT (user.id),user.matricule,user.nom,user.prenom  from user ,classes,filiere where classes.nom =? and filiere.nom=?";
 
         List<User> actors = jdtbcTemplate.query(
@@ -205,7 +258,7 @@ public class GererProfesseurController {
                 return c;
             }
         });
-        
+
         if (!actors.isEmpty()) {
             mav.addObject("findListEtudiants", actors);
 
@@ -213,7 +266,7 @@ public class GererProfesseurController {
             mav.addObject("findListEtudiants", null);
 
         }
-       
+
         return mav;
 
     }

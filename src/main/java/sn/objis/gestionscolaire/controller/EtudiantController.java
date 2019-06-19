@@ -81,7 +81,7 @@ public class EtudiantController {
      return mav;
     }
     
-       @RequestMapping("etudiant.htm")
+       
  public void deconnection(HttpServletRequest req,HttpServletResponse rep) throws IOException
     {
 	Cookie loginCookie = null;
