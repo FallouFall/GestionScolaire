@@ -6,20 +6,37 @@
 package sn.objis.gestionscolaire.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
 import sn.objis.gestionscolaire.domain.Account;
@@ -611,4 +628,59 @@ public class GererDirecteurController {
         rep.sendRedirect("index.htm");
 
     }
+    
+  @RequestMapping(value = "printInscriptions.htm", method = RequestMethod.GET)
+  @ResponseBody
+  public void getRpt1(HttpServletResponse response) throws JRException, IOException {
+      try {
+         
+   
+    InputStream jasperStream = this.getClass().getResourceAsStream("/Classes.jasper");
+    Map<String,Object> params = new HashMap<>();
+    JasperReport jasperReport = (JasperReport) JRLoader.loadObject(jasperStream);  
+      String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.id,inscription.date,classes.description FROM user,inscription,classes WHERE user.id=inscription.iduser ";
+        listeInscription = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Inscription c = new Inscription();
+                    User u = new User();
+                    u.setId(rs.getInt(1));
+                    u.setMatricule(rs.getString(2));
+                    u.setNom(rs.getString(3));
+                    u.setPrenom(rs.getString(4));
+                    u.setTelephone(rs.getString(5));
+                    c.setMatricule(rs.getString(6));
+                    c.setDate(rs.getDate(8));
+                    c.setIduser(u);
+                    Classes s = new Classes();
+                    s.setDescription(rs.getString(9));
+                    s.setNom(rs.getString(9));
+                    c.setIdclasse(s);
+
+                    if ("Masculin".equals(rs.getString(6))) {
+                        nbHommes++;
+                    } else {
+
+                        nbFemmes++;
+                    }
+
+                    return c;
+                });
+
+        mav.addObject("inscriptions", listeInscription);
+  JRBeanCollectionDataSource ds=new JRBeanCollectionDataSource(listeInscription);
+
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, ds);
+    response.setContentType("application/x-pdf");
+    response.setHeader("Content-disposition", "inline; filename=inscription.pdf");
+    
+    
+    final OutputStream outStream = response.getOutputStream();
+    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+         } catch (Exception e) {
+             System.out.println(e.getLocalizedMessage());
+      }
+  }
+  
+    
+    
 }

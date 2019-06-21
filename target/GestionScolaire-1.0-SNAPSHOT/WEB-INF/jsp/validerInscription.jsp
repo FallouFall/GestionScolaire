@@ -107,13 +107,13 @@
 
                 <div class="container-fluid">
 
-                    <div class="loader"><div class="page-loader"></div></div>
+                  
 
 
 
 
                     <!-- DataTables Example -->
-                    <div class="card mb-3 slide-in ">
+                    <div class="card mb-3 ">
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -184,6 +184,13 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
+                                
+                                  <form method="GET">
+                                <div class="form-group">
+                                 
+                                        <a class="d-block small" href="printInscriptions.htm">Forgot Password?</a>
+                                </div>
+                                  </form>
                             </div>
                         </div>
 

@@ -18,11 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.lucene.util.IOUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import sn.objis.gestionscolaire.config.Connexion;
 import sn.objis.gestionscolaire.domain.Documents;
+import sn.objis.gestionscolaire.domain.Evenement;
 
 /**
  *
@@ -49,6 +51,34 @@ public class EtudiantController {
       
         mav.setViewName("documents");
      return mav;
+    }
+    
+    @RequestMapping("tableau.htm")
+    public ModelAndView annonces() {
+      String sql = "SELECT * from evenement order by id desc limit 15;";
+
+        List<Evenement> eve = jdtbcTemplate.query(
+                sql,
+                new Object[]{},
+                new RowMapper<Evenement>() {
+            public Evenement mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Evenement c = new Evenement();
+                c.setId(rs.getInt(1));
+                c.setTitre(rs.getString(2));
+                c.setSoustitre(rs.getString(3));
+                c.setDebut(rs.getString(4));
+                c.setFin(rs.getString(5));
+                c.setDescription(rs.getString(6));
+                     c.setLieu(rs.getString(7));
+               
+     
+                
+                return c;
+            }
+        });
+      mav.addObject("evenements", eve);
+        mav.setViewName("tableau");
+        return mav;
     }
     
         @RequestMapping("documentsMath.htm")

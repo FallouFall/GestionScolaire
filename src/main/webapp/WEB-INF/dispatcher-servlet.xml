@@ -20,14 +20,16 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">loginController</prop>
+                  <prop key="printInscriptions.htm">gererDirecteurController</prop>
                 <prop key="gererCalendrier.htm">gererDirecteurController</prop>
                 <prop key="administration.htm">administrationController</prop>
                 <prop key="secretaire.htm">secretaireController</prop>
+                  <prop key="Annonces.htm">secretaireController</prop>
                 <prop key="comptable.htm">comptableController</prop>
                 <prop key="professeur.htm">professeurController</prop>
                 <prop key="directeur.htm">directeurController</prop>
                 <prop key="etudiant.htm">etudiantController</prop>
-                
+                   <prop key="tableau.htm">etudiantController</prop>
                   <prop key="documents.htm">etudiantController</prop>
                    <prop key="documentsMath.htm">etudiantController</prop>
                    
