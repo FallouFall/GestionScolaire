@@ -95,7 +95,7 @@ if(userName == null) response.sendRedirect("index.htm");
 
         <div class="container-fluid">
 
-               <div class="loader"><div class="page-loader"></div></div>
+          
                 
           <!-- DataTables Example -->
          <div class="card mb-3 ">
@@ -119,7 +119,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                             <th>Prenom</th>
                                             <th>Adresse</th>
                                             <th>Telephone</th>
-                                            <th>Modifier</th>
+                                                 <th>Statut</th>
 
                                         </tr>
                                     </thead>
@@ -131,7 +131,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                             <th>Prenom</th>
                                             <th>Adresse</th>
                                             <th>Telephone</th>
-                                            <th>Modifier</th>
+                                            <th>Statut</th>
 
 
 
@@ -139,12 +139,16 @@ if(userName == null) response.sendRedirect("index.htm");
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="element" items="${liste}">
-
+                                     <c:url var="link" value="lock.htm">
+                               <c:param name="back" value="GererComptable.htm"/>
+                                  <c:param name="statut" value="${element.statut}"/>
+                                   <c:param name="profilId" value="${element.idprofil.id}"/>
+                                   </c:url>
                                             <tr style="text-align: center;vertical-align: middle;">
 
                                                 <td> 
                                                     <c:if test="${element.imageId != null}">
-                                                          <img alt="" class="image--cover" src="data:image/jpeg;base64,${element.imageId} " width="54">
+                                                          <img alt="" class="image--cover" src="data:image/jpeg;base64,${element.imageId} " >
                                                     </c:if>
                                                           
                                                     <c:if test="${element.imageId == null}">
@@ -158,7 +162,16 @@ if(userName == null) response.sendRedirect("index.htm");
                                                 <td>${element.prenom}</td>
                                                 <td>${element.adresse}</td>
                                                 <td>${element.telephone}</td>
-                                                <td> <a class="ti-reload" href="update"></a> </td>
+                                                    <td> 
+                                                        <c:if test="${element.statut == 0}">
+                                                              <div class="form-label-group">
+                                                        <a href="${link}" class="ti-lock"></a>
+                                                    </div></c:if>
+                                                          
+                                                    <c:if test="${element.statut != 0}">
+                                                        <a href="${link}" class="ti-unlock"></a>
+                                                    </c:if>
+                                                </td>
 
 
 
@@ -190,24 +203,23 @@ if(userName == null) response.sendRedirect("index.htm");
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                     
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+
+                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current sessionsss.</div>
+                    <div class="modal-body">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                        <form method="POST">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
                     
-                        <button type="submit" class="btn btn-primary">Logout</button>
-                        </form>
                     </div>
                 </div>
             </div>

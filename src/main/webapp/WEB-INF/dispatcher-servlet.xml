@@ -20,9 +20,12 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">loginController</prop>
+                   <prop key="forget.htm">loginController</prop>
                   <prop key="printInscriptions.htm">gererDirecteurController</prop>
                 <prop key="gererCalendrier.htm">gererDirecteurController</prop>
                 <prop key="administration.htm">administrationController</prop>
+                    <prop key="lock.htm">administrationController</prop>
+                  <prop key="deconnecter.htm">profilController</prop>
                 <prop key="secretaire.htm">secretaireController</prop>
                   <prop key="Annonces.htm">secretaireController</prop>
                 <prop key="comptable.htm">comptableController</prop>
@@ -32,7 +35,7 @@
                    <prop key="tableau.htm">etudiantController</prop>
                   <prop key="documents.htm">etudiantController</prop>
                    <prop key="documentsMath.htm">etudiantController</prop>
-                   
+                     <prop key="mesPayements.htm">etudiantController</prop>
                    
                    <prop key="documentsProf.htm">gererProfesseurController</prop>
                    
@@ -83,51 +86,51 @@
     The index controller.
     -->
     <bean name="loginController"
-          class="sn.objis.gestionscolaire.controller.LoginController"
+          class="sn.isi.gestionscolaire.controller.LoginController"
     />
  
     
    
     <bean name="administrationController"
-          class="sn.objis.gestionscolaire.controller.AdministrationController"
+          class="sn.isi.gestionscolaire.controller.AdministrationController"
     />
     <bean name="secretaireController"
-          class="sn.objis.gestionscolaire.controller.SecretaireController"
+          class="sn.isi.gestionscolaire.controller.SecretaireController"
     />
     <bean name="comptableController"
-          class="sn.objis.gestionscolaire.controller.ComptableController"
+          class="sn.isi.gestionscolaire.controller.ComptableController"
     />
     <bean name="professeurController"
-          class="sn.objis.gestionscolaire.controller.ProfesseurController"
+          class="sn.isi.gestionscolaire.controller.ProfesseurController"
     />
     <bean name="directeurController"
-          class="sn.objis.gestionscolaire.controller.DirecteurController"
+          class="sn.isi.gestionscolaire.controller.DirecteurController"
     />
     <bean name="etudiantController"
-          class="sn.objis.gestionscolaire.controller.EtudiantController"
+          class="sn.isi.gestionscolaire.controller.EtudiantController"
     />
                        
     <bean name="gererAdminController"
-          class="sn.objis.gestionscolaire.controller.GererAdminController"
+          class="sn.isi.gestionscolaire.controller.GererAdminController"
     />
                        
     <bean name="gererProfesseurController"
-          class="sn.objis.gestionscolaire.controller.GererProfesseurController"
+          class="sn.isi.gestionscolaire.controller.GererProfesseurController"
     />
     <bean name="gererSecretaireController"
-          class="sn.objis.gestionscolaire.controller.GererSecretaireController"
+          class="sn.isi.gestionscolaire.controller.GererSecretaireController"
     />
     <bean name="gererDirecteurController"
-          class="sn.objis.gestionscolaire.controller.GererDirecteurController"
+          class="sn.isi.gestionscolaire.controller.GererDirecteurController"
     />
     <bean name="gererComptableController"
-          class="sn.objis.gestionscolaire.controller.GererComptableController"
+          class="sn.isi.gestionscolaire.controller.GererComptableController"
     />
     <bean name="gererRessourcesController"
-          class="sn.objis.gestionscolaire.controller.GererRessourcesController"
+          class="sn.isi.gestionscolaire.controller.GererRessourcesController"
     />
     <bean name="profilController"
-          class="sn.objis.gestionscolaire.controller.HeaderController"
+          class="sn.isi.gestionscolaire.controller.HeaderController"
     />
  
  

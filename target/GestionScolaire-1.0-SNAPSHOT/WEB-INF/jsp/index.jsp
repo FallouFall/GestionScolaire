@@ -6,6 +6,8 @@
 
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +20,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Bienvenue</title>
+        <title>Bienvenue</title>  
 
 
 
@@ -36,11 +38,28 @@
         <link rel="stylesheet" href="css/cardeffects.css">
         <link rel="stylesheet" href="./css/themify-icons.css">
         <link rel="stylesheet" href="css/toastNotification.css">
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js" ></script>
 
 
     </head>
 
     <body >
+        <%
+            String message = "BONJOUR";
+            Cookie[] cookies = request.getCookies();
+
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("MSG")) {
+                        message = cookie.getValue();
+                     
+                    }
+
+                }
+            }
+          
+        %>
 
         <%@include file="Header.jsp" %>
 
@@ -57,12 +76,12 @@
 
 
                 <div class="container" style="margin-top: -30px">
-                
-              
+
+
 
                     <div class="card card-login mx-auto mt-5 " style="    box-shadow: none;  text-align: center;">
 
-                        <h4 class="slide-in "  style="color: #54a2d9;font-family: titilliumWeb-light;font-size: 3em;"><b style="font-size: 1.5em;font-family: titilliumWeb-light; ">B</b>onjour</h4>
+                        <h4 class="slide-in "  style="color: #54a2d9;font-family: titilliumWeb-light;font-size: 2.5em;"><%= message %></h4>
                         <div class="card-body">
 
                             <form method="POST">
@@ -83,7 +102,7 @@
                                         <span class="input-group-addon">
                                             <i class="ti-lock"></i>
                                         </span>
-                                        <input type="password"   value="${password}" class="form-control " name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
+                                        <input type="password"  class="form-control " name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
                                     </div>
                                 </div>
 
@@ -92,20 +111,40 @@
                                 <br>
                                 <div class="form-group">
                                     <div class="form-label-group">   
-                                        <button type="submit" class="btn btn-primary"  style="background-color: #0272bd   ;">
+                                        <button type="submit" class="btn btn-primary"   style="background-color: #0272bd   ;">
                                             <i class="ti-world">
 
                                             </i>Se Connecter</button>
-                               
+
+
                                     </div>
                                 </div>
 
 
                             </form>
+                        
+
+                            <c:if test="${not empty error}">
+                                <script>
+
+                                    $(document).ready(function () {
+                                        launch_toast();
+                                    })
+                                </script>
+
+
+                                <div id="toast" ><div id="img"><i class="ti-key"></i></div><div id="desc"> ${error}</div></div>
+
+                            </c:if>
+                            <c:if test="${empty error}">
+
+
+
+                            </c:if>
                             <br>
                             <div class="text-center">
 
-                                <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                                <a class="d-block small" href="forget.htm">Mot De Passe Oublie ?</a>
                             </div>
 
 
@@ -146,13 +185,13 @@
     <script src="/js/toast.js"></script>
     <script src="js/sb-admin.min.js"></script>
     <script>
-    function launch_toast() {
-        var x = document.getElementById("toast");
-        x.className = "show";
-        setTimeout(function () {
-            x.className = x.className.replace("show", "");
-        }, 5000);
-    }
+                                    function launch_toast() {
+                                        var x = document.getElementById("toast");
+                                        x.className = "show";
+                                        setTimeout(function () {
+                                            x.className = x.className.replace("show", "");
+                                        }, 5000);
+                                    }
     </script>
 
 

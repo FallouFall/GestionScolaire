@@ -2546,13 +2546,13 @@ fieldset:disabled a.btn {
 .btn-primary {
   color: #fff;
   font-family: titilliumWeb-light;
-background-color: #1B81C5;
+background-color: #0272bd;
   
 }
 
 .btn-primary:hover {
   color: #fff;
-  border-color: #0062cc;
+  border-color: #0272bd;
   font-family: titilliumWeb-light;
 
 }

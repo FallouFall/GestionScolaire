@@ -184,7 +184,7 @@
 
                             </div>
                         </div>
-
+   <form method="POST">
                         <div class="card  " style="width: 48%;float: left;  margin-top: 50px;" >
                             <div class="card-header" style="text-align: center;background-color: #fff;">
 
@@ -207,17 +207,27 @@
 
                             </div>
                             <div class="card-body">
+                               
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
 
-                                    <div class=" form-group col-md-6">
-                                        <div class="input-group with-addon-icon-left">
-                                            <input type="text" class=" classe form-control"  name="classe"  id="classe" placeholder="Classe" required="true" >
-                                            <span class="input-group-addon">
-                                                <i class="ti-bookmark-alt"></i>
-                                            </span>
-                                        </div>
-                                    </div>
+                                        <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="text" class="form-control" name="mois" id="datepicker-example-1" placeholder="Mois" >
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                    
+                                             <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="number" class="form-control" name="paye"  placeholder="Montant Recu" max="${mensu}" min="5000"> 
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
 
 
 
@@ -229,8 +239,8 @@
 
                             </div>
                         </div>
-                        <div class="card  " style="width: 48%;float: right; margin-top: 50px;">
-                            <div class="card-header" style="text-align: center;background-color: #fff;">
+                              <div class="card  " style="width: 48%;float: right; margin-top: 50px;">
+                      <div class="card-header" style="text-align: center;background-color: #fff;">
 
                                 <div class="ibox-body">
                                     <div class="flexbox" style="text-align: center;">
@@ -252,7 +262,7 @@
                             </div>
                             <div class="card-body" >
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <form method="POST">
+                                  
                                         <div class="row">
 
                                             <div class="col-6 text-muted">A payer:</div>
@@ -263,11 +273,12 @@
 
                                                     </i> Payer</button></div>
                                         </div>
-                                    </form>
+                                  
                                 </div>
 
                             </div>
-                        </div>
+                        </div
+   </form>
 
                     </c:if>
 
@@ -356,110 +367,10 @@
         <script src="js/demo.min.js"></script>
         <script src="js/shards.min.js"></script>
         <script src="js/sb-admin.min.js"></script>
-        <script src="js/bootstrap3-typeahead.js"></script>
-        <script>
-            var $input = $(".mois");
+      
+        
 
-            $input.typeahead({
-                source: [
-                    {id: "someId1", name: "Janvier"},
-                    {id: "someId2", name: "Fevrier"},
-                    {id: "someId3", name: "Mars"},
-                    {id: "someId4", name: "Avril"},
-                    {id: "someId5", name: "Mai"},
-                    {id: "someId6", name: "Juin"},
-                    {id: "someId7", name: "Juillet"},
-                    {id: "someId4", name: "Aout"},
-                    {id: "someId5", name: "Septembre"},
-                    {id: "someId6", name: "Octobre"},
-                    {id: "someId7", name: "Novembre"},
-                    {id: "someId7", name: "Decembre"}
-                ],
-                autoSelect: true
-            });
-            $input.change(function () {
-                var current = $input.typeahead("getActive");
-                if (current) {
-
-                    if (current.name == $input.val()) {
-                        console.log(current['name']);
-
-                    } else {
-                        // This means it is only a partial match, you can either add a new item
-                        // or take the active if you don't want new items
-                    }
-                } else {
-                    // Nothing is active so it is a new value (or maybe empty value)
-                }
-            });
-        </script>
-        <script>
-            var $input = $(".classe");
-
-            $input.typeahead({
-                source: [
-                    {id: "someId1", name: "Janvier"},
-                    {id: "someId2", name: "Fevrier"},
-                    {id: "someId3", name: "Mars"},
-                    {id: "someId4", name: "Avril"},
-                    {id: "someId5", name: "Mai"},
-                    {id: "someId6", name: "Juin"},
-                    {id: "someId7", name: "Juillet"},
-                    {id: "someId4", name: "Aout"},
-                    {id: "someId5", name: "Septembre"},
-                    {id: "someId6", name: "Octobre"},
-                    {id: "someId7", name: "Novembre"},
-                    {id: "someId7", name: "Decembre"}
-                ],
-                autoSelect: true
-            });
-            $input.change(function () {
-                var current = $input.typeahead("getActive");
-                if (current) {
-
-                    if (current.name == $input.val()) {
-                        console.log(current['name']);
-
-                    } else {
-                        // This means it is only a partial match, you can either add a new item
-                        // or take the active if you don't want new items
-                    }
-                } else {
-                    // Nothing is active so it is a new value (or maybe empty value)
-                }
-            });
-        </script>
-
-        <script>
-            var $input = $(".filiere");
-
-            $input.typeahead({
-                source: [
-                    {id: "someId1", name: "jQueryScript.Net"},
-                    {id: "someId2", name: "Angular Components"},
-                    {id: "someId3", name: "React Components"},
-                    {id: "someId4", name: "Vue.js Components"},
-                    {id: "someId5", name: "Native JavaScript"},
-                    {id: "someId6", name: "jQuery Plugins"},
-                    {id: "someId7", name: "Vanilla JavaScript"}
-                ],
-                autoSelect: true
-            });
-            $input.change(function () {
-                var current = $input.typeahead("getActive");
-                if (current) {
-
-                    if (current.name == $input.val()) {
-
-                    } else {
-                        // This means it is only a partial match, you can either add a new item
-                        // or take the active if you don't want new items
-                    }
-                } else {
-                    // Nothing is active so it is a new value (or maybe empty value)
-                }
-            });
-        </script>
+      
 
         <script>
             $("#datepicker-example-1").datepicker({
@@ -467,8 +378,22 @@
                 format: "MM",
                 viewMode: "months",
                 minViewMode: "months"
+                
+               
             });
         </script>
-    </body>
+  <style>
+            .avatar-pic {
+                width: 150px;
+            }
+        
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
+
+        </style>
 
 </html>
+    </body>

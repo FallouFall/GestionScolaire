@@ -123,7 +123,7 @@
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
-                              Programme ${cls}
+                              Programme ${cls} ${fl}
 
 
                             </span>  </div>

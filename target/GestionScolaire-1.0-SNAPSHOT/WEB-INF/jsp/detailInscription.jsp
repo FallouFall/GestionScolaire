@@ -69,8 +69,8 @@
                             <div class="card card-signin mx-auto mt-5" style="margin-top: -15px;">
                                 <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
 
-                                    <span style="font-family: dax-bold;    font-size: 2rem;">
-                                      Valider Inscription
+                                    <span style="font-family: dax-bold;   font-size: 2rem;">
+                                     Valider Inscription
 
 
                                     </span>  </div>
@@ -81,23 +81,23 @@
                                                 <div class="flexbox" style="text-align: center;">
                                                     <div class="flexbox-b">
                                                         <div class="ml-5 mr-5">
-                                                          <c:if test="${photo != null}">
+                                                          <c:if test="${photoEtudiant != null}">
                                                               <img alt="" class="image--cover "  style="  width: 100px;
-                                                       height: 100px;"src="data:image/jpeg;base64,${photo} " >
+                                                       height: 100px;"src="data:image/jpeg;base64,${photoEtudiant} " >
                                                      </c:if>
                                                           
-                                                    <c:if test="${photo == null}">
+                                                    <c:if test="${photoEtudiant == null}">
                                                         <span class="ti-user" style="font-size: 3.8em;"></span>
                                                     </c:if>
                                                    
                                                         </div>
                                                       
-                                                        <span style="font-size: 2em">${inscription.nom} ${inscription.prenom}</span>   
+                                                        <span style="font-size: 2em">${inscription.iduser.nom} ${inscription.iduser.prenom}</span>   
                                                       
                                                         <div>
                                                            
                                                             <div class="text-muted font-13 mb-3">
-                                                                <span class="mr-3"><i class="ti-location-pin mr-2"></i>${inscription.adresse}</span>
+                                                                <span class="mr-3"><i class="ti-location-pin mr-2"></i>${inscription.iduser.adresse}</span>
                                                                 <span><i class="ti-calendar mr-2"></i>12.04.2018</span>
                                                             </div>
                                                             
@@ -122,8 +122,12 @@
                                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                              <div class="row">
                                          
+                                                 
+                                                  <div class="col-6 text-muted">Matricule:</div>
+                                                       <div class="col-6">${inscription.matricule}</div>
+                                                 
                                                 <div class="col-6 text-muted">Telephone :</div>
-                                                <div class="col-6">${inscription.telephone}</div>
+                                                <div class="col-6">${inscription.iduser.telephone}</div>
                                        
 
                                          
@@ -131,14 +135,13 @@
                                                 <div class="col-6">Etudiant</div>
                                                 
                                                   <div class="col-6 text-muted">Classe :</div>
-                                                <div class="col-6">${detail.idclasse}</div>
+                                                <div class="col-6">${inscription.idclasse.description}</div>
                                            
                                          
-                                                <div class="col-6 text-muted">Filiere :</div>
-                                                       <div class="col-6">${detail.idclasse.filiere}</div>
+                                               
                                                 
                                                 <div class="col-6 text-muted">Date :</div>
-                                                 <div class="col-6">${detail.date}</div>
+                                                 <div class="col-6">${inscription.date}</div>
                                                  
                                                       <form method="POST">
                                             <div class="form-group" >
@@ -202,25 +205,23 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current sessionsss.</div>
+                    <div class="modal-body">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                        <form method="POST">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary">Logout</button>
-                        </form>
+                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+                    
                     </div>
                 </div>
             </div>
