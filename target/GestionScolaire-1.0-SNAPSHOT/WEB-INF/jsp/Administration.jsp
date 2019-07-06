@@ -144,8 +144,8 @@
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
-                                            <p>   <span class="ti-server" style="font-size: 3em;" ></span></p>
-                                            <h4 class="card-title">Ressources</h4>
+                                            <p>   <span class="ti-help" style="font-size: 3em;" ></span></p>
+                                            <h4 class="card-title">Faqs</h4>
 
 
                                         </div>

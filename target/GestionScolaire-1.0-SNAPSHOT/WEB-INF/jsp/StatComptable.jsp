@@ -6,7 +6,9 @@
 
 
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,83 +20,67 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
-         <link rel="shortcut icon" href="images/webIcone.jpg"/>
+        <title>Statistiques</title>
+        <link rel="shortcut icon" href="images/webIcone.jpg"/>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/sb-admin.css" rel="stylesheet">
         <link href="css/police.css" rel="stylesheet">
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/shards.min.js"></script>
-        <script src="js/demo.min.js"></script>
+
         <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="./js/bootstrap.min.js" ></script>
+
+        <script src="js/shards.min.js"></script>
+        <script src="js/sb-admin.min.js"></script>
+
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script async="" src="//www.google-analytics.com/analytics.js"></script>
+
+        <script src="js/dist/Chart.min.js"></script>
+        <script src="js/dist/utils.js"></script>
+        <style type="text/css">/* Chart.js */
+            @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}
+        </style>
+        <style>
+            canvasLine{
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+            }
+            canvasBar{
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+            }
+        </style>
 
 
     </head>
 
     <body id="page-top">
-   <div class="loader"><div class="page-loader"></div></div>
-            <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
 
-           <a class="navbar-brand mr-1" href="Comptable.htm" style="color: #fff;    font-family: titilliumWeb-italic; font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Navbar Search -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-         
-          <div class="input-group-append">
-           
-          </div>
-        </div>
-      </form>
-
-      <!-- Navbar -->
-      <ul class="navbar-nav ml-auto ml-md-0" >
-       
-        <li class="nav-item dropdown no-arrow">
-        
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-          </div>
-        </li>
-      </ul>
-
-    </nav>
-
+        <%@include file="HeaderUser.jsp" %>
+        <%
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy ");
+            String date = sdf.format(new Date());
+        %>
         <div id="wrapper">
 
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav">
+
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="Comptable.htm">
-                         <i class="fas fa-home"></i>
+                    <a class="nav-link" href="comptable.htm">
+                        <i class="fas fa-home"></i>
                         <span>Accueil</span>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="InscriptionEtudiant.htm">
-                        <i class="fas fa-plus"></i>
-                        <span>Ajouter </span></a>
-                </li>
+
                 <li class="nav-item active">
-                    <a class="nav-link" href="ListeInscription.htm">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                    <a class="nav-link" href="#">
+                        <i class="ti-stats-up"></i>
+                        <span>Stats</span></a>
                 </li>
 
             </ul>
@@ -105,58 +91,66 @@
                 <div id="content-wrapper">
 
                     <div class="container-fluid">
-                        
-                 <div class="loader"><div class="page-loader"></div></div>
+
+                        <div class="loader"><div class="page-loader"></div></div>
                         <!-- Breadcrumbs-->
-                        <ol class="breadcrumb">
+                        <ol class="breadcrumb" style="font-family: dax-bold;
+                            box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,.1), 0 0.9375rem 1.40625rem rgba(90,97,105,.1), 0 0.25rem 0.53125rem rgba(90,97,105,.12), 0 0.125rem 0.1875rem rgba(90,97,105,.1);
+                            background-color: #fff;border-radius: 10px;color: #1f72b8;
+                            ">
                             <li class="breadcrumb-item">
-                                <a href="#">Statistiques</a>
+                                <span>Statistiques</span>
                             </li>
 
                         </ol>
 
                         <!-- Area Chart Example-->
                         <div class="card mb-3">
-                            <div class="card-header">
+                            <div class="card-header"  style="background-color: #fff;font-family: titilliumWeb-light;">
                                 <i class="fas fa-chart-area"></i>
-                                Area Chart Example</div>
+                                Effectif Par Classe</div>
                             <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                                <canvas id="myAreaChart" width="522" height="156" class="chartjs-render-monitor" style="display: block; width: 522px; height: 156px;"></canvas>
+
+
+                                <canvas id="canvasLine" style="display: block; width: 723px; height: 361px;" width="2169" height="1083" class="chartjs-render-monitor"></canvas>
                             </div>
-                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                            <div class="card-footer small text-muted">Mise à jour  <%= date%>
+
+                            </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="card mb-3">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar"></i>
-                                        Bar Chart Example</div>
-                                    <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                                        <canvas id="myBarChart" width="522" height="261" class="chartjs-render-monitor" style="display: block; width: 522px; height: 261px;"></canvas>
-                                    </div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
+
+
+
+
+                        <div class="card mb-3">
+                            <div class="card-header" style="background-color: #fff;font-family: titilliumWeb-light;">
+                                <i class="fas fa-chart-bar"></i>
+                                Diagramme en Barre</div>
+                            <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                <canvas id="bar-chart"  style="display: block; width: 804px; height: 402px;" width="1608" height="804" class="chartjs-render-monitor"></canvas>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="card mb-3">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-pie"></i>
-                                        Pie Chart Example</div>
-                                    <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                                        <canvas id="myPieChart" width="522" height="522" class="chartjs-render-monitor" style="display: block; width: 522px; height: 522px;"></canvas>
-                                    </div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
+                            <div class="card-footer small text-muted">Mise à jour  <%= date%></div>
                         </div>
+
+                        <div class="card mb-3">
+                            <div class="card-header" style="background-color: #fff;font-family: titilliumWeb-light;">
+                                <i class="fas fa-chart-pie"></i>
+                                Partition</div>
+                            <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                <canvas id="pie-chart" style="display: block; width: 804px; height: 402px;" width="1608" height="804" class="chartjs-render-monitor"></canvas>
+                            </div>
+                            <div class="card-footer small text-muted">Mise à jour  <%= date%></div>
+                        </div>
+
+
 
 
                     </div>
                     <!-- /.container-fluid -->
 
                     <!-- Sticky Footer -->
-                    
+
 
                 </div>
                 <!-- /.container-fluid -->
@@ -175,82 +169,26 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="modal fade" id="logoutModalClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelClasse" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelClasse">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="index.htm">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="/GestionScolaire">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+
+                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-body">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="index.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+
                     </div>
                 </div>
             </div>
@@ -261,22 +199,228 @@
 
 
 
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js" ></script>
 
-
-
- 
-    
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="js/shards.min.js"></script>
         <script src="js/sb-admin.min.js"></script>
-        <script src="vendor/chart.js/Chart.min.js"></script>
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-bar-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
+   
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+        <script>
+            var listeClasse = new Array();
+            <c:forEach var="element" items="${classes}">
+            listeClasse.push('${element.description}');
+            </c:forEach>
+
+
+            var nbParClas = new Array();
+            var max = new Array();
+            <c:forEach var="nombre" items="${nbParClasse}">
+            nbParClas.push('${nombre}');
+            max.push('8');
+            </c:forEach>
+
+            var MONTHS = listeClasse;
+            var config = {
+                type: 'line',
+                data: {
+                    labels: listeClasse,
+                    datasets: [{
+                            label: 'NBr Inscritions par Classes',
+                            backgroundColor: window.chartColors.blue,
+                            borderColor: window.chartColors.blue,
+                            data: nbParClas
+                            ,
+                            fill: false,
+                        }, {
+                            label: 'Limite Inscription (8)',
+                            fill: false,
+                            backgroundColor: window.chartColors.red,
+                            borderColor: window.chartColors.red,
+                            data: max,
+                        }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: ''
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Classes'
+                                }
+                            }],
+                        yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Effectif'
+                                }
+                            }]
+                    }
+                }
+            };
+
+            window.onload = function () {
+                var ctx = document.getElementById('canvasLine').getContext('2d');
+                window.myLine = new Chart(ctx, config);
+            };
+
+            document.getElementById('randomizeData').addEventListener('click', function () {
+                config.data.datasets.forEach(function (dataset) {
+                    dataset.data = dataset.data.map(function () {
+                        return randomScalingFactor();
+                    });
+
+                });
+
+                window.myLine.update();
+            });
+
+            var colorNames = Object.keys(window.chartColors);
+            document.getElementById('addDataset').addEventListener('click', function () {
+                var colorName = colorNames[config.data.datasets.length % colorNames.length];
+                var newColor = window.chartColors[colorName];
+                var newDataset = {
+                    label: 'Dataset ' + config.data.datasets.length,
+                    backgroundColor: newColor,
+                    borderColor: newColor,
+                    data: [],
+                    fill: false
+                };
+
+                for (var index = 0; index < config.data.labels.length; ++index) {
+                    newDataset.data.push(randomScalingFactor());
+                }
+
+                config.data.datasets.push(newDataset);
+                window.myLine.update();
+            });
+
+            document.getElementById('addData').addEventListener('click', function () {
+                if (config.data.datasets.length > 0) {
+                    var month = MONTHS[config.data.labels.length % MONTHS.length];
+                    config.data.labels.push(month);
+
+                    config.data.datasets.forEach(function (dataset) {
+                        dataset.data.push(randomScalingFactor());
+                    });
+
+                    window.myLine.update();
+                }
+            });
+
+            document.getElementById('removeDataset').addEventListener('click', function () {
+                config.data.datasets.splice(0, 1);
+                window.myLine.update();
+            });
+
+            document.getElementById('removeData').addEventListener('click', function () {
+                config.data.labels.splice(-1, 1); // remove the label first
+
+                config.data.datasets.forEach(function (dataset) {
+                    dataset.data.pop();
+                });
+
+                window.myLine.update();
+            });
 
 
 
 
 
+        </script>
+
+        <script>
+            var listeFiliere = new Array();
+            <c:forEach var="element" items="${filieres}">
+            listeFiliere.push('${element.nom}');
+            </c:forEach>
+
+            var nbInscriptions = new Array();
+            <c:forEach var="nombreInscrit" items="${nbInscriptions}">
+            nbInscriptions.push('${nombreInscrit}');
+            </c:forEach>
+
+
+
+            new Chart(document.getElementById("bar-chart"), {
+                type: 'bar',
+                data: {
+                    labels: listeFiliere,
+
+                    datasets: [
+                        {
+                            label: "Nombre d'Inscription ",
+                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                            data: nbInscriptions
+                        }
+                    ]
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                        display: true,
+                        text: 'Nbr Inscriptions par Filiere'
+                    }
+                }
+            });
+        </script>
+
+        <script>
+            new Chart(document.getElementById("pie-chart"), {
+                type: 'pie',
+                data: {
+                    labels: listeFiliere,
+                    datasets: [{
+                            label: "Population par filiere",
+                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                            data: nbInscriptions
+                        }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Repartitions par filiere'
+                    }
+                }
+            });
+        </script>
+
+        <script>
+            function printContent(el) {
+                var restorepage = $('body').html();
+                var printcontent = $('#' + el).clone();
+                var enteredtext = $('#text').val();
+                $('body').empty().html(printcontent);
+                window.print();
+                $('body').html(restorepage);
+                $('#text').html(enteredtext);
+                setTimeout(function () {
+                    location.reload()
+                }, 1);
+            }
+
+        </script>
 
     </body>
 

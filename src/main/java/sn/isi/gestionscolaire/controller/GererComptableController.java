@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -188,6 +189,97 @@ public class GererComptableController {
         return mav;
 
     }
+ /**
+     *
+     */
+    @RequestMapping(value = "StatComptable.htm")
+    public ModelAndView statistique() {
+        
+     
+        String sql = "SELECT id, nom from filiere  ";
+        filieres = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Filiere c = new Filiere();
+                    c.setId(rs.getInt(1));           
+                    c.setNom(rs.getString(2));
+               
+
+                    return c;
+                });
+        
+         sql = "SELECT id, matricule,description from classes  ";
+        classes = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));           
+                    c.setMatricule(rs.getString(2));
+                    c.setDescription(rs.getString(3));
+               
+
+                    return c;
+                });
+       sql = "SELECT classes.filiere ,inscription.idclasse from inscription,classes,filiere WHERE filiere.id=classes.filiere AND inscription.idclasse=classes.id ";
+      listeInscription = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Inscription ins = new Inscription();
+                   Filiere fl=new Filiere();
+                    Classes cls=new Classes();
+                    cls.setId(rs.getInt(2));
+                    fl.setId(rs.getInt(1));
+                    cls.setFiliere(fl);
+                    ins.setIdclasse(cls);
+                    return ins;
+                });
+        
+      int tab[] = new int [filieres.size()];
+      int nbInsParPeriode[] = new int [4];
+        int i=0;
+        for (Filiere filiere : filieres) { 
+             int cpt=0;
+            for (Inscription inscription : listeInscription) {
+              
+                
+                if( inscription.getIdclasse().getFiliere().getId() == filiere.getId())
+                {
+                    cpt++;
+                }
+              
+            }
+              tab[i]=cpt;
+                i++;
+                
+        }
+        
+        
+        
+       int tabclasse[] = new int [classes.size()];
+   
+        int j=0;
+        for (Classes classe : classes) { 
+             int cpt=0;
+            for (Inscription inscription : listeInscription) {
+              
+                
+                if( inscription.getIdclasse().getId() == classe.getId())
+                {
+                    cpt++;
+                }
+              
+            }
+              tabclasse[j]=cpt;
+                j++;
+                
+        }
+     
+     
+        mav.setViewName("StatComptable");
+        mav.addObject("filieres", filieres);
+         mav.addObject("classes", classes);
+           mav.addObject("nbParClasse", tabclasse);
+         mav.addObject("nbInscriptions", tab);
+        return mav; 
+
+    }
 
     /**
      *
@@ -287,7 +379,7 @@ public class GererComptableController {
             sql = "insert into inscription values (?,?,?,?,?,?)";
 
             String matri = "INS" + (int) (Math.random() * 9999999) + "";
-            jdtbcTemplate.update(sql, null, matri, java.sql.Date.valueOf(LocalDate.now()), c.getId(), user.getId(), 1);
+            jdtbcTemplate.update(sql, null, matri, java.sql.Date.valueOf(LocalDate.now()), c.getId(), user.getId(), 3);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -295,6 +387,11 @@ public class GererComptableController {
 
     }
 
+    
+    
+    
+    
+    
     /**
      *
      * @param req

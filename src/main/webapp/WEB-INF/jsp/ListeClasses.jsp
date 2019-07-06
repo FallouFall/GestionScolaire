@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title style="font-family: dax-bold;    font-size: 2rem;">LISTE DES CLASSES</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -144,14 +144,14 @@
 
                 <div class="container-fluid">
 
-                    <div class="loader"><div class="page-loader"></div></div>
+                  
 
 
 
 
 
                     <!-- DataTables Example -->
-                    <div class="card mb-3 slide-in " id="ue" style=" margin-top: 17px;">
+                    <div class="card mb-3 " id="ue" style=" margin-top: 17px;">
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -218,7 +218,7 @@
                                                    <td>
                                                     
                                                     <div class="form-label-group">
-                                                        <a href="${link}" class="ti-id-badge"></a>
+                                                        <a href="${link}" class="fa fa-users"></a>
                                                     </div>
                                                 </td>
 
@@ -232,7 +232,10 @@
 
                     </div>
 
+                        <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
+                                                            <i class="ti-printer">
 
+                    </i> Imprimer</button>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -250,30 +253,28 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Bootstrap core JavaScript-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current sessionsss.</div>
+                    <div class="modal-body">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                        <form method="POST">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary">Logout</button>
-                        </form>
+                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+                    
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Bootstrap core JavaScript-->
 
 
 
@@ -292,7 +293,21 @@
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
+        <script>
+function printContent(el){
+var restorepage = $('body').html();
+var printcontent = $('#' + el).clone();
+var enteredtext = $('#text').val();
+$('body').empty().html(printcontent);
+window.print();
+$('body').html(restorepage);
+$('#text').html(enteredtext);
+setTimeout(function (){
+    location.reload()
+},1);
+}
 
+</script>
         <style>
 
 

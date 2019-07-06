@@ -8,6 +8,8 @@ package sn.isi.gestionscolaire.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -188,7 +190,7 @@ public class GererDirecteurController {
        
         String userId = req.getParameter("id");
         String matricule = req.getParameter("idInscription");
-        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.adresse,user.telephone,user.photo, inscription.matricule ,inscription.date,classes.description FROM user,inscription,classes WHERE user.id=inscription.iduser and inscription.matricule=? AND inscription.idclasse=classes.id";
+        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.adresse,user.telephone,user.photo, inscription.matricule ,inscription.date,classes.description ,profil.id,inscription.validite FROM user,inscription,classes,profil WHERE user.id=inscription.iduser and inscription.matricule=? AND inscription.idclasse=classes.id";
 
         List<Inscription> actors = jdtbcTemplate.query(
                 sql,
@@ -211,7 +213,8 @@ public class GererDirecteurController {
                 
                 Classes cl = new Classes();
                 cl.setDescription(rs.getString(10));
-                
+                c.setIdprofil(new Profil(rs.getInt(11)));
+                ins.setValidite(rs.getInt(12));
                 ins.setIduser(c);
                 ins.setIdclasse(cl);
            
@@ -228,6 +231,64 @@ public class GererDirecteurController {
 
     }
 
+    
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "cancel.htm", method = RequestMethod.GET)
+    public ModelAndView cAnCEL(HttpServletRequest req) {
+
+         String validite=req.getParameter("validite");
+         String sql;
+          String cancel=req.getParameter("cancel");
+      
+           if(cancel.equalsIgnoreCase("0"))
+        {
+          System.out.println(cancel);
+           sql = "update inscription set validite=? where matricule=?";
+        jdtbcTemplate.update(sql, 0, req.getParameter("idInscription"));
+        
+             
+        sql = "update profil set statut=? where id=?";
+        jdtbcTemplate.update(sql, 0, req.getParameter("profilId"));
+        }
+         sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.date,classes.description,inscription.validite,profil.id FROM user,inscription,classes,profil WHERE user.id=inscription.iduser\n" +
+"AND inscription.idclasse=classes.id   and profil.id=user.idprofil";
+        listeInscription = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Inscription c = new Inscription();
+                    User u = new User();
+                    u.setId(rs.getInt(1));
+                    u.setMatricule(rs.getString(2));
+                    u.setNom(rs.getString(3));
+                    u.setPrenom(rs.getString(4));
+                    u.setTelephone(rs.getString(5));
+                    c.setMatricule(rs.getString(6));
+                    c.setDate(rs.getDate(7));
+                    Classes s = new Classes();
+                    s.setDescription(rs.getString(8));
+                 
+                  c.setValidite(rs.getInt(9));
+                  u.setIdprofil(new Profil(rs.getInt(10)));
+                   
+                  
+
+                    c.setIdclasse(s);
+                    c.setIduser(u);
+
+                    return c;
+                });
+
+        mav.addObject("inscriptions", listeInscription);
+        
+        mav.setViewName("validerInscription");
+        return mav;
+    }
+    
+     
+    
     /**
      *
      * @param req
@@ -236,11 +297,80 @@ public class GererDirecteurController {
     @RequestMapping(value = "detailInscription.htm", method = RequestMethod.POST)
     public ModelAndView activerInscription(HttpServletRequest req) {
 
-        String sql = "update inscription set validite=? where matricule=?";
+        String validite=req.getParameter("validite");
+         String sql;
+          String cancel=req.getParameter("cancel");
+        if(validite.equalsIgnoreCase("0"))
+        {
+        sql = "update inscription set validite=? where matricule=?";
         jdtbcTemplate.update(sql, 1, req.getParameter("idInscription"));
+        
+             
+        sql = "update profil set statut=? where id=?";
+        jdtbcTemplate.update(sql, 1, req.getParameter("profilId"));
+        }
+        else  if(validite.equalsIgnoreCase("1"))
+        {
+         sql = "update inscription set validite=? where matricule=?";
+        jdtbcTemplate.update(sql, 0, req.getParameter("idInscription"));
+        
+             
+        sql = "update profil set statut=? where id=?";
+        jdtbcTemplate.update(sql, 0, req.getParameter("profilId"));
+        }
+        else  if(validite.equalsIgnoreCase("3"))
+        {
+         sql = "update inscription set validite=? where matricule=?";
+        jdtbcTemplate.update(sql, 1, req.getParameter("idInscription"));
+        
+             
+        sql = "update profil set statut=? where id=?";
+        jdtbcTemplate.update(sql, 1, req.getParameter("profilId"));
+        }
+        else     if(cancel.equalsIgnoreCase("0"))
+        {
+            System.out.println(cancel);
+           sql = "update inscription set validite=? where matricule=?";
+        jdtbcTemplate.update(sql, 0, req.getParameter("idInscription"));
+        
+             
+        sql = "update profil set statut=? where id=?";
+        jdtbcTemplate.update(sql, 0, req.getParameter("profilId"));
+        }
+        sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.date,classes.description,inscription.validite,profil.id FROM user,inscription,classes,profil WHERE user.id=inscription.iduser\n" +
+"AND inscription.idclasse=classes.id   and profil.id=user.idprofil";
+        listeInscription = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Inscription c = new Inscription();
+                    User u = new User();
+                    u.setId(rs.getInt(1));
+                    u.setMatricule(rs.getString(2));
+                    u.setNom(rs.getString(3));
+                    u.setPrenom(rs.getString(4));
+                    u.setTelephone(rs.getString(5));
+                    c.setMatricule(rs.getString(6));
+                    c.setDate(rs.getDate(7));
+                    Classes s = new Classes();
+                    s.setDescription(rs.getString(8));
+                 
+                  c.setValidite(rs.getInt(9));
+                  u.setIdprofil(new Profil(rs.getInt(10)));
+                   
+                  
+
+                    c.setIdclasse(s);
+                    c.setIduser(u);
+
+                    return c;
+                });
+
+        mav.addObject("inscriptions", listeInscription);
+        
         mav.setViewName("validerInscription");
         return mav;
     }
+    
+  
 
     /**
      *
@@ -293,6 +423,8 @@ public class GererDirecteurController {
     public ModelAndView gererProgramme(HttpServletRequest req) {
 
         id = req.getParameter("id");
+       String  classe= req.getParameter("classe");
+        String  filiere= req.getParameter("filiere");
         String sql = "SELECT * from classes where id=? ";
         classes = jdtbcTemplate.query(sql,
                 new Object[]{id}, (ResultSet rs, int rowNum) -> {
@@ -302,27 +434,24 @@ public class GererDirecteurController {
                     c.setNom(rs.getString(3));
                     c.setCreation(rs.getDate(4));
                     c.setDescription(rs.getString(5));
-                    Filiere f = new Filiere();
-                    f.setId(rs.getInt(8));
-
-                    c.setFiliere(filieres.stream().filter(fil -> fil.getId() == f.getId()).findFirst().orElse(null));
-
+                  
                     return c;
                 });
-        sql = "SELECT  programme.idmatiere ,programme.heures, programme.idclasse  from programme  JOIN classes on programme.idclasse=classes.id WHERE classes.id=?";
+        sql = "SELECT  DISTINCT matiere.nom,  programme.idclasse ,programme.idmatiere ,programme.heures ,matiere.matricule from matiere,programme , classes  WHERE classes.id=? AND programme.idclasse=classes.id and matiere.id=programme.idmatiere";
         programmes = jdtbcTemplate.query(sql,
-                new Object[]{2}, (ResultSet rs, int rowNum) -> {
+                new Object[]{id}, (ResultSet rs, int rowNum) -> {
                     Programme p = new Programme();
 
                     Classes cls = new Classes();
                     cls.setId(Integer.valueOf(id));
                     cls.setNom(rs.getString(1));
                     Matiere m = new Matiere();
-                    m.setId(rowNum);
-                    m.setNom(rs.getString(2));
-                    p.setIdclasse(cls);
+                   
+                    m.setNom(rs.getString(1));
+                    m.setMatricule(rs.getString(5));
+                   
                     p.setIdmatiere(m);
-                    p.setHeures(rs.getInt(3));
+                    p.setHeures(rs.getInt(4));
 
                     return p;
                 });
@@ -330,8 +459,8 @@ public class GererDirecteurController {
         mav = listeMatiere();
         mav.addObject("classes", classes);
         mav.addObject("programme", programmes);
-        mav.addObject("cls", classes.get(0));
-        mav.addObject("fl", classes.get(0).getFiliere().getNom());
+        mav.addObject("classe", classe);
+       mav.addObject("filiere", filiere);
         mav.setViewName("gererProgramme");
         return mav;
 
@@ -641,8 +770,8 @@ public class GererDirecteurController {
      */
     @RequestMapping("validerInscription.htm")
     public ModelAndView validerInscription(HttpServletRequest req) {
-        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.date,classes.description FROM user,inscription,classes WHERE user.id=inscription.iduser\n" +
-"AND inscription.idclasse=classes.id";
+        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.date,classes.description,inscription.validite,profil.id FROM user,inscription,classes,profil WHERE user.id=inscription.iduser\n" +
+"AND inscription.idclasse=classes.id   and profil.id=user.idprofil";
         listeInscription = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Inscription c = new Inscription();
@@ -657,6 +786,10 @@ public class GererDirecteurController {
                     Classes s = new Classes();
                     s.setDescription(rs.getString(8));
                  
+                  c.setValidite(rs.getInt(9));
+                  u.setIdprofil(new Profil(rs.getInt(10)));
+                   
+                  
 
                     c.setIdclasse(s);
                     c.setIduser(u);
@@ -683,7 +816,7 @@ public class GererDirecteurController {
         String nomClasse = req.getParameter("nomClasse");
         String nomFiliere = req.getParameter("nomFiliere");
 
-        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.id,inscription.date,classes.description FROM user,inscription,classes WHERE user.id=inscription.iduser and inscription.idclasse='"+classeId+"' AND inscription.idclasse=classes.id";
+        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.id,inscription.date,classes.description,profil.id,inscription.validite FROM user,inscription,classes,profil WHERE user.id=inscription.iduser and inscription.idclasse='"+classeId+"' AND profil.id=user.idprofil AND inscription.idclasse=classes.id";
         listeInscription = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Inscription c = new Inscription();
@@ -695,11 +828,16 @@ public class GererDirecteurController {
                     u.setTelephone(rs.getString(5));
                     c.setMatricule(rs.getString(6));
                     c.setDate(rs.getDate(8));
+                    Profil p=new Profil(rs.getInt(10));
+                    u.setIdprofil(p);
+                    c.setValidite(rs.getInt(11));
                     c.setIduser(u);
                     Classes s = new Classes();
                     s.setDescription(rs.getString(9));
                     s.setNom(rs.getString(9));
                     c.setIdclasse(s);
+               
+                    
 
                     if ("Masculin".equals(rs.getString(6))) {
                         nbHommes++;
@@ -734,50 +872,13 @@ public class GererDirecteurController {
     @RequestMapping(value = "printInscriptions.htm", method = RequestMethod.GET)
     @ResponseBody
     public void getRpt1(HttpServletResponse response) throws JRException, IOException {
+   
         try {
+    
 
-            InputStream jasperStream = this.getClass().getResourceAsStream("/Classes.jasper");
-            Map<String, Object> params = new HashMap<>();
-            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(jasperStream);
-            String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.telephone, inscription.matricule ,inscription.id,inscription.date,classes.description FROM user,inscription,classes WHERE user.id=inscription.iduser ";
-            listeInscription = jdtbcTemplate.query(sql,
-                    new Object[]{}, (ResultSet rs, int rowNum) -> {
-                        Inscription c = new Inscription();
-                        User u = new User();
-                        u.setId(rs.getInt(1));
-                        u.setMatricule(rs.getString(2));
-                        u.setNom(rs.getString(3));
-                        u.setPrenom(rs.getString(4));
-                        u.setTelephone(rs.getString(5));
-                        c.setMatricule(rs.getString(6));
-                        c.setDate(rs.getDate(8));
-                        c.setIduser(u);
-                        Classes s = new Classes();
-                        s.setDescription(rs.getString(9));
-                        s.setNom(rs.getString(9));
-                        c.setIdclasse(s);
-
-                        if ("Masculin".equals(rs.getString(6))) {
-                            nbHommes++;
-                        } else {
-
-                            nbFemmes++;
-                        }
-
-                        return c;
-                    });
-
-            mav.addObject("inscriptions", listeInscription);
-            JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(listeInscription);
-
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, ds);
-            response.setContentType("application/x-pdf");
-            response.setHeader("Content-disposition", "inline; filename=inscription.pdf");
-
-            final OutputStream outStream = response.getOutputStream();
-            JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+                 
         } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
+            System.out.println(e);
         }
     }
 

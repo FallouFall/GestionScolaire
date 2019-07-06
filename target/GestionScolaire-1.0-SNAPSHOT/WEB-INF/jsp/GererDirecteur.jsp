@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Gestion des Directeurs</title>
+    <title>Liste des Directeurs</title>
 
    <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -64,14 +64,7 @@ if(userName == null) response.sendRedirect("index.htm");
                            
                     </a>
                 </li>
-                
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-                 <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Tableau de bord</span>
-          </a>
-        </li>
-       
+     
         
          <li class="nav-item">
           <a class="nav-link" href="administration.htm">
@@ -181,7 +174,12 @@ if(userName == null) response.sendRedirect("index.htm");
                                     </tbody>
                                 </table>
                             </div>
+                                  <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
+                                                            <i class="ti-printer">
+
+                    </i> Imprimer</button>
                         </div>
+              
            
           </div>
 
@@ -233,6 +231,21 @@ if(userName == null) response.sendRedirect("index.htm");
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
+                     <script>
+function printContent(el){
+var restorepage = $('body').html();
+var printcontent = $('#' + el).clone();
+var enteredtext = $('#text').val();
+$('body').empty().html(printcontent);
+window.print();
+$('body').html(restorepage);
+$('#text').html(enteredtext);
+setTimeout(function (){
+    location.reload()
+},1);
+}
+
+</script>
         
            <style>
      .image--cover {

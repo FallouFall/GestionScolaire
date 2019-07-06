@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Comptabilite</title>
 
          <link rel="shortcut icon" href="images/webIcone.jpg"/>
          <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -93,12 +93,46 @@
                                       
                              </a>
                             </div>
+                            
+                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                             <a href=""  style="   text-decoration: none; color: #5a6169;">
+                                        <div class="frontside">
+                                            <div class="card ">
+                                                <div class="card-body text-center">
+                                                    <p>     <span class="ti-shine"   style="font-size: 3em;"></span></p>
+                                                    <h4 class="card-title">Memoire</h4>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                             </a>
+                            </div>
+                            
+                            
+                              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                             <a href=""  style="   text-decoration: none; color: #5a6169;">
+                                        <div class="frontside">
+                                            <div class="card ">
+                                                <div class="card-body text-center">
+                                                    <p>     <span class="ti-book"   style="font-size: 3em;"></span></p>
+                                                    <h4 class="card-title">Bibliotheque</h4>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                             </a>
+                            </div>
+                            
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href=StatComptable.htm  style="   text-decoration: none; color: #5a6169;">
                                         <div class="frontside">
                                             <div class="card ">
                                                 <div class="card-body text-center">
-                                                    <p> <span class="ti-bar-chart" style="font-size: 3em;"  ></span></p>
+                                                    <p> <span class="ti-stats-up" style="font-size: 3em;"  ></span></p>
                                                     <h4 class="card-title">Statistiques</h4>
 
 

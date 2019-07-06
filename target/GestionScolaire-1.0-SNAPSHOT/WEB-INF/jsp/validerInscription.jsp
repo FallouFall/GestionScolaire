@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title>Liste des Inscriptions</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -82,12 +82,6 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
 
 
                 <li class="nav-item">
@@ -95,12 +89,17 @@
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
-              
+               <li class="nav-item active">
+                    <a class="nav-link" href="gererClasses.htm">
+                        <i class="fas fa-home"></i>
+                        <span>Classes</span></a>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>
+                
             </ul>
 
             <div id="content-wrapper">
@@ -113,7 +112,7 @@
 
 
                     <!-- DataTables Example -->
-                    <div class="card mb-3 ">
+                    <div class="card mb-3 " >
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -133,7 +132,7 @@
                                             <th>Inscription</th>
                                             <th>Date</th>
                                             <th>Classe</th>
-                                        
+                                            <th>Etat</th>
                                             <th>Details</th>
                                         </tr>
                                     </thead>
@@ -146,7 +145,7 @@
                                             <th>Inscription</th>
                                             <th>Date</th>
                                             <th>Classe</th>
-                                         
+                                              <th>Etat</th>
                                             <th>Details</th>
 
 
@@ -158,6 +157,9 @@
                                                      
                                                        <c:param name="id" value="${element.iduser.id}"/>
                                                       <c:param name="idInscription" value="${element.matricule}"/>
+                                                      <c:param name="profilId" value="${element.iduser.idprofil.id}"/>
+                                                       <c:param name="validite" value="${element.validite}"/>
+                                                          <c:param name="cancel" value="1"/>
                                                    </c:url>
                                             <tr style="text-align: center;vertical-align: middle;">
 
@@ -168,13 +170,39 @@
                                                 <td>${element.matricule}</td>
                                                 <td>${element.date}</td>
                                                 <td>${element.idclasse.description}</td>
-                                            
+                                                <td>
+                                                      <c:if test="${element.validite == 1}">
+                                                          Valide
+                                                    </c:if>
+                                                    
+                                                    <c:if test="${element.validite == 0}">
+                                                          Suspendue
+                                                    </c:if>
+                                                           <c:if test="${element.validite == 3}">
+                                                          En Attente
+                                                    </c:if>
+                                                          
+                                                </td>
+                                             
+                                                
 
                                                 <td>
-                                                    
-                                                    <div class="form-label-group">
-                                                        <a href="${link}" class="ti-id-badge"></a>
+                                                      <c:if test="${element.validite == 0}">
+                                                           <div class="form-label-group">
+                                                        <a href="${link}" class="ti-na"></a>
                                                     </div>
+                                                    </c:if>
+                                                       <c:if test="${element.validite == 3}">
+                                                           <div class="form-label-group">
+                                                        <a href="${link}" class="ti-timer"></a>
+                                                    </div>
+                                                    </c:if>
+                                                       <c:if test="${element.validite == 1}">
+                                                           <div class="form-label-group">
+                                                        <a href="${link}" class="ti-stamp"></a>
+                                                    </div>
+                                                    </c:if>
+                                                 
                                                 </td>
 
 
@@ -188,14 +216,18 @@
                                   <form method="GET">
                                 <div class="form-group">
                                  
-                                        <a class="d-block small" href="printInscriptions.htm">Forgot Password?</a>
+                                     
                                 </div>
                                   </form>
                             </div>
                         </div>
 
                     </div>
+                    <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
+                                                            <i class="ti-printer">
 
+                    </i> Imprimer</button>
+ 
 
                 </div>
                 <!-- /.container-fluid -->
@@ -250,6 +282,21 @@
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
+        <script>
+function printContent(el){
+var restorepage = $('body').html();
+var printcontent = $('#' + el).clone();
+var enteredtext = $('#text').val();
+$('body').empty().html(printcontent);
+window.print();
+$('body').html(restorepage);
+$('#text').html(enteredtext);
+setTimeout(function (){
+    location.reload()
+},10);
+}
+
+</script>
 
         <style>
             .image--cover {

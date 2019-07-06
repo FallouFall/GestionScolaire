@@ -70,9 +70,21 @@
                                 <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
 
                                     <span style="font-family: dax-bold;   font-size: 2rem;">
-                                     Valider Inscription
-
-
+                                        
+                                                     <c:if test="${inscription.validite == 0}">
+                                                     
+                                                          Valider Inscription
+                                                     </c:if>
+                                                          
+                                            <c:if test="${inscription.validite == 3}">
+                                                          En attente de Validation
+                                                    </c:if>
+                                                          
+                                                             
+                                                     <c:if test="${inscription.validite == 1}">
+                                                                
+                                                              Suspendre Inscription
+                                                     </c:if>
                                     </span>  </div>
                                 <div class="card-body">
                                     <div class="page-header">
@@ -146,14 +158,66 @@
                                                       <form method="POST">
                                             <div class="form-group" >
                                                 <div class="form-row">
-
+                                                     <c:if test="${inscription.validite == 0}">
+                                                        
+                                                 
                                                          <div class=" form-group col-md-6">       
                                                                 <button type="submit" class="btn btn-primary" style="background-color:#1B81C5; font-family: titilliumWeb-regular;">
                                                             <i class="ti-save">
 
                                                             </i> Valider</button>
                                                     </div>
-                                                    <div class=" form-group col-md-6">   
+                                                        <div class=" form-group col-md-6">   
+                                                        
+                                                            <button type="submit" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
+                                                           <div class="form-label-group">
+                                                                   <a class="ti-reload" style="background-color: #5a6169; color: #fff;"href=validerInscription.htm>  Annuler</a> 
+                                                           </div></button>
+                                                   
+                                                           </div>
+                                                       </c:if>
+                                                                 <c:if test="${inscription.validite == 3}">
+                                                        
+                                                 
+                                                         <div class=" form-group col-md-6">       
+                                                                <button type="submit" class="btn btn-primary" style="background-color:#1B81C5; font-family: titilliumWeb-regular;">
+                                                            <i class="ti-save">
+
+                                                            </i> Valider</button>
+                                                    </div>
+                                                          <div class=" form-group col-md-6">    
+                                                              
+                                                                 <c:url var="link" value="cancel.htm">
+                                                     
+                                                       <c:param name="cancel" value="0"/>
+                                                        <c:param name="id" value="${inscription.iduser.id}"/>
+                                                      <c:param name="idInscription" value="${inscription.matricule}"/>
+                                                      <c:param name="profilId" value="${inscription.iduser.idprofil.id}"/>
+                                                       <c:param name="validite" value="${inscription.validite}"/>
+                                                     
+                                                   </c:url>
+                                                              <button type="submit" class="btn btn-secondary" onclick="" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
+                                                           <div class="form-label-group">
+                                                                   <a class="ti-reload" style="background-color: #5a6169; color: #fff;"href="${link}" >  Annuler</a> 
+                                                           </div></button>
+                                                    </div>
+                                                                     
+                                                                     
+                                                       </c:if>
+                                                    
+                                                    
+                                                 <c:if test="${inscription.validite == 1}">
+                                                        
+                                                 
+                                                         <div class=" form-group col-md-6">       
+                                                                <button type="submit" class="btn btn-primary" style="background-color:#004573; font-family: titilliumWeb-regular;">
+                                                            <i class="ti-close">
+
+                                                            </i> Suspendre</button>
+                                                    </div>
+                                                         
+                                                         
+                                                         <div class=" form-group col-md-6">   
                                                         
                                                             <button type="submit" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
                                                            <div class="form-label-group">
@@ -161,6 +225,10 @@
                                                               </div>
                                                    
                                                            </div>
+                                                       </c:if>
+                                                    
+                                                    
+                                                    
 
                                                 </div>
 

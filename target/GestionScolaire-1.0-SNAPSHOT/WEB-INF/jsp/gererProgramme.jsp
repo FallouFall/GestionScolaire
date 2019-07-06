@@ -123,7 +123,7 @@
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
-                              Programme ${cls} ${fl}
+                              Programme ${classe} ${filiere}
 
 
                             </span>  </div>
@@ -136,7 +136,8 @@
                                     <thead>
                                         <tr  style="text-align: center;vertical-align: middle;">
 
-                                             <th>#</th>
+                                         
+                                             <th>Matricule</th>
                                             <th>Heures</th>
                                             <th>Matiere</th>
                                       
@@ -148,7 +149,8 @@
                                         <tr style="text-align: center;vertical-align: middle;">
 
                                           
-                                            <th>#</th>
+                                           
+                                               <th>Matricule</th>
                                             <th>Heures</th>
                                             <th>Matiere</th>
                                        
@@ -160,20 +162,21 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <% int numero=0; %>
+                                     
                                         <c:forEach var="element" items="${programme}">
                                           
                                             <tr style="text-align: center;vertical-align: middle;">
 
-                                                <td><%=numero%></td>
-                                                <td>${element.idmatiere}</td>
+                                
+                                                <td>${element.idmatiere.matricule}</td>
                                                 <td>${element.heures}</td>
+                                                 <td>${element.idmatiere.nom}</td>
                                             
 
 
 
                                             </tr>
-                                              <% numero++; %>
+                                            
                                         </c:forEach>
                                     </tbody>
                                 </table>
@@ -225,14 +228,16 @@
                                         <br>
                                         <div class="form-group">
                                             <div class="form-row">
-                                                <div class="form-group col-md-6 ">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-tag"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control " id="matiere"  name="nomMatiere" placeholder="Nom " required="true">
+                                          
+                                                
+                                                    <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="text" class=" filiere form-control" name="nomMatiere" id="filiere" placeholder="Filiere"  required="true">
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-layout"></i>
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                </div>
 
                                          
 
@@ -302,32 +307,33 @@
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
         <script src="js/bootstrap3-typeahead.js"></script>
-  <script>
-            var $input = $(".matiere");
-            $input.typeahead({
-            source: [
+    <script>
+                                                                 var $input = $(".filiere");
+                                                                 $input.typeahead({
+                                                                 source: [
             <c:forEach var="element" items="${matieres}">
-            {id: '${element.matricule}', name: '${element.nom}'},
+                                                                 {id: '${element.matricule}', name: '${element.nom}'},
             </c:forEach>
-            ],
-                    autoSelect: true
-            });
-            $input.change(function () {
-            var current = $input.typeahead("getActive");
-            if (current) {
 
-            if (current.name == $input.val()) {
+                                                                 ],
+                                                                         autoSelect: true
+                                                                 });
+                                                                 $input.change(function () {
+                                                                 var current = $input.typeahead("getActive");
+                                                                 if (current) {
 
-
-            } else {
-            // This means it is only a partial match, you can either add a new item
-            // or take the active if you don't want new items
-            }
-            } else {
-            // Nothing is active so it is a new value (or maybe empty value)
-            }
-            });
+                                                                 if (current.name == $input.val()) {
+                                                                 console.log(current['name']);
+                                                                 } else {
+                                                                 // This means it is only a partial match, you can either add a new item
+                                                                 // or take the active if you don't want new items
+                                                                 }
+                                                                 } else {
+                                                                 // Nothing is active so it is a new value (or maybe empty value)
+                                                                 }
+                                                                 });
         </script>
+
 
         <style>
             .image--cover {

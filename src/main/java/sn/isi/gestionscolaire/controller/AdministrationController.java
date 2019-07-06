@@ -104,6 +104,7 @@ public class AdministrationController {
      */
     @RequestMapping("GererDirecteur.htm")
     public ModelAndView directeur(HttpServletRequest req) {
+        System.out.println("ddd");
         mav.setViewName("GererDirecteur");
         return mav;
     }

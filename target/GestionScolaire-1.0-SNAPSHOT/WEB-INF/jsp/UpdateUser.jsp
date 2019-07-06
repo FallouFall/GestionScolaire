@@ -114,7 +114,7 @@
                                                       
 
                                                     
-        <div class="form-group col-md-6 " style="margin-left: 32%;">                                              
+        <div class="form-group col-md-6 " style="margin-left: 42%;">                                              
  <input id="file-upload" type="file" name="fileUpload" accept="image/*" hidden=""/>
   <label for="file-upload" id="file-drag">
       <img id="file-image" width="100px" src="#" alt="Preview"  class="image--cover  hidden">

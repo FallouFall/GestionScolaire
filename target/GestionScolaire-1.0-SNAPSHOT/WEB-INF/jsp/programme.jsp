@@ -160,6 +160,8 @@
                                               <c:url var="link" value="gererProgramme.htm">
                                                      
                                                        <c:param name="id" value="${element.id}"/>
+                                                        <c:param name="classe" value="${element.nom}"/>
+                                                       <c:param name="filiere" value="${element.filiere}"/>
                                                    </c:url>
                                             <tr style="text-align: center;vertical-align: middle;">
 

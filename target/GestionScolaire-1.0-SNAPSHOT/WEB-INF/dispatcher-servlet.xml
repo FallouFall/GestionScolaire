@@ -50,6 +50,10 @@
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" GererComptable.htm">gererComptableController</prop>
+                
+                     <prop key="StatComptable.htm">gererComptableController</prop>
+                
+                
                 <prop key=" gererProgramme.htm">gererDirecteurController</prop>
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
@@ -66,6 +70,10 @@
                 <prop key="listeMatiere.htm">gererDirecteurController</prop>
                 <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
                 <prop key="detailInscription.htm">gererDirecteurController</prop>
+                
+                  <prop key="cancel.htm">gererDirecteurController</prop>
+                
+                
                 <prop key="detailClasse.htm">gererDirecteurController</prop>
                 <prop key="gererSalles.htm">gererDirecteurController</prop>
                 <prop key="AjouterSalle.htm">gererDirecteurController</prop>

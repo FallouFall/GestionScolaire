@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title>    ${nomClasse} ${nomFiliere}</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -82,12 +82,7 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
+            
 
 
                 <li class="nav-item">
@@ -176,11 +171,13 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <c:url var="link" value="gererProgramme.htm">
+                                <c:url var="linkProgramme" value="gererProgramme.htm">
 
                                     <c:param name="id" value="${classeId}"/>
+                                     <c:param name="classe" value="${nomClasse}"/>
+                                         <c:param name="filiere" value="${nomFiliere}"/>
                                 </c:url>
-                                <a href="${link}" >
+                                <a href="${linkProgramme}" >
                                     <button type="button" class="btn btn-primary" style=" color:#1B81C5;background-color:#fff; font-family: titilliumWeb-regular; ">
                                         <i class="ti-eye">
 
@@ -188,9 +185,7 @@
                                 </a>  
 
 
-                                <c:url var="link" value="validerInscription.htm">
-                                    <c:param name="id" value="${classeId}"/>
-                                </c:url>
+                               
                                 <a href="#" >
                                     <button type="button" class="btn btn-primary" style=" color:#1B81C5;background-color:#fff; font-family: titilliumWeb-regular;">
                                         <i class="ti-timer">
@@ -218,7 +213,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr  style="text-align: center;vertical-align: middle;">
-                          <th>Matricule</th>
+                                            <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Inscription</th>
@@ -248,7 +243,14 @@
                                     </tfoot>
                                     <tbody>
                                      <c:forEach var="element" items="${inscriptions}">
-
+                                            <c:url var="link" value="detailInscription.htm">
+                                                     
+                                                       <c:param name="id" value="${element.iduser.id}"/>
+                                                      <c:param name="idInscription" value="${element.matricule}"/>
+                                                      <c:param name="profilId" value="${element.iduser.idprofil.id}"/>
+                                                       <c:param name="validite" value="${element.validite}"/>
+                                                       <c:param name="cancel" value="1"/>
+                                                   </c:url>
 
                                             <tr style="text-align: center;vertical-align: middle;">
 
@@ -276,7 +278,10 @@
 
                     </div>
 
+  <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
+                                                            <i class="ti-printer">
 
+                    </i> Imprimer</button>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -334,7 +339,21 @@
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
+      <script>
+function printContent(el){
+var restorepage = $('body').html();
+var printcontent = $('#' + el).clone();
+var enteredtext = $('#text').val();
+$('body').empty().html(printcontent);
+window.print();
+$('body').html(restorepage);
+$('#text').html(enteredtext);
+setTimeout(function (){
+    location.reload()
+},1);
+}
 
+</script>
         <style>
 
 
