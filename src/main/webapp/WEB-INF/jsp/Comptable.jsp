@@ -79,7 +79,7 @@
                             </div>
                           
                          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                             <a href="Payement.htm"  style="   text-decoration: none; color: #5a6169;">
+                             <a href="controlePaye.htm"  style="   text-decoration: none; color: #5a6169;">
                                         <div class="frontside">
                                             <div class="card ">
                                                 <div class="card-body text-center">

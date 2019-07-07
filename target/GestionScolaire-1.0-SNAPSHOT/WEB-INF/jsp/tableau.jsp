@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title>Forum</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -82,12 +82,7 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
+             
 
 
                 <li class="nav-item">

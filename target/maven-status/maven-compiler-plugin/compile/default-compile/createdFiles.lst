@@ -1,5 +1,6 @@
 sn\isi\gestionscolaire\domain\Matiere.class
 sn\isi\gestionscolaire\controller\ProfesseurController.class
+sn\isi\gestionscolaire\domain\Questions.class
 sn\isi\gestionscolaire\domain\Evenement.class
 sn\isi\gestionscolaire\controller\DirecteurController.class
 sn\isi\gestionscolaire\controller\GererSecretaireController.class

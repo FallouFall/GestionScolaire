@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title>Annonces</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -82,12 +82,6 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
 
 
                 <li class="nav-item">
@@ -195,7 +189,27 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
 
+                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-footer">
+                  
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
      
         <div class="modal fade" id="addClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

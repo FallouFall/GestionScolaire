@@ -282,8 +282,6 @@
 
 
         <script src="vendor/jquery/jquery.min.js"></script> 
-
-
         <script src="./js/bootstrap.min.js" ></script>
         <script src="js/demo.min.js"></script>
         <script src="js/shards.min.js"></script>

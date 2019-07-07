@@ -140,13 +140,15 @@
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="ressources.htm"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="faqResponse.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
                                             <p>   <span class="ti-help" style="font-size: 3em;" ></span></p>
-                                            <h4 class="card-title">Faqs</h4>
+                                            <h4 class="card-title">Faqs
+                                              <span style="b">(${nbQuestion})</span>
 
+                                            </h4>
 
                                         </div>
                                     </div>

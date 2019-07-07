@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.Cookie;
@@ -27,6 +28,8 @@ import sn.isi.gestionscolaire.config.Connexion;
 import sn.isi.gestionscolaire.domain.Documents;
 import sn.isi.gestionscolaire.domain.Evenement;
 import sn.isi.gestionscolaire.domain.Mensualite;
+import sn.isi.gestionscolaire.domain.Questions;
+import sn.isi.gestionscolaire.domain.User;
 
 /**
  *
@@ -59,6 +62,47 @@ public class EtudiantController {
         return mav;
     }
 
+    
+    
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping("aide.htm")
+    public ModelAndView aide(HttpServletRequest req) {
+  HttpSession session = req.getSession();
+
+        String id = (String) session.getAttribute("id");
+      
+        String sql = "SELECT questions.matricule,user.nom,user.prenom,user.id,questions.date,questions.statut, questions.id ,questions.description ,questions.reponse FROM questions,user WHERE questions.iduser=user.id and user.id=? ";
+
+        List<Questions> questions = new ArrayList<>();
+
+        questions = jdtbcTemplate.query(sql,
+                new Object[]{id}, (ResultSet rs, int rowNum) -> {
+                    Questions c = new Questions();
+                    c.setMatricule(rs.getString(1));
+                    User u = new User();
+                    u.setNom(rs.getString(2));
+                    u.setPrenom(rs.getString(3));
+                    u.setId(rs.getInt(4));
+                    c.setDate(rs.getDate(5));
+                    c.setStatut(rs.getInt(6));
+                    c.setIduser(u);
+                    c.setId(rs.getInt(7));
+                    c.setDescription(rs.getString(8));
+                     c.setReponse(rs.getString(9));
+                    return c;
+                });
+
+        mav.addObject("questions", questions);
+
+        mav.setViewName("aide");
+        return mav;
+    }
+    
+    
     /**
      *
      * @return ModelView
@@ -68,6 +112,36 @@ public class EtudiantController {
 
         mav.setViewName("documents");
         return mav;
+    }
+  /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("demanderAide.htm")
+    public ModelAndView demanderAide() {
+
+        mav.setViewName("demanderAide");
+        return mav;
+    }
+
+    
+    
+    
+    @RequestMapping(value = "demanderAide.htm",method = RequestMethod.POST)
+    public void demanderAide(HttpServletRequest req, HttpServletResponse rep) throws IOException {
+         HttpSession session = req.getSession();
+          String id = (String) session.getAttribute("id");
+        String reponse = req.getParameter("question");
+        
+       String mat=   "QS" + (int) (Math.random() * 9999999) + "";
+       
+      
+       
+        String sql = "insert into questions values (?,?,?,?,?,?,?)";
+        jdtbcTemplate.update(sql, null,mat,id, java.sql.Date.valueOf(LocalDate.now()),0,reponse,"Pas encore de reponse");
+        rep.sendRedirect("aide.htm");
+       
+
     }
 
     /**

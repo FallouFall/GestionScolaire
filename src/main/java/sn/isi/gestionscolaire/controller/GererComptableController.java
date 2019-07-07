@@ -111,6 +111,78 @@ public class GererComptableController {
 
     }
 
+    
+    
+    /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "controlePaye.htm")
+    public ModelAndView controlePaye() {
+        String  sql = "SELECT id, matricule,description from classes  ";
+        classes = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));           
+                    c.setMatricule(rs.getString(2));
+                    c.setDescription(rs.getString(3));
+               
+
+                    return c;
+                });
+        mav.addObject("classes",classes);
+           mav.addObject("paye", null);
+        mav.setViewName("ControlePaye");
+         mav.addObject("mensualite", null);
+        return mav;
+
+    }
+    
+    
+    
+     @RequestMapping(value = "controlePaye.htm",method = RequestMethod.GET)
+    public ModelAndView controlePayement(HttpServletRequest req,HttpServletResponse response) throws IOException {
+        
+       
+      
+        String sql = "SELECT  mensualite.matricule,mensualite.date,mensualite.paye,mensualite.restant,user.nom,user.prenom,user.telephone,user.matricule FROM user,mensualite,classes WHERE mensualite.idetudiant=user.id and classes.description=? and mensualite.idclasse=classes.id and mois=? ";
+        
+      String ms =req.getParameter("mois");
+          String cls =req.getParameter("classe");
+        List<Mensualite> mens = jdtbcTemplate.query(sql,
+                new Object[]{cls,ms}, (ResultSet rs, int rowNum) -> {
+                    Mensualite c = new Mensualite();
+                    
+                    c.setMatricule(rs.getString(1));
+                    c.setDate(rs.getDate(2));
+                 
+                    c.setPaye(rs.getInt(3));
+                      c.setRestant(rs.getInt(4));
+                      User u = new User();
+                      u.setNom(rs.getString(5));
+                      u.setPrenom(rs.getString(6));
+                      u.setTelephone(rs.getString(7));
+                      u.setMatricule(rs.getString(8));
+           
+                 c.setIdetudiant(u);
+                    return c;
+                });
+      mav.setViewName("ListePayement");
+     if(!mens.isEmpty())
+     {
+       mav.addObject("mensualite", mens);
+         mav.addObject("cls", cls);
+         mav.addObject("ms", ms);
+     }
+     else
+     {
+      mav.addObject("cls", "Pas de payements Trouves");
+     }
+        mav.setViewName("ControlePaye");
+         response.sendRedirect("listePayement.htm");
+        return mav;
+
+    }
     /**
      *
      * @param req
