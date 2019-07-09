@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>    Payement: ${cls} ${ms}</title>
+        <title>   ${cls} ${ms}</title>
 
 
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -85,6 +85,20 @@
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class=" ti-money"></i>
+                        <span>Liste Payements </span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="controleNonPaye.htm">
+                        <i class=" ti-close"></i>
+                        <span>Liste des Non Paye </span></a>
+                </li>
+                
 
 
             </ul>
@@ -103,7 +117,7 @@
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
-                                Payement
+                            Payements
 
 
                             </span>  </div>

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.isi.gestionscolaire.config.Connexion;
 import sn.isi.gestionscolaire.domain.Account;
+import sn.isi.gestionscolaire.domain.Bibliotheque;
 import sn.isi.gestionscolaire.domain.Classes;
 import sn.isi.gestionscolaire.domain.Filiere;
 import sn.isi.gestionscolaire.domain.Inscription;
@@ -110,15 +111,80 @@ public class GererComptableController {
         return mav;
 
     }
+  
+ /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "bibliotheque.htm", method = RequestMethod.GET)
+    public ModelAndView findInscr(HttpServletRequest req) {
+        mav = new ModelAndView();
+         mav.addObject("findEtudiant", null);
+        mav.setViewName("Biblio");
+        String matricule = req.getParameter("matricule");
+        String sql = "SELECT user.id,user.matricule,user.nom,prenom,adresse,telephone,inscription.matricule , inscription.idclasse,inscription.date,classes.mensualite,filiere.nom ,classes.nom from user,inscription,filiere,classes where user.matricule =? AND user.id=inscription.iduser AND filiere.id=classes.filiere";
 
+        List<User> actors = jdtbcTemplate.query(
+                sql,
+                new Object[]{matricule},
+                new RowMapper<User>() {
+            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+                User c = new User();
+                c.setId(rs.getInt(1));
+                c.setMatricule(rs.getString(2));
+                c.setNom(rs.getString(3));
+                c.setPrenom(rs.getString(4));
+                c.setAdresse(rs.getString(5));
+                c.setTelephone(rs.getString(6));
+
+                ins = new Inscription();
+                ins.setMatricule(rs.getString(7));
+                ins.setDate(rs.getDate(9));
+                ins.setIduser(c);
+
+                Classes s = new Classes();
+                s.setId(rs.getInt(8));
+                s.setMensualite(rs.getInt(10));
+
+                Filiere f = new Filiere();
+                f.setNom(rs.getString(11));
+
+                s.setFiliere(f);
+                ins.setIdclasse(s);
+                mav.addObject("fil", rs.getString(11));
+                mav.addObject("cls", rs.getString(12));
+                mav.addObject("mensu", rs.getInt(10));
+                mav.addObject("inscrip", ins);
+
+                payement = rs.getInt(10);
+
+                return c;
+            }
+        });
+        if (!actors.isEmpty()) {
+            mav.addObject("findEtudiant", actors.get(0));
+     
+                mav.addObject("id", actors.get(0).getId());
+        } else {
+            mav.addObject("findEtudiant", null);
+      
+        }
+
+        return mav;
+
+    }
+
+    
     
     
     /**
      *
      * @return ModelView
      */
-    @RequestMapping(value = "controlePaye.htm")
+    @RequestMapping(value = "controlePaye.htm",method = RequestMethod.GET)
     public ModelAndView controlePaye() {
+         
         String  sql = "SELECT id, matricule,description from classes  ";
         classes = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
@@ -130,21 +196,17 @@ public class GererComptableController {
 
                     return c;
                 });
-        mav.addObject("classes",classes);
-           mav.addObject("paye", null);
+   
         mav.setViewName("ControlePaye");
          mav.addObject("mensualite", null);
         return mav;
 
     }
-    
-    
-    
-     @RequestMapping(value = "controlePaye.htm",method = RequestMethod.GET)
-    public ModelAndView controlePayement(HttpServletRequest req,HttpServletResponse response) throws IOException {
+     @RequestMapping(value = "controlePaye.htm",method = RequestMethod.POST)
+    public ModelAndView listePayement(HttpServletRequest req,HttpServletResponse response) throws IOException {
         
        
-      
+       
         String sql = "SELECT  mensualite.matricule,mensualite.date,mensualite.paye,mensualite.restant,user.nom,user.prenom,user.telephone,user.matricule FROM user,mensualite,classes WHERE mensualite.idetudiant=user.id and classes.description=? and mensualite.idclasse=classes.id and mois=? ";
         
       String ms =req.getParameter("mois");
@@ -167,23 +229,172 @@ public class GererComptableController {
                  c.setIdetudiant(u);
                     return c;
                 });
-      mav.setViewName("ListePayement");
-     if(!mens.isEmpty())
-     {
-       mav.addObject("mensualite", mens);
-         mav.addObject("cls", cls);
+            
+        if(mens.size()!=0)
+        {
+         mav.setViewName("ListePayement");
+         mav.addObject("mensualite", mens);
+         mav.addObject("cls", "Payement :"+cls);
          mav.addObject("ms", ms);
-     }
-     else
-     {
+   
+        }
+        else
+        {
+              mav.setViewName("ListePayement");
       mav.addObject("cls", "Pas de payements Trouves");
-     }
-        mav.setViewName("ControlePaye");
-         response.sendRedirect("listePayement.htm");
+       mav.addObject("ms", ms);
+
+        }
+  
+    
         return mav;
 
     }
+    
+    
+    
+       
     /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "controleNonPaye.htm",method = RequestMethod.GET)
+    public ModelAndView controleNonPaye() {
+         
+        String  sql = "SELECT id, matricule,description from classes  ";
+        classes = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));           
+                    c.setMatricule(rs.getString(2));
+                    c.setDescription(rs.getString(3));
+               
+
+                    return c;
+                });
+   
+        mav.setViewName("ControleNonPaye");
+         mav.addObject("mensualite", null);
+        return mav;
+
+    }
+     @RequestMapping(value = "controleNonPaye.htm",method = RequestMethod.POST)
+    public ModelAndView listeNonPayement(HttpServletRequest req,HttpServletResponse response) throws IOException {
+        
+       
+       
+        String sql = "SELECT user.nom,user.prenom,user.telephone,user.matricule,user.id FROM user,classes,inscription WHERE  classes.description=?" +
+"and inscription.idclasse=classes.id  and inscription.iduser=user.id ";
+        
+      String ms =req.getParameter("mois");
+          String cls =req.getParameter("classe");
+        List<User> users = jdtbcTemplate.query(sql,
+                new Object[]{cls}, (ResultSet rs, int rowNum) -> {
+                   
+                      User u = new User();
+                      u.setNom(rs.getString(1));
+                      u.setPrenom(rs.getString(2));
+                      u.setTelephone(rs.getString(3));
+                      u.setMatricule(rs.getString(4));
+                      u.setId(rs.getInt(5));
+           
+              
+                    return u;
+                });
+        
+        sql = "SELECT  mensualite.matricule,mensualite.date,mensualite.paye,mensualite.restant,user.nom,user.prenom,user.telephone,user.matricule FROM user,mensualite,classes WHERE mensualite.idetudiant=user.id and classes.description=? and mensualite.idclasse=classes.id and mois=? ";
+        
+        
+           List<Mensualite> mens = jdtbcTemplate.query(sql,
+                new Object[]{cls,ms}, (ResultSet rs, int rowNum) -> {
+                    Mensualite c = new Mensualite();
+                    
+                    c.setMatricule(rs.getString(1));
+                    c.setDate(rs.getDate(2));
+                 
+                    c.setPaye(rs.getInt(3));
+                      c.setRestant(rs.getInt(4));
+                      User u = new User();
+                      u.setNom(rs.getString(5));
+                      u.setPrenom(rs.getString(6));
+                      u.setTelephone(rs.getString(7));
+                      u.setMatricule(rs.getString(8));
+           
+                 c.setIdetudiant(u);
+                    return c;
+                });
+     
+     
+         for (User user : users) {
+       
+             for (Mensualite mensualite : mens) {
+                 if(user.getId().equals(mensualite.getIdetudiant().getId()))
+                 {
+                     users.remove(mensualite.getIdetudiant());
+                 }
+                 
+             }
+           
+         }
+        
+
+        if(mens.size()!=0)
+        {
+         mav.setViewName("ListeNonPayement");
+         mav.addObject("user", users);
+         mav.addObject("cls", " Non Payees :"+cls);
+         mav.addObject("ms", ms);
+   
+        }
+        else
+        {
+              mav.setViewName("ListeNonPayement");
+      mav.addObject("cls", "Pas de payements Trouves");
+       mav.addObject("ms", ms);
+
+        }
+  
+    
+        return mav;
+
+    }
+    
+ /**
+     *
+     * @param req
+     * @return ModelView
+     */
+   @RequestMapping(value = "abonnementListe.htm")
+      public ModelAndView abonnement(HttpServletRequest req) {
+    
+        String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.adresse,user.telephone,bibliotheque.matricule from user,bibliotheque where user.id=bibliotheque.inscription";
+
+         List<Bibliotheque> bl = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                Bibliotheque c = new Bibliotheque();
+                User u= new User();
+                u.setId(rs.getInt(1));
+                u.setMatricule(rs.getString(2));
+                u.setNom(rs.getString(3));
+                u.setPrenom(rs.getString(4));
+              u.setAdresse(rs.getString(5));
+              u.setTelephone(rs.getString(6));
+                c.setMatricule(rs.getString(7));
+             
+                c.setInscription(u);
+
+               return c;
+                });
+         mav.setViewName("AbonBiblio");
+            mav.addObject("liste", bl);
+        
+        
+
+        return mav;
+
+    }
+
+ /**
      *
      * @param req
      * @return ModelView
@@ -233,16 +444,39 @@ public class GererComptableController {
         });
         if (!actors.isEmpty()) {
             mav.addObject("findEtudiant", actors.get(0));
-            System.out.println("trouve");
+          
         } else {
             mav.addObject("findEtudiant", null);
-            System.out.println(" non trouve");
+           
         }
 
         return mav;
 
     }
 
+     
+    /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "bibliotheque.htm", method = RequestMethod.POST)
+    public ModelAndView validerPayementBiblio(HttpServletRequest req) {
+        String id= req.getParameter("idet");
+         String debut= req.getParameter("debut");
+          String fin= req.getParameter("fin");
+        String mat=   "BIBLIO" + (int) (Math.random() * 9999999) + "";
+        String sql = "insert into bibliotheque values (?,?,?,?,?)";
+       
+        jdtbcTemplate.update(sql, null,mat, debut, fin ,id);
+        
+        mav.setViewName("Biblio");
+        return mav;
+
+    }
+ 
+    
+    
     /**
      *
      * @param req

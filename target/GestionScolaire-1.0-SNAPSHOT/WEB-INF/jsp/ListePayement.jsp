@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>    Payement: ${cls} ${ms}</title>
+        <title>     ${cls} ${ms}</title>
 
 
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -103,7 +103,7 @@
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
-                                Payement: ${cls} ${ms} 
+                          ${cls} ${ms} 
 
 
                             </span>  </div>

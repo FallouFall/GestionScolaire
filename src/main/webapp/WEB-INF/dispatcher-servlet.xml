@@ -39,6 +39,13 @@
                   <prop key="Annonces.htm">secretaireController</prop>
                       <prop key="controlePaye.htm">gererComptableController</prop>
                        <prop key="listePayement.htm">gererComptableController</prop>
+                       
+                           <prop key="controleNonPaye.htm">gererComptableController</prop>
+                       <prop key="listeNonPayement.htm">gererComptableController</prop>
+                       
+                       <prop key="abonnement.htm">gererComptableController</prop>
+                          <prop key="abonnementListe.htm">gererComptableController</prop>
+                          <prop key="bibliotheque.htm">gererComptableController</prop>
                 <prop key="comptable.htm">comptableController</prop>
                 <prop key="professeur.htm">professeurController</prop>
                 <prop key="directeur.htm">directeurController</prop>

@@ -53,12 +53,12 @@
                 for (Cookie cookie : cookies) {
                     if (cookie.getName().equals("MSG")) {
                         message = cookie.getValue();
-                     
+
                     }
 
                 }
             }
-          
+
         %>
 
         <%@include file="Header.jsp" %>
@@ -81,7 +81,7 @@
 
                     <div class="card card-login mx-auto mt-5 " style="    box-shadow: none;  text-align: center;">
 
-                        <h4 class="slide-in "  style="color: #54a2d9;font-family: titilliumWeb-light;font-size: 2.5em;"><%= message %></h4>
+                        <h4 class="slide-in "  style="color: #54a2d9;font-family: titilliumWeb-light;font-size: 2.5em;"><%= message%></h4>
                         <div class="card-body">
 
                             <form method="POST">
@@ -97,12 +97,12 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                       <div class="form-group">
                                     <div class="input-group with-addon-icon-left">
                                         <span class="input-group-addon">
                                             <i class="ti-lock"></i>
                                         </span>
-                                        <input type="password"  class="form-control " name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
+                                        <input type="password" class="form-control "    name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
                                     </div>
                                 </div>
 
@@ -122,7 +122,7 @@
 
 
                             </form>
-                        
+
 
                             <c:if test="${not empty error}">
                                 <script>
@@ -144,7 +144,7 @@
                             <br>
                             <div class="text-center">
 
-                                <a class="d-block small" href="forget.htm">Mot De Passe Oublie ?</a>
+                                <a class="" href="forget.htm"  style="font-family: titilliumWeb-light;">Mot De Passe Oublie ?</a>
                             </div>
 
 
@@ -159,14 +159,55 @@
             <!-- /.container-fluid -->
 
             <!-- Sticky Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
 
-            <footer class="sticky-footer" style=" width: 100%;background-color: #fff;   height: 120px;">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span style="font-family: titilliumWeb-light;margin-top: 20px;margin-left: -70px;position: absolute;">Copyright © Fallou Fall 2019</span>
-                    </div>
-                </div>
-            </footer>
+  <!-- Footer Elements -->
+  <div class="container" style="margin-top: 50px;">
+
+    <!--Grid row-->
+    <div class="row">
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!-- Form -->
+        <form class="form-inline">
+           <fieldset>
+                                                            <select class="custom-select w-100" name="genre" required="true">
+
+                                                                <option value="" >Annee Academique</option>
+                                                                <option value="Masculin">2019</option>
+                                                                <option value="Feminin">2018</option>
+                                                                
+                                                            </select>
+                                                        </fieldset>
+        
+        </form>
+        <!-- Form -->
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+         <div class="footer-copyright text-center py-3" style="font-family: titilliumWeb-light;" > Copyright © Fallou Fall 2019
+   
+  </div>
+  <!-- Copyright
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+  </div>
+
+
+</footer>
         </div>
         <!-- /.content-wrapper -->
 
@@ -198,13 +239,18 @@
 
 </body>
 <style>
+    body{
+        overflow-y: hidden;
+    }
     footer{
         background-image: url("images/footer.png");
         background-repeat: round;
         background-color: transparent;
-
+    height: 130px;
         color: #fff;
-
+  position: fixed;
+    bottom: 0;
+    width: 100%;
     }
     .input{
         border-right: 2em;
