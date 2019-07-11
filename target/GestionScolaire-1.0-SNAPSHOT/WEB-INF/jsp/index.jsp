@@ -172,15 +172,12 @@
 
         <!-- Form -->
         <form class="form-inline">
-           <fieldset>
-                                                            <select class="custom-select w-100" name="genre" required="true">
-
-                                                                <option value="" >Annee Academique</option>
-                                                                <option value="Masculin">2019</option>
-                                                                <option value="Feminin">2018</option>
-                                                                
-                                                            </select>
-                                                        </fieldset>
+          <div class="input-group with-addon-icon-left">
+                                                            <input type="text" class="form-control" name="annee" id="datepicker-example-1" placeholder="Annee Academique" >
+                                                            <span class="input-group-addon">
+                                                                <i class="ti-calendar"></i>
+                                                            </span>
+                                                        </div>
         
         </form>
         <!-- Form -->
@@ -225,6 +222,16 @@
     <script src="js/shards.min.js"></script>
     <script src="/js/toast.js"></script>
     <script src="js/sb-admin.min.js"></script>
+      <script>
+            $("#datepicker-example-1").datepicker({
+
+                format: "yyyy",
+                viewMode: "years",
+                minViewMode: "years"
+                
+               
+            });
+        </script>
     <script>
                                     function launch_toast() {
                                         var x = document.getElementById("toast");
@@ -239,6 +246,10 @@
 
 </body>
 <style>
+    .datepicker-dropdown {
+  border-color: #54a2d9;
+  
+}
     body{
         overflow-y: hidden;
     }

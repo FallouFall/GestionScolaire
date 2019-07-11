@@ -1,3 +1,4 @@
+sn\isi\gestionscolaire\domain\Enseigne.class
 sn\isi\gestionscolaire\domain\Matiere.class
 sn\isi\gestionscolaire\controller\ProfesseurController.class
 sn\isi\gestionscolaire\domain\Questions.class

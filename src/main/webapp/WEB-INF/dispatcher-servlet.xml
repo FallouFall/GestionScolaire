@@ -90,9 +90,9 @@
                 <prop key="listeMatiere.htm">gererDirecteurController</prop>
                 <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
                 <prop key="detailInscription.htm">gererDirecteurController</prop>
-                
+                  <prop key="listeMatiereProf.htm">gererDirecteurController</prop>
                   <prop key="cancel.htm">gererDirecteurController</prop>
-                
+                <prop key="listeProfeMatiere.htm">gererDirecteurController</prop>
                 
                 <prop key="detailClasse.htm">gererDirecteurController</prop>
                 <prop key="gererSalles.htm">gererDirecteurController</prop>

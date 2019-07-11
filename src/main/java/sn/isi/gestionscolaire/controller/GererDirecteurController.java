@@ -37,6 +37,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,6 +45,7 @@ import org.springframework.web.servlet.ModelAndView;
 import sn.isi.gestionscolaire.config.Connexion;
 import sn.isi.gestionscolaire.domain.Account;
 import sn.isi.gestionscolaire.domain.Classes;
+import sn.isi.gestionscolaire.domain.Enseigne;
 import sn.isi.gestionscolaire.domain.Filiere;
 import sn.isi.gestionscolaire.domain.Inscription;
 import sn.isi.gestionscolaire.domain.Matiere;
@@ -881,5 +883,96 @@ public class GererDirecteurController {
             System.out.println(e);
         }
     }
+
+    
+    
+       /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("listeProfeMatiere.htm")
+    public ModelAndView welcome() {
+
+        String sql = "SELECT distinct matricule,nom,prenom, adresse,telephone,photo,statut,profil.id,user.id from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
+
+        List<User> actors = new ArrayList<>();
+
+        actors = jdtbcTemplate.query(sql,
+                new Object[]{4}, (ResultSet rs, int rowNum) -> {
+                    User c = new User();
+                    c.setMatricule(rs.getString(1));
+                    c.setNom(rs.getString(2));
+                    c.setPrenom(rs.getString(3));
+                    c.setAdresse(rs.getString(4));
+                    c.setTelephone(rs.getString(5));
+                     c.setStatut(rs.getInt(7));
+                        c.setIdprofil(new Profil(rs.getInt(8)));
+                        c.setId(rs.getInt(9));
+
+                    try {
+                        String encodeBase64 = Base64.encodeBase64String(rs.getBytes(6));
+                        c.setImageId(encodeBase64);
+                    } catch (Exception e) {
+                    }
+                    return c;
+                });
+         mav.addObject("affecter","");
+        mav.setViewName("ListeProfMatiere");
+        mav.addObject("liste", actors);
+
+        return mav;
+    }
+    /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "listeMatiereProf.htm")
+    public ModelAndView listeMatiereProf(HttpServletRequest  req) {
+       
+        String sql = "SELECT * from matiere  ";
+        matiere = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Matiere c = new Matiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+       
+        mav.setViewName("ListeMatiereProf");
+        mav.addObject("matieres", matiere);
+
+        return mav;
+
+    }
+    
+     @RequestMapping(value = "listeMatiereProf.htm", method = RequestMethod.POST)
+    public
+    ModelAndView validerAjoutMatiereProf(HttpServletRequest req) {
+      
+       
+         String data=req.getParameter("data");
+         data = data.replaceAll("[<>\\[\\],-]", "");
+         data = data.substring(1);
+       
+             String sql = "insert into enseigne values (?,?,?)";
+         for (int i = 0; i < data.length(); i++) {
+            
+           
+             jdtbcTemplate.update(sql, null, Integer.parseInt(data.charAt(i)+""), req.getParameter("idProf"));
+         }
+       
+        
+                 mav.setViewName("ListeProfMatiere");
+            mav.addObject("affecter", " Matiere affectees");
+            return mav;
+          
+        }
+    
+
+
 
 }

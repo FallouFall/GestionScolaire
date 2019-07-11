@@ -143,6 +143,13 @@
                         <span>Gerer Filieres</span></a>
                    
                 </li>
+                
+                  <li class="nav-item active">
+                       <a  class="nav-link" href="listeProfeMatiere.htm">
+                        <i class="fas fa-fw fa-user-plus"></i>
+                        <span>Ajout Matiere Professeur</span></a>
+                   
+                </li>
               
             </ul>
 
