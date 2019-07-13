@@ -8,6 +8,7 @@ C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Questions.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\GererAdminController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Programme.java
+C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Domaine.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\ComptableController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\DirecteurController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Classes.java
@@ -17,6 +18,7 @@ C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\LoginController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\GererSecretaireController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Filiere.java
+C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Anneacad.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Evenement.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\GererRessourcesController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Account.java
@@ -25,6 +27,7 @@ C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\GererComptableController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\GererProfesseurController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\ProfesseurController.java
+C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Cycle.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Inscription.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\controller\GererDirecteurController.java
 C:\Users\Fallou\Desktop\Projet New Horizon\GestionScolaire\src\main\java\sn\isi\gestionscolaire\domain\Mensualite.java

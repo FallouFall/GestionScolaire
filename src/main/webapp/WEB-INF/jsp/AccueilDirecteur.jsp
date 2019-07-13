@@ -48,7 +48,7 @@ for(Cookie cookie : cookies){
 }
 if(userName == null) response.sendRedirect("index.htm");
 %>
-    <body id="page-top">
+<body id="page-top"  >
     
 
 
@@ -166,11 +166,52 @@ if(userName == null) response.sendRedirect("index.htm");
                                     </div>
                                 </div>
                                    </a>
+                            </div>
+                            
+                                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                                <a href="gereracad.htm"  style="   text-decoration: none; color: #5a6169;">
+                                <div class="frontside">
+                                    <div class="card ">
+                                        <div class="card-body text-center">
+                                            <p>   <span class="ti-infinite" style="font-size: 3em;" ></span></p>
+                                            <h4 class="card-title">Annee Acad</h4>
 
 
+                                        </div>
+                                    </div>
+                                </div>
+                                   </a>
+                            </div>
+                                    
+                                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                                <a href="gererdomaines.htm"  style="   text-decoration: none; color: #5a6169;">
+                                <div class="frontside">
+                                    <div class="card ">
+                                        <div class="card-body text-center">
+                                            <p>   <span class="ti-server" style="font-size: 3em;" ></span></p>
+                                            <h4 class="card-title">Cycle & Domaines</h4>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                   </a>
                             </div>
                             <!-- ./Team member -->
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                                <a href="statdirecteur.htm"  style="   text-decoration: none; color: #5a6169;">
+                                <div class="frontside">
+                                    <div class="card ">
+                                        <div class="card-body text-center">
+                                            <p>   <span class="ti-stats-up" style="font-size: 3em;" ></span></p>
+                                            <h4 class="card-title">Statistiques</h4>
 
+
+                                        </div>
+                                    </div>
+                                </div>
+                                   </a>
+                            </div>
                         </div>
 
                     </section>
@@ -222,12 +263,18 @@ if(userName == null) response.sendRedirect("index.htm");
         </div>
 
         <!-- Bootstrap core JavaScript-->
-
-        
-        <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js" ></script>
+        <script src="js/demo.min.js"></script>
+        <script src="js/shards.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+        <script src="js/sb-admin.min.js"></script>
+        <script src="js/demo/datatables-demo.js"></script>
      <style>
+         
             .modal-header{
              background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%
                  ,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
@@ -243,6 +290,21 @@ if(userName == null) response.sendRedirect("index.htm");
                 margin-top: 100px;
                  
             }
+            
+            .div {
+    background-color: red;
+    position: relative;
+    height: 214px;
+    overflow: hidden;
+    width: 452px;
+    margin: 0px auto;
+}
+#inner{
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+    padding-right: 15px;
+}
         </style>
     </body>
 

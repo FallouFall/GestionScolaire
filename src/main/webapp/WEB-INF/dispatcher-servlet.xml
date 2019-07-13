@@ -72,7 +72,7 @@
                 <prop key=" GererComptable.htm">gererComptableController</prop>
                 
                      <prop key="StatComptable.htm">gererComptableController</prop>
-                
+                   <prop key="statdirecteur.htm">gererDirecteurController</prop>
                 
                 <prop key=" gererProgramme.htm">gererDirecteurController</prop>
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
@@ -93,6 +93,17 @@
                   <prop key="listeMatiereProf.htm">gererDirecteurController</prop>
                   <prop key="cancel.htm">gererDirecteurController</prop>
                 <prop key="listeProfeMatiere.htm">gererDirecteurController</prop>
+                
+                
+                
+                
+                   <prop key="gerercycles.htm">gererDirecteurController</prop>
+                    <prop key="gereracad.htm">gererDirecteurController</prop>
+                    <prop key="gererdomaines.htm">gererDirecteurController</prop>
+                    
+                      <prop key="ajouterDomaines.htm">gererDirecteurController</prop>
+                    <prop key="ajouterCycles.htm">gererDirecteurController</prop>
+                    <prop key="ajouterAcad.htm">gererDirecteurController</prop>
                 
                 <prop key="detailClasse.htm">gererDirecteurController</prop>
                 <prop key="gererSalles.htm">gererDirecteurController</prop>

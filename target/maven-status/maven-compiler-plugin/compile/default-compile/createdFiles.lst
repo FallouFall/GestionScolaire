@@ -3,6 +3,7 @@ sn\isi\gestionscolaire\domain\Matiere.class
 sn\isi\gestionscolaire\controller\ProfesseurController.class
 sn\isi\gestionscolaire\domain\Questions.class
 sn\isi\gestionscolaire\domain\Evenement.class
+sn\isi\gestionscolaire\domain\Anneacad.class
 sn\isi\gestionscolaire\controller\DirecteurController.class
 sn\isi\gestionscolaire\controller\GererComptableController$2.class
 sn\isi\gestionscolaire\controller\GererSecretaireController.class
@@ -12,6 +13,8 @@ sn\isi\gestionscolaire\controller\GererDirecteurController$1.class
 sn\isi\gestionscolaire\domain\Classes.class
 sn\isi\gestionscolaire\controller\GererRessourcesController.class
 sn\isi\gestionscolaire\domain\Account.class
+sn\isi\gestionscolaire\domain\Domaine.class
+sn\isi\gestionscolaire\domain\Cycle.class
 sn\isi\gestionscolaire\domain\Programme.class
 sn\isi\gestionscolaire\controller\SecretaireController.class
 sn\isi\gestionscolaire\domain\Documents.class
