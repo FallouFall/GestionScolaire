@@ -20,60 +20,62 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">loginController</prop>
-                   <prop key="forget.htm">loginController</prop>
-                  <prop key="printInscriptions.htm">gererDirecteurController</prop>
+                <prop key="forget.htm">loginController</prop>
+                <prop key="printInscriptions.htm">gererDirecteurController</prop>
                 <prop key="gererCalendrier.htm">gererDirecteurController</prop>
                 <prop key="administration.htm">administrationController</prop>
-                    <prop key="lock.htm">administrationController</prop>
+                <prop key="lock.htm">administrationController</prop>
                     
                     
-                        <prop key="faqResponse.htm">administrationController</prop>                   
-                        <prop key="detailquestion.htm">administrationController</prop>
+                <prop key="faqResponse.htm">administrationController</prop>                   
+                <prop key="detailquestion.htm">administrationController</prop>
                     
                     
-                      <prop key="faqResponseSec.htm">secretaireController</prop>                   
-                        <prop key="detailquestionSec.htm">secretaireController</prop>
+                <prop key="faqResponseSec.htm">secretaireController</prop>                   
+                <prop key="detailquestionSec.htm">secretaireController</prop>
                     
-                  <prop key="deconnecter.htm">profilController</prop>
+                <prop key="deconnecter.htm">profilController</prop>
                 <prop key="secretaire.htm">secretaireController</prop>
-                  <prop key="Annonces.htm">secretaireController</prop>
-                      <prop key="controlePaye.htm">gererComptableController</prop>
-                       <prop key="listePayement.htm">gererComptableController</prop>
+                <prop key="Annonces.htm">secretaireController</prop>
+                <prop key="controlePaye.htm">gererComptableController</prop>
+                <prop key="listePayement.htm">gererComptableController</prop>
                        
-                           <prop key="controleNonPaye.htm">gererComptableController</prop>
-                       <prop key="listeNonPayement.htm">gererComptableController</prop>
+                <prop key="controleNonPaye.htm">gererComptableController</prop>
+                <prop key="listeNonPayement.htm">gererComptableController</prop>
                        
-                       <prop key="abonnement.htm">gererComptableController</prop>
-                          <prop key="abonnementListe.htm">gererComptableController</prop>
-                          <prop key="bibliotheque.htm">gererComptableController</prop>
+                <prop key="abonnement.htm">gererComptableController</prop>
+                <prop key="abonnementListe.htm">gererComptableController</prop>
+                <prop key="bibliotheque.htm">gererComptableController</prop>
                 <prop key="comptable.htm">comptableController</prop>
                 <prop key="professeur.htm">professeurController</prop>
                 <prop key="directeur.htm">directeurController</prop>
                 <prop key="etudiant.htm">etudiantController</prop>
-                   <prop key="tableau.htm">etudiantController</prop>
-                     <prop key="aide.htm">etudiantController</prop>
-                         <prop key="demanderAide.htm">etudiantController</prop>
-                  <prop key="documents.htm">etudiantController</prop>
-                   <prop key="documentsMath.htm">etudiantController</prop>
-                     <prop key="mesPayements.htm">etudiantController</prop>
+                <prop key="tableau.htm">etudiantController</prop>
+                <prop key="aide.htm">etudiantController</prop>
+                <prop key="demanderAide.htm">etudiantController</prop>
+                <prop key="documents.htm">etudiantController</prop>
+                <prop key="documentsMath.htm">etudiantController</prop>
+                <prop key="mesPayements.htm">etudiantController</prop>
                    
-                   <prop key="documentsProf.htm">gererProfesseurController</prop>
+                <prop key="documentsProf.htm">gererProfesseurController</prop>
                    
-                   <prop key="documentsMathProf.htm">gererProfesseurController</prop>
+                <prop key="documentsMathProf.htm">gererProfesseurController</prop>
                    
                 <prop key=" GererProfesseur.htm">gererProfesseurController</prop>
                 <prop key="ressources.htm">administrationController</prop>
                 <prop key="profil.htm">profilController</prop>
                 <prop key="GererAdmin.htm">gererAdminController</prop>
-              <prop key="AjouterDocuments.htm">gererProfesseurController</prop>
+                <prop key="AjouterDocuments.htm">gererProfesseurController</prop>
                 <prop key=" gererNote.htm">gererProfesseurController</prop>
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" GererComptable.htm">gererComptableController</prop>
                 
-                     <prop key="StatComptable.htm">gererComptableController</prop>
-                   <prop key="statdirecteur.htm">gererDirecteurController</prop>
-                
+                <prop key="StatComptable.htm">gererComptableController</prop>
+                <prop key="statdirecteur.htm">gererDirecteurController</prop>
+                <prop key="addClasse.htm">gererDirecteurController</prop>
+                 <prop key="saisirClasse.htm">gererDirecteurController</prop>
+                    <prop key="confirmerClasse.htm">gererDirecteurController</prop>
                 <prop key=" gererProgramme.htm">gererDirecteurController</prop>
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
@@ -90,20 +92,20 @@
                 <prop key="listeMatiere.htm">gererDirecteurController</prop>
                 <prop key="GererClasseFiliere.htm">gererDirecteurController</prop>
                 <prop key="detailInscription.htm">gererDirecteurController</prop>
-                  <prop key="listeMatiereProf.htm">gererDirecteurController</prop>
-                  <prop key="cancel.htm">gererDirecteurController</prop>
+                <prop key="listeMatiereProf.htm">gererDirecteurController</prop>
+                <prop key="cancel.htm">gererDirecteurController</prop>
                 <prop key="listeProfeMatiere.htm">gererDirecteurController</prop>
                 
                 
                 
                 
-                   <prop key="gerercycles.htm">gererDirecteurController</prop>
-                    <prop key="gereracad.htm">gererDirecteurController</prop>
-                    <prop key="gererdomaines.htm">gererDirecteurController</prop>
+                <prop key="gerercycles.htm">gererDirecteurController</prop>
+                <prop key="gereracad.htm">gererDirecteurController</prop>
+                <prop key="gererdomaines.htm">gererDirecteurController</prop>
                     
-                      <prop key="ajouterDomaines.htm">gererDirecteurController</prop>
-                    <prop key="ajouterCycles.htm">gererDirecteurController</prop>
-                    <prop key="ajouterAcad.htm">gererDirecteurController</prop>
+                <prop key="ajouterDomaines.htm">gererDirecteurController</prop>
+                <prop key="ajouterCycles.htm">gererDirecteurController</prop>
+                <prop key="ajouterAcad.htm">gererDirecteurController</prop>
                 
                 <prop key="detailClasse.htm">gererDirecteurController</prop>
                 <prop key="gererSalles.htm">gererDirecteurController</prop>

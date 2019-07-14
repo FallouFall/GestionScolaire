@@ -243,7 +243,7 @@ ses.invalidate();
                     c.setId(rs.getInt(1));
                     c.setMatricule(rs.getString(2));
                     c.setNom(rs.getString(3));
-                    c.setCreation(rs.getDate(4));
+                    c.setCreation(rs.getString(4));
                     c.setDescription(rs.getString(5));
                     c.setInscription(rs.getInt(6));
                     c.setMensualite(rs.getInt(7));

@@ -107,7 +107,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
 
-                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addClasse">Ajouter</a>
+                        <a  class="dropdown-item" href="addClasse.htm">Ajouter</a>
                         <a class="dropdown-item" href="#">Lister</a>
 
 

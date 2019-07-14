@@ -12,6 +12,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +36,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.apache.commons.codec.binary.Base64;
+import org.exolab.castor.types.Date;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -352,7 +356,7 @@ public class GererDirecteurController {
                     c.setId(rs.getInt(1));
                     c.setMatricule(rs.getString(2));
                     c.setNom(rs.getString(3));
-                    c.setCreation(rs.getDate(4));
+                    c.setCreation(rs.getString(4));
                     c.setDescription(rs.getString(5));
                     Filiere f = new Filiere();
                     f.setId(rs.getInt(8));
@@ -645,7 +649,7 @@ public class GererDirecteurController {
                     c.setId(rs.getInt(1));
                     c.setMatricule(rs.getString(2));
                     c.setNom(rs.getString(3));
-                    c.setCreation(rs.getDate(4));
+                    c.setCreation(rs.getString(4));
                     c.setDescription(rs.getString(5));
                   
                     return c;
@@ -876,6 +880,9 @@ public class GererDirecteurController {
 
     }
 
+    
+    
+    
     /**
      *
      * @param req
@@ -950,7 +957,84 @@ public class GererDirecteurController {
         return mav;
 
     }
+ /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "addClasse.htm")
+    public ModelAndView addClassee() {
+        String sql = "SELECT * from filiere  ";
+        filieres = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Filiere c = new Filiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
 
+                    return c;
+                });
+        mav.setViewName("addClasse");
+        mav.addObject("filieres", filieres);
+
+        return mav;
+
+    }
+
+    /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "saisirClasse.htm")
+    public ModelAndView saisirClassee(HttpServletRequest req) {
+        
+        mav.setViewName("saisirClasse");
+        mav.addObject("nomFiliere", req.getParameter("nomFiliere"));
+      mav.addObject("idFiliere", req.getParameter("id"));
+
+        return mav;
+
+    }
+    
+      /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "saisirClasse.htm",method = RequestMethod.POST)
+    public ModelAndView saisiriNFOClassee(HttpServletRequest req,HttpServletResponse rep) throws IOException {
+        
+        mav.setViewName("confirmerClasse");
+        mav.addObject("nom",req.getParameter("nom"));
+        mav.addObject("date",req.getParameter("date"));
+        mav.addObject("description",req.getParameter("description"));
+        mav.addObject("matricule","CLS"+ (int) (Math.random() * 9999999));
+         mav.addObject("inscription",req.getParameter("inscription"));
+            mav.addObject("mensualite",req.getParameter("mensualite"));
+          mav.addObject("nomFiliere",req.getParameter("nomFiliere"));
+ mav.addObject("idFiliere",req.getParameter("idFiliere"));
+        return mav;
+        
+    }
+  
+    
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "confirmerClasse.htm")
+    public ModelAndView confirmerClasse(HttpServletRequest req) throws ParseException {
+      String sql = "insert into classes values (?,?,?,?,?,?,?,?)";
+    
+      jdtbcTemplate.update(sql, null, req.getParameter("matricule"), req.getParameter("nom"),
+         req.getParameter("date")   ,req.getParameter("description"),req.getParameter("inscription"),
+              req.getParameter("mensualite"),req.getParameter("idFiliere"));
+        return  gestionsClasses();
+    }
+    
+    
+    
     /**
      *
      * @return ModelView

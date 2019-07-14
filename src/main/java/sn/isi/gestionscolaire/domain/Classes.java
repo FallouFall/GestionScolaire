@@ -58,8 +58,8 @@ public class Classes implements Serializable {
     private String nom;
     @Basic(optional = false)
     @Column(name = "creation")
-    @Temporal(TemporalType.DATE)
-    private Date creation;
+    
+    private String creation;
     @Basic(optional = false)
     @Column(name = "description")
     private String description;
@@ -99,7 +99,7 @@ public class Classes implements Serializable {
      * @param inscription
      * @param mensualite
      */
-    public Classes(Integer id, String matricule, String nom, Date creation, String description, int inscription, int mensualite) {
+    public Classes(Integer id, String matricule, String nom, String creation, String description, int inscription, int mensualite) {
         this.id = id;
         this.matricule = matricule;
         this.nom = nom;
@@ -161,7 +161,7 @@ public class Classes implements Serializable {
      *
      * @return
      */
-    public Date getCreation() {
+    public String getCreation() {
         return creation;
     }
 
@@ -169,7 +169,7 @@ public class Classes implements Serializable {
      *
      * @param creation
      */
-    public void setCreation(Date creation) {
+    public void setCreation(String creation) {
         this.creation = creation;
     }
 

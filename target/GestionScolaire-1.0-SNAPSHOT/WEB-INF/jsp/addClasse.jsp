@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title style="font-family: dax-bold;    font-size: 2rem;">LISTE DES CLASSES</title>
+        <title>Liste des Filieres</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -100,19 +100,7 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Gerer Classes</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-
-                        <a  class="dropdown-item" href="addClasse.htm">Ajouter</a>
-                        <a class="dropdown-item" href="#">Lister</a>
-
-
-                    </div>
-                </li>
+         
                 <li class="nav-item active">
                     <a  class="nav-link" href="listeMatiere.htm">
                         <i class="fas fa-fw fa-folder"></i>
@@ -122,7 +110,19 @@
 
 
 
-              
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Classe</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
+
+
+                        <a class="dropdown-item" href="gererClasses.htm">Gerer Classes</a>
+
+
+                    </div>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -132,7 +132,7 @@
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
                         <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
+                        <a class="dropdown-item" href="#">Gerer Filieres</a>
 
 
                     </div>
@@ -144,7 +144,7 @@
 
                 <div class="container-fluid">
 
-                  
+            
 
 
 
@@ -155,7 +155,7 @@
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
-                                Classes
+                                Filieres
 
 
                             </span>  </div>
@@ -172,9 +172,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-                                            <th>Filiere</th>
-                                             <th>Details</th>
-
+                                              <th>Ajouter</th>
 
 
                                         </tr>
@@ -186,25 +184,22 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-                                            <th>Filiere</th>
-                                              <th>Details</th>
-                                           
+                                              <th>Ajouter</th>
 
 
 
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <c:forEach var="element" items="${classes}">
+                                        <c:forEach var="element" items="${filieres}">
                                             
-                                 <c:url var="link" value="detailClasse.htm">
+                                            
+                                                <c:url var="link" value="saisirClasse.htm">
                                <c:param name="id" value="${element.id}"/>
-                               <c:param name="matricule" value="${element.matricule}"/>
-                               <c:param name="nomClasse" value="${element.nom}"/>
-                               <c:param name="nomFiliere" value="${element.filiere}"/>
+                              <c:param name="nomFiliere" value="${element.nom}"/>
                                   
                               </c:url>
-                                            
+
                                             <tr style="text-align: center;vertical-align: middle;">
 
 
@@ -212,15 +207,15 @@
                                                 <td>${element.nom}</td>
                                                 <td>${element.creation}</td>
                                                 <td>${element.description}</td>
-                                                 <td>${element.filiere}</td>
-
-
-                                                   <td>
+                                                    <td>
                                                     
                                                     <div class="form-label-group">
-                                                        <a href="${link}" class="fa fa-users"></a>
+                                                        <a href="${link}" class="ti-plus"></a>
                                                     </div>
                                                 </td>
+
+
+
 
                                             </tr>
 
@@ -231,6 +226,7 @@
                         </div>
 
                     </div>
+
 
                         <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
                                                             <i class="ti-printer">
@@ -252,9 +248,7 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
-        <!-- Bootstrap core JavaScript-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -276,12 +270,16 @@
             </div>
         </div>
 
+        <!-- Bootstrap core JavaScript-->
+
 
 
 
 
 
         <script src="vendor/jquery/jquery.min.js"></script> 
+
+
         <script src="./js/bootstrap.min.js" ></script>
         <script src="js/demo.min.js"></script>
         <script src="js/shards.min.js"></script>
@@ -291,7 +289,7 @@
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
-        <script>
+      <script>
 function printContent(el){
 var restorepage = $('body').html();
 var printcontent = $('#' + el).clone();
