@@ -73,7 +73,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item" style="margin-top: 20px;" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -82,12 +82,6 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
 
 
                 <li class="nav-item">
@@ -95,11 +89,7 @@
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="gererue.htm">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
-                </li>
+             
          
                 <li class="nav-item active">
                     <a  class="nav-link" href="listeMatiere.htm">
@@ -123,16 +113,15 @@
 
                     </div>
                 </li>
-
-                <li class="nav-item dropdown">
+      <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Filiere</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
-                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="#">Gerer Filieres</a>
+                        <a  class="dropdown-item" href="AjouterFiliere.htm" >Ajouter Filiere</a>
+                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
 
 
                     </div>

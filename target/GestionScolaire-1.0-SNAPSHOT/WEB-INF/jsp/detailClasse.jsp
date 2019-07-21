@@ -66,14 +66,14 @@
 
         <div id="wrapper">
 
-            <!-- Sidebar -->
-
+        
             <ul class="sidebar navbar-nav" >
 
 
 
 
-                <li class="nav-item" >
+                        <li class="nav-item" style="margin-top: 20px;" >
+
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -82,8 +82,7 @@
                 </li>
 
 
-            
-
+              
 
                 <li class="nav-item">
                     <a class="nav-link" href="directeur.htm">
@@ -95,19 +94,7 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Gerer Classes</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-
-                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addClasse">Ajouter</a>
-                        <a class="dropdown-item" href="#">Lister</a>
-
-
-                    </div>
-                </li>
+         
                 <li class="nav-item active">
                     <a  class="nav-link" href="listeMatiere.htm">
                         <i class="fas fa-fw fa-folder"></i>
@@ -117,7 +104,19 @@
 
 
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Classe</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
+
+                        <a class="dropdown-item" href="gererClasses.htm">Gerer Classes</a>
+
+
+                    </div>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -127,7 +126,7 @@
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
                         <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
+                        <a class="dropdown-item" href="#">Gerer Filieres</a>
 
 
                     </div>

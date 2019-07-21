@@ -71,88 +71,8 @@ public class GererRessourcesController {
         return mav;
     }
    
-    /**
-     *
-     * @param req
-     * @return
-     */
-    @RequestMapping("gererfiliere.htm")
-    public ModelAndView listeFiliere(HttpServletRequest req)
-    {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("ListeFiliere");
-        
-        
-          String sql = "SELECT * from filiere  ";
-      List<Filiere>  filieres = jdtbcTemplate.query(sql,
-                new Object[]{}, (ResultSet rs, int rowNum) -> {
-                    Filiere c = new Filiere();
-                    c.setId(rs.getInt(1));
-                    c.setMatricule(rs.getString(2));
-                    c.setNom(rs.getString(3));
-                    c.setCreation(rs.getDate(4));
-                    c.setDescription(rs.getString(5));
-               
-                
-                    return c;
-                });
-        mav.setViewName("ListeFiliere");
-        mav.addObject("filieres", filieres);
-        return mav;
-      
-    }
-
-    /**
-     *
-     * @param req
-     * @return
-     */
-    @RequestMapping("gererClasses.htm")
-    public ModelAndView gererclasses(HttpServletRequest req)
-    {   
-          String sql = "SELECT * from filiere  ";
-          List<Filiere>  filieres = jdtbcTemplate.query(sql,
-                new Object[]{}, (ResultSet rs, int rowNum) -> {
-                    Filiere c = new Filiere();
-                    c.setId(rs.getInt(1));
-                    c.setMatricule(rs.getString(2));
-                    c.setNom(rs.getString(3));
-                    c.setCreation(rs.getDate(4));
-                    c.setDescription(rs.getString(5));
-               
-                 
-                    return c;
-                });
+  
    
-        mav.addObject("filieres", filieres);
-      
-        mav.setViewName("GererClasses");
-        return mav;
-    }
-    
-    /**
-     *
-     * @param req
-     * @return
-     */
-    @RequestMapping(value = "gererfiliere.htm", method = RequestMethod.POST)
-    public ModelAndView saveFilieres(HttpServletRequest req) {
-        try {
-           
-            Filiere filiere = new Filiere();
-            filiere.setNom(req.getParameter("nomFiliere"));
-            filiere.setDescription(req.getParameter("descriptionFiliere"));
-            filiere.setMatricule("FLR" + (int) (Math.random() * 9999999));
-            filiere.setCreation(java.sql.Date.valueOf(LocalDate.now()));
-            String sql = "insert into filiere values (?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, filiere.getMatricule(), filiere.getNom(), filiere.getCreation(), filiere.getDescription());
-            
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return new ModelAndView("ListeFiliere");
-        
-    }
     
     /**
      *

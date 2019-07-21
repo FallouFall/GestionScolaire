@@ -57,7 +57,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item" style="margin-top: 20px;" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -258,6 +258,9 @@ setTimeout(function (){
 </script>
 
         <style>
+      
+           
+
             .image--cover {
                 width: 70px;
                 height: 70px;

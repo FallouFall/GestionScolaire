@@ -383,6 +383,22 @@ public class GererDirecteurController {
         return mav;
 
     }
+    
+    
+      /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("calendrierClasse.htm")
+    public ModelAndView gererCalendrierClasse() {
+
+        mav.setViewName("calendrierClasse");
+        
+        return mav;
+
+    }
+    
+    
 
     /**
      *
@@ -393,6 +409,7 @@ public class GererDirecteurController {
 
         mav = gestionsClasses();
         mav.setViewName("gererCalendrier");
+        
         return mav;
 
     }
@@ -888,17 +905,17 @@ public class GererDirecteurController {
      * @param req
      * @return ModelView
      */
-    @RequestMapping(value = "gererfiliere.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "AjouterFiliere.htm", method = RequestMethod.POST)
     public ModelAndView saveFilieres(HttpServletRequest req) {
         try {
-
+            
             Filiere filiere = new Filiere();
             filiere.setNom(req.getParameter("nomFiliere"));
             filiere.setDescription(req.getParameter("descriptionFiliere"));
             filiere.setMatricule("FLR" + (int) (Math.random() * 9999999));
             filiere.setCreation(java.sql.Date.valueOf(LocalDate.now()));
-            String sql = "insert into filiere values (?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, filiere.getMatricule(), filiere.getNom(), filiere.getCreation(), filiere.getDescription());
+            String sql = "insert into filiere values (?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, filiere.getMatricule(), filiere.getNom(), filiere.getCreation(), filiere.getDescription(),req.getParameter("id"));
             filieres.add(filiere);
         } catch (Exception e) {
             System.out.println(e);
@@ -1041,7 +1058,8 @@ public class GererDirecteurController {
      */
     @RequestMapping(value = "gererfiliere.htm")
     public ModelAndView listeFiliere() {
-        String sql = "SELECT * from filiere  ";
+    
+        String sql = "SELECT  filiere.id,filiere.matricule,filiere.nom,filiere.creation,filiere.description ,cycle.nom ,cycle.id FROM filiere,cycle WHERE filiere.idcycle=cycle.id";
         filieres = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Filiere c = new Filiere();
@@ -1050,16 +1068,60 @@ public class GererDirecteurController {
                     c.setNom(rs.getString(3));
                     c.setCreation(rs.getDate(4));
                     c.setDescription(rs.getString(5));
+                    
+                    Cycle cy=new Cycle();
+                    cy.setNom(rs.getString(6));
+                    cy.setId(rs.getInt(7));
+                    c.setCycle(cy);
 
                     return c;
                 });
+        
+      
         mav.setViewName("ListeFiliere");
+
         mav.addObject("filieres", filieres);
 
         return mav;
 
     }
 
+       /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "AjouterFiliere.htm")
+    public ModelAndView ajouterFiliere() {
+    
+       
+     String sql = "SELECT cycle.id,cycle.matricule,cycle.nom,cycle.date,cycle.description, domaine.id,domaine.nom from cycle,domaine where cycle.iddomaine=domaine.id ";
+      List<  Cycle> cycle = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Cycle c = new Cycle();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setDate(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+                  Domaine d=new Domaine();
+                  d.setId(rs.getInt(6));
+                  d.setNom(rs.getString(7));
+                  c.setDomaine(d);
+
+                    return c;
+                });
+          
+        mav.setViewName("AjouterFiliere");
+           mav.addObject("cycles", cycle); 
+     
+
+        return mav;
+
+    }
+
+    
+    
+    
     /**
      *
      * @param req

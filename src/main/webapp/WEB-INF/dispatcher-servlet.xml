@@ -26,7 +26,7 @@
                 <prop key="administration.htm">administrationController</prop>
                 <prop key="lock.htm">administrationController</prop>
                     
-                    
+                          <prop key="calendrierClasse.htm">gererDirecteurController</prop>
                 <prop key="faqResponse.htm">administrationController</prop>                   
                 <prop key="detailquestion.htm">administrationController</prop>
                     
@@ -81,11 +81,12 @@
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
                 <prop key=" AjouterSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" AjouterDirecteur.htm">gererDirecteurController</prop>
+                  <prop key="AjouterFiliere.htm">gererDirecteurController</prop>
                 <prop key=" AjouterComptable.htm">gererComptableController</prop>
                 <prop key="GererRessources.htm">gererRessourcesController</prop>
                 <prop key="Mensualite.htm">gererComptableController</prop>
                 <prop key="gererClasses.htm">gererDirecteurController</prop>
-                <prop key="gererfiliere.htm">gererRessourcesController</prop>
+                <prop key="gererfiliere.htm">gererDirecteurController</prop>
                 <prop key="updateUser.htm">profilController</prop>
                 <!-- gerer unites enseignement et matiere!-->
                 <prop key="gererue.htm">gererDirecteurController</prop>

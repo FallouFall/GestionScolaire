@@ -40,7 +40,7 @@
             <!-- Navbar -->
             <ul class="navbar-nav ml-auto ml-md-0">
 
-                <li class="nav-item dropdown no-arrow">
+                <li class=" dropdown no-arrow" >
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <c:if test="${photo != null}">
                                <span >
@@ -115,7 +115,7 @@
   object-fit: cover;
   object-position: center right;
 }
-
+ 
         </style>
              
    

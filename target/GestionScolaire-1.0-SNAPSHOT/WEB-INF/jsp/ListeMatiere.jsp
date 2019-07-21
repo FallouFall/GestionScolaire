@@ -68,12 +68,14 @@
 
             <!-- Sidebar -->
 
-    <ul class="sidebar navbar-nav" >
+  
+            
+               <ul class="sidebar navbar-nav" >
 
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item"  style="margin-top: 20px;">
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -82,12 +84,6 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
 
 
                 <li class="nav-item">
@@ -95,62 +91,70 @@
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Matiere</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
-                    
-                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="#">Liste Matieres</a>
-
-
-                    </div>
-                </li>
-             
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Matiere</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
-                    
-                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="#">Liste Matieres</a>
-
-
-                    </div>
-                </li>
-                
-                
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Classe</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
-                    
-                 
-                        <a class="dropdown-item" href="gererClasses.htm">Gerer Classes</a>
-
-
-                    </div>
-                </li>
-              <li class="nav-item active">
-                       <a  class="nav-link" href="gererfiliere.htm">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Gerer Filieres</span></a>
-                   
-                </li>
-                
-                  <li class="nav-item active">
-                       <a  class="nav-link" href="listeProfeMatiere.htm">
-                        <i class="fas fa-fw fa-user-plus"></i>
-                        <span>Ajout Matiere Professeur</span></a>
-                   
-                </li>
               
+
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Gerer Domaines</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+
+                        <a  class="dropdown-item" href="ajouterDomaines.htm">Ajouter Domaine</a>
+                        <a class="dropdown-item" href="gererdomaines.htm">Liste Domaines</a>
+
+
+                    </div>
+                </li>
+                
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Gerer Cycles</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+
+                        <a  class="dropdown-item" href="ajouterCycles.htm">Ajouter Cycle</a>
+                        <a class="dropdown-item" href="gerercycles.htm">Liste Cycle</a>
+
+
+                    </div>
+                </li>
+                
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Filiere</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
+
+                        <a  class="dropdown-item" href="AjouterFiliere.htm" >Ajouter Filiere</a>
+                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
+
+
+                    </div>
+                </li>
+                
+                
+                
+                
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Gerer Matiere</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
+
+                            <a  class="dropdown-item" href="#" >Ajouter Matiere</a>
+                            <a class="dropdown-item" href="#">Liste Matiere</a>
+                             <a class="dropdown-item" href="listeProfeMatiere.htm">Assigner Matiere</a>
+
+                    </div>
+                </li>
+                
+                
+                
+
             </ul>
 
             <div id="content-wrapper">

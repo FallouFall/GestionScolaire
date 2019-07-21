@@ -53,9 +53,9 @@ public class Cycle implements Serializable {
     @Column(name = "description")
     private String description;
       
-         @JoinColumn(name = "iddomaine", referencedColumnName = "id")
+      @JoinColumn(name = "iddomaine", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Domaine domaine;
+    private Domaine domaine;   
 
     public Cycle() {
     }

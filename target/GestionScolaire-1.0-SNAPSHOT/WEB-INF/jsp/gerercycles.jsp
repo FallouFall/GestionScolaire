@@ -68,12 +68,13 @@
 
             <!-- Sidebar -->
 
-        <ul class="sidebar navbar-nav" >
+     
+            <ul class="sidebar navbar-nav" >
 
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item"  style="margin-top: 20px;">
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -119,10 +120,21 @@
                     </div>
                 </li>
                 
-                
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Filiere</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
+
+                        <a  class="dropdown-item" href="AjouterFiliere.htm" >Ajouter Filiere</a>
+                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
+
+
+                    </div>
+                </li>
 
             </ul>
-
             <div id="content-wrapper">
 
                 <div class="container-fluid">

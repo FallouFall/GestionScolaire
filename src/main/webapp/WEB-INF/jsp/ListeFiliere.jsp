@@ -66,14 +66,12 @@
 
         <div id="wrapper">
 
-            <!-- Sidebar -->
-
             <ul class="sidebar navbar-nav" >
 
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item"  style="margin-top: 20px;">
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -82,12 +80,6 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
 
 
                 <li class="nav-item">
@@ -95,63 +87,72 @@
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="gererue.htm">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
-                </li>
-         
-                <li class="nav-item active">
-                    <a  class="nav-link" href="listeMatiere.htm">
+              
+
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
-                        <span>Gerer Matieres</span></a>
-
-                </li>
-
-
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Classe</span>
+                        <span>Gerer Domaines</span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
 
-
-                        <a class="dropdown-item" href="gererClasses.htm">Gerer Classes</a>
+                        <a  class="dropdown-item" href="ajouterDomaines.htm">Ajouter Domaine</a>
+                        <a class="dropdown-item" href="gererdomaines.htm">Liste Domaines</a>
 
 
                     </div>
                 </li>
+                
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Gerer Cycles</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
 
-                <li class="nav-item dropdown">
+                        <a  class="dropdown-item" href="ajouterCycles.htm">Ajouter Cycle</a>
+                        <a class="dropdown-item" href="gerercycles.htm">Liste Cycle</a>
+
+
+                    </div>
+                </li>
+                
+                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Filiere</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
-                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addFiliere">Ajouter</a>
-                        <a class="dropdown-item" href="#">Gerer Filieres</a>
+                        <a  class="dropdown-item" href="AjouterFiliere.htm" >Ajouter Filiere</a>
+                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
 
 
                     </div>
                 </li>
+                
+                <li class="nav-item active">
+                    <a class="nav-link" href="listeMatiere.htm">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Gerer Matieres</span></a>
+
+                </li>
 
             </ul>
+      
 
             <div id="content-wrapper">
 
                 <div class="container-fluid">
 
-                    <div class="loader"><div class="page-loader"></div></div>
+             
 
 
 
 
 
                     <!-- DataTables Example -->
-                    <div class="card mb-3 slide-in " id="ue" style=" margin-top: 17px;">
+                    <div class="card mb-3  " id="ue" style=" margin-top: 17px;">
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -172,7 +173,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-
+                                              <th>Cycle</th>
 
 
                                         </tr>
@@ -184,7 +185,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-
+                                                  <th>Cycle</th>
 
 
                                         </tr>
@@ -199,7 +200,7 @@
                                                 <td>${element.nom}</td>
                                                 <td>${element.creation}</td>
                                                 <td>${element.description}</td>
-
+                                                <td>${element.cycle.nom}</td>
 
 
 
@@ -276,6 +277,7 @@
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
+        
       <script>
 function printContent(el){
 var restorepage = $('body').html();
@@ -307,180 +309,8 @@ setTimeout(function (){
 
         </style>
 
-        <div class="modal fade" id="addClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" >
-                        <h5 class="modal-title" id="exampleModalLabel">Ajouter Classe</h5>
-                        <br><br>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+ 
 
-                        </button>
-
-                    </div>
-                    <div id="content-wrapper">
-
-                        <div class="container-fluid">
-                            <div class="example col-md-12 ml-auto mr-auto">
-                                <div class="row " >
-                                    <form>
-                                        <br>
-                                        <div class="form-group">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6 ">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-tag"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control " id="nomClasse" placeholder="Nom " required="true">
-                                                    </div>
-                                                </div>
-
-                                                <div class=" form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <input type="text" class="form-control" id="datepicker-example-1" placeholder="Date de Creation" >
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-calendar"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-info"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control" id="descriptionClasse" placeholder="Description" required="true">
-                                                    </div>
-                                                </div>
-
-                                                <div class=" form-group col-md-6">               
-                                                    <fieldset>
-                                                        <select class="custom-select w-100" required="true">
-
-                                                            <option value="">Filiere</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-
-                                                        </select>
-                                                    </fieldset>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-money"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control" id="PrixInscription" placeholder="Prix Inscription" required="true">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-alert"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control" id="PrixInscription" placeholder="Condition Admission" >
-                                                    </div>
-                                                </div>
-
-
-                                                <div class=" form-group col-md-6">       
-                                                    <button type="submit" class="btn btn-primary">
-                                                        <i class="ti-save">
-
-                                                        </i> Enregistrer</button>
-                                                </div>
-                                                <div class=" form-group col-md-6">   
-                                                    <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
-                                                        <i class="ti-trash">
-
-                                                        </i> Annuler</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-                                    <br>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="addFiliere"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" >
-                        <h5 class="modal-title" id="exampleModalLabel">Ajouter Filiere</h5>
-                        <br><br>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-
-                        </button>
-
-                    </div>
-                    <div id="content-wrapper">
-
-                        <div class="container-fluid">
-                            <div class="example col-md-12 ml-auto mr-auto">
-                                <div class="row " >
-                                    <form method="POST">
-                                        <br>
-                                        <div class="form-group">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6 ">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-tag"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control " id="nomMatiere"  name="nomFiliere" placeholder="Nom " required="true">
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-info"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control"  name="descriptionFiliere" id="descriptionMatiere" placeholder="Description" required="true">
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class=" form-group col-md-6">       
-                                                    <button type="submit" class="btn btn-primary">
-                                                        <i class="ti-save">
-
-                                                        </i> Enregistrer</button>
-                                                </div>
-                                                <div class=" form-group col-md-6">   
-                                                    <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
-                                                        <i class="ti-trash">
-
-                                                        </i> Annuler</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                    <br>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
     </body>

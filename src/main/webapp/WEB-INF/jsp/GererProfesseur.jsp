@@ -58,7 +58,13 @@ if(userName == null) response.sendRedirect("index.htm");
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav" >
      
-       
+         <li class="nav-item" style="margin-top: 20px;" >
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
+                    </a>
+                </li>
         
          <li class="nav-item">
           <a class="nav-link" href="administration.htm">
