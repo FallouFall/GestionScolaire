@@ -39,7 +39,7 @@
 
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
-              
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="comptable.htm">
@@ -62,282 +62,196 @@
 
                 <div class="container-fluid" style="    margin-top: -40px;">
 
+     <ol class="breadcrumb" style="font-family: dax-bold;
+                            box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,.1), 0 0.9375rem 1.40625rem rgba(90,97,105,.1), 0 0.25rem 0.53125rem rgba(90,97,105,.12), 0 0.125rem 0.1875rem rgba(90,97,105,.1);
+                            background-color: #fff;border-radius: 10px;color: #1f72b8; margin-top: 40px;
+                            ">
+                            <li class="breadcrumb-item">
+                                <span>Inscription</span>
+                            </li>
 
+                        </ol>
                     <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
 
 
                         <div class="example col-md-12 ml-auto mr-auto">
+                       
                             <div class="row "  >
 
-                                <div class="card mb-3 " id="ue" style=" margin-top: 40px;">
-                                    <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
-                                        <span style="font-family: dax-bold;    font-size: 2rem;">
-                                            Inscription
+                                <section id="team" class="pb-5 " style="margin-top: -30px;">
+                                    <div class="row" style="margin-bottom: -100px; margin-top: 3px;">
+                                        <c:forEach var="element" items="${annees}">
+                                            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                                                       <c:url var="link" value="domaineById.htm">
+                                                     
+                                                       <c:param name="id" value="${element.id}"/>
+                                                      <c:param name="annee" value="${element.date}"/>
+                                              
+                                                   </c:url>
+                                                <a href="${link}"  style="   text-decoration: none; color: #5a6169;">
+                                                    <div class="frontside">
+                                                        <div class="card ">
+                                                            
+                                                            <div class="card-body text-center">
+                                                                <p>     <span class="ti-plus"   style="font-size: 3em;"></span></p>
+                                                                <span >    <h5 class="card-title">${element.date}</h5></span> 
+
+                                                                <div class="row" style="text-align: left;">
+
+                                                                    <div class="col-6 text-muted">Matricule :</div>
+                                                                    <div class="col-6">${element.matricule}</div>
 
 
-                                        </span>  </div>
 
-                                    <div class="card-body">
-                                        <form method="POST">
-                                            <div class="form-group">
-                                                <div class="form-row">
+                                                                    <div class="col-6 text-muted">Date :</div>
+                                                                    <div class="col-6">${element.nom}</div>
+
+                                                                    <div class="col-6 text-muted">Description</div>
+                                                                    <div class="col-6">${element.description}</div>
 
 
 
-                                                    <div class="form-group col-md-6 ">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-user"></i>
-                                                            </span>
-                                                            <input type="text" name="nom" class="form-control " id="nom" placeholder="Nom" required="true">
+
+
+
+                                                                </div>
+
+
+
+
+
+
+
+                                                            </div>
+
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prenom" required="true">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-user"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-home"></i>
-                                                            </span>
-                                                            <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="email" class="form-control"  name="mail" id="inputEmail4" placeholder="Email">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-email"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                                                              <div class=" form-group col-md-6"> 
-                                                        <fieldset>
-                                                            <select class="custom-select w-100" name="genre" required="true">
-
-                                                                <option value="" >Genre</option>
-                                                                <option value="Masculin">Masculin</option>
-                                                                <option value="Feminin">Feminin</option>
-                                                            </select>
-                                                        </fieldset>
-                                                    </div>
-
-                                                    <div class=" form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="text"  class="form-control" name="info" id="info" placeholder="Info Supp" >
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-calendar"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class=" form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" name="naissance" id="datepicker-example-1" placeholder="Date de Naissance" >
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-calendar"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class=" form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="number" class="form-control" name="telephone" id="telephone" placeholder="Telephone"    >
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-mobile"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class=" form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class=" filiere form-control" name="filiere" id="filiere" placeholder="Filiere"  required="true">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-layout"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class=" form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class=" classe form-control"  name="classe" data-minlength="6" id="classe" placeholder="Classe" required="true" >
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-bookmark-alt"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-                                                   
+                                                </a>
 
 
-
-
-
-
-                                                    <div class=" form-group col-md-6">       
-                                                        <button type="submit" class="btn btn-primary">
-                                                            <i class="ti-save">
-
-                                                            </i> Enregistrer</button>
-                                                    </div>
-                                                    <div class=" form-group col-md-6">   
-                                                        <button type="reset"  class="btn btn-secondary">
-                                                            <i class="ti-trash">
-
-                                                            </i> Annuler</button>
-                                                    </div>
-
-
-
-
-
-                                                </div>
                                             </div>
-
-
-
-
-
-
-
-                                        </form>
+                                        </c:forEach>
 
                                     </div>
-                                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                </section>
 
 
                             </div>
                         </div>
                     </div>
-
-
-                </div>
-                <!-- /.container-fluid -->
-
-                <!-- Sticky Footer -->
-
-
-            </div>
-            <!-- /.content-wrapper -->
-
-        </div>
-        <!-- /#wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-    
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
-                    <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="index.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
-                    </div>
                 </div>
             </div>
+
+
         </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
 
 
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js" ></script>
-        <script src="js/demo.min.js"></script>
-        <script src="js/shards.min.js"></script>
-        <script src="js/sb-admin.min.js"></script>
-        <script src="js/bootstrap3-typeahead.js"></script>
+    </div>
+    <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
 
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Voulez-Vous quitter ?</div>
+            <div class="modal-footer">
+
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="index.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
-
-        <script>
-                                                                 var $input = $(".filiere");
-                                                                 $input.typeahead({
-                                                                 source: [
-            <c:forEach var="element" items="${filieres}">
-                                                                 {id: '${element.matricule}', name: '${element.nom}'},
-            </c:forEach>
-
-                                                                 ],
-                                                                         autoSelect: true
-                                                                 });
-                                                                 $input.change(function () {
-                                                                 var current = $input.typeahead("getActive");
-                                                                 if (current) {
-
-                                                                 if (current.name == $input.val()) {
-                                                                 console.log(current['name']);
-                                                                 } else {
-                                                                 // This means it is only a partial match, you can either add a new item
-                                                                 // or take the active if you don't want new items
-                                                                 }
-                                                                 } else {
-                                                                 // Nothing is active so it is a new value (or maybe empty value)
-                                                                 }
-                                                                 });
-        </script>
-
-        <script>
-            var $input = $(".classe");
-            $input.typeahead({
-            source: [
-            <c:forEach var="element" items="${classes}">
-            {id: '${element.matricule}', name: '${element.nom}', inscription: '${element.inscription}'},
-            </c:forEach>
-            ],
-                    autoSelect: true
-            });
-            $input.change(function () {
-            var current = $input.typeahead("getActive");
-            if (current) {
-
-            if (current.name == $input.val()) {
-
-
-            } else {
-            // This means it is only a partial match, you can either add a new item
-            // or take the active if you don't want new items
-            }
-            } else {
-            // Nothing is active so it is a new value (or maybe empty value)
-            }
-            });
-        </script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js" ></script>
+<script src="js/demo.min.js"></script>
+<script src="js/shards.min.js"></script>
+<script src="js/sb-admin.min.js"></script>
+<script src="js/bootstrap3-typeahead.js"></script>
 
 
 
-    </body>
+
+
+<script>
+    var $input = $(".filiere");
+    $input.typeahead({
+    source: [
+    <c:forEach var="element" items="${filieres}">
+    {id: '${element.matricule}', name: '${element.nom}'},
+    </c:forEach>
+
+    ],
+            autoSelect: true
+    });
+    $input.change(function () {
+    var current = $input.typeahead("getActive");
+    if (current) {
+
+    if (current.name == $input.val()) {
+    console.log(current['name']);
+    } else {
+    // This means it is only a partial match, you can either add a new item
+    // or take the active if you don't want new items
+    }
+    } else {
+    // Nothing is active so it is a new value (or maybe empty value)
+    }
+    });
+</script>
+
+<script>
+    var $input = $(".classe");
+    $input.typeahead({
+    source: [
+    <c:forEach var="element" items="${classes}">
+    {id: '${element.matricule}', name: '${element.nom}', inscription: '${element.inscription}'},
+    </c:forEach>
+    ],
+            autoSelect: true
+    });
+    $input.change(function () {
+    var current = $input.typeahead("getActive");
+    if (current) {
+
+    if (current.name == $input.val()) {
+
+
+    } else {
+    // This means it is only a partial match, you can either add a new item
+    // or take the active if you don't want new items
+    }
+    } else {
+    // Nothing is active so it is a new value (or maybe empty value)
+    }
+    });
+</script>
+
+
+
+</body>
 
 </html>

@@ -167,7 +167,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-                                               <th>Domaine</th>
+                                        
 
 
                                         </tr>
@@ -179,7 +179,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-                                                <th>Domaine</th>
+                                      
 
 
                                         </tr>
@@ -194,7 +194,7 @@
                                                 <td>${element.nom}</td>
                                                 <td>${element.date}</td>
                                                 <td>${element.description}</td>
-                                          <td>${element.domaine.nom}</td>
+                                        
 
 
 

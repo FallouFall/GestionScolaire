@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title>Programme</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -73,7 +73,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item" style="margin-top: 20px;" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -82,12 +82,7 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
+
 
 
                 <li class="nav-item">
@@ -101,19 +96,19 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>
-             
-               <li class="nav-item active">
-                 <a class="nav-link" href="#" data-toggle="modal" data-target="#addToProgramme">
-                 <i class="fas fa-plus"></i>
-                <span>Ajouter </span></a>
-        </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#addToProgramme">
+                        <i class="fas fa-plus"></i>
+                        <span>Ajouter </span></a>
+                </li>
             </ul>
 
             <div id="content-wrapper">
 
                 <div class="container-fluid">
 
-              
+
 
 
 
@@ -123,7 +118,7 @@
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
-                              Programme ${classe} ${filiere}
+                                Programme ${classe} ${filiere}
 
 
                             </span>  </div>
@@ -136,11 +131,11 @@
                                     <thead>
                                         <tr  style="text-align: center;vertical-align: middle;">
 
-                                         
-                                             <th>Matricule</th>
+
+                                            <th>Matricule</th>
                                             <th>Heures</th>
                                             <th>Matiere</th>
-                                      
+
 
 
                                         </tr>
@@ -148,13 +143,13 @@
                                     <tfoot>
                                         <tr style="text-align: center;vertical-align: middle;">
 
-                                          
-                                           
-                                               <th>Matricule</th>
+
+
+                                            <th>Matricule</th>
                                             <th>Heures</th>
                                             <th>Matiere</th>
-                                       
-                                          
+
+
 
 
 
@@ -162,21 +157,21 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                     
+
                                         <c:forEach var="element" items="${programme}">
-                                          
+
                                             <tr style="text-align: center;vertical-align: middle;">
 
-                                
+
                                                 <td>${element.idmatiere.matricule}</td>
                                                 <td>${element.heures}</td>
-                                                 <td>${element.idmatiere.nom}</td>
-                                            
+                                                <td>${element.idmatiere.nom}</td>
+
 
 
 
                                             </tr>
-                                            
+
                                         </c:forEach>
                                     </tbody>
                                 </table>
@@ -208,16 +203,16 @@
         <!-- Bootstrap core JavaScript-->
 
 
-<div class="modal fade" id="addToProgramme"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addToProgramme"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header" >
                         <h5 class="modal-title" id="exampleModalLabel">Ajouter une matiere</h5>
                         <br><br>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                         
+
                         </button>
-                
+
                     </div>
                     <div id="content-wrapper">
 
@@ -228,18 +223,18 @@
                                         <br>
                                         <div class="form-group">
                                             <div class="form-row">
-                                          
-                                                
-                                                    <div class=" form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class=" filiere form-control" name="nomMatiere" id="filiere" placeholder="Filiere"  required="true">
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-layout"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
 
-                                         
+
+                                                <div class=" form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                        <input type="text" class=" filiere form-control" name="nomMatiere" id="filiere" placeholder="Filiere"  required="true">
+                                                        <span class="input-group-addon">
+                                                            <i class="ti-layout"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+
 
                                                 <div class="form-group col-md-6">
                                                     <div class="input-group with-addon-icon-left">
@@ -250,7 +245,7 @@
                                                     </div>
                                                 </div>
 
-                                         
+
 
                                                 <div class=" form-group col-md-6">       
                                                     <button type="submit" class="btn btn-primary">
@@ -279,78 +274,78 @@
         </div>
 
 
-                            <c:forEach var="element" items="${matiere}">
+        <c:forEach var="element" items="${matiere}">
 
-                                            <tr style="text-align: center;vertical-align: middle;">
+        <tr style="text-align: center;vertical-align: middle;">
 
-                                          
-                                                <td>${element.matricule}</td>
-                                                <td>${element.nom}</td>
-                                                <td>${element.creation}</td>
-                                                <td>${element.description}</td>
-                                             
-                                            
+
+            <td>${element.matricule}</td>
+            <td>${element.nom}</td>
+            <td>${element.creation}</td>
+            <td>${element.description}</td>
 
 
 
-                                            </tr>
 
-                                        </c:forEach>
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js" ></script>
-        <script src="js/demo.min.js"></script>
-        <script src="js/shards.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-        <script src="vendor/datatables/jquery.dataTables.js"></script>
-        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-        <script src="js/sb-admin.min.js"></script>
-        <script src="js/demo/datatables-demo.js"></script>
-        <script src="js/bootstrap3-typeahead.js"></script>
+
+        </tr>
+
+    </c:forEach>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js" ></script>
+    <script src="js/demo.min.js"></script>
+    <script src="js/shards.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="js/sb-admin.min.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/bootstrap3-typeahead.js"></script>
     <script>
-                                                                 var $input = $(".filiere");
-                                                                 $input.typeahead({
-                                                                 source: [
-            <c:forEach var="element" items="${matieres}">
-                                                                 {id: '${element.matricule}', name: '${element.nom}'},
-            </c:forEach>
+        var $input = $(".filiere");
+        $input.typeahead({
+            source: [
+        <c:forEach var="element" items="${matieres}">
+                {id: '${element.matricule}', name: '${element.nom}'},
+        </c:forEach>
 
-                                                                 ],
-                                                                         autoSelect: true
-                                                                 });
-                                                                 $input.change(function () {
-                                                                 var current = $input.typeahead("getActive");
-                                                                 if (current) {
+            ],
+            autoSelect: true
+        });
+        $input.change(function () {
+            var current = $input.typeahead("getActive");
+            if (current) {
 
-                                                                 if (current.name == $input.val()) {
-                                                                 console.log(current['name']);
-                                                                 } else {
-                                                                 // This means it is only a partial match, you can either add a new item
-                                                                 // or take the active if you don't want new items
-                                                                 }
-                                                                 } else {
-                                                                 // Nothing is active so it is a new value (or maybe empty value)
-                                                                 }
-                                                                 });
-        </script>
-
-
-        <style>
-            .image--cover {
-                width: 70px;
-                height: 70px;
-                border-radius: 50%;
-                border: 2px solid #fff;
-                margin: 5px;
-
-                object-fit: cover;
-                object-position: center right;
+                if (current.name == $input.val()) {
+                    console.log(current['name']);
+                } else {
+                    // This means it is only a partial match, you can either add a new item
+                    // or take the active if you don't want new items
+                }
+            } else {
+                // Nothing is active so it is a new value (or maybe empty value)
             }
+        });
+    </script>
 
-        </style>
+
+    <style>
+        .image--cover {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin: 5px;
+
+            object-fit: cover;
+            object-position: center right;
+        }
+
+    </style>
 
 
 
-    </body>
+</body>
 
 </html>

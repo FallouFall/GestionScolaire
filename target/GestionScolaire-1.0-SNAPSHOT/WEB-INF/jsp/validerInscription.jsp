@@ -73,7 +73,8 @@
 
 
 
-                <li class="nav-item" >
+
+                <li class="nav-item" style="margin-top: 20px;" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -89,7 +90,7 @@
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
-               <li class="nav-item active">
+                <li class="nav-item active">
                     <a class="nav-link" href="gererClasses.htm">
                         <i class="fas fa-home"></i>
                         <span>Classes</span></a>
@@ -99,14 +100,14 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>
-                
+
             </ul>
 
             <div id="content-wrapper">
 
                 <div class="container-fluid">
 
-                  
+
 
 
 
@@ -145,7 +146,7 @@
                                             <th>Inscription</th>
                                             <th>Date</th>
                                             <th>Classe</th>
-                                              <th>Etat</th>
+                                            <th>Etat</th>
                                             <th>Details</th>
 
 
@@ -153,14 +154,14 @@
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="element" items="${inscriptions}">
-                                                   <c:url var="link" value="detailInscription.htm">
-                                                     
-                                                       <c:param name="id" value="${element.iduser.id}"/>
-                                                      <c:param name="idInscription" value="${element.matricule}"/>
-                                                      <c:param name="profilId" value="${element.iduser.idprofil.id}"/>
-                                                       <c:param name="validite" value="${element.validite}"/>
-                                                          <c:param name="cancel" value="1"/>
-                                                   </c:url>
+                                            <c:url var="link" value="detailInscription.htm">
+
+                                                <c:param name="id" value="${element.iduser.id}"/>
+                                                <c:param name="idInscription" value="${element.matricule}"/>
+                                                <c:param name="profilId" value="${element.iduser.idprofil.id}"/>
+                                                <c:param name="validite" value="${element.validite}"/>
+                                                <c:param name="cancel" value="1"/>
+                                            </c:url>
                                             <tr style="text-align: center;vertical-align: middle;">
 
 
@@ -171,38 +172,38 @@
                                                 <td>${element.date}</td>
                                                 <td>${element.idclasse.description}</td>
                                                 <td>
-                                                      <c:if test="${element.validite == 1}">
-                                                          Valide
+                                                    <c:if test="${element.validite == 1}">
+                                                        Valide
                                                     </c:if>
-                                                    
+
                                                     <c:if test="${element.validite == 0}">
-                                                          Suspendue
+                                                        Suspendue
                                                     </c:if>
-                                                           <c:if test="${element.validite == 3}">
-                                                          En Attente
+                                                    <c:if test="${element.validite == 3}">
+                                                        En Attente
                                                     </c:if>
-                                                          
+
                                                 </td>
-                                             
-                                                
+
+
 
                                                 <td>
-                                                      <c:if test="${element.validite == 0}">
-                                                           <div class="form-label-group">
-                                                        <a href="${link}" class="ti-na"></a>
-                                                    </div>
+                                                    <c:if test="${element.validite == 0}">
+                                                        <div class="form-label-group">
+                                                            <a href="${link}" class="ti-na"></a>
+                                                        </div>
                                                     </c:if>
-                                                       <c:if test="${element.validite == 3}">
-                                                           <div class="form-label-group">
-                                                        <a href="${link}" class="ti-timer"></a>
-                                                    </div>
+                                                    <c:if test="${element.validite == 3}">
+                                                        <div class="form-label-group">
+                                                            <a href="${link}" class="ti-timer"></a>
+                                                        </div>
                                                     </c:if>
-                                                       <c:if test="${element.validite == 1}">
-                                                           <div class="form-label-group">
-                                                        <a href="${link}" class="ti-stamp"></a>
-                                                    </div>
+                                                    <c:if test="${element.validite == 1}">
+                                                        <div class="form-label-group">
+                                                            <a href="${link}" class="ti-stamp"></a>
+                                                        </div>
                                                     </c:if>
-                                                 
+
                                                 </td>
 
 
@@ -212,22 +213,22 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-                                
-                                  <form method="GET">
-                                <div class="form-group">
-                                 
-                                     
-                                </div>
-                                  </form>
+
+                                <form method="GET">
+                                    <div class="form-group">
+
+
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
                     </div>
                     <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
-                                                            <i class="ti-printer">
+                        <i class="ti-printer">
 
-                    </i> Imprimer</button>
- 
+                        </i> Imprimer</button>
+
 
                 </div>
                 <!-- /.container-fluid -->
@@ -245,7 +246,7 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -257,11 +258,11 @@
                     </div>
                     <div class="modal-body">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+
                     </div>
                 </div>
             </div>
@@ -283,20 +284,20 @@
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
         <script>
-function printContent(el){
-var restorepage = $('body').html();
-var printcontent = $('#' + el).clone();
-var enteredtext = $('#text').val();
-$('body').empty().html(printcontent);
-window.print();
-$('body').html(restorepage);
-$('#text').html(enteredtext);
-setTimeout(function (){
-    location.reload()
-},10);
-}
+                        function printContent(el) {
+                            var restorepage = $('body').html();
+                            var printcontent = $('#' + el).clone();
+                            var enteredtext = $('#text').val();
+                            $('body').empty().html(printcontent);
+                            window.print();
+                            $('body').html(restorepage);
+                            $('#text').html(enteredtext);
+                            setTimeout(function () {
+                                location.reload()
+                            }, 10);
+                        }
 
-</script>
+        </script>
 
         <style>
             .image--cover {
@@ -312,7 +313,7 @@ setTimeout(function (){
 
         </style>
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -324,11 +325,11 @@ setTimeout(function (){
                     </div>
                     <div class="modal-body">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+
                     </div>
                 </div>
             </div>

@@ -32,7 +32,9 @@ sn\isi\gestionscolaire\controller\HeaderController.class
 sn\isi\gestionscolaire\controller\LoginController$1.class
 sn\isi\gestionscolaire\domain\Filiere.class
 sn\isi\gestionscolaire\controller\AdministrationController.class
+sn\isi\gestionscolaire\domain\Formation.class
 sn\isi\gestionscolaire\domain\Profil.class
+sn\isi\gestionscolaire\domain\Droitinscription.class
 sn\isi\gestionscolaire\config\Connexion.class
 sn\isi\gestionscolaire\controller\EtudiantController$1.class
 sn\isi\gestionscolaire\controller\GererAdminController.class

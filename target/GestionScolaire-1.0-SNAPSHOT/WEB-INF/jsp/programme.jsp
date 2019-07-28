@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title>Gestion des Programmes</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -73,7 +73,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item" style="margin-top: 20px;" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -82,12 +82,6 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
 
 
                 <li class="nav-item">
@@ -157,12 +151,12 @@
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="element" items="${classes}">
-                                              <c:url var="link" value="gererProgramme.htm">
-                                                     
-                                                       <c:param name="id" value="${element.id}"/>
-                                                        <c:param name="classe" value="${element.nom}"/>
-                                                       <c:param name="filiere" value="${element.filiere}"/>
-                                                   </c:url>
+                                            <c:url var="link" value="gererProgramme.htm">
+
+                                                <c:param name="id" value="${element.id}"/>
+                                                <c:param name="classe" value="${element.nom}"/>
+                                                <c:param name="filiere" value="${element.filiere}"/>
+                                            </c:url>
                                             <tr style="text-align: center;vertical-align: middle;">
 
 
@@ -173,7 +167,7 @@
                                                 <td>${element.filiere}</td>
                                                 <td>
                                                     <div class="form-label-group">
-                                                        <a href="${link}" class="ti-reload"></a>
+                                                        <a href="${link}" class="ti-panel"></a>
                                                     </div>
                                                 </td>
 
@@ -218,11 +212,11 @@
                     </div>
                     <div class="modal-body">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+
                     </div>
                 </div>
             </div>

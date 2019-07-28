@@ -345,6 +345,7 @@
 
         <!-- Bootstrap core JavaScript-->
         <style>
+
             .image--cover {
                 width: 70px;
                 height: 70px;

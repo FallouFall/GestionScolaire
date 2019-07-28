@@ -24,9 +24,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.isi.gestionscolaire.config.Connexion;
 import sn.isi.gestionscolaire.domain.Account;
+import sn.isi.gestionscolaire.domain.Anneacad;
 import sn.isi.gestionscolaire.domain.Bibliotheque;
 import sn.isi.gestionscolaire.domain.Classes;
+import sn.isi.gestionscolaire.domain.Cycle;
 import sn.isi.gestionscolaire.domain.Filiere;
+import sn.isi.gestionscolaire.domain.Formation;
 import sn.isi.gestionscolaire.domain.Inscription;
 import sn.isi.gestionscolaire.domain.Mensualite;
 import sn.isi.gestionscolaire.domain.Profil;
@@ -145,7 +148,7 @@ public class GererComptableController {
 
                 Classes s = new Classes();
                 s.setId(rs.getInt(8));
-                s.setMensualite(rs.getInt(10));
+          
 
                 Filiere f = new Filiere();
                 f.setNom(rs.getString(11));
@@ -425,7 +428,7 @@ public class GererComptableController {
 
                 Classes s = new Classes();
                 s.setId(rs.getInt(8));
-                s.setMensualite(rs.getInt(10));
+             
 
                 Filiere f = new Filiere();
                 f.setNom(rs.getString(11));
@@ -487,10 +490,10 @@ public class GererComptableController {
       String mat=   "PAY" + (int) (Math.random() * 9999999) + "";
         String mois = req.getParameter("mois");
           int  paye = Integer.parseInt(req.getParameter("paye"));
-          int restant=ins.getIdclasse().getMensualite()-paye;
+       
         String sql = "insert into mensualite values (?,?,?,?,?,?,?,?)";
 
-        jdtbcTemplate.update(sql, null,mat, java.sql.Date.valueOf(date), mois,paye,restant ,ins.getIdclasse().getId(), ins.getIduser().getId());
+        jdtbcTemplate.update(sql, null,mat, java.sql.Date.valueOf(date), mois,paye,"3333" ,ins.getIdclasse().getId(), ins.getIduser().getId());
 
         return mav;
 
@@ -628,12 +631,166 @@ public class GererComptableController {
 
     }
 
+    
+    
+    /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("domaineById.htm")
+    public ModelAndView DomainesByIdAcad(HttpServletRequest req) {
+        String sql = "SELECT * from domaine where idacad =? ";
+      List<  Anneacad> domaines = jdtbcTemplate.query(sql,
+                new Object[]{req.getParameter("id")}, (ResultSet rs, int rowNum) -> {
+                    Anneacad c = new Anneacad();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setDate(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+      mav.setViewName("domaineById");
+      mav.addObject("domaines", domaines);
+      mav.addObject("annee", req.getParameter("annee"));
+       mav.addObject("matriculeEtu", "ETU"+(int)(Math.random()*9999));
+      return  mav;
+    }
+    
+     /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("formationById.htm")
+    public ModelAndView formationByIdAcad(HttpServletRequest req) {
+        String sql = "SELECT * from formation where iddomaine =? ";
+      List<  Formation> formations = jdtbcTemplate.query(sql,
+                new Object[]{req.getParameter("domaine")}, (ResultSet rs, int rowNum) -> {
+                    Formation c = new Formation();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setDate(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+      mav.setViewName("formationById");
+      mav.addObject("domaine",  req.getParameter("domaine"));
+         mav.addObject("dmn",  req.getParameter("dmn"));
+      mav.addObject("annee", req.getParameter("annee"));
+      mav.addObject("formations", formations);
+ 
+      return  mav;
+    }
+    
+       /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("filiereIns.htm")
+    public ModelAndView filiereInscrip(HttpServletRequest req) {
+     String  sql = "SELECT filiere.id,filiere.matricule,filiere.nom ,filiere.creation,filiere.description ,cycle.nom from filiere,cycle,formation  where filiere.idcycle= ? AND cycle.id=filiere.idcycle and formation.idcycle=cycle.id and formation.id=?";
+        filieres = jdtbcTemplate.query(sql,
+                new Object[]{req.getParameter("cycle"),req.getParameter("formation")}, (ResultSet rs, int rowNum) -> {
+                    Filiere c = new Filiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+                    Cycle sc = new Cycle();
+                    sc.setNom(rs.getString(6));
+                 
+ 
+                    return c;
+                });
+      mav.setViewName("ListeFiliereIns");
+      mav.addObject("filieres", filieres);
+           mav.addObject("domaine",  req.getParameter("domaine"));
+      mav.addObject("annee", req.getParameter("annee"));
+      mav.addObject("cyn", req.getParameter("cyn"));
+      return  mav;
+    }
+    
+    
+    
+    
+       /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("classeIns.htm")
+    public ModelAndView classeInscrip(HttpServletRequest req) {
+   String    sql = "SELECT * from classes   where filiere=?";
+        classes = jdtbcTemplate.query(sql,
+                new Object[]{req.getParameter("idfiliere")}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+                  
+
+                    return c;
+                });
+
+      mav.addObject("classes", classes);
+      mav.setViewName("ListeClasseIns");
+        mav.addObject("filiere", req.getParameter("filiere"));
+         mav.addObject("idfiliere", req.getParameter("idfiliere"));
+         
+      return  mav;
+    }
+       /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("infoInscription.htm")
+    public ModelAndView infoInscrip(HttpServletRequest req) {
+    mav.addObject("classe", req.getParameter("classe"));
+      mav.setViewName("InfoInscription");
+    
+   
+      return  mav;
+    }
+    
+    
+    
+    
+      /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("cycleInscription.htm")
+    public ModelAndView Cycleformation(HttpServletRequest req) {
+        String sql = "SELECT * from cycle where idformation=?  ";
+      List<  Cycle> cycle = jdtbcTemplate.query(sql,
+                new Object[]{req.getParameter("formation")}, (ResultSet rs, int rowNum) -> {
+                    Cycle c = new Cycle();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setDate(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+      mav.setViewName("cycleInscription");
+      mav.addObject("cyclefor", cycle);
+      mav.addObject("formation",req.getParameter("formation"));
+        mav.addObject("frn",  req.getParameter("frn"));
+      return  mav;
+    }
+    
     /**
      *
      * @param req
      */
-    @RequestMapping(value = "InscriptionEtudiant.htm", method = RequestMethod.POST)
-    public void saveEtudiant(HttpServletRequest req) {
+    @RequestMapping(value = "infoInscription.htm", method = RequestMethod.POST)
+    public ModelAndView saveEtudiant(HttpServletRequest req) {
         try {
             User user = new User();
             user.setGenre(req.getParameter("genre"));
@@ -664,15 +821,8 @@ public class GererComptableController {
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
             jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre());
 
-            String classe = req.getParameter("classe");
-            String filiere = req.getParameter("filiere");
-
-            Classes c = new Classes();
-            for (Classes classe1 : classes) {
-                if (classe1.getNom().equalsIgnoreCase(classe)) {
-                    c = classe1;
-                }
-            }
+        
+          
 
             sql = "Select Max(id) from user";
             result = false;
@@ -685,12 +835,13 @@ public class GererComptableController {
             sql = "insert into inscription values (?,?,?,?,?,?)";
 
             String matri = "INS" + (int) (Math.random() * 9999999) + "";
-            jdtbcTemplate.update(sql, null, matri, java.sql.Date.valueOf(LocalDate.now()), c.getId(), user.getId(), 3);
+            jdtbcTemplate.update(sql, null, matri, java.sql.Date.valueOf(LocalDate.now()), req.getParameter("idClasse"), user.getId(), 3);
 
         } catch (Exception e) {
             System.out.println(e);
         }
-
+mav.setViewName("InscriptionEtudiant");
+return mav;
     }
 
     
@@ -705,7 +856,25 @@ public class GererComptableController {
      */
     @RequestMapping("InscriptionEtudiant.htm")
     public ModelAndView listeFiliere(HttpServletRequest req) {
-        String sql = "SELECT * from filiere  ";
+        
+            String sql = "SELECT * from anneacad  ";
+      List<  Anneacad> annees = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Anneacad c = new Anneacad();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setDate(rs.getString(4));
+                     c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+     
+         mav.addObject("annees", annees);
+        
+        
+        
+     sql = "SELECT * from filiere  ";
         filieres = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Filiere c = new Filiere();
@@ -727,8 +896,7 @@ public class GererComptableController {
                     c.setNom(rs.getString(3));
                     c.setCreation(rs.getString(4));
                     c.setDescription(rs.getString(5));
-                    c.setInscription(rs.getInt(6));
-                    c.setMensualite(rs.getInt(7));
+                
 
                     return c;
                 });

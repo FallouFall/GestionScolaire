@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 14 Juillet 2019 à 03:57
+-- Généré le :  Dim 28 Juillet 2019 à 03:33
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  5.6.30
 
@@ -100,24 +100,23 @@ CREATE TABLE `classes` (
   `nom` varchar(25) NOT NULL,
   `creation` varchar(24) NOT NULL,
   `description` varchar(100) NOT NULL,
-  `inscription` int(11) NOT NULL,
-  `mensualite` int(11) NOT NULL,
-  `filiere` int(11) NOT NULL
+  `filiere` int(11) NOT NULL,
+  `droitIns` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `classes`
 --
 
-INSERT INTO `classes` (`id`, `matricule`, `nom`, `creation`, `description`, `inscription`, `mensualite`, `filiere`) VALUES
-(1, 'L1GL', 'Licence 1', '2019-06-04', 'Licence 1 Genie Logiciel', 10000, 50000, 1),
-(3, 'L2GL', 'Licence 2', '2019-06-05', 'Licence 2 Genie Logiciel', 100000, 60000, 1),
-(4, 'L3GL', 'Licence 3', '2019-06-05', 'Licence 3 Genie Logiciel', 110000, 20000, 1),
-(5, 'L1GDA', 'Licence 1', '2019-06-05', 'Licence 1 GDA', 100000, 50000, 2),
-(6, 'L2GDA', 'Licence 2', '2019-06-05', 'Licence 2 GDA', 100000, 50000, 2),
-(7, 'L3GDA', 'Licence 3', '2019-06-05', 'Licence 3 GDA', 100000, 50000, 2),
-(8, 'CLS7882345', 'asssasa', '07/26/2019', 'wqqww', 23444, 23333, 7),
-(9, 'CLS1912107', 'L2Liage', '07/17/2019', 'l2LIAGE', 120000, 120000, 3);
+INSERT INTO `classes` (`id`, `matricule`, `nom`, `creation`, `description`, `filiere`, `droitIns`) VALUES
+(1, 'L1GL', 'Licence 1', '2019-06-04', 'Licence 1 Genie Logiciel', 1, 2),
+(3, 'L2GL', 'Licence 2', '2019-06-05', 'Licence 2 Genie Logiciel', 1, 1),
+(4, 'L3GL', 'Licence 3', '2019-06-05', 'Licence 3 Genie Logiciel', 1, 1),
+(5, 'L1GDA', 'Licence 1', '2019-06-05', 'Licence 1 GDA', 2, 1),
+(6, 'L2GDA', 'Licence 2', '2019-06-05', 'Licence 2 GDA', 2, 1),
+(7, 'L3GDA', 'Licence 3', '2019-06-05', 'Licence 3 GDA', 2, 1),
+(8, 'CLS7882345', 'asssasa', '07/26/2019', 'wqqww', 7, 1),
+(9, 'CLS1912107', 'L2Liage', '07/17/2019', 'l2LIAGE', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -131,16 +130,16 @@ CREATE TABLE `cycle` (
   `nom` varchar(23) NOT NULL,
   `date` varchar(23) NOT NULL,
   `description` varchar(30) NOT NULL,
-  `iddomaine` int(11) NOT NULL
+  `idformation` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `cycle`
 --
 
-INSERT INTO `cycle` (`id`, `matricule`, `nom`, `date`, `description`, `iddomaine`) VALUES
+INSERT INTO `cycle` (`id`, `matricule`, `nom`, `date`, `description`, `idformation`) VALUES
 (6, 'CYL1011904', 'DOctorat Inf', '07/03/2019', 'Doctorat Info', 1),
-(7, 'CYL3253645', 'Licence 3  Gest', '07/18/2019', 'L3 Gestion', 2);
+(7, 'CYL3253645', 'Licence 3  Gest', '07/18/2019', 'L3 Gestion', 1);
 
 -- --------------------------------------------------------
 
@@ -186,7 +185,28 @@ CREATE TABLE `domaine` (
 
 INSERT INTO `domaine` (`id`, `matricule`, `nom`, `date`, `description`, `idacad`) VALUES
 (1, 'DOM6408032', 'Informatique', '07/30/2019', 'Science et Tech', 1),
-(2, 'DOM7524756', 'Gestion', '07/18/2019', 'Gestion & Compta', 2);
+(2, 'DOM7524756', 'Gestion', '07/18/2019', 'Gestion ', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `droitinscription`
+--
+
+CREATE TABLE `droitinscription` (
+  `id` int(11) NOT NULL,
+  `matricule` varchar(25) NOT NULL,
+  `inscription` int(11) NOT NULL,
+  `mensualite` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `droitinscription`
+--
+
+INSERT INTO `droitinscription` (`id`, `matricule`, `inscription`, `mensualite`) VALUES
+(1, 'DRT101', 100000, 50000),
+(2, 'DRT203', 140000, 60000);
 
 -- --------------------------------------------------------
 
@@ -210,7 +230,9 @@ INSERT INTO `enseigne` (`id`, `idmatiere`, `idprofesseur`) VALUES
 (3, 6, 46),
 (4, 7, 46),
 (5, 7, 46),
-(6, 7, 46);
+(6, 7, 46),
+(7, 1, 46),
+(8, 6, 46);
 
 -- --------------------------------------------------------
 
@@ -251,21 +273,49 @@ CREATE TABLE `filiere` (
   `matricule` varchar(25) NOT NULL,
   `nom` varchar(25) NOT NULL,
   `creation` date NOT NULL,
-  `description` varchar(150) DEFAULT NULL
+  `description` varchar(150) DEFAULT NULL,
+  `idcycle` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `filiere`
 --
 
-INSERT INTO `filiere` (`id`, `matricule`, `nom`, `creation`, `description`) VALUES
-(1, 'FLR5854968', 'Genie Logiciel', '2019-01-29', 'Classe de programmation'),
-(2, 'FLR3845836', 'GDA', '2019-01-30', 'geographie'),
-(3, 'FLR983760', 'Liage', '2019-01-30', 'Concepte'),
-(4, 'FLR5153864', 'Bureautique', '2019-01-30', 'Multimedia'),
-(5, 'FLR6825432', 'Compta', '2019-01-30', 'Finance'),
-(6, 'FLR4420049', 'Sec', '2019-01-30', 'Sec'),
-(7, 'FLR6365123', 'Miage', '2019-02-11', 'Classe Sup');
+INSERT INTO `filiere` (`id`, `matricule`, `nom`, `creation`, `description`, `idcycle`) VALUES
+(1, 'FLR5854968', 'Genie Logiciel', '2019-01-29', 'programmation', 6),
+(2, 'FLR3845836', 'GDA', '2019-01-30', 'geographie', 6),
+(3, 'FLR983760', 'Liage', '2019-01-30', 'Concepte', 6),
+(4, 'FLR5153864', 'Bureautique', '2019-01-30', 'Multimedia', 6),
+(5, 'FLR6825432', 'Compta', '2019-01-30', 'Finance', 6),
+(6, 'FLR4420049', 'Sec', '2019-01-30', 'Sec', 6),
+(7, 'FLR6365123', 'Miage', '2019-02-11', 'Classe Sup', 6),
+(8, 'FLR9738407', 'Journalisme', '2019-07-19', 'Info Journal', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `formation`
+--
+
+CREATE TABLE `formation` (
+  `id` int(11) NOT NULL,
+  `matricule` varchar(25) NOT NULL,
+  `nom` varchar(25) NOT NULL,
+  `date` varchar(25) NOT NULL,
+  `description` varchar(25) NOT NULL,
+  `idcycle` int(11) NOT NULL,
+  `iddomaine` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `formation`
+--
+
+INSERT INTO `formation` (`id`, `matricule`, `nom`, `date`, `description`, `idcycle`, `iddomaine`) VALUES
+(1, 'FRM012903', 'Programmation', '12-12-2019', 'Progr InF', 6, 1),
+(2, 'FRM014603', 'Maintenance', '12-12-2019', 'Maintenance Inf', 6, 1),
+(3, 'FRM785603', 'Reseaux Tel', '12-12-2019', 'Telecom', 6, 1),
+(4, 'FRM712123', 'Reseaux Info', '12-12-2019', 'Rx Info', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -306,7 +356,8 @@ CREATE TABLE `inscription` (
 INSERT INTO `inscription` (`id`, `matricule`, `date`, `idclasse`, `iduser`, `validite`) VALUES
 (3, 'INS5488406', '2019-06-13', 5, 44, 1),
 (4, 'INS2603944', '2019-06-13', 1, 45, 1),
-(5, 'INS2603934', '2019-06-13', 1, 45, 1);
+(5, 'INS2603934', '2019-06-13', 1, 45, 1),
+(6, 'INS2886754', '2019-07-23', 1, 47, 0);
 
 -- --------------------------------------------------------
 
@@ -393,7 +444,8 @@ INSERT INTO `profil` (`id`, `idaccount`, `password`, `username`, `statut`) VALUE
 (43, 1, 'asdfg', 'falloufalllddive@gmail.com', 0),
 (45, 1, 'poijhg', 'falloufddddalllive@gmail.com', 0),
 (46, 1, 'sssss', 'falloufddddddalllive@gmail.com', 0),
-(47, 4, 'passer', 'mamadou@gmail.com', 1);
+(47, 4, 'passer', 'mamadou@gmail.com', 1),
+(48, 6, 'ETU41740', 'oumy@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -522,7 +574,8 @@ INSERT INTO `user` (`id`, `adresse`, `nom`, `photo`, `prenom`, `telephone`, `idp
 INSERT INTO `user` (`id`, `adresse`, `nom`, `photo`, `prenom`, `telephone`, `idprofil`, `matricule`, `genre`) VALUES
 (44, 'Ouakam Rue 295', 'Diallo', NULL, 'Antoine', '776783333', 31, 'ETU4602821', 'Feminin'),
 (45, 'Ouakam Rue 295', 'Thiam', 0x524946462a15000057454250565038580a00000008000000af0000af0000565038208e1400007054009d012ab000b0003e6d2e9446a422a2212a136c38800d896500c6ec80eba7b90912adae41d03be63bcdbdc90bc7ffdaf847e7cc24ed3bee887ad20bb82a027bb8e743f54b225405fd1bff2bda1bfdcf2affb3ffc6f60ffd82eb71e923fb3274f080a97743a0cdc5aefac398004053672071de2778969627a918580b9318cefdcbf2e21c24b4b60dd1781fa045ea289e542b24b83b0695590609850492363cd8cbfc9b36fba26b6c748e8746eb7c3bbb1d9385ec45f39d85119693c9f69a20a3eedc18790dfcfda2b1bb52a232ab3233faf8b4a163ec4544f9230740df868f454a93163da8501ce00cd3ca7188f68afa5be223ef9c17c4051c61a5562e752f5b0d0bffb1be81154630febbdc59a35f8a7c386c3bb2597cdaa8aa9ff26ac9b2e095e726e7a5a7405d663391cbe669311989ee3a3b990cfef912d393b4f6c6a21437226b587f3457c80c02abe25cb28212640bb872b08773304c32108ffdaec527e1ef9f66f99140c7104daeee45e1934a5fd30c3ab266469b484f26274401887913265fc521982c874fd9863ce8c39a9e215b4c41dcec60da667a2f1f6f8ad7e9ad99813a6018a6f55c0dc6716c3577cbdffec0a277a76eeccc74757c4615cffb1a7e19a351de84923d738af6a583217d7262267b2ff257d67460254250609daa9a9a9c48fffae6fe230625f095e2402ccc2e6b7a0fa008a1376f2b3a8840f8d032b67febd2cbecbec4927777b3a0f9ac34b7e74c83da792a8388512f0a0617d5ad7ed773ee660830d8e178bb13d5bff5fa19e3bb8b746f606b9d57ca7bcf3cefa2281aa5fdc9b0851ce1ad37945fcb345071b4be14032019b2ff66235b856cfd94b395864cfc2f613929f2919680e56ea7adc8330ac8c69363a5422ad053bbea20fa7feee9fc7da2638d8420b518da1a269c442f4cea079b0ec2a311347a542a2df90cfca7b6405ac00000fec25fe3f24a95293fc16f2e9aa1e83480b52b10843f2d29ad995e593d8ef6bc868d2233cc61570a856ef51bf53a6010065af39feecf3e1d0d8bde271f8595dfcd04d5eaaa827b11299038e7e48c84b94a7671c9a42685d9b2c51c8755a4c735c81ad43645c4d5f4983ac06464d3a3ebe0d728dc6c8b7485a7d886572e93240178e5fae6937f741dee9cc03fe759aff628e58b0699257c86d2cd1e8342c1e9973a042afac430851c8d1c1ba8c2ce315c729fde8ef1d8d489c3ebf109ed8e09c923a5e55a04608c07ff0652426d1519dc8c658392ea93d8b2980d5901335026033deacdebe54c31f5c3ad116806eda4a44aba0150da9b9ae9e2d60ddcbc383c3a65bcc40b6aefb8447e0e4703ede59add0ccacc7b548827a996c7990393cb7327222e7b275b5a95dc02ade13f9d10686e5a7f8e1372602d17e0b923fa11ba39557ae57a1e4cbcbb1196e7846a0e6ff9209ce7a9de0d42d1c0ba1d3f938cd35ea152645d8d4b3d4817f0c55fcd78c615acbf78f2d0c91ea0f2fc1bead363d127ed196179a82cb3c267f854a6b105c2ba95b32028a150ab15a237c9c18a9faeff40f00f66be93452d5e80e975386490770ce065c59866af5853e9ff61616f42f9e8b384e4ac74449de417ae499a9526dd7b23bbe5ecdf0cedcf63da152d107df855254be897d865e6247b9baf9daa16a70011e8a88a41cf0bf02377109d4cfd4503fe67f02df30e99a8e0cf470330789c389f0a9a5696a36e5c09021a1c54fbe9bf411b195e3fb4ae633eb3baf093c3f3b0c6c74531823e0e086cd397d3783d7e1aa00b09302be571e452c9142ef25c92cafd6cf3f96bee107e836bbbb7fc3444ba2f05bae3e7a3d409759e34fdcdb47d5e70f84d33c19dea29e587cb199dc85bb64229f02fa347957abc7200f110149c2c7cb9a8d36b7b4c2f69740c693b1209e903f22e9ca8807ae701b8968664b24cf2a1840d08454754c0ff545bfc8ea9c871eb81aa202c3e90fa6ff8f1f3248accd2e86a76a24a4188da4e26caf857adc53ccb5835d2737878ab3544b945fc822459a11e2345716eb394a4852275178cd2b8c9d205dd52d289b88eefc5eb2b257d2b42c07b16969d2e6fcd2e5ec0477404123bde7a6c1c69cd23e8dc71364598e51a9f54e3723005ecafe7da64f2907811c113df46c396b7938da30e3200e3d2545358a2c364147cd6135e5bf7d0adad6fbd43ed78415cadea132f8591f0decf34f49daa6128bfb7fe8dc04fc6c6ee4745f922f7beb6826007c91df6ba719f1820dd57e3e30ec62bca1a5512229d0d32f72e4a75d5d1779ebb3a27515245f385cfb4b94255013244d0c07b2c1a909c423bd59c23a638efe623b65d97756c87bb62c87c5cd835426e8cccd5cf4cb408969026db17a74c95b13e23c71dc7523e052ccf7b4c6dfde69c70171825a94d33ecc92048718141d00687502f5ae396518c2c4619e85adb7633e30507bec7cbfc349fa37aea8003fce41bcefd0a3d1610b367cfb1e5de0256dc7ba04f4989f0da7c14bb6c7f7e2a5745615e72629ac3361625fa4fcd8e164efec1ccef3bbbb4c40b490d345e476aa7e801a59ae1c6d0a7488e43e74c7cafd0e41814acffa042132380957bf840a0cbf6b867d97d4453e0e2ea4539467ebbc627bdfaa08906fb9cf84643bc811097f13d1f7c0de830e011319cafc2f38b11c6cec6860598b8d6c67aa5998566209c0b3c896b285b12c7d52af1c7f611cbc21092d33358a37196ec78f4c510a4f5d8d7ae5770e9007b7619adcddf7e68cad383974f038fa7a86c255d53160cb23788e986d9f70ed10d78b184f0c13044843879d0dfb0d388315b1ee78d491d801a10e86bc004571f55cd419972e4876ca58351f6991768393130e0e7f5e9f1c008d81182da612f34007b2717431e84d7390c89fca0a9a582b592efc02b407bdd766f16ff30b809b1a46be940b1f0028f15cc53810e12cba3036bd6fffb1a1177c312898978e627210480acfaa1eab365cb7acdbf2a77283681000076b6f3a02cbc9f8214a6b656063793936337d6292cde1661f7c9de081139fcb34d66e05844e1bce2f892816ad1792521180830e84d5a02a631bd97dfffea1dd5a98654305b4eda9e93ac4b7118736c1aa6481f9d777b7fb3041c5bb31ca42bee2a0ab32d607e1830f3aa546e1d7178d4b1edf6f0fc18c72813073570b494faf4c3fdc3cd4a88b5ba393846290f9eaa04eaa39b3d33be465fc7215946c684885279942f5a557013ac914d06503c757cbc345ce75acccc11239610b69c92e73cfe0746c01dcf79c1f7b89ac2e6080cd05fb196f779032238b3258112a9d2d7aa6b154bebaf177fe18887cad82f1934f3044b69903a512ea964168f6808a8afdd47781032c35e3ac3be75ebd6dd25199c34f76a5b7e8a32eac540105a57a158b330c008a38bb73f689ce2fc3a06af85942685778b7a3ed947e20899f256023cc03aa71532484573f05f26c7d783a50a878a8453b06754e8fa88d4dedc4b95c5ecd7599a7b4e420f6b91a539760d3d3dcb3a128153246f0aa0d1959e1d11c136c3f4de04f8de70729932ae2ceaf55fe5b375bb3341bdafbeabe8cbf9c0cf2960f5321f92dafcf28880da12bd3a56259a10f90103b8879d848ba6a79c084bbca2146cda3870960d2c7a068b6aec9d37684b3ee13d2dfc27326a3131a9e967fc969d1f80fa41fcc457367eb1ac3b6dd961b4328e2f6bf4ac3f65fb84020e50e9bab755b1ab7bc01e9711018c377ae26c85a38c7c152915d6c332850f18a28a82e4517d32d34014206cb41c0648cc882331fd4a533153939dbfff895a6eaa3b76bec8ccedbf6b8f291bf10f3e31e179bfe881a0984099f6e53dfde07fe3914091ecef1ce89a6cc682f48760b24a5fe8dc605b22996f2fc47e2f8a374ee6009f4bf2e3bc6cd15e00bcb1a783658926c926c1b3475a2ed766b09603754ecef1c2abcffd420bef68a17410ccf52f2b0fce6054437af62f714673152dd3913a7d78078751645cd5f16b54f71366a89011caa4ddfc70d67ce6def81f4d066413634c3de7e65f327c309484d34eb7de6404df1b8f885bc8815299add6087af08561627d920eed8b825c00b3a74cd91efaca2e4c16a24bab2aad676c78b86054c858211ad78fdeef35796b90fb5a5014f3b3ccddb9c79bc6c122c7a64cce455017e6196bc208b3843a518f6d4ecc361ccc2a4396ef6eb417eb3ac4d0d3dfab700d0895efb0ef1fc149cb92d626883434bdc0446cb093d67327096f044e86c7c7db019908f194cd9c4ce7460fd279ffdf4929c2a216677288d78902f51908e382087c278710d153d1b78a231deeb008eb1fb5ed4bf40345c1c9da535bb50331bcbc98903e3847a240f1d5f56eafd65e93f5405bfad7bd08ce723bad21313b8b9564fbd87c044a2abaf79e108c8c23c08cdd7842cd25997de1884d7a25c123f12649a1a2b21388c48296ceb3c1c9d38ecb38c79de783ad67883f285c63662d3c50a24971f4647626640e9549d9ff42ac731741005e610c8b4d09d9635a09b1be42968f2c3fa8741b01becf4553240ab76ff3de39a34b6cf3eed08dfc1a0dcde240429391210da1775587f95c27ba0986be1d2cd789e8ace385ae8abea4151981487f6217c9aa2c6e986e7cb7bf62b757da9a139c625da80c6e2777cd4dc91becf8005322df9f9ccec0d92acae03d3f12ae8ce67fa1e6c5d15c21b6e4afc628305be0e714a5835a01ae28c9649fd6b41624e795de119e308d0f57a5603d96fb0e47bfa8406c65b5ba6204f2ac00c20c85906abc27d46a5ec86940d9fc7d2dd130b91c483902c1dbb1e0a3364f5862c34cb731f82c4c9711bfb0b8992858f7de1eb06a81f0b285752f0b0a9ecc890451581e5d2b0f15303e117f69041cdb5d0daae0afcabe7341dd0408313a15be2588f9af8fe34196fdf204b1f1ede3544cbe3eb1893f7cf3fe84a7b9ec57e59e843256d3bdb25d566127edfa2745fd76d7d3826c1dc4c043a01daea8a9c72ab276d865ef90234ba5faf94f609be29a089422f46f79d953d811dc79f58e6f4a16c387309a8c2dbd3762cdbb8b32ed0d819e5bdb1bc3b7c11b38dee07e8ae163247a4b4fd423e3f2f9caa21dec7e7af92f19ce69f4081ca5f130c9259d357c9049622e9851e3ae90f6712342981dcb9914979fce30fc78bd797530d0d6182b7fdffb62e9ea37bef0219e5ba74597cb1b21b5249b00df9f70e3da3a68dd7f69367d1ab9a9a3a167d77078687cf31a7ed216d4af346da807598009c1f2c90dea4b9d2a3497bcf8f4e836bc356e41490841158b2156f490275f5df805a2b2fa2df1aba643d41ac97df04558a67f78a5249c2e74e88fec2c43671cb1b945fc524d8973a7e476f8401200257964933f4168ec0b3cf4a56f73012441fcd14bb1eed50007e0bcc8710158e4c0d28f27dc13e8c3a342ab5357c52698f5f4c292ba7aac78637f050199982f89ae148b4cb50abdb8ad62397c34d1596a5707cdfb38ab3605083817ed91e446ab7bc5262cc2a801d27b037f7f265f8b182d40236b56ecb958155b8e910790b5949dcee9a3d82bee8ce2970270dcae40aa67d3c2f215a6a8f1330b7cc5592f8abd88b8040621af2cd14ab3a61a27dde6f7e62382327454131b7cda394ec2733064007ae31b916ec8030faef63477a7de18e295e7cef76d74f5e7a727f15632ae7a5f24ecad99d06eb553b98b58f213708e83e2527f1eedeae1f8cf4a078c11b863d730ac60570c9500ae246394fc1605e5243ab0e3da18b818114b44fd14830cd19e937fe3d479b1fceb181736b7f9dc746e0d2bbd29b6d40ac39165ea7b1f0e0d8f0f73be0ef75fe7a9d7c47c5deca5910a73a2ffce8368e480a94c64c6874a44feab1ba554e2cf21630da936b66d8d0abd84032d4a4c781d052b60005678bc42521ba925c872009e41cb1599f8bd98f9d1f5b42e305efcf4b28da4fd413f842eef20410ad2d004cf186d28175fcff89152d65f8a95b0cfa80297e39dea90f829059075861ba8a2d1acac26d992d96adca9ca6a722959321ff73ffe7d15ca8e6de1e60d68dcb1f04db41626dbb0fc103ac873425c6cd222482756ab4c94e57bdc9b631d802da9e483d8c2b0db9a943f44f141440d641975990964a189a6ff2d94e805435822162616cda6abda898a5e0b0f70fb2b62056fdce41d9809e46d83453be7b578582933887350428874d7138b1516612cc4f894bd589df5b77ccbd112e9b5b3cc340b631339c8777caae05999ce4630840bb8e47966379a3ef3215d6db32fc1e05ef5b6dece5adc723617b82a34b3725e41187d5cdf3da85306ada5c31156a53dbd246305e4eb55757b7ed4693bd471cdeaf94143ece765d05d4e0add72a22b9de74c6ed9742d07e7af61f8a833219c5c85cd225eaee8da7d68db2124c29fe24afca0cda1e7ab36cb55a19d5bba2822bc42526d38e7ccfc80708fceef9652f1f21883dd58f64dea32f69d7735317ce18f9c68e09efdd55a1e40229237183cfad9c485de00e12309f2a4d0dc153e8abb156677d6f6c8b07465338c86c1ad9bb58426064d805336fba682f813c5b2ca0cd8ad4cca0243c1aa264006c94deb195c0a8e35ba2c21dc1331ef62ded277e56020d8cf22237c23da1387802608158f03d5863b0846ab92d11271a50c2aa6a6374f629424e69171043a883f58ebf356e06e61b817e6f14f98929269790c9e3f47a64951ca6e024e04e9b7f4316464bd113a296852869d670adcd067e6adc0c7dbb32abf1c938e22ad77ac9068cff98393f94c5c439ae636ea0bb027ed0912c0e113fd3c722ec769cb4cbf492dd1cd585d65d1ab79f718634f7f4adf3effe0c28c3213fc9f19aab5315b085645b150302ed66982efb98820e832a9f902b293e1e199dcc89e0c4262c2ac90e0428be5d5a80acb1eecaf6dfeeaeb352ed61d1f722828c2d4bb773bd2e191b584e786bbe8036cf0a7bad2aa78ada3112ee82b40dea6859a3c9e83ac47bbd4564618563fd930bcd7dce06407f44b159bfbe80f5f07eb3a29be540fec4af922eff520c7d3f9579fdf5b449773501ccbd125b44ec9e6166e77cb2e88ac9ca303aff672b8c582f300ac069f01bbd949890e700cfd7e014cda3c3d77849d974da911a94665940126bb13ac89eee3fcfc2670e7e37619d0e69e976fb7c24f3aea10358d403773f82be08b67b14211ea4911eaed156bec2066d75c5a0bb572dbb976d08f85da92e203e88b8bc318beecfae952acb0ff5cd55498a1ed27e1646a7c1286107e0221e6515d5ede781c4e29b8974b5624b8c3825124841e0ffba80b2ee8819207d313ba62c2f9ac987bfcea174670995a5ebc0fbbabca7f5aaeb2028845e38cb7e20f98dd5c857e16ee2f3c35dabcd5dc5f4c667aa88f8a8bb5207d2d142ce2d0417bbfcd2e4656c61c2822bfd05b0ed300db8f6c54db000000455849467600000049492a0008000000020031010200070000002600000069870400010000002e00000000000000476f6f676c650000030000900700040000003032323001a00300010000000100000005a00400010000005800000000000000020001000200040000005239380002000700040000003031303000000000, 'Mouhamed', '776543322', 32, 'ETU1273094', 'Masculin'),
-(46, 'Ouakam Rue 295', 'Diop', NULL, 'Mamadou', '776789999', 47, 'AD47', 'Masculin');
+(46, 'Ouakam Rue 295', 'Diop', NULL, 'Mamadou', '776789999', 47, 'AD47', 'Masculin'),
+(47, 'Dakar', 'Sarr', NULL, 'Oumy', '778288888', 48, 'ETU41740', 'Feminin');
 
 --
 -- Index pour les tables exportées
@@ -561,7 +614,7 @@ ALTER TABLE `classes`
 --
 ALTER TABLE `cycle`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `iddomaine` (`iddomaine`);
+  ADD KEY `idformation` (`idformation`);
 
 --
 -- Index pour la table `documents`
@@ -576,6 +629,12 @@ ALTER TABLE `documents`
 ALTER TABLE `domaine`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idacad` (`idacad`);
+
+--
+-- Index pour la table `droitinscription`
+--
+ALTER TABLE `droitinscription`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `enseigne`
@@ -593,7 +652,16 @@ ALTER TABLE `evenement`
 -- Index pour la table `filiere`
 --
 ALTER TABLE `filiere`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idcycle` (`idcycle`);
+
+--
+-- Index pour la table `formation`
+--
+ALTER TABLE `formation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idcycle` (`idcycle`),
+  ADD KEY `iddomaine` (`iddomaine`);
 
 --
 -- Index pour la table `inscription`
@@ -700,10 +768,15 @@ ALTER TABLE `documents`
 ALTER TABLE `domaine`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT pour la table `droitinscription`
+--
+ALTER TABLE `droitinscription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT pour la table `enseigne`
 --
 ALTER TABLE `enseigne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `evenement`
 --
@@ -713,12 +786,17 @@ ALTER TABLE `evenement`
 -- AUTO_INCREMENT pour la table `filiere`
 --
 ALTER TABLE `filiere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT pour la table `formation`
+--
+ALTER TABLE `formation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `inscription`
 --
 ALTER TABLE `inscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `matiere`
 --
@@ -733,7 +811,7 @@ ALTER TABLE `mensualite`
 -- AUTO_INCREMENT pour la table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT pour la table `programme`
 --
@@ -758,7 +836,7 @@ ALTER TABLE `serie`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- Contraintes pour les tables exportées
 --
@@ -779,7 +857,7 @@ ALTER TABLE `classes`
 -- Contraintes pour la table `cycle`
 --
 ALTER TABLE `cycle`
-  ADD CONSTRAINT `cycle_ibfk_1` FOREIGN KEY (`iddomaine`) REFERENCES `domaine` (`id`);
+  ADD CONSTRAINT `cycle_ibfk_2` FOREIGN KEY (`idformation`) REFERENCES `formation` (`id`);
 
 --
 -- Contraintes pour la table `documents`
@@ -792,6 +870,19 @@ ALTER TABLE `documents`
 --
 ALTER TABLE `domaine`
   ADD CONSTRAINT `domaine_ibfk_1` FOREIGN KEY (`idacad`) REFERENCES `anneacad` (`id`);
+
+--
+-- Contraintes pour la table `filiere`
+--
+ALTER TABLE `filiere`
+  ADD CONSTRAINT `filiere_ibfk_1` FOREIGN KEY (`idcycle`) REFERENCES `cycle` (`id`);
+
+--
+-- Contraintes pour la table `formation`
+--
+ALTER TABLE `formation`
+  ADD CONSTRAINT `formation_ibfk_1` FOREIGN KEY (`idcycle`) REFERENCES `cycle` (`id`),
+  ADD CONSTRAINT `formation_ibfk_2` FOREIGN KEY (`iddomaine`) REFERENCES `domaine` (`id`);
 
 --
 -- Contraintes pour la table `inscription`

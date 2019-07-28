@@ -173,8 +173,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-                                              <th>Cycle</th>
-
+                                             
 
                                         </tr>
                                     </thead>
@@ -185,7 +184,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-                                                  <th>Cycle</th>
+                                          
 
 
                                         </tr>
@@ -200,7 +199,7 @@
                                                 <td>${element.nom}</td>
                                                 <td>${element.creation}</td>
                                                 <td>${element.description}</td>
-                                                <td>${element.cycle.nom}</td>
+                                              
 
 
 

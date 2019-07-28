@@ -245,8 +245,7 @@ ses.invalidate();
                     c.setNom(rs.getString(3));
                     c.setCreation(rs.getString(4));
                     c.setDescription(rs.getString(5));
-                    c.setInscription(rs.getInt(6));
-                    c.setMensualite(rs.getInt(7));
+                   
 
                     return c;
                 });

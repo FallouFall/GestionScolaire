@@ -93,7 +93,7 @@
                                         <span class="input-group-addon">
                                             <i class="ti-user"></i>
                                         </span>
-                                        <input type="email" class="form-control "  value="${login}"  name="username" id="nom" placeholder="E-Mail" required="true" minlength="2" maxlength="30">
+                                        <input type="email" class="form-control "    name="username" id="nom" placeholder="E-Mail" required="true" minlength="2" maxlength="30">
                                     </div>
                                 </div>
 

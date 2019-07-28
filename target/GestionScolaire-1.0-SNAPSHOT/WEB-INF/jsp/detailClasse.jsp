@@ -66,13 +66,13 @@
 
         <div id="wrapper">
 
-        
+
             <ul class="sidebar navbar-nav" >
 
 
 
 
-                        <li class="nav-item" style="margin-top: 20px;" >
+                <li class="nav-item" style="margin-top: 20px;" >
 
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
@@ -82,7 +82,7 @@
                 </li>
 
 
-              
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="directeur.htm">
@@ -94,7 +94,7 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>
-         
+
                 <li class="nav-item active">
                     <a  class="nav-link" href="listeMatiere.htm">
                         <i class="fas fa-fw fa-folder"></i>
@@ -162,10 +162,10 @@
                                         ${effectif} 
                                     </span>
                                     <span class="fa fa-male " style="color: #0272bd;">
-                                                   ${nbFeminin} 
+                                        ${nbFeminin} 
                                     </span>
                                     <span class="fa fa-female" style="color: #75b5e4 ;">
-                             ${nbMasculin} 
+                                        ${nbMasculin} 
                                     </span>
                                 </div>
                             </div>
@@ -173,18 +173,18 @@
                                 <c:url var="linkProgramme" value="gererProgramme.htm">
 
                                     <c:param name="id" value="${classeId}"/>
-                                     <c:param name="classe" value="${nomClasse}"/>
-                                         <c:param name="filiere" value="${nomFiliere}"/>
+                                    <c:param name="classe" value="${nomClasse}"/>
+                                    <c:param name="filiere" value="${nomFiliere}"/>
                                 </c:url>
                                 <a href="${linkProgramme}" >
                                     <button type="button" class="btn btn-primary" style=" color:#1B81C5;background-color:#fff; font-family: titilliumWeb-regular; ">
-                                        <i class="ti-eye">
+                                        <i class="ti-menu">
 
                                         </i> Programme</button>
                                 </a>  
 
 
-                               
+
                                 <a href="#" >
                                     <button type="button" class="btn btn-primary" style=" color:#1B81C5;background-color:#fff; font-family: titilliumWeb-regular;">
                                         <i class="ti-timer">
@@ -217,7 +217,7 @@
                                             <th>Prenom</th>
                                             <th>Inscription</th>
                                             <th>Date</th>
-                                       
+
                                             <th>Details</th>
 
 
@@ -228,12 +228,12 @@
                                     <tfoot>
                                         <tr style="text-align: center;vertical-align: middle;">
 
-                                           <th>Matricule</th>
+                                            <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Inscription</th>
                                             <th>Date</th>
-                                       
+
                                             <th>Details</th>
 
 
@@ -241,20 +241,20 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                     <c:forEach var="element" items="${inscriptions}">
+                                        <c:forEach var="element" items="${inscriptions}">
                                             <c:url var="link" value="detailInscription.htm">
-                                                     
-                                                       <c:param name="id" value="${element.iduser.id}"/>
-                                                      <c:param name="idInscription" value="${element.matricule}"/>
-                                                      <c:param name="profilId" value="${element.iduser.idprofil.id}"/>
-                                                       <c:param name="validite" value="${element.validite}"/>
-                                                       <c:param name="cancel" value="1"/>
-                                                   </c:url>
+
+                                                <c:param name="id" value="${element.iduser.id}"/>
+                                                <c:param name="idInscription" value="${element.matricule}"/>
+                                                <c:param name="profilId" value="${element.iduser.idprofil.id}"/>
+                                                <c:param name="validite" value="${element.validite}"/>
+                                                <c:param name="cancel" value="1"/>
+                                            </c:url>
 
                                             <tr style="text-align: center;vertical-align: middle;">
 
 
-                                                 <td>${element.iduser.matricule}</td>
+                                                <td>${element.iduser.matricule}</td>
                                                 <td>${element.iduser.nom}</td>
                                                 <td>${element.iduser.prenom}</td>
                                                 <td>${element.matricule}</td>
@@ -277,10 +277,10 @@
 
                     </div>
 
-  <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
-                                                            <i class="ti-printer">
+                    <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
+                        <i class="ti-printer">
 
-                    </i> Imprimer</button>
+                        </i> Imprimer</button>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -297,7 +297,7 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -309,11 +309,11 @@
                     </div>
                     <div class="modal-body">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+
                     </div>
                 </div>
             </div>
@@ -338,21 +338,21 @@
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
-      <script>
-function printContent(el){
-var restorepage = $('body').html();
-var printcontent = $('#' + el).clone();
-var enteredtext = $('#text').val();
-$('body').empty().html(printcontent);
-window.print();
-$('body').html(restorepage);
-$('#text').html(enteredtext);
-setTimeout(function (){
-    location.reload()
-},1);
-}
+        <script>
+        function printContent(el) {
+            var restorepage = $('body').html();
+            var printcontent = $('#' + el).clone();
+            var enteredtext = $('#text').val();
+            $('body').empty().html(printcontent);
+            window.print();
+            $('body').html(restorepage);
+            $('#text').html(enteredtext);
+            setTimeout(function () {
+                location.reload()
+            }, 1);
+        }
 
-</script>
+        </script>
         <style>
 
 

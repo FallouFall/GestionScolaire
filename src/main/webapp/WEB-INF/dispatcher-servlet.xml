@@ -25,12 +25,23 @@
                 <prop key="gererCalendrier.htm">gererDirecteurController</prop>
                 <prop key="administration.htm">administrationController</prop>
                 <prop key="lock.htm">administrationController</prop>
-                    
-                          <prop key="calendrierClasse.htm">gererDirecteurController</prop>
+                <prop key="classeIns.htm">gererComptableController</prop>
+                <prop key="domaineById.htm">gererComptableController</prop>
+                <prop key="filiereIns.htm">gererComptableController</prop>
+                <prop key="cycleInscription.htm">gererComptableController</prop>
+                          
+                <prop key="infoInscription.htm">gererComptableController</prop>
+                          
+                <prop key="formationById.htm">gererComptableController</prop>
+                <prop key="calendrierClasse.htm">gererDirecteurController</prop>
                 <prop key="faqResponse.htm">administrationController</prop>                   
                 <prop key="detailquestion.htm">administrationController</prop>
-                    
-                    
+                <prop key="parametrerClasse.htm">gererDirecteurController</prop>  
+                <prop key="filiereParamClasse.htm">gererDirecteurController</prop>    
+                <prop key="classeParamClasse.htm">gererDirecteurController</prop>   
+                <prop key="detailclasseParamClasse.htm">gererDirecteurController</prop>  
+                <prop key="savedetailClasseParam.htm">gererDirecteurController</prop>   
+                                    
                 <prop key="faqResponseSec.htm">secretaireController</prop>                   
                 <prop key="detailquestionSec.htm">secretaireController</prop>
                     
@@ -74,14 +85,14 @@
                 <prop key="StatComptable.htm">gererComptableController</prop>
                 <prop key="statdirecteur.htm">gererDirecteurController</prop>
                 <prop key="addClasse.htm">gererDirecteurController</prop>
-                 <prop key="saisirClasse.htm">gererDirecteurController</prop>
-                    <prop key="confirmerClasse.htm">gererDirecteurController</prop>
+                <prop key="saisirClasse.htm">gererDirecteurController</prop>
+                <prop key="confirmerClasse.htm">gererDirecteurController</prop>
                 <prop key=" gererProgramme.htm">gererDirecteurController</prop>
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
                 <prop key=" AjouterSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" AjouterDirecteur.htm">gererDirecteurController</prop>
-                  <prop key="AjouterFiliere.htm">gererDirecteurController</prop>
+                <prop key="AjouterFiliere.htm">gererDirecteurController</prop>
                 <prop key=" AjouterComptable.htm">gererComptableController</prop>
                 <prop key="GererRessources.htm">gererRessourcesController</prop>
                 <prop key="Mensualite.htm">gererComptableController</prop>

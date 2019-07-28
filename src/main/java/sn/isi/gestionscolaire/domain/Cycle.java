@@ -6,7 +6,9 @@
 package sn.isi.gestionscolaire.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,8 +18,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 
 /**
  *
@@ -31,7 +36,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Cycle.findById", query = "SELECT c FROM Cycle c WHERE c.id = :id")
     , @NamedQuery(name = "Cycle.findByMatricule", query = "SELECT c FROM Cycle c WHERE c.matricule = :matricule")
     , @NamedQuery(name = "Cycle.findByNom", query = "SELECT c FROM Cycle c WHERE c.nom = :nom")
-    , @NamedQuery(name = "Cycle.findByDate", query = "SELECT c FROM Cycle c WHERE c.date = :date")})
+    , @NamedQuery(name = "Cycle.findByDate", query = "SELECT c FROM Cycle c WHERE c.date = :date")
+    , @NamedQuery(name = "Cycle.findByDescription", query = "SELECT c FROM Cycle c WHERE c.description = :description")})
 public class Cycle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,42 +55,30 @@ public class Cycle implements Serializable {
     @Basic(optional = false)
     @Column(name = "date")
     private String date;
-      @Basic(optional = false)
+    @Basic(optional = false)
     @Column(name = "description")
     private String description;
-      
-      @JoinColumn(name = "iddomaine", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcycle")
+    private List<Filiere> filiereList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcycle")
+    private List<Formation> formationList;
+    @JoinColumn(name = "idformation", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Domaine domaine;   
+    private Formation idformation;
 
     public Cycle() {
-    }
-
-    public Domaine getDomaine() {
-        return domaine;
-    }
-
-    public void setDomaine(Domaine domaine) {
-        this.domaine = domaine;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Cycle(Integer id) {
         this.id = id;
     }
 
-    public Cycle(Integer id, String matricule, String nom, String date) {
+    public Cycle(Integer id, String matricule, String nom, String date, String description) {
         this.id = id;
         this.matricule = matricule;
         this.nom = nom;
         this.date = date;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -119,6 +113,40 @@ public class Cycle implements Serializable {
         this.date = date;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @XmlTransient
+    public List<Filiere> getFiliereList() {
+        return filiereList;
+    }
+
+    public void setFiliereList(List<Filiere> filiereList) {
+        this.filiereList = filiereList;
+    }
+
+    @XmlTransient
+    public List<Formation> getFormationList() {
+        return formationList;
+    }
+
+    public void setFormationList(List<Formation> formationList) {
+        this.formationList = formationList;
+    }
+
+    public Formation getIdformation() {
+        return idformation;
+    }
+
+    public void setIdformation(Formation idformation) {
+        this.idformation = idformation;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -141,7 +169,7 @@ public class Cycle implements Serializable {
 
     @Override
     public String toString() {
-        return "gestiontestjunit4.Cycle[ id=" + id + " ]";
+        return "sn.objis.junittestecase.presentation.Cycle[ id=" + id + " ]";
     }
     
 }
