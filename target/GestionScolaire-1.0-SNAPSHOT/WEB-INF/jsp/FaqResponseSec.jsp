@@ -298,7 +298,17 @@ setTimeout(function (){
                 object-fit: cover;
                 object-position: center right;
             }
-
+      .table-responsive {
+    font-family: dax;
+    
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
         </style>
 
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

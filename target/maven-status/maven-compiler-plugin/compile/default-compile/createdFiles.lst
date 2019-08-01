@@ -10,6 +10,7 @@ sn\isi\gestionscolaire\controller\GererSecretaireController.class
 sn\isi\gestionscolaire\controller\GererComptableController$1.class
 sn\isi\gestionscolaire\controller\LoginController$2.class
 sn\isi\gestionscolaire\controller\GererDirecteurController$1.class
+sn\isi\gestionscolaire\domain\Calendrier.class
 sn\isi\gestionscolaire\domain\Classes.class
 sn\isi\gestionscolaire\controller\GererRessourcesController.class
 sn\isi\gestionscolaire\domain\Account.class

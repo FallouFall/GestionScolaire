@@ -232,7 +232,19 @@
     }
     });
 </script>
-
+<style>
+      .table-responsive {
+    font-family: dax;
+    
+}
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
+</style>
 <script>
     var $input = $(".classe");
     $input.typeahead({

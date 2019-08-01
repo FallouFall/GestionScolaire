@@ -92,7 +92,7 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="gererClasses.htm">
-                        <i class="fas fa-home"></i>
+                        <i class="ti-layout-slider-alt"></i>
                         <span>Classes</span></a>
                 </li>
                 <li class="nav-item active">
@@ -300,6 +300,17 @@
         </script>
 
         <style>
+              .table-responsive {
+    font-family: dax;
+    
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
             .image--cover {
                 width: 70px;
                 height: 70px;

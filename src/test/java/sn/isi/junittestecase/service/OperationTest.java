@@ -35,52 +35,5 @@ public class OperationTest {
       
   }
   
-  public boolean authentification(User userToTest)
-  {
-    
-		 String sql = "SELECT user.id,matricule,nom,prenom,adresse,telephone, photo, idaccount,type,profil.id from user, profil,account where username=? AND password=? AND account.id=profil.idaccount and user.idprofil=profil.id";
-	        List<User> actors = jdtbcTemplate.query(
-	                sql,
-	                new Object[]{userToTest.getIdprofil().getUsername(), userToTest.getIdprofil().getPassword()},
-	                new RowMapper<User>() {
-	            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-	                User c = new User();
-	                c.setId(rs.getInt(1));
-	                c.setMatricule(rs.getString(2));
-	                c.setNom(rs.getString(3));
-	                c.setPrenom(rs.getString(4));
-	                c.setAdresse(rs.getString(5));
-	                c.setTelephone(rs.getString(6));
-	                c.setPhoto(rs.getBytes(7));
-
-	                Profil p = new Profil();
-	                p.setId(rs.getInt(10));
-	                p.setUsername(userToTest.getIdprofil().getUsername());
-	                p.setPassword(userToTest.getIdprofil().getPassword());
-
-	                Account account = new Account(rs.getInt(8));
-	                account.setType(rs.getString(9));
-	                p.setIdaccount(account);
-	                c.setIdprofil(p);
-	                
-	                return c;
-	            }
-	        });
-
-	     if(   actors.size() != 0)
-	     {
-	    	 return true;
-	     }
-	     else {
-			return false;
-		}
-      
-  }
-  
-  public void inscription(Inscription inscription)
-  {
-    
-       
-      
-  }
+ 
 }

@@ -192,7 +192,13 @@
                 object-fit: cover;
                 object-position: center right;
             }
+   nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #fff;
 
+    background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
+  
+    border-color: #fff #fff   #fff;
+}
         </style>
 
         <script src="vendor/jquery/jquery.min.js"></script>

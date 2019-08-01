@@ -152,7 +152,7 @@
 
 
                     <!-- DataTables Example -->
-                    <div class="card mb-3  " id="ue" style=" margin-top: 17px;">
+                    <div class="card mb-3  " id="ue" style=" margin-top: 3px;">
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -293,7 +293,6 @@ setTimeout(function (){
 
 </script>
         <style>
-
 
             .image--cover {
                 width: 70px;

@@ -157,7 +157,7 @@
 
 
                     <!-- DataTables Example -->
-                    <div class="card mb-3 " id="ue" style=" margin-top: 17px;">
+                    <div class="card mb-3 " id="ue" style=" margin-top: 3px;">
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -314,7 +314,14 @@ setTimeout(function (){
 </script>
         <style>
 
-
+         .table-responsive {
+    font-family: dax;
+    
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
             .image--cover {
                 width: 70px;
                 height: 70px;
@@ -325,7 +332,9 @@ setTimeout(function (){
                 object-fit: cover;
                 object-position: center right;
             }
-
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
         </style>
 
       

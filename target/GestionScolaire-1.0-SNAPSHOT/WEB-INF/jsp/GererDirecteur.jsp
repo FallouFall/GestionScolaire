@@ -246,7 +246,10 @@ setTimeout(function (){
 }
 
 </script>
-        
+                 table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+    border-bottom-width: 0;
+    font-family: titilliumWeb-regular;
+}
            <style>
      .image--cover {
   width: 70px;

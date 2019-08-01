@@ -86,7 +86,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
-                                            <p>     <span class=" ti-bookmark-alt"   style="font-size: 3em;"></span></p>
+                                            <p>     <span class=" ti-layout-slider-alt"   style="font-size: 3em;"></span></p>
                                             <h4 class="card-title"> Classes</h4>
 
 
@@ -140,7 +140,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
-                                            <p>      <span class="ti-layout-grid2"  style="font-size: 3em;"></span></p>
+                                            <p>      <span class="ti-layers"  style="font-size: 3em;"></span></p>
                                             <h4 class="card-title">Matieres & Filieres</h4>
 
 
@@ -188,7 +188,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
-                                            <p>   <span class="ti-server" style="font-size: 3em;" ></span></p>
+                                            <p>   <span class="ti-control-shuffle" style="font-size: 3em;" ></span></p>
                                             <h4 class="card-title">Cycle & Domaines</h4>
 
 

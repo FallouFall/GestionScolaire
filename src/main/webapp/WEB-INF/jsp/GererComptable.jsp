@@ -248,6 +248,10 @@ setTimeout(function (){
 
 </script>
           <style>
+                       table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+    border-bottom-width: 0;
+    font-family: titilliumWeb-regular;
+}
      .image--cover {
   width: 70px;
   height: 70px;

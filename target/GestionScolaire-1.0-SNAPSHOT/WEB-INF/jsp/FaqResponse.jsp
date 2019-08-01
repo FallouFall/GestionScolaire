@@ -73,7 +73,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item"  style="margin-top: 20px;">
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -288,6 +288,17 @@ setTimeout(function (){
 </script>
 
         <style>
+                  .table-responsive {
+    font-family: dax;
+    
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
             .image--cover {
                 width: 70px;
                 height: 70px;

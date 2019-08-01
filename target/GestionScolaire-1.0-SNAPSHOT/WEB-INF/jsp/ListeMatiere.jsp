@@ -320,183 +320,22 @@ setTimeout(function (){
                 object-fit: cover;
                 object-position: center right;
             }
-
+      .table-responsive {
+    font-family: dax;
+    
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
         </style>
 
-        <div class="modal fade" id="addClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" >
-                        <h5 class="modal-title" id="exampleModalLabel">Ajouter Classe</h5>
-                        <br><br>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                     
-                        </button>
-                
-                    </div>
-                    <div id="content-wrapper">
+   
 
-                        <div class="container-fluid">
-                            <div class="example col-md-12 ml-auto mr-auto">
-                                <div class="row " >
-                                    <form>
-                                                <br>
-                                        <div class="form-group">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6 ">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-tag"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control " id="nomClasse" placeholder="Nom " required="true">
-                                                    </div>
-                                                </div>
-
-                                                <div class=" form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <input type="text" class="form-control" id="datepicker-example-1" placeholder="Date de Creation" >
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-calendar"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-info"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control" id="descriptionClasse" placeholder="Description" required="true">
-                                                    </div>
-                                                </div>
-
-                                                <div class=" form-group col-md-6">               
-                                                    <fieldset>
-                                                        <select class="custom-select w-100" required="true">
-
-                                                            <option value="">Filiere</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-
-                                                        </select>
-                                                    </fieldset>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-money"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control" id="PrixInscription" placeholder="Prix Inscription" required="true">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-alert"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control" id="PrixInscription" placeholder="Condition Admission" >
-                                                    </div>
-                                                </div>
-
-
-                                                <div class=" form-group col-md-6">       
-                                                    <button type="submit" class="btn btn-primary">
-                                                        <i class="ti-save">
-
-                                                        </i> Enregistrer</button>
-                                                </div>
-                                                <div class=" form-group col-md-6">   
-                                                 <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
-                                                        <i class="ti-trash">
-
-                                                        </i> Annuler</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-                                    <br>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-  <div class="modal fade" id="addFiliere"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" >
-                        <h5 class="modal-title" id="exampleModalLabel">Ajouter Matiere</h5>
-                        <br><br>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                         
-                        </button>
-                
-                    </div>
-                    <div id="content-wrapper">
-
-                        <div class="container-fluid">
-                            <div class="example col-md-12 ml-auto mr-auto">
-                                <div class="row " >
-                                    <form method="POST">
-                                        <br>
-                                        <div class="form-group">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6 ">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-tag"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control " id="nomMatiere"  name="nomMatiere" placeholder="Nom " required="true">
-                                                    </div>
-                                                </div>
-
-                                         
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-info"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control"  name="descriptionMatiere" id="descriptionMatiere" placeholder="Description" required="true">
-                                                    </div>
-                                                </div>
-
-                                         
-
-                                                <div class=" form-group col-md-6">       
-                                                    <button type="submit" class="btn btn-primary">
-                                                        <i class="ti-save">
-
-                                                        </i> Enregistrer</button>
-                                                </div>
-                                                <div class=" form-group col-md-6">   
-                                                    <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
-                                                        <i class="ti-trash">
-
-                                                        </i> Annuler</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                    <br>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+ 
 
 
     </body>

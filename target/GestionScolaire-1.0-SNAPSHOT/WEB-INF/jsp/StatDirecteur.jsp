@@ -94,7 +94,7 @@
 
                         <div class="loader"><div class="page-loader"></div></div>
                         <!-- Breadcrumbs-->
-                        <ol class="breadcrumb" style="font-family: dax-bold;
+                        <ol class="breadcrumb" style="font-family: dax-bold;margin-top: -10px;
                             box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,.1), 0 0.9375rem 1.40625rem rgba(90,97,105,.1), 0 0.25rem 0.53125rem rgba(90,97,105,.12), 0 0.125rem 0.1875rem rgba(90,97,105,.1);
                             background-color: #fff;border-radius: 10px;color: #1f72b8;
                             ">

@@ -121,10 +121,10 @@
                                             </div>
                                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">INFORMATION GENERALE</a>
+                                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><span class="ti-info"></span>INFORMATION GENERALE</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">DESCRIPTION</a>
+                                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><span class="ti-plus"></span> DESCRIPTION</a>
                                                 </li>
 
                                             </ul>
@@ -210,7 +210,7 @@
 
 
                                                                 <div class=" form-group col-md-6">       
-                                                                    <button type="submit" class="btn btn-primary" style="background-color:#004573; font-family: titilliumWeb-regular;">
+                                                                    <button type="submit" class="btn btn-primary" style="background-color:#0272bd; font-family: titilliumWeb-regular;">
                                                                         <i class="ti-close">
 
                                                                         </i> Suspendre</button>
@@ -308,6 +308,13 @@
                 object-position: center right;
             }
 
+   nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #fff;
+
+    background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
+  
+    border-color: #fff #fff   #fff;
+}
         </style>
 
         <script src="vendor/jquery/jquery.min.js"></script>

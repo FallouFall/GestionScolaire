@@ -300,7 +300,9 @@ setTimeout(function (){
                 height: 50px;
 
             }
-
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
         </style>
 
 

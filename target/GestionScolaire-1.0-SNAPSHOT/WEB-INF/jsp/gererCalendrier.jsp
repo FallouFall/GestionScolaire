@@ -88,6 +88,13 @@
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="planifierCour.htm">
+                        <i class=" ti-timer"></i>
+                        <span>Planifier Cour </span></a>
+                </li>
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
@@ -102,47 +109,11 @@
                     </div>
                 </li>
 
-                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Gerer Domaines</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-
-                        <a  class="dropdown-item" href="ajouterDomaines.htm">Ajouter Domaine</a>
-                        <a class="dropdown-item" href="gererdomaines.htm">Liste Domaines</a>
-
-
-                    </div>
-                </li>
                 
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Gerer Cycles</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-
-                        <a  class="dropdown-item" href="ajouterCycles.htm">Ajouter Cycle</a>
-                        <a class="dropdown-item" href="gerercycles.htm">Liste Cycle</a>
-
-
-                    </div>
-                </li>
                 
-                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Filiere</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
-
-                        <a  class="dropdown-item" href="AjouterFiliere.htm" >Ajouter Filiere</a>
-                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
-
-
-                    </div>
-                </li>
+                
+                
+               
 
             </ul>
             <div id="content-wrapper">
@@ -156,7 +127,7 @@
 
 
                     <!-- DataTables Example -->
-                    <div class="card mb-3 " id="ue" style=" margin-top: 17px;">
+                    <div class="card mb-3 " id="ue" style=" margin-top: 3px;">
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -313,7 +284,17 @@ setTimeout(function (){
 </script>
         <style>
 
-
+      .table-responsive {
+    font-family: dax;
+    
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
             .image--cover {
                 width: 70px;
                 height: 70px;

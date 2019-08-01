@@ -294,6 +294,9 @@
             .avatar-pic {
 width: 150px;
 }
+.sidebar{
+      font-family: titilliumWeb-regular;
+}
         </style>
 
 

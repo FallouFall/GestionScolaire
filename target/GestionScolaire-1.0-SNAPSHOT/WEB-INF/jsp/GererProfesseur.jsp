@@ -220,6 +220,17 @@ if(userName == null) response.sendRedirect("index.htm");
             </div>
         </div>
  <style>
+     .sidebar{
+      font-family: titilliumWeb-regular;
+}
+      .table-responsive {
+    font-family: dax;
+    
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
      .image--cover {
   width: 70px;
   height: 70px;

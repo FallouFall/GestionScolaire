@@ -20,18 +20,6 @@ public class TestMethodes {
         Assert.assertEquals(40, operation.somme(intputA, intputB));
     }
 
-    @Test
-    public void authentification() {
-        Profil p = new Profil();
-
-        p.setUsername("admin@gmail.com");
-
-        p.setPassword("admin");
-
-        userToTest.setIdprofil(p);
-
-        assertEquals(true, operation.authentification(userToTest));
-
-    }
+ 
 
 }

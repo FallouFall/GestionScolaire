@@ -253,6 +253,9 @@
     body{
         overflow-y: hidden;
     }
+    .form-control{
+        font-family: titilliumWeb-regular;
+    }
     footer{
         background-image: url("images/footer.png");
         background-repeat: round;

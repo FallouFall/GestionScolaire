@@ -31,7 +31,11 @@
                 <prop key="cycleInscription.htm">gererComptableController</prop>
                           
                 <prop key="infoInscription.htm">gererComptableController</prop>
-                          
+                <prop key="planifierCour.htm">gererDirecteurController</prop> 
+                <prop key="plageHoraire.htm">gererDirecteurController</prop>   
+                  
+                 <prop key="listeProfDispo.htm">gererDirecteurController</prop>   
+                   <prop key="listeSalleDispo.htm">gererDirecteurController</prop>    
                 <prop key="formationById.htm">gererComptableController</prop>
                 <prop key="calendrierClasse.htm">gererDirecteurController</prop>
                 <prop key="faqResponse.htm">administrationController</prop>                   
@@ -87,6 +91,7 @@
                 <prop key="addClasse.htm">gererDirecteurController</prop>
                 <prop key="saisirClasse.htm">gererDirecteurController</prop>
                 <prop key="confirmerClasse.htm">gererDirecteurController</prop>
+                 <prop key="confirmerCour.htm">gererDirecteurController</prop>
                 <prop key=" gererProgramme.htm">gererDirecteurController</prop>
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
@@ -110,7 +115,7 @@
                 
                 
                 
-                
+                 <prop key="planifierProgramme.htm">gererDirecteurController</prop>
                 <prop key="gerercycles.htm">gererDirecteurController</prop>
                 <prop key="gereracad.htm">gererDirecteurController</prop>
                 <prop key="gererdomaines.htm">gererDirecteurController</prop>

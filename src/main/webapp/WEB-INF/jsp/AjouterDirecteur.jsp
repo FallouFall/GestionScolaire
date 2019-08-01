@@ -269,6 +269,9 @@ if(userName == null) response.sendRedirect("index.htm");
         -webkit-appearance: none; 
         margin: 0; 
     }
+    .sidebar{
+      font-family: titilliumWeb-regular;
+}
 </style>
 
   

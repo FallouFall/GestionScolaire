@@ -341,6 +341,15 @@
             object-fit: cover;
             object-position: center right;
         }
+        .table-responsive {
+    font-family: dax;
+    
+}
+         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+  
+    font-family: titilliumWeb-regular;
+}
+
 
     </style>
 

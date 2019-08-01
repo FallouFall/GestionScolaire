@@ -18,7 +18,8 @@
     </head>
     <body>
         <nav class="navbar navbar-light" style=" height: 12vh;
-             border-bottom: 1px solid #1f72b8 ;">
+             border-bottom: 1px solid #1f72b8 ;
+             ">
 
             <a class="navbar-brand mr-1" href="#" style="color: #1f72b8; font-family: titilliumWeb-italic;    font-size: 6vh;   letter-spacing: .5rem; " >GSP</a>
             <a class="navbar-brand mr-1" href="#" style="color: #1f72b8;    font-size: 6vh;   letter-spacing: .5rem; " >     <i class="ti-book"></i></a>

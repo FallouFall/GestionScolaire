@@ -196,62 +196,6 @@
 
 
 
-<script>
-    var $input = $(".filiere");
-    $input.typeahead({
-    source: [
-    <c:forEach var="element" items="${filieres}">
-    {id: '${element.matricule}', name: '${element.nom}'},
-    </c:forEach>
-
-    ],
-            autoSelect: true
-    });
-    $input.change(function () {
-    var current = $input.typeahead("getActive");
-    if (current) {
-
-    if (current.name == $input.val()) {
-    console.log(current['name']);
-    } else {
-    // This means it is only a partial match, you can either add a new item
-    // or take the active if you don't want new items
-    }
-    } else {
-    // Nothing is active so it is a new value (or maybe empty value)
-    }
-    });
-</script>
-
-<script>
-    var $input = $(".classe");
-    $input.typeahead({
-    source: [
-    <c:forEach var="element" items="${classes}">
-    {id: '${element.matricule}', name: '${element.nom}', inscription: '${element.inscription}'},
-    </c:forEach>
-    ],
-            autoSelect: true
-    });
-    $input.change(function () {
-    var current = $input.typeahead("getActive");
-    if (current) {
-
-    if (current.name == $input.val()) {
-
-
-    } else {
-    // This means it is only a partial match, you can either add a new item
-    // or take the active if you don't want new items
-    }
-    } else {
-    // Nothing is active so it is a new value (or maybe empty value)
-    }
-    });
-</script>
-
-
-
 </body>
 
 </html>
