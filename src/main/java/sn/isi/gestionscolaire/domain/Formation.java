@@ -61,13 +61,28 @@ public class Formation implements Serializable {
     @ManyToOne(optional = false)
     private Domaine iddomaine;
 
+    /**
+     *
+     */
     public Formation() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Formation(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param matricule
+     * @param nom
+     * @param date
+     * @param description
+     */
     public Formation(Integer id, String matricule, String nom, String date, String description) {
         this.id = id;
         this.matricule = matricule;
@@ -76,50 +91,98 @@ public class Formation implements Serializable {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(String date) {
         this.date = date;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Cycle getIddomaine() {
         return idcycle;
     }
 
+    /**
+     *
+     * @param iddomaine
+     */
     public void setIddomaine(Cycle iddomaine) {
         this.idcycle = iddomaine;
     }

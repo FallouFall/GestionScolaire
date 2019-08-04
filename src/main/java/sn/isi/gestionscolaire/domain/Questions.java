@@ -76,29 +76,60 @@ public class Questions implements Serializable {
     @ManyToOne(optional = false)
     private User iduser;
 
+    /**
+     *
+     * @return
+     */
     public User getIduser() {
         return iduser;
     }
 
+    /**
+     *
+     * @param iduser
+     */
     public void setIduser(User iduser) {
         this.iduser = iduser;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     */
     public Questions() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Questions(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param matricule
+     * @param date
+     * @param statut
+     * @param reponse
+     */
     public Questions(Integer id, String matricule, Date date, int statut, String reponse) {
         this.id = id;
         this.matricule = matricule;
@@ -107,42 +138,82 @@ public class Questions implements Serializable {
         this.reponse = reponse;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(Date date) {
         this.date = date;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getStatut() {
         return statut;
     }
 
+    /**
+     *
+     * @param statut
+     */
     public void setStatut(int statut) {
         this.statut = statut;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getReponse() {
         return reponse;
     }
 
+    /**
+     *
+     * @param reponse
+     */
     public void setReponse(String reponse) {
         this.reponse = reponse;
     }

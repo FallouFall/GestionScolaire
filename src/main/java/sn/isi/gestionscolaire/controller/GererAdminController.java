@@ -41,6 +41,7 @@ public class GererAdminController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("GererAdmin.htm")
@@ -93,6 +94,7 @@ public class GererAdminController {
     /**
      *
      * @param req
+     * @return 
      */
     @RequestMapping(value = "AjouterAdmin.htm", method = RequestMethod.POST)
     public ModelAndView saveAdmin(HttpServletRequest req) {

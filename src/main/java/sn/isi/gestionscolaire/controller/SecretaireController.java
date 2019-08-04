@@ -55,7 +55,12 @@ public class SecretaireController {
         mav.setViewName("Secreteriat");
         return mav;
     }
- public int getNbQuestion() {
+
+    /**
+     *
+     * @return
+     */
+    public int getNbQuestion() {
 
         String sql = "SELECT COUNT(questions.statut) FROM questions WHERE questions.statut=0; ";
 
@@ -138,8 +143,13 @@ public class SecretaireController {
         return mav;
     }
 
-    
-     @RequestMapping(value = "detailquestionSec.htm",method = RequestMethod.POST)
+    /**
+     *
+     * @param req
+     * @param rep
+     * @throws IOException
+     */
+    @RequestMapping(value = "detailquestionSec.htm",method = RequestMethod.POST)
     public void repondreQuestionSec(HttpServletRequest req, HttpServletResponse rep) throws IOException {
 
         String id = req.getParameter("id");

@@ -138,8 +138,10 @@ public class AdministrationController {
         return mav;
     }
 
-    
-    
+    /**
+     *
+     * @return
+     */
     public int getNbQuestion() {
 
         String sql = "SELECT COUNT(questions.statut) FROM questions WHERE questions.statut=0; ";
@@ -213,8 +215,12 @@ public class AdministrationController {
         return mav;
     }
 
-    
-     @RequestMapping(value = "lock.htm")
+    /**
+     *
+     * @param req
+     * @param rep
+     */
+    @RequestMapping(value = "lock.htm")
     public void lock(HttpServletRequest req, HttpServletResponse rep) {
 
         String back = req.getParameter("back");
@@ -237,7 +243,12 @@ public class AdministrationController {
 
     }
     
-    
+    /**
+     *
+     * @param req
+     * @param rep
+     * @throws IOException
+     */
     @RequestMapping(value = "detailquestion.htm",method = RequestMethod.POST)
     public void repondreQuestion(HttpServletRequest req, HttpServletResponse rep) throws IOException {
 

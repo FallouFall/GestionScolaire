@@ -58,71 +58,140 @@ public class Calendrier implements Serializable {
     @ManyToOne(optional = false)
     private Classes idclasse;
 
+    /**
+     *
+     */
     public Calendrier() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Calendrier(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param jour
+     * @param heure
+     */
     public Calendrier(Integer id, String jour, String heure) {
         this.id = id;
         this.jour = jour;
         this.heure = heure;
     }
 
+    /**
+     *
+     * @return
+     */
     public Classes getIdclasse() {
         return idclasse;
     }
 
+    /**
+     *
+     * @param idclasse
+     */
     public void setIdclasse(Classes idclasse) {
         this.idclasse = idclasse;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getJour() {
         return jour;
     }
 
+    /**
+     *
+     * @param jour
+     */
     public void setJour(String jour) {
         this.jour = jour;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHeure() {
         return heure;
     }
 
+    /**
+     *
+     * @param heure
+     */
     public void setHeure(String heure) {
         this.heure = heure;
     }
 
+    /**
+     *
+     * @return
+     */
     public Matiere getIdmatiere() {
         return idmatiere;
     }
 
+    /**
+     *
+     * @param idmatiere
+     */
     public void setIdmatiere(Matiere idmatiere) {
         this.idmatiere = idmatiere;
     }
 
+    /**
+     *
+     * @return
+     */
     public User getProfesseur() {
         return professeur;
     }
 
+    /**
+     *
+     * @param professeur
+     */
     public void setProfesseur(User professeur) {
         this.professeur = professeur;
     }
 
+    /**
+     *
+     * @return
+     */
     public Salle getIdsalle() {
         return idsalle;
     }
 
+    /**
+     *
+     * @param idsalle
+     */
     public void setIdsalle(Salle idsalle) {
         this.idsalle = idsalle;
     }

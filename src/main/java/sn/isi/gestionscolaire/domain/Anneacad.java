@@ -51,13 +51,27 @@ public class Anneacad implements Serializable {
     @Column(name = "description")
     private String description;
 
+    /**
+     *
+     */
     public Anneacad() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Anneacad(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param matricule
+     * @param nom
+     * @param date
+     */
     public Anneacad(Integer id, String matricule, String nom, String date) {
         this.id = id;
         this.matricule = matricule;
@@ -65,41 +79,82 @@ public class Anneacad implements Serializable {
         this.date = date;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
- public String getDescription() {
+
+    /**
+     *
+     * @return
+     */
+    public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(String date) {
         this.date = date;
     }

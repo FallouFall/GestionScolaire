@@ -64,10 +64,18 @@ public class Profil implements Serializable {
     public Profil() {
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStatut() {
         return statut;
     }
 
+    /**
+     *
+     * @param statut
+     */
     public void setStatut(String statut) {
         this.statut = statut;
     }

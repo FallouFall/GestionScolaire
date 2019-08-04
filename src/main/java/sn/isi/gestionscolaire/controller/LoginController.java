@@ -43,6 +43,7 @@ public class LoginController {
     /**
      *
      * @param view
+     * @param req
      * @return
      */
     @RequestMapping("index.htm")
@@ -57,9 +58,13 @@ public class LoginController {
         }
     }
 
-     
-    
-     @RequestMapping("forget.htm")
+    /**
+     *
+     * @param view
+     * @param req
+     * @return
+     */
+    @RequestMapping("forget.htm")
     public ModelAndView forget(ModelAndView view, HttpServletRequest req) {
         mav=new ModelAndView();
     mav.setViewName("resetPassword");
@@ -192,10 +197,10 @@ public class LoginController {
                 session.setAttribute("password", c.getIdprofil().getPassword());
                 session.setAttribute("profil", c.getIdprofil().getIdaccount().getType());
 
-                session.setMaxInactiveInterval(30 * 60);
+                session.setMaxInactiveInterval(30 * 600);
 
                 Cookie loginCookie = new Cookie("user", "user");
-                loginCookie.setMaxAge(30 * 60);
+                loginCookie.setMaxAge(30 * 600);
                 rep.addCookie(loginCookie);
 
                 return c;

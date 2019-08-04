@@ -113,8 +113,7 @@ public class HeaderController {
      *
      * @param req
      * @param rep
-     * @param session
-     * @return 
+     * @param session 
      * @throws IOException
      */
       @RequestMapping("deconnecter.htm")
@@ -135,7 +134,14 @@ public class HeaderController {
         rep.addCookie(loginCookie);
         rep.sendRedirect("index.htm");
     }
- public  byte[] readBytes(HttpServletRequest request) throws IOException {
+
+    /**
+     *
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    public  byte[] readBytes(HttpServletRequest request) throws IOException {
 	request.setCharacterEncoding("UTF-8");
        int contentLen = request.getContentLength();
 	InputStream is = request.getInputStream();

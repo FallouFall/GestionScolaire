@@ -112,10 +112,18 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getStatut() {
         return statut;
     }
 
+    /**
+     *
+     * @param statut
+     */
     public void setStatut(int statut) {
         this.statut = statut;
     }

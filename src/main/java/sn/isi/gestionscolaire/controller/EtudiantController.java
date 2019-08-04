@@ -42,6 +42,7 @@ public class EtudiantController {
     List<Documents> docs = new ArrayList<>();
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("etudiant.htm")
@@ -121,9 +122,12 @@ public class EtudiantController {
         return mav;
     }
 
-    
-    
-    
+    /**
+     *
+     * @param req
+     * @param rep
+     * @throws IOException
+     */
     @RequestMapping(value = "demanderAide.htm",method = RequestMethod.POST)
     public void demanderAide(HttpServletRequest req, HttpServletResponse rep) throws IOException {
          HttpSession session = req.getSession();
@@ -203,6 +207,7 @@ public class EtudiantController {
     
       /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("mesPayements.htm")

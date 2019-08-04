@@ -127,6 +127,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "filiereParamClasse.htm")
@@ -152,6 +153,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "classeParamClasse.htm")
@@ -177,6 +179,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "detailclasseParamClasse.htm")
@@ -202,6 +205,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "detailclasseParamClasse.htm", method = RequestMethod.POST)
@@ -311,6 +315,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "ajouterAcad.htm", method = RequestMethod.POST)
@@ -379,6 +384,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "ajouterDomaines.htm", method = RequestMethod.POST)
@@ -399,6 +405,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "ajouterCycles.htm", method = RequestMethod.POST)
@@ -473,6 +480,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("calendrierClasse.htm")
@@ -542,6 +550,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "plageHoraire.htm", method = RequestMethod.POST)
@@ -576,6 +585,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "listeSalleDispo.htm")
@@ -606,6 +616,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("plageHoraire.htm")
@@ -620,6 +631,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("confirmerCour.htm")
@@ -893,10 +905,10 @@ public class GererDirecteurController {
     @RequestMapping("/gererProgramme.htm")
     public ModelAndView gererProgramme(HttpServletRequest req) {
 
-        id = req.getParameter("id");
+     id = req.getParameter("id");
         String classe = req.getParameter("classe");
         String filiere = req.getParameter("filiere");
-        String sql = "SELECT * from classes where id=? ";
+        String sql = "SELECT    * from classes where id=? ";
         classes = jdtbcTemplate.query(sql,
                 new Object[]{id}, (ResultSet rs, int rowNum) -> {
                     Classes c = new Classes();
@@ -939,6 +951,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("GererDirecteur.htm")
@@ -1236,6 +1249,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "savedetailClasseParam.htm")
@@ -1313,6 +1327,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "saisirClasse.htm")
@@ -1328,7 +1343,10 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
+     * @param rep
      * @return ModelView
+     * @throws java.io.IOException
      */
     @RequestMapping(value = "saisirClasse.htm", method = RequestMethod.POST)
     public ModelAndView saisiriNFOClassee(HttpServletRequest req, HttpServletResponse rep) throws IOException {
@@ -1350,6 +1368,7 @@ public class GererDirecteurController {
      *
      * @param req
      * @return ModelView
+     * @throws java.text.ParseException
      */
     @RequestMapping(value = "confirmerClasse.htm")
     public ModelAndView confirmerClasse(HttpServletRequest req) throws ParseException {
@@ -1516,6 +1535,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @return 
      */
     @RequestMapping(value = "statdirecteur.htm")
     public ModelAndView statistique() {
@@ -1635,6 +1655,7 @@ public class GererDirecteurController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping(value = "listeMatiereProf.htm")
@@ -1660,6 +1681,11 @@ public class GererDirecteurController {
 
     }
 
+    /**
+     *
+     * @param req
+     * @return
+     */
     @RequestMapping(value = "listeMatiereProf.htm", method = RequestMethod.POST)
     public ModelAndView validerAjoutMatiereProf(HttpServletRequest req) {
 

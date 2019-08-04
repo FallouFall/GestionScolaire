@@ -61,13 +61,27 @@ public class Bibliotheque implements Serializable {
     @ManyToOne(optional = false)
     private User inscription;
 
+    /**
+     *
+     */
     public Bibliotheque() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Bibliotheque(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param matricule
+     * @param debut
+     * @param fin
+     */
     public Bibliotheque(Integer id, String matricule, String debut, String fin) {
         this.id = id;
         this.matricule = matricule;
@@ -75,42 +89,82 @@ public class Bibliotheque implements Serializable {
         this.fin = fin;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDebut() {
         return debut;
     }
 
+    /**
+     *
+     * @param debut
+     */
     public void setDebut(String debut) {
         this.debut = debut;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFin() {
         return fin;
     }
 
+    /**
+     *
+     * @param fin
+     */
     public void setFin(String fin) {
         this.fin = fin;
     }
 
+    /**
+     *
+     * @return
+     */
     public User getInscription() {
         return inscription;
     }
 
+    /**
+     *
+     * @param inscription
+     */
     public void setInscription(User inscription) {
         this.inscription = inscription;
     }

@@ -48,13 +48,27 @@ public class Droitinscription implements Serializable {
     @Column(name = "mensualite")
     private int mensualite;
 
+    /**
+     *
+     */
     public Droitinscription() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Droitinscription(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param matricule
+     * @param inscription
+     * @param mensualite
+     */
     public Droitinscription(Integer id, String matricule, int inscription, int mensualite) {
         this.id = id;
         this.matricule = matricule;
@@ -62,34 +76,66 @@ public class Droitinscription implements Serializable {
         this.mensualite = mensualite;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getInscription() {
         return inscription;
     }
 
+    /**
+     *
+     * @param inscription
+     */
     public void setInscription(int inscription) {
         this.inscription = inscription;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMensualite() {
         return mensualite;
     }
 
+    /**
+     *
+     * @param mensualite
+     */
     public void setMensualite(int mensualite) {
         this.mensualite = mensualite;
     }

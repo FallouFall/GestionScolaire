@@ -45,34 +45,64 @@ public class Enseigne implements Serializable {
     @ManyToOne(optional = false)
     private User iduser;
 
+    /**
+     *
+     */
     public Enseigne() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Enseigne(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Matiere getIdmatiere() {
         return idmatiere;
     }
 
+    /**
+     *
+     * @param idmatiere
+     */
     public void setIdmatiere(Matiere idmatiere) {
         this.idmatiere = idmatiere;
     }
 
+    /**
+     *
+     * @return
+     */
     public User getIduser() {
         return iduser;
     }
 
+    /**
+     *
+     * @param iduser
+     */
     public void setIduser(User iduser) {
         this.iduser = iduser;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }

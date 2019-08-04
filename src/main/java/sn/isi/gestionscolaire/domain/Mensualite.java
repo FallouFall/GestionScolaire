@@ -81,26 +81,50 @@ public class Mensualite implements Serializable {
     public Mensualite() {
     }
 
+    /**
+     *
+     * @return
+     */
     public User getIdetudiant() {
         return idetudiant;
     }
 
+    /**
+     *
+     * @param idetudiant
+     */
     public void setIdetudiant(User idetudiant) {
         this.idetudiant = idetudiant;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPaye() {
         return paye;
     }
 
+    /**
+     *
+     * @param paye
+     */
     public void setPaye(int paye) {
         this.paye = paye;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRestant() {
         return restant;
     }
 
+    /**
+     *
+     * @param restant
+     */
     public void setRestant(int restant) {
         this.restant = restant;
     }
@@ -113,10 +137,18 @@ public class Mensualite implements Serializable {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }

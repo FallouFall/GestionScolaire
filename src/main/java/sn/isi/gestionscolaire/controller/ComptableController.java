@@ -28,6 +28,7 @@ public class ComptableController {
 
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("comptable.htm")

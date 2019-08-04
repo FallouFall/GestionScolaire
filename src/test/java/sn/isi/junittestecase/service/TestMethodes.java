@@ -7,12 +7,19 @@ import sn.isi.gestionscolaire.domain.User;
 import static org.junit.Assert.assertEquals;
 import org.junit.Assert;
 
+/**
+ *
+ * @author Fallou
+ */
 public class TestMethodes {
 
     private OperationTest operation = new OperationTest();
 
     private User userToTest = new User();
 
+    /**
+     *
+     */
     @Test
     public void test() {
         int intputA = 20;

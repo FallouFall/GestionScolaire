@@ -66,13 +66,27 @@ public class Filiere implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "filiere")
     private List<Classes> classesList;
 
+    /**
+     *
+     */
     public Filiere() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Filiere(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param matricule
+     * @param nom
+     * @param creation
+     */
     public Filiere(Integer id, String matricule, String nom, Date creation) {
         this.id = id;
         this.matricule = matricule;
@@ -80,59 +94,115 @@ public class Filiere implements Serializable {
         this.creation = creation;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getCreation() {
         return creation;
     }
 
+    /**
+     *
+     * @param creation
+     */
     public void setCreation(Date creation) {
         this.creation = creation;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Cycle getIdcycle() {
         return idcycle;
     }
 
+    /**
+     *
+     * @param idcycle
+     */
     public void setIdcycle(Cycle idcycle) {
         this.idcycle = idcycle;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public List<Classes> getClassesList() {
         return classesList;
     }
 
+    /**
+     *
+     * @param classesList
+     */
     public void setClassesList(List<Classes> classesList) {
         this.classesList = classesList;
     }

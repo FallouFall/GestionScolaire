@@ -27,8 +27,13 @@ public class OperationTest {
 	Connexion con = new Connexion();
 	JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
     
-    
-  public int somme(int valA,int valB)
+    /**
+     *
+     * @param valA
+     * @param valB
+     * @return
+     */
+    public int somme(int valA,int valB)
   {
      return valA+valB;
        

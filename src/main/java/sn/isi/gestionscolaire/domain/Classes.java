@@ -61,13 +61,29 @@ public class Classes implements Serializable {
     @ManyToOne(optional = false)
     private Filiere filiere;
 
+    /**
+     *
+     */
     public Classes() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Classes(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param matricule
+     * @param nom
+     * @param creation
+     * @param description
+     * @param droitIns
+     */
     public Classes(Integer id, String matricule, String nom, String creation, String description, int droitIns) {
         this.id = id;
         this.matricule = matricule;
@@ -77,58 +93,114 @@ public class Classes implements Serializable {
         this.droitIns = droitIns;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCreation() {
         return creation;
     }
 
+    /**
+     *
+     * @param creation
+     */
     public void setCreation(String creation) {
         this.creation = creation;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDroitIns() {
         return droitIns;
     }
 
+    /**
+     *
+     * @param droitIns
+     */
     public void setDroitIns(int droitIns) {
         this.droitIns = droitIns;
     }
 
+    /**
+     *
+     * @return
+     */
     public Filiere getFiliere() {
         return filiere;
     }
 
+    /**
+     *
+     * @param filiere
+     */
     public void setFiliere(Filiere filiere) {
         this.filiere = filiere;
     }

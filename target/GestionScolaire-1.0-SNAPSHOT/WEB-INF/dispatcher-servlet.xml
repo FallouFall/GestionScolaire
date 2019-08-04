@@ -34,8 +34,8 @@
                 <prop key="planifierCour.htm">gererDirecteurController</prop> 
                 <prop key="plageHoraire.htm">gererDirecteurController</prop>   
                   
-                 <prop key="listeProfDispo.htm">gererDirecteurController</prop>   
-                   <prop key="listeSalleDispo.htm">gererDirecteurController</prop>    
+                <prop key="listeProfDispo.htm">gererDirecteurController</prop>   
+                <prop key="listeSalleDispo.htm">gererDirecteurController</prop>    
                 <prop key="formationById.htm">gererComptableController</prop>
                 <prop key="calendrierClasse.htm">gererDirecteurController</prop>
                 <prop key="faqResponse.htm">administrationController</prop>                   
@@ -75,13 +75,23 @@
                 <prop key="documentsProf.htm">gererProfesseurController</prop>
                    
                 <prop key="documentsMathProf.htm">gererProfesseurController</prop>
-                   
+                   <prop key="impression.htm">gererSecretaireController</prop>
+                    <prop key="bulletin.htm">gererSecretaireController</prop>
+                    <prop key="imprimerBulletinDetailClasse.htm">gererSecretaireController</prop>
+                    
+                     <prop key="getNotesEtudiant.htm">gererSecretaireController</prop>
+                    
+                     <prop key="imprimerListeClasseNote.htm">gererSecretaireController</prop>
                 <prop key=" GererProfesseur.htm">gererProfesseurController</prop>
                 <prop key="ressources.htm">administrationController</prop>
                 <prop key="profil.htm">profilController</prop>
                 <prop key="GererAdmin.htm">gererAdminController</prop>
                 <prop key="AjouterDocuments.htm">gererProfesseurController</prop>
-                <prop key=" gererNote.htm">gererProfesseurController</prop>
+                <prop key="gererNote.htm">gererProfesseurController</prop>
+                <prop key="gererNoteSec.htm">gererSecretaireController</prop>
+                <prop key="feuilleDeNote.htm">gererSecretaireController</prop>
+                  <prop key="releverNotes.htm">gererSecretaireController</prop>
+                <prop key="detailClasseNote.htm">gererSecretaireController</prop>
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>
                 <prop key=" GererComptable.htm">gererComptableController</prop>
@@ -91,7 +101,7 @@
                 <prop key="addClasse.htm">gererDirecteurController</prop>
                 <prop key="saisirClasse.htm">gererDirecteurController</prop>
                 <prop key="confirmerClasse.htm">gererDirecteurController</prop>
-                 <prop key="confirmerCour.htm">gererDirecteurController</prop>
+                <prop key="confirmerCour.htm">gererDirecteurController</prop>
                 <prop key=" gererProgramme.htm">gererDirecteurController</prop>
                 <prop key="AjouterAdmin.htm">gererAdminController</prop>
                 <prop key=" AjouterProfesseur.htm">gererProfesseurController</prop>
@@ -115,7 +125,7 @@
                 
                 
                 
-                 <prop key="planifierProgramme.htm">gererDirecteurController</prop>
+                <prop key="planifierProgramme.htm">gererDirecteurController</prop>
                 <prop key="gerercycles.htm">gererDirecteurController</prop>
                 <prop key="gereracad.htm">gererDirecteurController</prop>
                 <prop key="gererdomaines.htm">gererDirecteurController</prop>

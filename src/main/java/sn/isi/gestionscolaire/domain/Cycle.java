@@ -66,13 +66,28 @@ public class Cycle implements Serializable {
     @ManyToOne(optional = false)
     private Formation idformation;
 
+    /**
+     *
+     */
     public Cycle() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Cycle(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param matricule
+     * @param nom
+     * @param date
+     * @param description
+     */
     public Cycle(Integer id, String matricule, String nom, String date, String description) {
         this.id = id;
         this.matricule = matricule;
@@ -81,68 +96,132 @@ public class Cycle implements Serializable {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatricule() {
         return matricule;
     }
 
+    /**
+     *
+     * @param matricule
+     */
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(String date) {
         this.date = date;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public List<Filiere> getFiliereList() {
         return filiereList;
     }
 
+    /**
+     *
+     * @param filiereList
+     */
     public void setFiliereList(List<Filiere> filiereList) {
         this.filiereList = filiereList;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public List<Formation> getFormationList() {
         return formationList;
     }
 
+    /**
+     *
+     * @param formationList
+     */
     public void setFormationList(List<Formation> formationList) {
         this.formationList = formationList;
     }
 
+    /**
+     *
+     * @return
+     */
     public Formation getIdformation() {
         return idformation;
     }
 
+    /**
+     *
+     * @param idformation
+     */
     public void setIdformation(Formation idformation) {
         this.idformation = idformation;
     }

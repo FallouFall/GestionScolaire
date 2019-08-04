@@ -205,7 +205,15 @@ public class GererComptableController {
         return mav;
 
     }
-     @RequestMapping(value = "controlePaye.htm",method = RequestMethod.POST)
+
+    /**
+     *
+     * @param req
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "controlePaye.htm",method = RequestMethod.POST)
     public ModelAndView listePayement(HttpServletRequest req,HttpServletResponse response) throws IOException {
         
        
@@ -281,7 +289,15 @@ public class GererComptableController {
         return mav;
 
     }
-     @RequestMapping(value = "controleNonPaye.htm",method = RequestMethod.POST)
+
+    /**
+     *
+     * @param req
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "controleNonPaye.htm",method = RequestMethod.POST)
     public ModelAndView listeNonPayement(HttpServletRequest req,HttpServletResponse response) throws IOException {
         
        
@@ -500,6 +516,8 @@ public class GererComptableController {
     }
  /**
      *
+     * @return 
+     * @return  
      */
     @RequestMapping(value = "StatComptable.htm")
     public ModelAndView statistique() {
@@ -635,6 +653,7 @@ public class GererComptableController {
     
     /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("domaineById.htm")
@@ -660,6 +679,7 @@ public class GererComptableController {
     
      /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("formationById.htm")
@@ -687,6 +707,7 @@ public class GererComptableController {
     
        /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("filiereIns.htm")
@@ -719,6 +740,7 @@ public class GererComptableController {
     
        /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("classeIns.htm")
@@ -746,6 +768,7 @@ public class GererComptableController {
     }
        /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("infoInscription.htm")
@@ -762,6 +785,7 @@ public class GererComptableController {
     
       /**
      *
+     * @param req
      * @return ModelView
      */
     @RequestMapping("cycleInscription.htm")
@@ -788,6 +812,7 @@ public class GererComptableController {
     /**
      *
      * @param req
+     * @return 
      */
     @RequestMapping(value = "infoInscription.htm", method = RequestMethod.POST)
     public ModelAndView saveEtudiant(HttpServletRequest req) {
