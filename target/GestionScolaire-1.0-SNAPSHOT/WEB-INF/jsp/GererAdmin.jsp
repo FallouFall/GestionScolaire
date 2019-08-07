@@ -43,7 +43,7 @@
     </head>
 
     <body id="page-top">
-      
+
 
         <%@include  file="HeaderUser.jsp" %>
 
@@ -88,7 +88,7 @@
 
                 <div class="container-fluid">
 
-                 
+
 
 
 
@@ -108,8 +108,8 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr  style="text-align: center;vertical-align: middle;">
-                                          <th></th>
-                                              <th>Matricule</th>
+                                            <th></th>
+                                            <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Adresse</th>
@@ -134,23 +134,23 @@
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="element" items="${liste}">
-                               <c:url var="link" value="lock.htm">
-                               <c:param name="back" value="GererAdmin.htm"/>
-                                  <c:param name="statut" value="${element.statut}"/>
-                                   <c:param name="profilId" value="${element.idprofil.id}"/>
-                                   </c:url>
+                                            <c:url var="link" value="lock.htm">
+                                                <c:param name="back" value="GererAdmin.htm"/>
+                                                <c:param name="statut" value="${element.statut}"/>
+                                                <c:param name="profilId" value="${element.idprofil.id}"/>
+                                            </c:url>
 
                                             <tr style="text-align: center;vertical-align: middle;">
 
                                                 <td> 
                                                     <c:if test="${element.imageId != null}">
-                                                          <img alt="" class="image--cover" src="data:image/jpeg;base64,${element.imageId} " width="54">
+                                                        <img alt="" class="image--cover" src="data:image/jpeg;base64,${element.imageId} " width="54">
                                                     </c:if>
-                                                          
+
                                                     <c:if test="${element.imageId == null}">
                                                         <span class="ti-user" style="font-size: 1.5em; color: #1f72b8;"></span>
                                                     </c:if>
-                                                   
+
 
                                                 </td>
                                                 <td>${element.matricule}</td>
@@ -158,12 +158,12 @@
                                                 <td>${element.prenom}</td>
                                                 <td>${element.adresse}</td>
                                                 <td>${element.telephone}</td>
-                                                  <td> 
-                                                        <c:if test="${element.statut == 0}">
-                                                              <div class="form-label-group">
-                                                        <a href="${link}" class="ti-lock"></a>
-                                                    </div></c:if>
-                                                          
+                                                <td> 
+                                                    <c:if test="${element.statut == 0}">
+                                                        <div class="form-label-group">
+                                                            <a href="${link}" class="ti-lock"></a>
+                                                        </div></c:if>
+
                                                     <c:if test="${element.statut != 0}">
                                                         <a href="${link}" class="ti-unlock"></a>
                                                     </c:if>
@@ -178,9 +178,9 @@
                                 </table>
                             </div>
                             <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
-                                                            <i class="ti-printer">
+                                <i class="ti-printer">
 
-                    </i> Imprimer</button>
+                                </i> Imprimer</button>
                         </div>
 
                     </div>
@@ -199,10 +199,10 @@
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+            <i class="ti-angle-up"></i>
         </a>
 
-   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -212,13 +212,22 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
                     </div>
                 </div>
             </div>
@@ -241,36 +250,26 @@
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
-                     <script>
-function printContent(el){
-var restorepage = $('body').html();
-var printcontent = $('#' + el).clone();
-var enteredtext = $('#text').val();
-$('body').empty().html(printcontent);
-window.print();
-$('body').html(restorepage);
-$('#text').html(enteredtext);
-setTimeout(function (){
-    location.reload()
-},1);
-}
+        <script>
+                                function printContent(el) {
+                                    var restorepage = $('body').html();
+                                    var printcontent = $('#' + el).clone();
+                                    var enteredtext = $('#text').val();
+                                    $('body').empty().html(printcontent);
+                                    window.print();
+                                    $('body').html(restorepage);
+                                    $('#text').html(enteredtext);
+                                    setTimeout(function () {
+                                        location.reload()
+                                    }, 1);
+                                }
 
-</script>
+        </script>
 
         <style>
-      
-           
 
-            .image--cover {
-                width: 70px;
-                height: 70px;
-                border-radius: 50%;
-                border: 2px solid #fff;
-                margin: 5px;
 
-                object-fit: cover;
-                object-position: center right;
-            }
+
 
         </style>
 

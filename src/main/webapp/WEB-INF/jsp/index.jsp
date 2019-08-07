@@ -47,6 +47,8 @@
     <body >
         <%
             String message = "BONJOUR";
+            String login ;
+            String password ;
             Cookie[] cookies = request.getCookies();
 
             if (cookies != null) {
@@ -55,6 +57,15 @@
                         message = cookie.getValue();
 
                     }
+                      if (cookie.getName().equals("login")) {
+                        login = cookie.getValue();
+
+                    }
+                        if (cookie.getName().equals("password")) {
+                        password = cookie.getValue();
+
+                    }
+                    
 
                 }
             }
@@ -93,7 +104,7 @@
                                         <span class="input-group-addon">
                                             <i class="ti-user"></i>
                                         </span>
-                                        <input type="email" class="form-control "    name="username" id="nom" placeholder="E-Mail" required="true" minlength="2" maxlength="30">
+                                        <input type="email" class="form-control "   value="${login}"  name="username" id="nom" placeholder="E-Mail" required="true" minlength="2" maxlength="30">
                                     </div>
                                 </div>
 
@@ -102,7 +113,7 @@
                                         <span class="input-group-addon">
                                             <i class="ti-lock"></i>
                                         </span>
-                                        <input type="password" class="form-control "    name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
+                                        <input type="password" class="form-control "   value="${password}"  name="password" id="password" placeholder="Mot de passe" required="true" minlength="2" maxlength="30">
                                     </div>
                                 </div>
 

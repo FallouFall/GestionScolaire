@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title>Inscriptions</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -77,14 +77,6 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
-
-
-                <li class="nav-item">
                     <a class="nav-link" href="comptable.htm">
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
@@ -93,12 +85,12 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                        <span>Lister</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="InscriptionEtudiant.htm">
                         <i class="fas fa-plus"></i>
-                        <span>Ajouter </span></a>
+                        <span>Inscription </span></a>
                 </li>
             </ul>
 
@@ -181,10 +173,42 @@
         </div>
         <!-- /#wrapper -->
 
-        <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+            <i class="ti-angle-up"></i>
         </a>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
+                        
+                    </div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">
+                        
+                        <span  class="ti-alert" style="font-size: 1.5em;">
+                            
+                        </span>Voulez-Vous quitter ?</div>
+                    <div class="modal-footer">
+
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js" ></script>

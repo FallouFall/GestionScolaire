@@ -126,7 +126,7 @@ public class GererComptableController {
          mav.addObject("findEtudiant", null);
         mav.setViewName("Biblio");
         String matricule = req.getParameter("matricule");
-        String sql = "SELECT user.id,user.matricule,user.nom,prenom,adresse,telephone,inscription.matricule , inscription.idclasse,inscription.date,classes.mensualite,filiere.nom ,classes.nom from user,inscription,filiere,classes where user.matricule =? AND user.id=inscription.iduser AND filiere.id=classes.filiere";
+        String sql = "SELECT DISTINCT user.id,user.matricule,user.nom,prenom,adresse,telephone,inscription.matricule , inscription.idclasse,inscription.date,filiere.nom ,classes.nom,droitinscription.mensualite,droitinscription.inscription from user,inscription,filiere,classes,droitinscription where user.matricule =? AND user.id=inscription.iduser AND filiere.id=classes.filiere and classes.droitIns=droitinscription.id AND inscription.idclasse=classes.id";
 
         List<User> actors = jdtbcTemplate.query(
                 sql,
@@ -155,12 +155,12 @@ public class GererComptableController {
 
                 s.setFiliere(f);
                 ins.setIdclasse(s);
-                mav.addObject("fil", rs.getString(11));
-                mav.addObject("cls", rs.getString(12));
-                mav.addObject("mensu", rs.getInt(10));
+               mav.addObject("fil", rs.getString(10));
+              mav.addObject("cls", rs.getString(11));
+                 mav.addObject("mensu", rs.getInt(12));
                 mav.addObject("inscrip", ins);
 
-                payement = rs.getInt(10);
+              //  payement = rs.getInt(10);
 
                 return c;
             }
@@ -422,7 +422,7 @@ public class GererComptableController {
     public ModelAndView findEtudiant(HttpServletRequest req) {
         mav = new ModelAndView();
         String matricule = req.getParameter("matricule");
-        String sql = "SELECT user.id,user.matricule,user.nom,prenom,adresse,telephone,inscription.matricule , inscription.idclasse,inscription.date,classes.mensualite,filiere.nom ,classes.nom from user,inscription,filiere,classes where user.matricule =? AND user.id=inscription.iduser AND filiere.id=classes.filiere";
+        String sql = "SELECT DISTINCT user.id,user.matricule,user.nom,prenom,adresse,telephone,inscription.matricule , inscription.idclasse,inscription.date,filiere.nom ,classes.nom,droitinscription.mensualite,droitinscription.inscription from user,inscription,filiere,classes,droitinscription where user.matricule =? AND user.id=inscription.iduser AND filiere.id=classes.filiere and classes.droitIns=droitinscription.id AND inscription.idclasse=classes.id";
 
         List<User> actors = jdtbcTemplate.query(
                 sql,
@@ -451,20 +451,45 @@ public class GererComptableController {
 
                 s.setFiliere(f);
                 ins.setIdclasse(s);
-                mav.addObject("fil", rs.getString(11));
-                mav.addObject("cls", rs.getString(12));
-                mav.addObject("mensu", rs.getInt(10));
+                mav.addObject("fil", rs.getString(10));
+                mav.addObject("cls", rs.getString(11));
+               mav.addObject("mensu", rs.getInt(12));
                 mav.addObject("inscrip", ins);
-
-                payement = rs.getInt(10);
+       mav.addObject("prixinscrip", rs.getInt(13));
+              //  payement = rs.getInt(12);
 
                 return c;
             }
         });
+        
+        
+      
+        
         if (!actors.isEmpty()) {
             mav.addObject("findEtudiant", actors.get(0));
+            
+             sql = "SELECT distinct id, SUM(paye),SUM(restant) FROM mensualite WHERE idetudiant=?";
+
+      List<Mensualite>  mensualite = jdtbcTemplate.query(
+                sql,
+                new Object[]{actors.get(0).getId()},
+                new RowMapper<Mensualite>() {
+            public Mensualite mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Mensualite men = new Mensualite();
+                men.setPaye(rs.getInt(2));
+                men.setRestant(rs.getInt(3));
+                return men;
+            }
+        });
+             if (!mensualite.isEmpty()) {
+            mav.addObject("payementTotal", mensualite.get(0).getPaye());
+            mav.addObject("resteTotal", mensualite.get(0).getRestant());
+             mav.addObject("aPayer", mensualite.get(0).getRestant()- mensualite.get(0).getPaye());
+            }
           
-        } else {
+        }
+        
+        else {
             mav.addObject("findEtudiant", null);
            
         }
@@ -503,13 +528,13 @@ public class GererComptableController {
      */
     @RequestMapping(value = "Mensualite.htm", method = RequestMethod.POST)
     public ModelAndView validerPayement(HttpServletRequest req) {
-      String mat=   "PAY" + (int) (Math.random() * 9999999) + "";
+         String mat=   "PAY" + (int) (Math.random() * 9999999) + "";
         String mois = req.getParameter("mois");
           int  paye = Integer.parseInt(req.getParameter("paye"));
-       
+          int  mensualite = Integer.parseInt(req.getParameter("mensualite"));
         String sql = "insert into mensualite values (?,?,?,?,?,?,?,?)";
 
-        jdtbcTemplate.update(sql, null,mat, java.sql.Date.valueOf(date), mois,paye,"3333" ,ins.getIdclasse().getId(), ins.getIduser().getId());
+        jdtbcTemplate.update(sql, null,mat, java.sql.Date.valueOf(date), mois,paye,mensualite-paye ,ins.getIdclasse().getId(), ins.getIduser().getId());
 
         return mav;
 

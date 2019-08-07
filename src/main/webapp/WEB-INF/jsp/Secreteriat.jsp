@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Secretariat</title>
 
 
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
         <link href="css/sb-admin.css" rel="stylesheet">
         <link rel="shortcut icon" href="images/webIcone.jpg"/>
 
-      
+
 
 
 
@@ -48,41 +48,41 @@
 
                         <div class="row" style="margin-bottom: -100px; margin-top: 3px;">
                             <!-- Team member -->
-                              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="Annonces.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p> <span class="ti-bell" style="font-size: 3em;"  ></span></p>
-                                            <h4 class="card-title">Annonces</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p> <span class="ti-announcement" style="font-size: 3em;"  ></span></p>
+                                                <h4 class="card-title">Annonces</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </a>
 
 
                             </div>
-                            
-                            
-                            
-                            
-                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+
+
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="faqResponseSec.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>   <span class="ti-help" style="font-size: 3em;" ></span></p>
-                                            <h4 class="card-title">Faqs
-                                              <span style="b">(${nbQuestion})</span>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>   <span class="ti-comment-alt" style="font-size: 3em;" ></span></p>
+                                                <h4 class="card-title">Faqs
+                                                    <span style="b">(${nbQuestion})</span>
 
-                                            </h4>
+                                                </h4>
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                   </a>
+                                </a>
 
 
                             </div>
@@ -90,17 +90,17 @@
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="impression.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>     <span class=" ti-printer"   style="font-size: 3em;"></span></p>
-                                            <h4 class="card-title">Impressions</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>     <span class=" ti-printer"   style="font-size: 3em;"></span></p>
+                                                <h4 class="card-title">Impressions</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                    </a>
+                                </a>
 
 
                             </div>
@@ -108,16 +108,16 @@
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="gererNoteSec.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p> <span class="ti-clipboard" style="font-size: 3em;"  ></span></p>
-                                            <h4 class="card-title">Notes</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p> <span class="ti-clipboard" style="font-size: 3em;"  ></span></p>
+                                                <h4 class="card-title">Notes</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </a>
 
 
@@ -126,37 +126,37 @@
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="bulletin.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card " >
-                                        <div class="card-body text-center">
-                                            <p>    <span class="ti-file"style="font-size: 3em;"  ></span></p>
-                                            <h4 class="card-title">Bulletins</h4>
+                                    <div class="frontside">
+                                        <div class="card " >
+                                            <div class="card-body text-center">
+                                                <p>    <span class="ti-file"style="font-size: 3em;"  ></span></p>
+                                                <h4 class="card-title">Bulletins</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                   </a>
+                                </a>
 
 
                             </div>
                             <!-- ./Team member -->
-                          
+
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="#"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>   <span class="ti-close" style="font-size: 3em;" ></span></p>
-                                            <h4 class="card-title">Absences</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>   <span class="ti-close" style="font-size: 3em;" ></span></p>
+                                                <h4 class="card-title">Absences</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                   </a>
+                                </a>
 
 
                             </div>
@@ -184,38 +184,49 @@
 
         </div>
         <!-- /#wrapper -->
-
-        <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+            <i class="ti-angle-up"></i>
         </a>
 
-         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
                         <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
-                    <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                    </div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">
+
+                        <span  class="ti-alert" style="font-size: 1.5em;">
+
+                        </span>Voulez-Vous quitter ?</div>
+                    <div class="modal-footer">
+
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
                     </div>
                 </div>
             </div>
         </div>
-        
+
+
+
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-     
+
     </body>
 
 </html>

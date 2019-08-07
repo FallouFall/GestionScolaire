@@ -10,80 +10,84 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>Ajout Professeur</title>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="css/themify-icons.css" rel="stylesheet">
-    <link href="css/sb-admin.css" rel="stylesheet">
-      <link rel="stylesheet" href="css/shards.min.css">
+        <title>Ajout Professeur</title>
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="css/themify-icons.css" rel="stylesheet">
+        <link href="css/sb-admin.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/shards.min.css">
         <link rel="stylesheet" href="css/shards-demo.css?v=1.1.0">
         <link rel="stylesheet" href="./css/cardeffects.css">
-         <link rel="shortcut icon" href="images/webIcone.jpg"/>
+        <link rel="shortcut icon" href="images/webIcone.jpg"/>
 
-  </head>
+    </head>
 
-  <body id="page-top" >
+    <body id="page-top" >
 
-    <%@include file="HeaderUser.jsp" %>
+        <%@include file="HeaderUser.jsp" %>
 
-    <div id="wrapper">
-
-      <!-- Sidebar -->
-      <ul class="sidebar navbar-nav" >
-        <li class="nav-item">
-          <a class="nav-link" href="GererAdmin.htm">
-                 <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Tableau de bord</span>
-          </a>
-        </li>
-       
-        
-         <li class="nav-item">
-          <a class="nav-link" href="administration.htm">
-            <i class=" fas fa-home"></i>
-            <span>Accueil </span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-plus"></i>
-            <span>Ajouter </span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="GererProfesseur.htm">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-        </li>
-      </ul>
-
-      <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-        
-                  <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
+        <div id="wrapper">
+            <ul class="sidebar navbar-nav" >
 
 
-            <div class="example col-md-12 ml-auto mr-auto">
-                <div class="row " >
 
-                    <div class="card card-signin mx-auto mt-5">
-                           <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
-                          
-                            <span style="font-family: dax-bold;    font-size: 2rem;">
-                            Ajouter professeur
-                                  
 
-                            </span>  </div>
-                        <div class="card-body">
-                           <form method="POST">
+                <li class="nav-item" style="margin-top: 20px;" >
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
+                    </a>
+                </li>
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="administration.htm">
+                        <i class=" fas fa-home"></i>
+                        <span>Accueil </span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-plus"></i>
+                        <span>Ajouter </span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="GererProfesseur.htm">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Lister</span></a>
+                </li>
+            </ul>
+
+            <div id="content-wrapper">
+
+                <div class="container-fluid">
+
+
+                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
+
+
+                        <div class="example col-md-12 ml-auto mr-auto">
+                            <div class="row " >
+
+                                <div class="card card-signin mx-auto mt-5">
+                                    <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
+
+                                        <span style="font-family: dax-bold;    font-size: 2rem;">
+                                            Ajouter professeur
+
+
+                                        </span>  </div>
+                                    <div class="card-body">
+                                        <form method="POST">
                                             <div class="form-group">
                                                 <div class="form-row">
 
@@ -134,7 +138,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                     <div class=" form-group col-md-6">
+                                                    <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
                                                             <input type="email" class="form-control" id="login" placeholder="Email"  name="username" required="true" minlength="5" maxlength="30">
                                                             <span class="input-group-addon">
@@ -171,10 +175,10 @@
                                                             </i> Enregistrer</button>
                                                     </div>
                                                     <div class=" form-group col-md-6">   
-                                                        <button type="reset"  class="btn btn-secondary">
-                                                            <i class="ti-trash">
-
-                                                            </i> Annuler</button>
+                                                        <button type="reset" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
+                                                            <div class="form-label-group">
+                                                                <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;" href="GererProfesseur.htm">  Retour</a> 
+                                                            </div></button>
                                                     </div>
 
 
@@ -189,10 +193,32 @@
 
                                         </form>
 
+                                    </div>
+                                </div>
+
+                              
+                            </div>
                         </div>
                     </div>
 
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                </div>
+                <!-- /.container-fluid -->
+
+                <!-- Sticky Footer -->
+
+
+            </div>
+            <!-- /.content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+         <a class="scroll-to-top rounded" href="#page-top">
+            <i class="ti-angle-up"></i>
+        </a>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -202,41 +228,27 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
                     </div>
                 </div>
             </div>
         </div>
-                </div>
-            </div>
-        </div>
 
-
-        </div>
-        <!-- /.container-fluid -->
-
-        <!-- Sticky Footer -->
-    
-
-      </div>
-      <!-- /.content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
- 
 
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js" ></script>
@@ -245,23 +257,23 @@
 
 
         <script src="js/sb-admin.min.js"></script>
-                  <style>
-     .image--cover {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  margin: 5px;
+        <style>
+            .image--cover {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                margin: 5px;
 
-  object-fit: cover;
-  object-position: center right;
-}
+                object-fit: cover;
+                object-position: center right;
+            }
 
         </style>
- 
 
 
 
-  </body>
+
+    </body>
 
 </html>

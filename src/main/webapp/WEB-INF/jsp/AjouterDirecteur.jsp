@@ -31,18 +31,22 @@
     </head>
 
     <body id="page-top" >
-      <%
-String userName = null;
-Cookie[] cookies = request.getCookies();
+        <%
+            String userName = null;
+            Cookie[] cookies = request.getCookies();
 
-if(cookies !=null){
-for(Cookie cookie : cookies){
-	if(cookie.getName().equals("user")) userName = cookie.getValue();
-      
-}
-}
-if(userName == null) response.sendRedirect("index.htm");
-%>
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("user")) {
+                        userName = cookie.getValue();
+                    }
+
+                }
+            }
+            if (userName == null) {
+                response.sendRedirect("index.htm");
+            }
+        %>
 
         <%@include file="HeaderUser.jsp" %>
 
@@ -50,12 +54,16 @@ if(userName == null) response.sendRedirect("index.htm");
 
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
-                <li class="nav-item">
-                    <a class="nav-link" href="GererDirecteur.htm">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
+
+                <li class="nav-item" style="margin-top: 20px;" >
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
                     </a>
                 </li>
+
+
 
 
                 <li class="nav-item">
@@ -88,12 +96,12 @@ if(userName == null) response.sendRedirect("index.htm");
 
                                 <div class="card card-signin mx-auto mt-5">
                                     <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
-                          
-                            <span style="font-family: dax-bold;    font-size: 2rem;">
-                           Ajouter  directeur
-                                  
 
-                            </span>  </div>
+                                        <span style="font-family: dax-bold;    font-size: 2rem;">
+                                            Ajouter  directeur
+
+
+                                        </span>  </div>
                                     <div class="card-body">
                                         <form method="POST">
                                             <div class="form-group">
@@ -126,7 +134,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true" minlength="2" maxlength="20">
                                                         </div>
                                                     </div>
-                                                
+
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
@@ -166,7 +174,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                                         </div>
                                                     </div> 
 
-                             
+
                                                     <div class=" form-group col-md-6"> 
                                                         <fieldset>
                                                             <select class="custom-select w-100"  name="genre"  required="true">
@@ -178,18 +186,18 @@ if(userName == null) response.sendRedirect("index.htm");
                                                         </fieldset>
                                                     </div>
 
-                                              
+
                                                     <div class=" form-group col-md-6">       
-                                                                <button type="submit" class="btn btn-primary" style="background-color:#1B81C5; font-family: titilliumWeb-regular;">
+                                                        <button type="submit" class="btn btn-primary" style="background-color:#1B81C5; font-family: titilliumWeb-regular;">
                                                             <i class="ti-save">
 
                                                             </i> Enregistrer</button>
                                                     </div>
                                                     <div class=" form-group col-md-6">   
-                                                        <button type="reset"  class="btn btn-secondary">
-                                                            <i class="ti-trash">
-
-                                                            </i> Annuler</button>
+                                                        <button type="reset" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
+                                                            <div class="form-label-group">
+                                                                <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;" href="GererDirecteur.htm">  Retour</a> 
+                                                            </div></button>
                                                     </div>
 
                                                 </div>
@@ -217,7 +225,7 @@ if(userName == null) response.sendRedirect("index.htm");
                 <!-- /.container-fluid -->
 
                 <!-- Sticky Footer -->
-              
+
 
             </div>
             <!-- /.content-wrapper -->
@@ -225,12 +233,11 @@ if(userName == null) response.sendRedirect("index.htm");
         </div>
         <!-- /#wrapper -->
 
-        <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+            <i class="ti-angle-up"></i>
         </a>
 
-     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -240,43 +247,52 @@ if(userName == null) response.sendRedirect("index.htm");
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
                     </div>
                 </div>
             </div>
         </div>
 
-       <style>
-     .image--cover {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  margin: 5px;
+        <style>
+            .image--cover {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                margin: 5px;
 
-  object-fit: cover;
-  object-position: center right;
-}
+                object-fit: cover;
+                object-position: center right;
+            }
 
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
-        margin: 0; 
-    }
-    .sidebar{
-      font-family: titilliumWeb-regular;
-}
-</style>
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
+            .sidebar{
+                font-family: titilliumWeb-regular;
+            }
+        </style>
 
-  
-        
-   
+
+
+
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js" ></script>
         <script src="js/demo.min.js"></script>

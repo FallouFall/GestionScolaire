@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Mensualite</title>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/themify-icons.css" rel="stylesheet">
@@ -39,7 +39,14 @@
 
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
-            
+
+                <li class="nav-item" style="margin-top: 20px;">
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
+                    </a>
+                </li>
 
 
                 <li class="nav-item">
@@ -55,7 +62,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="ListeInscription.htm">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                        <span>Inscriptions</span></a>
                 </li>
             </ul>
 
@@ -165,10 +172,10 @@
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
 
-                                        <div class="col-6 text-muted">Classe:</div>
-                                        <div class="col-6">${findEtudiant.telephone}</div>
-                                        <div class="col-6 text-muted">Adresse :</div>
-                                        <div class="col-6">${findEtudiant.adresse}</div>
+                                        <div class="col-6 text-muted">T Payement:</div>
+                                        <div class="col-6">${payementTotal}</div>
+                                        <div class="col-6 text-muted">T Restante :</div>
+                                        <div class="col-6">${resteTotal}</div>
 
 
 
@@ -179,101 +186,116 @@
 
                             </div>
                         </div>
-   <form method="POST">
-                        <div class="card  " style="width: 48%;float: left;  margin-top: 50px;" >
-                            <div class="card-header" style="text-align: center;background-color: #fff;">
+                        <form method="POST">
+                            <div class="card  " style="width: 48%;float: left;  margin-top: 50px;" >
+                                <div class="card-header" style="text-align: center;background-color: #fff;">
 
-                                <div class="ibox-body">
-                                    <div class="flexbox" style="text-align: center;">
-                                        <div class="flexbox-b">
-                                            <div class="ml-5 mr-5">
+                                    <div class="ibox-body">
+                                        <div class="flexbox" style="text-align: center;">
+                                            <div class="flexbox-b">
+                                                <div class="ml-5 mr-5">
 
-                                                <span class="ti-calendar" style="font-size: 3em;color: #1f72b8 ;"></span>
+                                                    <span class="ti-calendar" style="font-size: 3em;color: #1f72b8 ;"></span>
+
+                                                </div>
+                                                <span style="font-size: 1.5em;font-family: dax-bold;color: #1f72b8 ;"> Mois </span>   
 
                                             </div>
-                                            <span style="font-size: 1.5em;font-family: dax-bold;color: #1f72b8 ;"> Mois </span>   
 
                                         </div>
-
                                     </div>
+
+
+
                                 </div>
+                                <div class="card-body">
 
-
-
-                            </div>
-                            <div class="card-body">
-                               
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
 
                                         <div class=" form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" name="mois" id="datepicker-example-1" placeholder="Mois" >
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-calendar"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                    
-                                             <div class=" form-group col-md-6">
-                                                        <div class="input-group with-addon-icon-left">
-                                                            <input type="number" class="form-control" name="paye"  placeholder="Montant Recu" max="${mensu}" min="5000"> 
-                                                            <span class="input-group-addon">
-                                                                <i class="ti-calendar"></i>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-
-
-
-
-
-
-                                </div>
-
-                            </div>
-                        </div>
-                              <div class="card  " style="width: 48%;float: right; margin-top: 50px;">
-                      <div class="card-header" style="text-align: center;background-color: #fff;">
-
-                                <div class="ibox-body">
-                                    <div class="flexbox" style="text-align: center;">
-                                        <div class="flexbox-b">
-                                            <div class="ml-5 mr-5">
-
-                                                <span class="ti-money" style="font-size: 3em; color: #1f72b8 ;"></span>
-
+                                            <div class="input-group with-addon-icon-left">
+                                                <input type="text" class="form-control" name="mois" id="datepicker-example-1" placeholder="Mois" >
+                                                <span class="input-group-addon">
+                                                    <i class="ti-calendar"></i>
+                                                </span>
                                             </div>
-                                            <span style="font-size: 1.5em;font-family: dax-bold;color: #1f72b8 ;">Payer </span>   
-
                                         </div>
 
+                                        <div class=" form-group col-md-6">
+                                            <div class="input-group with-addon-icon-left">
+                                                <input type="number" class="form-control" name="paye"  placeholder="Montant Recu"  min="5000"> 
+                                                <span class="input-group-addon">
+                                                    <i class="ti-money"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class=" form-group col-md-6">
+                                            <div class="input-group with-addon-icon-left">
+                                                <input type="number" class="form-control" name="mensualite" value="${mensu}"  hidden=""> 
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
                                     </div>
+
                                 </div>
-
-
-
                             </div>
-                            <div class="card-body" >
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                  
+                            <div class="card  " style="width: 48%;float: right; margin-top: 50px;">
+                                <div class="card-header" style="text-align: center;background-color: #fff;">
+
+                                    <div class="ibox-body">
+                                        <div class="flexbox" style="text-align: center;">
+                                            <div class="flexbox-b">
+                                                <div class="ml-5 mr-5">
+
+                                                    <span class="ti-money" style="font-size: 3em; color: #1f72b8 ;"></span>
+
+                                                </div>
+                                                <span style="font-size: 1.5em;font-family: dax-bold;color: #1f72b8 ;">Payer </span>   
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="card-body" >
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
                                         <div class="row">
 
-                                            <div class="col-6 text-muted">A payer:</div>
-                                            <div class="col-6">${mensu} </div>
+
+                                            <div class="col-6 text-muted">Payement:</div>
+                                            <div class="col-6"> - </div>
+
+                                            <div class="col-6 text-muted">Inscription:</div>
+                                            <div class="col-6">${prixinscrip}  Fcfa </div>
+
+                                            <div class="col-6 text-muted">Mensualite</div>
+                                            <div class="col-6">${mensu}   Fcfa</div>
+
                                             <div class="col-6 text-muted">Valider :</div>
                                             <div class="col-6">  <button type="submit" class="btn btn-primary">
                                                     <i class="ti-stamp">
 
                                                     </i> Payer</button></div>
                                         </div>
-                                  
-                                </div>
 
-                            </div>
-                        </div
-   </form>
+                                    </div>
+
+                                </div>
+                            </div
+                        </form>
 
                     </c:if>
 
@@ -295,9 +317,9 @@
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+            <i class="ti-angle-up"></i>
         </a>
-     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -307,55 +329,29 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="modal fade" id="payeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirmer le payement?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
                         </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" style="    margin-left: 20%;
-                             text-align: center;">
 
 
-                            <span class="ti-user" style="font-size: 3em; text-align: "></span>
-
-                        </div>
-                        <h4 class="card-title" style="text-align: center;font-family:titilliumWeb-bold;; color: #1f72b8;">Mat :09162937</h4>
-                        <p class="card-text">Nom &  Prenom: Fall Fallou </p>                      
-                        <p class="card-text">Filiere & Classe : Gl  Master</p>
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
 
 
-                        <p class="card-text" style="font-family: titilliumWeb-semi-bold;">Paye le: 21/08/1993  </p>
-                        <p class="card-text" style="font-family: titilliumWeb-semi-bold;">Paye le: 100. 000 F </p>
-
-
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="Mensualite.htm">Logout</a>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
 
 
 
@@ -364,10 +360,10 @@
         <script src="js/demo.min.js"></script>
         <script src="js/shards.min.js"></script>
         <script src="js/sb-admin.min.js"></script>
-      
-        
 
-      
+
+
+
 
         <script>
             $("#datepicker-example-1").datepicker({
@@ -375,22 +371,27 @@
                 format: "MM",
                 viewMode: "months",
                 minViewMode: "months"
-                
-               
+
+
             });
         </script>
-  <style>
+        <style>
             .avatar-pic {
                 width: 150px;
             }
-        
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
-        margin: 0; 
-    }
+            .col-6{
+                font-family:  titilliumWeb-regular;
+            }
+            .form-control{
+                font-family: titilliumWeb-regular;
+            }
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
 
         </style>
 
 </html>
-    </body>
+</body>

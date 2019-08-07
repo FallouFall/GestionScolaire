@@ -10,6 +10,7 @@ import org.apache.commons.codec.binary.Base64;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +24,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import sn.isi.gestionscolaire.config.Connexion;
 import sn.isi.gestionscolaire.domain.Account;
+import sn.isi.gestionscolaire.domain.Calendrier;
 import sn.isi.gestionscolaire.domain.Classes;
 import sn.isi.gestionscolaire.domain.Documents;
+import sn.isi.gestionscolaire.domain.Evenement;
 import sn.isi.gestionscolaire.domain.Filiere;
 import sn.isi.gestionscolaire.domain.Inscription;
 import sn.isi.gestionscolaire.domain.Matiere;
 import sn.isi.gestionscolaire.domain.Profil;
+import sn.isi.gestionscolaire.domain.Programme;
+import sn.isi.gestionscolaire.domain.Salle;
 import sn.isi.gestionscolaire.domain.User;
 
 /**
@@ -328,4 +333,197 @@ ses.invalidate();
         return mav;
     }
 
+    
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping("/programmeProf.htm")
+    public ModelAndView gererProgramme(HttpServletRequest req) {
+  String sql = "SELECT * from filiere  ";
+        filieres = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Filiere c = new Filiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+
+        sql = "SELECT * from classes  ";
+        classes = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+                    Filiere f = new Filiere();
+                    f.setId(rs.getInt(6));
+
+                    c.setFiliere(filieres.stream().filter(fil -> fil.getId() == f.getId()).findFirst().orElse(null));
+
+                    return c;
+                });
+
+        mav.addObject("classes", classes);
+        mav.setViewName("programmeProf");
+        return mav;
+
+    }
+    
+    
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping("/gererProgrammeProf.htm")
+    public ModelAndView gererProgrammeOrof(HttpServletRequest req) {
+
+     String id = req.getParameter("id");
+        String classe = req.getParameter("classe");
+        String filiere = req.getParameter("filiere");
+        String sql = "SELECT    * from classes where id=? ";
+        classes = jdtbcTemplate.query(sql,
+                new Object[]{id}, (ResultSet rs, int rowNum) -> {
+                    Classes c = new Classes();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+        sql = "SELECT  DISTINCT matiere.nom,  programme.idclasse ,programme.idmatiere ,programme.heures ,matiere.matricule from matiere,programme , classes  WHERE classes.id=? AND programme.idclasse=classes.id and matiere.id=programme.idmatiere";
+     List<Programme>   programmes = jdtbcTemplate.query(sql,
+                new Object[]{id}, (ResultSet rs, int rowNum) -> {
+                    Programme p = new Programme();
+
+                    Classes cls = new Classes();
+                    cls.setId(Integer.valueOf(id));
+                    cls.setNom(rs.getString(1));
+                    Matiere m = new Matiere();
+
+                    m.setNom(rs.getString(1));
+                    m.setMatricule(rs.getString(5));
+
+                    p.setIdmatiere(m);
+                    p.setHeures(rs.getInt(4));
+
+                    return p;
+                });
+
+        mav = listeMatiere();
+        mav.addObject("classes", classes);
+        mav.addObject("programme", programmes);
+        mav.addObject("classe", classe);
+        mav.addObject("filiere", filiere);
+        mav.setViewName("ProgrammeClassePro");
+        return mav;
+
+    }
+    
+     /**
+     *
+     * @return ModelView
+     */
+   
+    public ModelAndView listeMatiere() {
+
+        String sql = "SELECT * from matiere  ";
+        matiere = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Matiere c = new Matiere();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+        mav.setViewName("ListeMatiere");
+        mav.addObject("matieres", matiere);
+
+        return mav;
+
+    }
+    
+      /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("tableauProf.htm")
+    public ModelAndView infos() {
+        String sql = "SELECT * from evenement order by id desc limit 15;";
+
+        List<Evenement> eve = jdtbcTemplate.query(
+                sql,
+                new Object[]{},
+                new RowMapper<Evenement>() {
+            public Evenement mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Evenement c = new Evenement();
+                c.setId(rs.getInt(1));
+                c.setTitre(rs.getString(2));
+                c.setSoustitre(rs.getString(3));
+                c.setDebut(rs.getString(4));
+                c.setFin(rs.getString(5));
+                c.setDescription(rs.getString(6));
+                c.setLieu(rs.getString(7));
+
+                return c;
+            }
+        });
+        mav.addObject("evenements", eve);
+        mav.setViewName("tableauProf");
+        return mav;
+    }
+    
+    
+       /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("coursProf.htm")
+    public ModelAndView coursPr(HttpServletRequest req) {
+        HttpSession ses=req.getSession();
+        String id=(String) ses.getAttribute("id");
+       
+        String sql = "SELECT  calendrier.jour ,calendrier.heure,salle.nom,matiere.nom ,classes.description FROM calendrier,salle,matiere ,user,classes WHERE\n" +
+"calendrier.idmatiere=matiere.id AND calendrier.idsalle=salle.id AND calendrier.professeur=user.id AND \n" +
+"user.id=? AND classes.id=calendrier.idclasse; ";
+
+        List<Calendrier> actors = new ArrayList<>();
+
+        actors = jdtbcTemplate.query(sql,
+                new Object[]{id}, (ResultSet rs, int rowNum) -> {
+                    Calendrier c = new Calendrier();
+                    c.setJour(rs.getString(1));
+                    c.setHeure(rs.getString(2));
+                    Salle s = new Salle();
+                    s.setNom(rs.getString(3));
+                     Classes ss = new Classes();
+                    ss.setNom(rs.getString(5));
+                        Matiere m = new Matiere();
+                    m.setNom(rs.getString(4));
+                    
+                    c.setIdsalle(s);
+                    c.setIdmatiere(m);
+                    c.setIdclasse(ss);
+
+                    return c;
+                });
+        mav.setViewName("courProf");
+        mav.addObject("listeCour", actors);
+     
+
+        return mav;
+    }
 }

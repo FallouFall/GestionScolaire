@@ -71,17 +71,21 @@
                 <prop key="documents.htm">etudiantController</prop>
                 <prop key="documentsMath.htm">etudiantController</prop>
                 <prop key="mesPayements.htm">etudiantController</prop>
-                   
+                <prop key="monCalendrier.htm">etudiantController</prop>  
+                <prop key="moncalendrierClasse.htm">etudiantController</prop>  
+                <prop key="noteEtudiant.htm">etudiantController</prop>  
                 <prop key="documentsProf.htm">gererProfesseurController</prop>
-                   
+                <prop key="programmeProf.htm">gererProfesseurController</prop> 
+                 <prop key="tableauProf.htm">gererProfesseurController</prop> 
+                <prop key="gererProgrammeProf.htm">gererProfesseurController</prop> 
                 <prop key="documentsMathProf.htm">gererProfesseurController</prop>
-                   <prop key="impression.htm">gererSecretaireController</prop>
-                    <prop key="bulletin.htm">gererSecretaireController</prop>
-                    <prop key="imprimerBulletinDetailClasse.htm">gererSecretaireController</prop>
+                <prop key="impression.htm">gererSecretaireController</prop>
+                <prop key="bulletin.htm">gererSecretaireController</prop>
+                <prop key="imprimerBulletinDetailClasse.htm">gererSecretaireController</prop>
+                 <prop key="coursProf.htm">gererProfesseurController</prop>   
+                <prop key="getNotesEtudiant.htm">gererSecretaireController</prop>
                     
-                     <prop key="getNotesEtudiant.htm">gererSecretaireController</prop>
-                    
-                     <prop key="imprimerListeClasseNote.htm">gererSecretaireController</prop>
+                <prop key="imprimerListeClasseNote.htm">gererSecretaireController</prop>
                 <prop key=" GererProfesseur.htm">gererProfesseurController</prop>
                 <prop key="ressources.htm">administrationController</prop>
                 <prop key="profil.htm">profilController</prop>
@@ -90,7 +94,7 @@
                 <prop key="gererNote.htm">gererProfesseurController</prop>
                 <prop key="gererNoteSec.htm">gererSecretaireController</prop>
                 <prop key="feuilleDeNote.htm">gererSecretaireController</prop>
-                  <prop key="releverNotes.htm">gererSecretaireController</prop>
+                <prop key="releverNotes.htm">gererSecretaireController</prop>
                 <prop key="detailClasseNote.htm">gererSecretaireController</prop>
                 <prop key=" GererSecretaire.htm">gererSecretaireController</prop>
                 <prop key=" GererDirecteur.htm">gererDirecteurController</prop>

@@ -43,8 +43,8 @@
                 <!-- Navbar -->
                 <ul class="navbar-nav ml-auto ml-md-0">
 
-                    <li class=" dropdown no-arrow" >
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class=" dropdown"  >
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown"  role="button"  data-toggle="dropdown" >
                             <c:if test="${photo != null}">
                                 <span >
                                     <img alt="" class="image--cover" src="data:image/jpeg;base64,${photo} " width="54">
@@ -77,7 +77,7 @@
                                 </a>
                                 <a class="dropdown-item" style="font-family: titilliumWeb-light;
                                    "href="headerUser.htm" data-toggle="modal" data-target="#logoutModal">
-                                    <span class="ti-direction"> </span>
+                                    <span class="ti-power-off" style="color: red; "> </span>
                                     Se deconncter
                                 </a>
                             </form>

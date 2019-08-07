@@ -95,12 +95,12 @@
                             </div>
                             
                              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                             <a href=""  style="   text-decoration: none; color: #5a6169;">
+                             <a href="#"  style="   text-decoration: none; color: #5a6169;">
                                         <div class="frontside">
                                             <div class="card ">
                                                 <div class="card-body text-center">
-                                                    <p>     <span class="ti-shine"   style="font-size: 3em;"></span></p>
-                                                    <h4 class="card-title">Memoire</h4>
+                                                    <p>     <span class="ti-control-pause"   style="font-size: 3em;"></span></p>
+                                                    <h4 class="card-title">###</h4>
 
 
                                                 </div>
@@ -169,35 +169,42 @@
 
         </div>
         <!-- /#wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+  <a class="scroll-to-top rounded" href="#page-top">
+            <i class="ti-angle-up"></i>
         </a>
 
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
                         <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
+                        
                     </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">
+                        
+                        <span  class="ti-alert" style="font-size: 1.5em;">
+                            
+                        </span>Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="index.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-          
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Tables</title>
+        <title>Professeur</title>
 
 
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -54,13 +54,13 @@ if(userName == null) response.sendRedirect("index.htm");
                 <div class="container-fluid ">
 
 
-                    <section id="team" class="pb-5 " style="margin-top: -30px;">
+                    <section id="team" class="pb-5 " style="margin-top: -60px;">
 
 
                         <div class="row" style="margin-bottom: -100px; margin-top: 3px;">
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="ProgrammeProfesseur.htm"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="programmeProf.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
@@ -78,12 +78,12 @@ if(userName == null) response.sendRedirect("index.htm");
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="#"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="coursProf.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
-                                            <p>     <span class="ti-ruler-pencil"   style="font-size: 3em;"></span></p>
-                                                <h4 class="card-title">Examen</h4>
+                                            <p>     <span class="ti-book"   style="font-size: 3em;"></span></p>
+                                                <h4 class="card-title">Cours</h4>
 
 
                                         </div>
@@ -96,12 +96,12 @@ if(userName == null) response.sendRedirect("index.htm");
                             <!-- ./Team member -->
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <a href="#"  style="   text-decoration: none; color: #5a6169;">
+                                <a href="tableauProf.htm"  style="   text-decoration: none; color: #5a6169;">
                                 <div class="frontside">
                                     <div class="card ">
                                         <div class="card-body text-center">
-                                            <p> <span class="ti-announcement" style="font-size: 3em;"  ></span></p>
-                                            <h4 class="card-title">Rappel</h4>
+                                            <p> <span class="ti-info-alt" style="font-size: 3em;"  ></span></p>
+                                            <h4 class="card-title">Informations</h4>
 
 
                                         </div>
@@ -193,37 +193,42 @@ if(userName == null) response.sendRedirect("index.htm");
             <!-- /.content-wrapper -->
 
         </div>
-        <!-- /#wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+      <a class="scroll-to-top rounded" href="#page-top">
+            <i class="ti-angle-up"></i>
         </a>
 
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
                         <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
+                        
                     </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">
+                        
+                        <span  class="ti-alert" style="font-size: 1.5em;">
+                            
+                        </span>Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-
-        
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

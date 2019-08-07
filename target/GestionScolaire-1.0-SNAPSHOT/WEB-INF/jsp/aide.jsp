@@ -85,7 +85,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="administration.htm">
+                    <a class="nav-link" href="etudiant.htm">
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>

@@ -23,7 +23,7 @@
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/themify-icons.css" rel="stylesheet">
 
-      <link rel="stylesheet"  type="text/css" href="./css/police.css" >
+        <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link href="css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="css/shards.min.css">
         <link rel="stylesheet" href="css/shards-demo.css?v=1.1.0">
@@ -33,50 +33,39 @@
     </head>
 
     <body id="page-top" >
-      <%
-String userName = null;
-Cookie[] cookies = request.getCookies();
+        <%
+            String userName = null;
+            Cookie[] cookies = request.getCookies();
 
-if(cookies !=null){
-for(Cookie cookie : cookies){
-	if(cookie.getName().equals("user")) userName = cookie.getValue();
-      
-}
-}
-if(userName == null) response.sendRedirect("index.htm");
-%>
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("user")) {
+                        userName = cookie.getValue();
+                    }
 
-        <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
+                }
+            }
+            if (userName == null) {
+                response.sendRedirect("index.htm");
+            }
+        %>
 
-            <a class="navbar-brand mr-1" href="administration.htm" style="color: #fff;    font-family: titilliumWeb-italic; font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
-
-
-          
-
-            <!-- Navbar Search -->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-
-                    <div class="input-group-append">
-
-                    </div>
-                </div>
-            </form>
-
-
-
-        </nav>
-
+        <%@include file="HeaderUser.jsp" %>
         <div id="wrapper">
 
-            <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
-                <li class="nav-item">
-                    <a class="nav-link" href="GererAdmin.htm">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
+
+
+
+
+                <li class="nav-item" style="margin-top: 20px;" >
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
                     </a>
                 </li>
+
 
 
                 <li class="nav-item">
@@ -92,7 +81,7 @@ if(userName == null) response.sendRedirect("index.htm");
                 <li class="nav-item active">
                     <a class="nav-link" href="GererSecretaire.htm">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                        <span>Lister</span></a>
                 </li>
             </ul>
 
@@ -108,13 +97,13 @@ if(userName == null) response.sendRedirect("index.htm");
                             <div class="row " >
 
                                 <div class="card card-signin mx-auto mt-5">
-                                     <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
-                          
-                            <span style="font-family: dax-bold;    font-size: 2rem;">
-                            Ajouter secretaire
-                                  
+                                    <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
 
-                            </span>  </div>
+                                        <span style="font-family: dax-bold;    font-size: 2rem;">
+                                            Ajouter secretaire
+
+
+                                        </span>  </div>
                                     <div class="card-body">
                                         <form method="POST">
                                             <div class="form-group">
@@ -147,7 +136,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true" minlength="2" maxlength="30">
                                                         </div>
                                                     </div>
-                                                
+
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
@@ -166,7 +155,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                                             </span>
                                                         </div>
                                                     </div>
-                                                     <div class=" form-group col-md-6">
+                                                    <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
                                                             <input type="email" class="form-control" id="login" placeholder="Email"  name="username" required="true" minlength="5" maxlength="30">
                                                             <span class="input-group-addon">
@@ -184,7 +173,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                                         </div>
                                                     </div>
 
-                                                   <div class=" form-group col-md-6"> 
+                                                    <div class=" form-group col-md-6"> 
                                                         <fieldset>
                                                             <select class="custom-select w-100"  name="genre" required="true">
 
@@ -201,16 +190,16 @@ if(userName == null) response.sendRedirect("index.htm");
 
 
                                                     <div class=" form-group col-md-6">       
-                                                                 <button type="submit" class="btn btn-primary" style="background-color:#1B81C5; font-family: titilliumWeb-regular;">
+                                                        <button type="submit" class="btn btn-primary" style="background-color:#1B81C5; font-family: titilliumWeb-regular;">
                                                             <i class="ti-save">
 
                                                             </i> Enregistrer</button>
                                                     </div>
                                                     <div class=" form-group col-md-6">   
-                                                        <button type="reset"  class="btn btn-secondary">
-                                                            <i class="ti-trash">
-
-                                                            </i> Annuler</button>
+                                                        <button type="reset" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
+                                                            <div class="form-label-group">
+                                                                <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;" href="GererSecretaire.htm">  Retour</a> 
+                                                            </div></button>
                                                     </div>
 
 
@@ -218,69 +207,78 @@ if(userName == null) response.sendRedirect("index.htm");
 
                                                 </div>
 
+                                            </div>
+                                        </form>
+
                                     </div>
-                              </form>
 
+                         
                                 </div>
+                            </div>
+                        </div>
 
-   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    </div>
+                    <!-- /.container-fluid -->
+
+                    <!-- Sticky Footer -->
+
+
+                </div>
+                <!-- /.content-wrapper -->
+
+            </div>
+            <!-- /#wrapper -->
+
+           <a class="scroll-to-top rounded" href="#page-top">
+            <i class="ti-angle-up"></i>
+        </a>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                     
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+
+                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current sessionsss.</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                        <form method="POST">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    
-                        <button type="submit" class="btn btn-primary">Logout</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
                             </div>
-                        </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
                     </div>
-
-
                 </div>
-                <!-- /.container-fluid -->
-
-                <!-- Sticky Footer -->
-
-
             </div>
-            <!-- /.content-wrapper -->
-
         </div>
-        <!-- /#wrapper -->
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-    
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js" ></script>
-        <script src="js/demo.min.js"></script>
-        <script src="js/shards.min.js"></script>
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="./js/bootstrap.min.js" ></script>
+            <script src="js/demo.min.js"></script>
+            <script src="js/shards.min.js"></script>
 
 
-        <script src="js/sb-admin.min.js"></script>
-<style>
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
-        margin: 0; 
-    }
-</style>
+            <script src="js/sb-admin.min.js"></script>
+            <style>
+                input[type=number]::-webkit-inner-spin-button, 
+                input[type=number]::-webkit-outer-spin-button { 
+                    -webkit-appearance: none; 
+                    margin: 0; 
+                }
+            </style>
 
     </body>
 

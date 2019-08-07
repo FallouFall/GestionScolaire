@@ -48,6 +48,13 @@
             <ul class="sidebar navbar-nav" >
 
 
+                <li class="nav-item" style="margin-top: 20px;">
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="comptable.htm">
@@ -155,10 +162,10 @@
                                         <div class="flexbox-b">
                                             <div class="ml-5 mr-5">
 
-                                                <span class="ti-stats-up" style="font-size: 3em; color: #1f72b8 ;"></span>
+                                                <span class="ti-location-pin" style="font-size: 3em; color: #1f72b8 ;"></span>
 
                                             </div>
-                                            <span style="font-size: 1.5em;font-family: dax-bold;color: #1f72b8 ;">Historiques </span>   
+                                            <span style="font-size: 1.5em;font-family: dax-bold;color: #1f72b8 ;">Details </span>   
 
                                         </div>
 
@@ -190,8 +197,8 @@
                             <input type="text" value="${id}"  name="idet" hidden="">
                             <input type="text" value=" <%= date%>" name="debut" hidden="">
                             <input type="text" value=" <%= dateFinal%>" name="fin" hidden="">
-                            
-                               
+
+
                             <div class="card  " style="width: 48%;float: left; margin-top:30px;">
 
                                 <div class="card-body" >
@@ -204,7 +211,7 @@
                                             <div class="col-6 text-muted">Fin Abonnement  :</div>
                                             <div class="col-6">  <%= dateFinal%></div>
                                             <div class="col-6 text-muted">A payer:</div>
-                                            <div class="col-6" style="    font-family: dax-bold;
+                                            <div class="col-6" style="    font-family: dax-bold; font-size: 1.5em;
                                                  color: #1f72b8;">${mensu/2} Fcfa</div>
                                         </div>
 
@@ -253,7 +260,7 @@
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+            <i class="ti-angle-up"></i>
         </a>
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -265,56 +272,26 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
 
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-
-                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="modal fade" id="payeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirmer le payement?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
                         </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" style="    margin-left: 20%;
-                             text-align: center;">
 
 
-                            <span class="ti-user" style="font-size: 3em; text-align: "></span>
-
-                        </div>
-                        <h4 class="card-title" style="text-align: center;font-family:titilliumWeb-bold;; color: #1f72b8;">Mat :09162937</h4>
-                        <p class="card-text">Nom &  Prenom: Fall Fallou </p>                      
-                        <p class="card-text">Filiere & Classe : Gl  Master</p>
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
 
 
-                        <p class="card-text" style="font-family: titilliumWeb-semi-bold;">Paye le: 21/08/1993  </p>
-                        <p class="card-text" style="font-family: titilliumWeb-semi-bold;">Paye le: 100. 000 F </p>
-
-
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="Mensualite.htm">Logout</a>
                     </div>
                 </div>
             </div>
         </div>
-
 
 
         <script src="vendor/jquery/jquery.min.js"></script>
@@ -341,7 +318,12 @@
             .avatar-pic {
                 width: 150px;
             }
-
+            .col-6{
+                font-family:  titilliumWeb-regular;
+            }
+            .form-control{
+                font-family: titilliumWeb-regular;
+            }
             input[type=number]::-webkit-inner-spin-button, 
             input[type=number]::-webkit-outer-spin-button { 
                 -webkit-appearance: none; 

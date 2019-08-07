@@ -50,50 +50,23 @@
             }
         %>
 
-        <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
-
-            <a class="navbar-brand mr-1" href="administration.htm" style="color: #fff;    font-family: titilliumWeb-italic; font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
-
-
-            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Navbar Search -->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-
-                    <div class="input-group-append">
-
-                    </div>
-                </div>
-            </form>
-
-            <!-- Navbar -->
-            <ul class="navbar-nav ml-auto ml-md-0" >
-
-                <li class="nav-item dropdown no-arrow">
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                    </div>
-                </li>
-            </ul>
-
-        </nav>
+        <%@include  file="HeaderUser.jsp" %>
 
         <div id="wrapper">
 
-            <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
-                <li class="nav-item">
-                    <a class="nav-link" href="GererAdmin.htm">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
+
+
+
+
+                <li class="nav-item" style="margin-top: 20px;" >
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
                     </a>
                 </li>
+
 
 
                 <li class="nav-item">
@@ -102,17 +75,16 @@
                         <span>Accueil </span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="AjouterAdmin.htm">
                         <i class="fas fa-plus"></i>
                         <span>Ajouter </span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="GererAdmin.htm">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                        <span>Lister</span></a>
                 </li>
             </ul>
-
             <div id="content-wrapper">
 
                 <div class="container-fluid">
@@ -184,7 +156,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                     <div class=" form-group col-md-6">
+                                                    <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
                                                             <input type="email" class="form-control" id="login" placeholder="Email"  name="username" required="true" minlength="5" maxlength="30">
                                                             <span class="input-group-addon">
@@ -221,10 +193,12 @@
                                                             </i> Enregistrer</button>
                                                     </div>
                                                     <div class=" form-group col-md-6">   
-                                                        <button type="reset"  class="btn btn-secondary">
-                                                            <i class="ti-trash">
+                                                        <button type="reset" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
+                                                            <div class="form-label-group">
+                                                                <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;" href="GererAdmin.htm">  Retour</a> 
+                                                            </div></button>
 
-                                                            </i> Annuler</button>
+
                                                     </div>
 
 
@@ -262,10 +236,10 @@
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
+            <i class="ti-angle-up"></i>
         </a>
 
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -275,13 +249,22 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Voulez-Vous quitter ?</div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
-                  
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="deconnecter.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-                    
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
+                            </div></button>
+
+
                     </div>
                 </div>
             </div>
@@ -298,12 +281,12 @@
             .avatar-pic {
                 width: 150px;
             }
-        
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
-        margin: 0; 
-    }
+
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
 
         </style>
 
