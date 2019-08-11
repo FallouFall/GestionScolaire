@@ -111,7 +111,7 @@
                         <div class="card-body">
                      
                             <div class="table-responsive" style="overflow-x: hidden;">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="dataTable" width="100%">
                                         <thead>
                                             <tr  style="text-align: center;vertical-align: middle;">
                                                 <th>Etudiant</th>

@@ -1,11 +1,7 @@
 package sn.isi.junittestecase.service;
 
-import org.junit.Test;
-import sn.isi.gestionscolaire.domain.Profil;
-import sn.isi.gestionscolaire.domain.User;
-
-import static org.junit.Assert.assertEquals;
 import org.junit.Assert;
+import org.junit.Test;
 
 /**
  *
@@ -13,20 +9,25 @@ import org.junit.Assert;
  */
 public class TestMethodes {
 
-    private OperationTest operation = new OperationTest();
 
-    private User userToTest = new User();
+     Methodes methodes=new Methodes();
 
     /**
      *
      */
     @Test
-    public void test() {
-        int intputA = 20;
-        int intputB = 20;
-        Assert.assertEquals(40, operation.somme(intputA, intputB));
+    public void testingEmail() {
+        Assert.assertEquals(true,methodes.validerEmail("fallou@gmail.com"));
     }
 
  
-
+       @Test
+    public void testingName() {
+        Assert.assertEquals(true,methodes.validerName("fallou"));
+    }
+    
+    @Test
+    public void testingNumber() {
+        Assert.assertEquals(true,methodes.validerNumeroTelephone("776880887"));
+    }
 }

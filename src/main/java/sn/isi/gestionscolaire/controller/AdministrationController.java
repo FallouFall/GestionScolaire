@@ -11,18 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import sn.isi.gestionscolaire.config.Connexion;
-import sn.isi.gestionscolaire.domain.Profil;
 import sn.isi.gestionscolaire.domain.Questions;
 import sn.isi.gestionscolaire.domain.User;
 
@@ -52,8 +53,8 @@ public class AdministrationController {
         String login = (String) session.getAttribute("login");
         String password = (String) session.getAttribute("password");
         String profil = (String) session.getAttribute("profil");
-        String nom = (String) session.getAttribute("nom");
-        String prenom = (String) session.getAttribute("prenom");
+    
+     
         String id = (String) session.getAttribute("id");
         String idprofil = (String) session.getAttribute("idprofil");
         String url = (String) session.getAttribute("url");

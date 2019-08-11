@@ -95,7 +95,7 @@
                         <h4 class="slide-in "  style="color: #54a2d9;font-family: titilliumWeb-light;font-size: 2.5em;"><%= message%></h4>
                         <div class="card-body">
 
-                            <form method="POST">
+                            <form method="POST" >
 
 
                                 <br>

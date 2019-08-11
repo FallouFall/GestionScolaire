@@ -294,7 +294,7 @@
                                     </div>
 
                                 </div>
-                            </div
+                            </div>
                         </form>
 
                     </c:if>

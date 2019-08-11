@@ -118,7 +118,7 @@ if(userName == null) response.sendRedirect("index.htm");
                                 <div class="frontside">
                                     <div class="card " >
                                         <div class="card-body text-center">
-                                            <p>    <span class="ti-quote-right"style="font-size: 3em;"  ></span></p>
+                                            <p>    <span class="ti-clipboard"style="font-size: 3em;"  ></span></p>
                                             <h4 class="card-title">Notes</h4>
 
 

@@ -25,7 +25,7 @@ public class Main {
     {
         
     Result resultat =JUnitCore.runClasses(TestMethodes.class);
-    System.out.println(resultat.wasSuccessful());
+    
        
     List<Failure> failures=resultat.getFailures();
     failures.stream().forEach(fail->System.out.println(fail.getMessage()));

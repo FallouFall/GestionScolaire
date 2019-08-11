@@ -110,7 +110,7 @@ public class LoginController {
                 return c;
             }
         });
-        String redirect = "redirect:/index.htm";
+       
 
         if (actors.size() != 0) {
             mav.setViewName("resetPassword");
@@ -201,6 +201,8 @@ public class LoginController {
 
                 Cookie loginCookie = new Cookie("user", "user");
                 loginCookie.setMaxAge(30 * 600);
+                rep.addCookie(loginCookie);
+                loginCookie = new Cookie("profil", c.getIdprofil().getIdaccount().getType() );
                 rep.addCookie(loginCookie);
 
                 return c;

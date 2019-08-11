@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,8 +23,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import sn.isi.gestionscolaire.config.Connexion;
 import sn.isi.gestionscolaire.domain.Account;
 import sn.isi.gestionscolaire.domain.Anneacad;
@@ -659,7 +660,7 @@ public class GererDirecteurController {
     @RequestMapping("detailInscription.htm")
     public ModelAndView detailIscription(HttpServletRequest req) {
 
-        String userId = req.getParameter("id");
+    
         String matricule = req.getParameter("idInscription");
         String sql = "SELECT user.id,user.matricule,user.nom,user.prenom,user.adresse,user.telephone,user.photo, inscription.matricule ,inscription.date,classes.description ,profil.id,inscription.validite FROM user,inscription,classes,profil WHERE user.id=inscription.iduser and inscription.matricule=? AND inscription.idclasse=classes.id";
 
@@ -707,7 +708,7 @@ public class GererDirecteurController {
     @RequestMapping(value = "cancel.htm", method = RequestMethod.GET)
     public ModelAndView cAnCEL(HttpServletRequest req) {
 
-        String validite = req.getParameter("validite");
+   
         String sql;
         String cancel = req.getParameter("cancel");
 
@@ -1029,15 +1030,7 @@ public class GererDirecteurController {
 
     }
 
-    /**
-     *
-     */
-    @RequestMapping(value = "AjouterDirecteur.htm", method = RequestMethod.GET)
-    public void ajouterAdmin() {
-        ModelAndView mav = new ModelAndView("redirect:/AjouterDirecteur.htm");
-
-    }
-
+   
     /**
      *
      * @param req
@@ -1065,10 +1058,10 @@ public class GererDirecteurController {
             jdtbcTemplate.update(sql, null, profil.getIdaccount().getId(), profil.getPassword(), profil.getUsername(), 0);
 
             sql = "Select Max(id) from profil";
-            boolean result = false;
+     
             int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
             if (count > 0) {
-                result = true;
+            
             }
 
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
@@ -1485,7 +1478,7 @@ public class GererDirecteurController {
     public ModelAndView detailClasse(HttpServletRequest req) {
 
         nbFemmes = nbHommes = 0;
-        String matriculeClasse = req.getParameter("matricule");
+    
         String classeId = req.getParameter("id");
         String nomClasse = req.getParameter("nomClasse");
         String nomFiliere = req.getParameter("nomFiliere");
@@ -1574,7 +1567,7 @@ public class GererDirecteurController {
                 });
 
         int tab[] = new int[filieres.size()];
-        int nbInsParPeriode[] = new int[4];
+  
         int i = 0;
         for (Filiere filiere : filieres) {
             int cpt = 0;

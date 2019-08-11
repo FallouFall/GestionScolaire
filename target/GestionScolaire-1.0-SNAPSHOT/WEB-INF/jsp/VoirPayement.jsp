@@ -180,7 +180,7 @@
                         </div>
                         </form>
                         <div class="table-responsive  slide-in">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center;">
+                            <table class="table table-bordered" id="dataTable" width="100%" style="text-align: center;">
                                 <thead>
                                     <tr>
                                         <th>Name</th>

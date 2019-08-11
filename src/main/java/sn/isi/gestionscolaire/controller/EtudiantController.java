@@ -11,9 +11,11 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import sn.isi.gestionscolaire.config.Connexion;
 import sn.isi.gestionscolaire.domain.Anneacad;
 import sn.isi.gestionscolaire.domain.Calendrier;
@@ -28,7 +31,6 @@ import sn.isi.gestionscolaire.domain.Classes;
 import sn.isi.gestionscolaire.domain.Documents;
 import sn.isi.gestionscolaire.domain.Evenement;
 import sn.isi.gestionscolaire.domain.Filiere;
-import sn.isi.gestionscolaire.domain.Inscription;
 import sn.isi.gestionscolaire.domain.Matiere;
 import sn.isi.gestionscolaire.domain.Mensualite;
 import sn.isi.gestionscolaire.domain.Note;
@@ -128,8 +130,8 @@ public class EtudiantController {
                     return c;
                 });
 
-        HttpSession session = req.getSession();
-        String id = (String) session.getAttribute("id");
+   
+       
 
         sql = "SELECT * from classes  ";
         List<Classes> classes = jdtbcTemplate.query(sql,

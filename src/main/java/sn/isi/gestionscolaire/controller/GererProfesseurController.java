@@ -6,22 +6,23 @@
 package sn.isi.gestionscolaire.controller;
 
 import java.io.IOException;
-import org.apache.commons.codec.binary.Base64;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import sn.isi.gestionscolaire.config.Connexion;
 import sn.isi.gestionscolaire.domain.Account;
 import sn.isi.gestionscolaire.domain.Calendrier;
@@ -156,14 +157,7 @@ public class GererProfesseurController {
         return mav;
     }
 
-    /**
-     *
-     */
-    @RequestMapping(value = "AjouterProfesseur.htm", method = RequestMethod.GET)
-    public void ajouterAdmin() {
-        ModelAndView mav = new ModelAndView("redirect:/AjouterProfesseur.htm");
 
-    }
 
     /**
      *
@@ -192,10 +186,10 @@ public class GererProfesseurController {
             jdtbcTemplate.update(sql, null, profil.getIdaccount().getId(), profil.getPassword(), profil.getUsername(),0);
 
             sql = "Select Max(id) from profil";
-            boolean result = false;
+           
             int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
             if (count > 0) {
-                result = true;
+              
             }
 
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";

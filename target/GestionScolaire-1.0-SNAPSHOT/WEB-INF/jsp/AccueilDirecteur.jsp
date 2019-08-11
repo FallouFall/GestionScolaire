@@ -6,6 +6,7 @@
 
 
 
+<%@page import="org.springframework.web.servlet.ModelAndView"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +47,10 @@ for(Cookie cookie : cookies){
       
 }
 }
-if(userName == null) response.sendRedirect("index.htm");
+if(cookies == null) 
+ 
+    response.sendRedirect("index.htm");
+
 %>
 <body id="page-top"  >
     
