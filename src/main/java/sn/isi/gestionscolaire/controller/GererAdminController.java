@@ -30,7 +30,7 @@ import sn.isi.gestionscolaire.domain.User;
  */
 @Controller
 public class GererAdminController {
-
+     List<User> actors ;
     Connexion con = new Connexion();
     JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
 
@@ -55,7 +55,7 @@ public class GererAdminController {
         } else {
             String sql = "SELECT distinct matricule,nom,prenom, adresse,telephone,photo,statut,profil.id from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount ";
 
-            List<User> actors = new ArrayList<>();
+           actors = new ArrayList<>();
 
             actors = jdtbcTemplate.query(sql,
                     new Object[]{1}, (ResultSet rs, int rowNum) -> {
@@ -82,6 +82,14 @@ public class GererAdminController {
         return mav;
     }
 
+   /**
+     * retourne la meme page
+     */
+    @RequestMapping(value = "AjouterAdmin.htm", method = RequestMethod.GET)
+    public void ajouterAdmin() {
+        ModelAndView mav = new ModelAndView("redirect:/AjouterAdmin.htm");
+
+    }
 
     /**
      *
@@ -90,6 +98,7 @@ public class GererAdminController {
      */
     @RequestMapping(value = "AjouterAdmin.htm", method = RequestMethod.POST)
     public ModelAndView saveAdmin(HttpServletRequest req) {
+        
         try {
 
             User user = new User();
@@ -100,12 +109,15 @@ public class GererAdminController {
             user.setGenre(req.getParameter("genre"));
 
             Account account = new Account(1);
-
+            
             Profil profil = new Profil();
             profil.setIdaccount(account);
             profil.setPassword(req.getParameter("password"));
             profil.setUsername(req.getParameter("username"));
             user.setIdprofil(profil);
+            
+            
+            
 
             String sql = "insert into profil values (?,?,?,?,?)";
             jdtbcTemplate.update(sql, null, profil.getIdaccount().getId(), profil.getPassword(), profil.getUsername(),0);
@@ -116,14 +128,18 @@ public class GererAdminController {
             if (count > 0) {
           
             }
-
+            user.setMatricule("AD" + count);
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, "AD" + count, user.getGenre());
-
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count,user.getMatricule(), user.getGenre());
+               actors = new ArrayList<>();
+               mav = new ModelAndView();
+               actors.add(user);
+               mav.addObject("liste", actors);              
+               mav.setViewName("GererAdmin");
         } catch (Exception e) {
             System.out.println(e);
         }
-
+     
         return mav;
 
     }

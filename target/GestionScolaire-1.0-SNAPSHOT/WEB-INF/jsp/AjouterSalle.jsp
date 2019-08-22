@@ -50,50 +50,22 @@
             }
         %>
 
-        <nav class="navbar navbar-expand  static-top" style="    height: 12vh;background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);">
-
-            <a class="navbar-brand mr-1" href="administration.htm" style="color: #fff;    font-family: titilliumWeb-italic; font-size: 4vh;   letter-spacing: .5rem; " >ISI</a>
-
-
-            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Navbar Search -->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-
-                    <div class="input-group-append">
-
-                    </div>
-                </div>
-            </form>
-
-            <!-- Navbar -->
-            <ul class="navbar-nav ml-auto ml-md-0" >
-
-                <li class="nav-item dropdown no-arrow">
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                    </div>
-                </li>
-            </ul>
-
-        </nav>
-
+        <%@include file="HeaderUser.jsp" %>
         <div id="wrapper">
 
-            <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
-                <li class="nav-item">
-                    <a class="nav-link" href="GererAdmin.htm">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
+
+
+
+
+                <li class="nav-item" style="margin-top: 20px;">
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+
+                        <i class="fas fa-bars">    </i>
+
                     </a>
                 </li>
+
 
 
                 <li class="nav-item">
@@ -102,7 +74,7 @@
                         <span>Accueil </span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="AjouterSalle.htm">
                         <i class="fas fa-plus"></i>
                         <span>Ajouter </span></a>
                 </li>
@@ -118,7 +90,7 @@
                 <div class="container-fluid">
 
 
-                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
+                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px ;margin-top: -45px; ">
 
 
                         <div class="example col-md-12 ml-auto mr-auto">
@@ -143,7 +115,7 @@
                                                     <div class="form-group col-md-6 ">
                                                         <div class="input-group with-addon-icon-left">
                                                             <span class="input-group-addon">
-                                                                <i class="ti-user"></i>
+                                                                <i class="ti-info"></i>
                                                             </span>
                                                             <input type="text" class="form-control " id="nom" name="nomSalle" placeholder="Nom" required="true" minlength="2" maxlength="15">
                                                         </div>
@@ -176,6 +148,22 @@
                                                             <span class="input-group-addon">
                                                                 <i class="ti-pie-chart"></i>
                                                             </span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class=" form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                        <input type="text" class=" filiere form-control" name="type" id="filiere" placeholder="Type de Salle"  required="true">
+                                                        <span class="input-group-addon">
+                                                            <i class="ti-layout"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                    
+                                                     <div class=" form-group col-md-6">
+                                                        <div class="input-group with-addon-icon-left">
+                                                            <input type="text" class="form-control" id="idType" name="idType"   required="true" hidden="">
+                                                        
                                                         </div>
                                                     </div>
                   
@@ -258,7 +246,34 @@
         <script src="js/demo.min.js"></script>
         <script src="js/shards.min.js"></script>
         <script src="js/sb-admin.min.js"></script>
+ <script src="js/bootstrap3-typeahead.js"></script>
+    <script>
+        var $input = $(".filiere");
+        $input.typeahead({
+            source: [
+        <c:forEach var="element" items="${type}">
+                {id: '${element.id}', name: '${element.nom}'},
+        </c:forEach>
 
+            ],
+            autoSelect: true
+        });
+        $input.change(function () {
+            var current = $input.typeahead("getActive");
+            if (current) {
+
+                if (current.name == $input.val()) {
+                     document.getElementById("idType").value = current.id;
+                } else {
+                    // This means it is only a partial match, you can either add a new item
+                     document.getElementById("filiere").value = "Le Type de Salle n'existe pas";
+                       document.getElementById("idType").value = '';
+                }
+            } else {
+                // Nothing is active so it is a new value (or maybe empty value)
+            }
+        });
+    </script>
         <style>
             .avatar-pic {
 width: 150px;

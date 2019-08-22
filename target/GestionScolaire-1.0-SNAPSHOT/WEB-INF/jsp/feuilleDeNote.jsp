@@ -72,7 +72,7 @@
                             <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                                 <span style="font-family: dax-bold;    font-size: 1.7rem;">
-                                 Notes   ${nomClasse}   ${nomFiliere} en ${nomMatiere} du ${semestre}
+                                 Notes   ${nomClasse}    en ${nomMatiere} du ${semestre} ${annee}
 
 
                                 </span>  </div>

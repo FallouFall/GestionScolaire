@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Faqs</title>
+        <title>Parametrage Classe</title>
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -127,12 +127,14 @@
                                                
 
                                                 <br><br>
-                                                <button type="reset" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
-                                                    <div class="form-label-group">
-                                                        <a class="ti-back-left" style="background-color: #5a6169; color: #fff;"href=faqResponseSec.htm>Retour</a> 
-                                                    </div></button>
+                                                 <div class=" form-group col-md-6">   
+                                         <button type="reset" class="btn btn-secondary" style="background-color: #5a6169; font-family: titilliumWeb-regular;">
+                                                            <div class="form-label-group">
+                                                                <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;" href="directeur.htm">  Retour</a> 
+                                                   </div></button>
+                                                    </div>
 
-
+                                                
 
 
 
@@ -247,11 +249,11 @@
 
                                                             </i> Ajouter</button>
                                                     </div>
-                                                    <div class=" form-group col-md-6">   
-                                                        <button type="reset"  class="btn btn-secondary">
-                                                            <i class="ti-trash">
-
-                                                            </i> Annuler</button>
+                                               <div class=" form-group col-md-6">   
+                                         <button type="reset" class="btn btn-secondary" style="background-color: #5a6169; font-family: titilliumWeb-regular;">
+                                                            <div class="form-label-group">
+                                                                <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;" href="directeur.htm">  Retour</a> 
+                                                   </div></button>
                                                     </div>
 
 

@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Faqs</title>
+        <title>Parametrage Classe</title>
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -63,7 +63,7 @@
 
                                     
 
-                                                  <span > Parametrage ${classes.description}   ${update}</span>   
+                                                  <span > Parametrage ${classes.description}  </span>   
                                         
 
 

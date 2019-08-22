@@ -39,6 +39,7 @@ import sn.isi.gestionscolaire.domain.Matiere;
 import sn.isi.gestionscolaire.domain.Profil;
 import sn.isi.gestionscolaire.domain.Programme;
 import sn.isi.gestionscolaire.domain.Salle;
+import sn.isi.gestionscolaire.domain.Typesalle;
 import sn.isi.gestionscolaire.domain.User;
 
 /**
@@ -58,10 +59,12 @@ public class GererDirecteurController {
     List<Matiere> matiere = new ArrayList<>();
     List<Filiere> filieres = new ArrayList<>();
     List<Salle> salles = new ArrayList<>();
+    List<Typesalle> typeSalle = new ArrayList<>();
     List<Classes> classes = new ArrayList<>();
     List<Programme> programmes = new ArrayList<>();
     List<Inscription> listeInscription;
     List<User> users;
+ 
     List<  Anneacad> an = new ArrayList<>();
     String id;
     int nbHommes;
@@ -82,23 +85,30 @@ public class GererDirecteurController {
      */
     @RequestMapping("gererSalles.htm")
     public ModelAndView gererSalles() {
-        String sql = "SELECT * from salle";
+        
+        
+       
+        
+  String sql = "SELECT salle.id,salle.matricule,salle.nom,salle.creation,salle.description,salle.capacite,salle.superficie,typesalle.nom from salle,typesalle where salle.type=typesalle.id";
         salles = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Salle c = new Salle();
                     c.setId(rs.getInt(1));
                     c.setMatricule(rs.getString(2));
                     c.setNom(rs.getString(3));
-                    c.setCreation(rs.getDate(5));
-                    c.setDescription(rs.getString(4));
-                    c.setSuperficie(rs.getInt(6));
-                    c.setCapacite(rs.getInt(7));
+                    c.setCreation(rs.getDate(4));
+                    c.setDescription(rs.getString(5));
+                    c.setSuperficie(rs.getInt(7));
+                    c.setCapacite(rs.getInt(6));
+                    Typesalle t=new Typesalle();
+                       t.setNom(rs.getString(8));
+                       c.setType(t);
 
                     return c;
                 });
         mav.setViewName("GererSalles");
         mav.addObject("listeSalle", salles);
-
+      
         return mav;
 
     }
@@ -844,13 +854,11 @@ public class GererDirecteurController {
             Programme programme = new Programme();
             programme.setHeures(Integer.valueOf(req.getParameter("heures")));
             programme.setIdclasse(new Classes(Integer.valueOf(req.getParameter("id"))));
-            String mat = req.getParameter("nomMatiere");
-            matiere.stream().filter((mat1) -> (mat1.getNom().equalsIgnoreCase(mat))).forEachOrdered((mat1) -> {
-                programme.setIdmatiere(mat1);
-            });
+            programme.setIdmatiere(new Matiere(Integer.valueOf(req.getParameter("idMatiere"))));
+       
 
             sql = "insert into programme values (?,?,?,?)";
-
+            System.out.println(programme.getIdmatiere().getId());
             jdtbcTemplate.update(sql, null, programme.getIdclasse().getId(), programme.getIdmatiere().getId(), programme.getHeures());
 
         } catch (Exception e) {
@@ -921,7 +929,7 @@ public class GererDirecteurController {
 
                     return c;
                 });
-        sql = "SELECT  DISTINCT matiere.nom,  programme.idclasse ,programme.idmatiere ,programme.heures ,matiere.matricule from matiere,programme , classes  WHERE classes.id=? AND programme.idclasse=classes.id and matiere.id=programme.idmatiere";
+        sql = "SELECT  DISTINCT matiere.nom,  programme.idclasse ,programme.idmatiere ,programme.heures ,matiere.matricule,matiere.coefficient from matiere,programme , classes  WHERE classes.id=? AND programme.idclasse=classes.id and matiere.id=programme.idmatiere";
         programmes = jdtbcTemplate.query(sql,
                 new Object[]{id}, (ResultSet rs, int rowNum) -> {
                     Programme p = new Programme();
@@ -933,6 +941,7 @@ public class GererDirecteurController {
 
                     m.setNom(rs.getString(1));
                     m.setMatricule(rs.getString(5));
+                    m.setCoefficient(rs.getInt(6));
 
                     p.setIdmatiere(m);
                     p.setHeures(rs.getInt(4));
@@ -998,7 +1007,17 @@ public class GererDirecteurController {
      */
     @RequestMapping("AjouterSalle.htm")
     public ModelAndView addSalle() {
+ String sql = "SELECT * from typesalle";
+        typeSalle = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Typesalle c = new Typesalle();
+                    c.setId(rs.getInt(1));
+                    c.setNom(rs.getString(2));
+                  
 
+                    return c;
+                });
+        mav.addObject("type", typeSalle);
         mav.setViewName("AjouterSalle");
         return mav;
 
@@ -1020,23 +1039,37 @@ public class GererDirecteurController {
             s.setCreation(java.sql.Date.valueOf(LocalDate.now()));
             s.setSuperficie(Integer.valueOf(req.getParameter("superficie")));
             s.setCapacite(Integer.valueOf(req.getParameter("capacite")));
-            String sql = "insert into salle values (?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, s.getMatricule(), s.getNom(), s.getDescription(), s.getCreation(), s.getSuperficie(), s.getCapacite());
-
+            
+             s.setType(new Typesalle(Integer.valueOf(req.getParameter("idType"))));
+            String sql = "insert into salle values (?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, s.getMatricule(), s.getNom(), s.getDescription(), s.getCreation(), s.getSuperficie(), s.getCapacite(),s.getType().getId());
+        mav.setViewName("GererSalles");
+        salles =new ArrayList<>();
+        salles.add(s);
+          mav.addObject("listeSalle", salles);
         } catch (Exception e) {
             System.out.println(e);
         }
-        return new ModelAndView("AjouterSalle");
+     
+      
+        return mav;
 
     }
+ /**
+     *
+     */
+    @RequestMapping(value = "AjouterDirecteur.htm", method = RequestMethod.GET)
+    public void ajouterDirecteur() {
+        ModelAndView mav = new ModelAndView("redirect:/AjouterDirecteur.htm");
 
+    }
    
     /**
      *
      * @param req
      */
     @RequestMapping(value = "AjouterDirecteur.htm", method = RequestMethod.POST)
-    public void saveAdmin(HttpServletRequest req) {
+    public ModelAndView saveAdmin(HttpServletRequest req) {
         try {
 
             User user = new User();
@@ -1063,12 +1096,18 @@ public class GererDirecteurController {
             if (count > 0) {
             
             }
-
+            user.setMatricule( "DG" + count);
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, "DG" + count, user.getGenre());
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count,user.getMatricule(), user.getGenre());
+               users = new ArrayList<>();
+               mav = new ModelAndView();
+               users.add(user);
+               mav.addObject("liste", users);              
+               mav.setViewName("GererDirecteur");
         } catch (Exception e) {
             System.out.println(e);
         }
+        return  mav;
     }
 
     /**
@@ -1129,8 +1168,9 @@ public class GererDirecteurController {
             matiere.setDescription(req.getParameter("descriptionMatiere"));
             matiere.setMatricule("MTR" + (int) (Math.random() * 9999999));
             matiere.setCreation(java.sql.Date.valueOf(LocalDate.now()));
-            String sql = "insert into matiere values (?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, matiere.getMatricule(), matiere.getNom(), matiere.getCreation(), matiere.getDescription());
+            matiere.setCoefficient(Integer.valueOf(req.getParameter("coef").trim()));
+            String sql = "insert into matiere values (?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, matiere.getMatricule(), matiere.getNom(), matiere.getCreation(), matiere.getDescription(),matiere.getCoefficient());
 
         } catch (Exception e) {
             System.out.println(e);
@@ -1205,7 +1245,7 @@ public class GererDirecteurController {
                     c.setNom(rs.getString(3));
                     c.setCreation(rs.getDate(4));
                     c.setDescription(rs.getString(5));
-
+                      c.setCoefficient(rs.getInt(6));
                     return c;
                 });
         mav.setViewName("ListeMatiere");
@@ -1308,7 +1348,7 @@ public class GererDirecteurController {
         int i = 0;
         i = jdtbcTemplate.update(sql, req.getParameter("idDroit"), req.getParameter("idClasse"));
 
-        mav.setViewName("savedetailclasseParam");
+        mav.setViewName("resultclasseParam");
         if (i != 0) {
             mav.addObject("update", "Reussi");
         } else {
@@ -1365,11 +1405,11 @@ public class GererDirecteurController {
      */
     @RequestMapping(value = "confirmerClasse.htm")
     public ModelAndView confirmerClasse(HttpServletRequest req) throws ParseException {
-        String sql = "insert into classes values (?,?,?,?,?,?,?,?)";
+        String sql = "insert into classes values (?,?,?,?,?,?,?)";
 
         jdtbcTemplate.update(sql, null, req.getParameter("matricule"), req.getParameter("nom"),
-                req.getParameter("date"), req.getParameter("description"), req.getParameter("inscription"),
-                req.getParameter("mensualite"), req.getParameter("idFiliere"));
+                req.getParameter("date"), req.getParameter("description"),
+                req.getParameter("idFiliere"),null);
         return gestionsClasses();
     }
 

@@ -144,13 +144,13 @@
                                                             <span class="input-group-addon">
                                                                 <i class="ti-user"></i>
                                                             </span>
-                                                            <input type="text" class="form-control " id="nom" name="nom" placeholder="Libelle" required="true" minlength="2" maxlength="15">
+                                                            <input type="text" class="form-control " id="nom" name="nom" placeholder="Libelle" required="true" minlength="2" maxlength="35">
                                                         </div>
                                                     </div>
                                                     
                                                     <div class="form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" id="description" name="description" placeholder="Description" required="true" minlength="2" maxlength="15">
+                                                            <input type="text" class="form-control" id="description" name="description" placeholder="Description" required="true" minlength="2" maxlength="35">
                                                             <span class="input-group-addon">
                                                                 <i class="ti-info"></i>
                                                             </span>

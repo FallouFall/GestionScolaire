@@ -48,6 +48,10 @@ public class Matiere implements Serializable {
     @Basic(optional = false)
     @Column(name = "nom")
     private String nom;
+     @Basic(optional = false)
+    @Column(name = "coefficient")
+     
+    private int coefficient;
     @Basic(optional = false)
     @Column(name = "creation")
     @Temporal(TemporalType.DATE)
@@ -89,6 +93,14 @@ public class Matiere implements Serializable {
      */
     public Integer getId() {
         return id;
+    }
+
+    public int getCoefficient() {
+        return coefficient;
+    }
+
+    public void setCoefficient(int coefficient) {
+        this.coefficient = coefficient;
     }
 
     /**

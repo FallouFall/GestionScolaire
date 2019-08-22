@@ -145,7 +145,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
-                            <a  class="dropdown-item" href="#" >Ajouter Matiere</a>
+                            <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#addMatiere" >Ajouter Matiere</a>
                             <a class="dropdown-item" href="#">Liste Matiere</a>
                              <a class="dropdown-item" href="listeProfeMatiere.htm">Assigner Matiere</a>
 
@@ -168,7 +168,7 @@
 
 
                     <!-- DataTables Example -->
-                    <div class="card mb-3 slide-in " id="ue" style=" margin-top: 17px;">
+                    <div class="card mb-3 slide-in " id="ue" style=" margin-top: 5px;">
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -189,6 +189,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
+                                             <th>Coefficient</th>
                                          
                                          
 
@@ -201,7 +202,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
-
+                                            <th>Coefficient</th>
 
 
                                         </tr>
@@ -216,7 +217,7 @@
                                                 <td>${element.nom}</td>
                                                 <td>${element.creation}</td>
                                                 <td>${element.description}</td>
-                                             
+                                                  <td>${element.coefficient}</td>
                                             
 
 
@@ -275,6 +276,88 @@
         </div>
         <!-- Bootstrap core JavaScript-->
 
+  <div class="modal fade" id="addMatiere"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" >
+                        <h5 class="modal-title" id="exampleModalLabel">Ajouter Matiere</h5>
+                        <br><br>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+
+                        </button>
+
+                    </div>
+                    <div id="content-wrapper">
+
+                        <div class="container-fluid">
+                            <div class="example col-md-12 ml-auto mr-auto">
+                                <div class="row " >
+                                    <form method="POST">
+                                        <br>
+                                        <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 ">
+                                                    <div class="input-group with-addon-icon-left">
+                                                        <span class="input-group-addon">
+                                                            <i class="ti-tag"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control " id="nomMatiere"  name="nomMatiere" placeholder="Nom " required="true">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                        <span class="input-group-addon">
+                                                            <i class="ti-info"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control"  name="descriptionMatiere" id="descriptionMatiere" placeholder="Description" required="true">
+                                                    </div>
+                                                </div>
+                                                   <div class="form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                        <span class="input-group-addon">
+                                                            <i class="ti-info"></i>
+                                                        </span>
+                                                        <input type="number" class="form-control"  name="coef" id="coef" placeholder="Coefficient" required="true" min="1" max="8">
+                                                    </div>
+                                                </div>
+                                                
+                                                 <div class="form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                   
+                                                        <input type="number" class="form-control"  hidden="">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class=" form-group col-md-6">       
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="ti-save">
+
+                                                        </i> Enregistrer</button>
+                                                </div>
+                                                <div class=" form-group col-md-6">   
+                                                    <button type="reset" type="button" data-dismiss="modal" class="btn btn-secondary">
+                                                        <i class="ti-trash">
+
+                                                        </i> Annuler</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
       
 

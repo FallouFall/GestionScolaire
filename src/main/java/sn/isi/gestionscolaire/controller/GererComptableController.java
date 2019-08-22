@@ -59,7 +59,7 @@ public class GererComptableController {
     int payement;
     Inscription ins = null;
     LocalDate date = LocalDate.now();
-
+    List<User> actors;
     /**
      *
      * @return ModelView
@@ -69,7 +69,7 @@ public class GererComptableController {
 
         String sql = "SELECT distinct matricule,nom,prenom, adresse,telephone,photo,statut,profil.id from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
 
-        List<User> actors = new ArrayList<>();
+       actors = new ArrayList<>();
 
         actors = jdtbcTemplate.query(sql,
                 new Object[]{2}, (ResultSet rs, int rowNum) -> {
@@ -626,13 +626,20 @@ public class GererComptableController {
         return mav; 
 
     }
+/**
+     *
+     */
+    @RequestMapping(value = "AjouterComptable.htm", method = RequestMethod.GET)
+    public void ajouterAdmin() {
+        ModelAndView mav = new ModelAndView("redirect:/AjouterComptable.htm");
 
+    }
     /**
      *
      * @param req
      */
     @RequestMapping(value = "AjouterComptable.htm", method = RequestMethod.POST)
-    public void saveAdmin(HttpServletRequest req) {
+    public ModelAndView saveAdmin(HttpServletRequest req) {
         try {
             User user = new User();
             user.setNom(req.getParameter("nom"));
@@ -658,14 +665,18 @@ public class GererComptableController {
             if (count > 0) {
              
             }
-
+            user.setMatricule("CP" + count);
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, "CP" + count, user.getGenre());
-
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre());
+               actors = new ArrayList<>();
+               mav = new ModelAndView();
+               actors.add(user);
+               mav.addObject("liste", actors);              
+               mav.setViewName("GererComptable");
         } catch (Exception e) {
             System.out.println(e);
         }
-
+        return mav;
     }
 
     

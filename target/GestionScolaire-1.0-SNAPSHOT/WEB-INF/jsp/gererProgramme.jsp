@@ -118,7 +118,7 @@
                         <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
                             <span style="font-family: dax-bold;    font-size: 2rem;">
-                                Programme ${classe} ${filiere}
+                                Programme ${classe} 
 
 
                             </span>  </div>
@@ -131,10 +131,11 @@
                                     <thead>
                                         <tr  style="text-align: center;vertical-align: middle;">
 
-
+                                                    <th>Matiere</th>
                                             <th>Matricule</th>
                                             <th>Heures</th>
-                                            <th>Matiere</th>
+                                                    <th>Coefficient</th>
+                                    
 
 
 
@@ -144,10 +145,11 @@
                                         <tr style="text-align: center;vertical-align: middle;">
 
 
-
+                                              <th>Matiere</th>
                                             <th>Matricule</th>
                                             <th>Heures</th>
-                                            <th>Matiere</th>
+                                               <th>Coefficient</th>
+                                          
 
 
 
@@ -162,10 +164,10 @@
 
                                             <tr style="text-align: center;vertical-align: middle;">
 
-
+                                                   <td>${element.idmatiere.nom}</td>
                                                 <td>${element.idmatiere.matricule}</td>
                                                 <td>${element.heures}</td>
-                                                <td>${element.idmatiere.nom}</td>
+                                              <td>${element.idmatiere.coefficient}</td>
 
 
 
@@ -239,7 +241,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header" >
-                        <h5 class="modal-title" id="exampleModalLabel">Ajouter une matiere</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Ajouter une matiere a la classe ${classe}  </h5>
                         <br><br>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
 
@@ -259,7 +261,7 @@
 
                                                 <div class=" form-group col-md-6">
                                                     <div class="input-group with-addon-icon-left">
-                                                        <input type="text" class=" filiere form-control" name="nomMatiere" id="filiere" placeholder="Filiere"  required="true">
+                                                        <input type="text" class=" filiere form-control" name="nomMatiere" id="filiere" placeholder="Nom Matiere"  required="true">
                                                         <span class="input-group-addon">
                                                             <i class="ti-layout"></i>
                                                         </span>
@@ -276,7 +278,18 @@
                                                         <input type="text" class="form-control"  name="heures" id="descriptionMatiere" placeholder="Nombres d'heures" required="true">
                                                     </div>
                                                 </div>
-
+                                                 <div class="form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                      
+                                                        <input type="text" class="form-control"   hidden="">
+                                                    </div>
+                                                </div>
+                                                   <div class="form-group col-md-6">
+                                                    <div class="input-group with-addon-icon-left">
+                                                      
+                                                        <input type="text" class="form-control"  name="idMatiere" id="idMatiere"  required="true" hidden="">
+                                                    </div>
+                                                </div>
 
 
                                                 <div class=" form-group col-md-6">       
@@ -339,7 +352,7 @@
         $input.typeahead({
             source: [
         <c:forEach var="element" items="${matieres}">
-                {id: '${element.matricule}', name: '${element.nom}'},
+                {id: '${element.id}', name: '${element.description}'},
         </c:forEach>
 
             ],
@@ -350,10 +363,11 @@
             if (current) {
 
                 if (current.name == $input.val()) {
-                    console.log(current['name']);
+                     document.getElementById("idMatiere").value = current.id;
                 } else {
                     // This means it is only a partial match, you can either add a new item
-                    // or take the active if you don't want new items
+                     document.getElementById("filiere").value = "La matiere n'existe pas";
+                       document.getElementById("idMatiere").value = '';
                 }
             } else {
                 // Nothing is active so it is a new value (or maybe empty value)

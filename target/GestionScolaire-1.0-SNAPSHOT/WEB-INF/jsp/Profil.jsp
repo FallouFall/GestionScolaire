@@ -45,7 +45,7 @@
          
             <div class="content-wrapper" style="    margin: auto;">
   
-                <div id="cards" class="container mb-2 " style="padding-bottom: 1px ; ">
+                <div id="cards" class="container mb-2 " style="padding-bottom: 1px ;margin-top: -25px; ">
 
 
                     <div class="example col-md-12 ml-auto mr-auto">
@@ -126,9 +126,9 @@
                                        
                                                  
                                                 <div class="col-6 text-muted">
-                                                  <button type="reset" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
+                                                  <button type="reset" class="btn btn-secondary" style="background-color: #5a6169; font-family: titilliumWeb-regular;">
                                                             <div class="form-label-group">
-                                                                <a class="ti-angle-double-left" style="background-color: #0272bd; color: #fff;" href="${url}">  Retour</a> 
+                                                                <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;" href="${url}">  Retour</a> 
                                                    </div></button>   
                                                 </div>
                                                

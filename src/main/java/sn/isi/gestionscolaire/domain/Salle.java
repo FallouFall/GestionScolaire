@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -37,6 +39,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Salle.findBySuperficie", query = "SELECT s FROM Salle s WHERE s.superficie = :superficie")
     , @NamedQuery(name = "Salle.findByCapacite", query = "SELECT s FROM Salle s WHERE s.capacite = :capacite")})
 public class Salle implements Serializable {
+
+    @JoinColumn(name = "type", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Typesalle type;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -227,6 +233,14 @@ public class Salle implements Serializable {
     @Override
     public String toString() {
         return "javaapplication28.Salle[ id=" + id + " ]";
+    }
+
+    public Typesalle getType() {
+        return type;
+    }
+
+    public void setType(Typesalle type) {
+        this.type = type;
     }
     
 }

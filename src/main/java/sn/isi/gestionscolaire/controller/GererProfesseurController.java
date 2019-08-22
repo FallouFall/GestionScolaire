@@ -46,6 +46,7 @@ public class GererProfesseurController {
    List<Documents> docs = new ArrayList<>();
     Connexion con = new Connexion();
     JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
+      List<User> actors ;
 
     /**
      *
@@ -131,7 +132,7 @@ public class GererProfesseurController {
 
         String sql = "SELECT distinct matricule,nom,prenom, adresse,telephone,photo,statut,profil.id from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
 
-        List<User> actors = new ArrayList<>();
+         actors = new ArrayList<>();
 
         actors = jdtbcTemplate.query(sql,
                 new Object[]{4}, (ResultSet rs, int rowNum) -> {
@@ -157,14 +158,21 @@ public class GererProfesseurController {
         return mav;
     }
 
+  /**
+     *
+     */
+    @RequestMapping(value = "AjouterProfesseur.htm", method = RequestMethod.GET)
+    public void ajouterAdmin() {
+        ModelAndView mav = new ModelAndView("redirect:/AjouterProfesseur.htm");
 
+    }
 
     /**
      *
      * @param req
      */
     @RequestMapping(value = "AjouterProfesseur.htm", method = RequestMethod.POST)
-    public void saveAdmin(HttpServletRequest req) {
+    public ModelAndView saveAdmin(HttpServletRequest req) {
         try {
 
             User user = new User();
@@ -193,12 +201,17 @@ public class GererProfesseurController {
             }
 
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, "PROF" + count, user.getGenre());
-
+              user.setMatricule("PROF" + count);
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre());
+               actors = new ArrayList<>();
+               mav = new ModelAndView();
+               actors.add(user);
+               mav.addObject("liste", actors);              
+               mav.setViewName("GererProfesseur");
         } catch (Exception e) {
             System.out.println(e);
         }
-
+        return mav;
     }
 
     /**

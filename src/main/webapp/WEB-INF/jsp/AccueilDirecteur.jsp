@@ -22,11 +22,11 @@
         <title>DG</title>
 
 
-       <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/sb-admin.css" rel="stylesheet">
         <link rel="shortcut icon" href="images/webIcone.jpg"/>
-          <link rel="stylesheet"  type="text/css" href="./css/police.css" >
+        <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link rel="stylesheet" href="css/themify-icons.css">
         <link rel="stylesheet" href="css/shards.min.css">
         <link rel="shortcut icon" href="images/webIcone.jpg"/>
@@ -37,23 +37,25 @@
 
 
     </head>
-   <%
-String userName = null;
-Cookie[] cookies = request.getCookies();
+    <%
+        String userName = null;
+        Cookie[] cookies = request.getCookies();
 
-if(cookies !=null){
-for(Cookie cookie : cookies){
-	if(cookie.getName().equals("user")) userName = cookie.getValue();
-      
-}
-}
-if(cookies == null) 
- 
-    response.sendRedirect("index.htm");
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("user")) {
+                    userName = cookie.getValue();
+                }
 
-%>
-<body id="page-top"  >
-    
+            }
+        }
+        if (cookies == null) {
+            response.sendRedirect("index.htm");
+        }
+
+    %>
+    <body id="page-top"  >
+
 
 
         <div id="wrapper">
@@ -69,17 +71,17 @@ if(cookies == null)
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="programme.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>     <span class="ti-panel "   style="font-size: 3em;"></span></p>
-                                            <h4 class="card-title">Programmes</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>     <span class="ti-panel "   style="font-size: 3em;"></span></p>
+                                                <h4 class="card-title">Programmes</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                    </a>
+                                </a>
 
 
                             </div>
@@ -87,17 +89,17 @@ if(cookies == null)
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="gererClasses.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>     <span class=" ti-layout-slider-alt"   style="font-size: 3em;"></span></p>
-                                            <h4 class="card-title"> Classes</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>     <span class=" ti-layout-slider-alt"   style="font-size: 3em;"></span></p>
+                                                <h4 class="card-title"> Classes</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                    </a>
+                                </a>
 
 
                             </div>
@@ -105,16 +107,16 @@ if(cookies == null)
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="gererSalles.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p> <span class="ti-home" style="font-size: 3em;"  ></span></p>
-                                            <h4 class="card-title">Salles</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p> <span class="ti-home" style="font-size: 3em;"  ></span></p>
+                                                <h4 class="card-title">Salles</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </a>
 
 
@@ -123,17 +125,17 @@ if(cookies == null)
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="gererCalendrier.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card " >
-                                        <div class="card-body text-center">
-                                            <p>    <span class="ti-alarm-clock"style="font-size: 3em;"  ></span></p>
-                                            <h4 class="card-title">Emploi du Temps</h4>
+                                    <div class="frontside">
+                                        <div class="card " >
+                                            <div class="card-body text-center">
+                                                <p>    <span class="ti-alarm-clock"style="font-size: 3em;"  ></span></p>
+                                                <h4 class="card-title">Emploi du Temps</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                   </a>
+                                </a>
 
 
                             </div>
@@ -141,16 +143,16 @@ if(cookies == null)
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="gererfiliere.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>      <span class="ti-layers"  style="font-size: 3em;"></span></p>
-                                            <h4 class="card-title">Matieres & Filieres</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>      <span class="ti-layers"  style="font-size: 3em;"></span></p>
+                                                <h4 class="card-title">Matieres & Filieres</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </a>
 
 
@@ -159,62 +161,62 @@ if(cookies == null)
                             <!-- Team member -->
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="validerInscription.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>   <span class="ti-clip" style="font-size: 3em;" ></span></p>
-                                            <h4 class="card-title">Inscriptions</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>   <span class="ti-clip" style="font-size: 3em;" ></span></p>
+                                                <h4 class="card-title">Inscriptions</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                   </a>
+                                </a>
                             </div>
-                            
-                                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="gereracad.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>   <span class="ti-infinite" style="font-size: 3em;" ></span></p>
-                                            <h4 class="card-title">Annee Acad</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>   <span class="ti-infinite" style="font-size: 3em;" ></span></p>
+                                                <h4 class="card-title">Annee Acad</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                   </a>
+                                </a>
                             </div>
-                                    
-                                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="gererdomaines.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>   <span class="ti-control-shuffle" style="font-size: 3em;" ></span></p>
-                                            <h4 class="card-title">Cycle & Domaines</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>   <span class="ti-control-shuffle" style="font-size: 3em;" ></span></p>
+                                                <h4 class="card-title">Cycle & Domaines</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                   </a>
+                                </a>
                             </div>
                             <!-- ./Team member -->
-  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="statdirecteur.htm"  style="   text-decoration: none; color: #5a6169;">
-                                <div class="frontside">
-                                    <div class="card ">
-                                        <div class="card-body text-center">
-                                            <p>   <span class="ti-stats-up" style="font-size: 3em;" ></span></p>
-                                            <h4 class="card-title">Statistiques</h4>
+                                    <div class="frontside">
+                                        <div class="card ">
+                                            <div class="card-body text-center">
+                                                <p>   <span class="ti-stats-up" style="font-size: 3em;" ></span></p>
+                                                <h4 class="card-title">Statistiques</h4>
 
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                   </a>
+                                </a>
                             </div>
                         </div>
 
@@ -240,22 +242,22 @@ if(cookies == null)
         <!-- /#wrapper -->
 
         <!-- Scroll to Top Button-->
-       <a class="scroll-to-top rounded" href="#page-top">
+        <a class="scroll-to-top rounded" href="#page-top">
             <i class="ti-angle-up"></i>
         </a>
 
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
                         <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
-                        
+
                     </div>
                     <div class="modal-body" style=" font-family: titilliumWeb-regular;">
-                        
+
                         <span  class="ti-alert" style="font-size: 1.5em;">
-                            
+
                         </span>Voulez-Vous quitter ?</div>
                     <div class="modal-footer">
 
@@ -278,7 +280,7 @@ if(cookies == null)
         </div>
 
         <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js" ></script>
         <script src="js/demo.min.js"></script>
         <script src="js/shards.min.js"></script>
@@ -288,38 +290,38 @@ if(cookies == null)
         <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="js/sb-admin.min.js"></script>
         <script src="js/demo/datatables-demo.js"></script>
-     <style>
-         
+        <style>
+
             .modal-header{
-             background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%
-                 ,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
-          
-             
+                background-image: linear-gradient(to right,#75b5e4 0,#73b4e3 11%
+                    ,#6cb0e1 23%,#54a2d9 48%,#2989ca 78%,#0272bd 100%);
+
+
             }
-         
+
             .modal-title{
                 font-family: dax-bold;    font-size: 1.4rem;
                 color: #fff;
             }
             .modal-content{
                 margin-top: 100px;
-                 
+
             }
-            
+
             .div {
-    background-color: red;
-    position: relative;
-    height: 214px;
-    overflow: hidden;
-    width: 452px;
-    margin: 0px auto;
-}
-#inner{
-    width: 100%;
-    overflow: auto;
-    height: 100%;
-    padding-right: 15px;
-}
+                background-color: red;
+                position: relative;
+                height: 214px;
+                overflow: hidden;
+                width: 452px;
+                margin: 0px auto;
+            }
+            #inner{
+                width: 100%;
+                overflow: auto;
+                height: 100%;
+                padding-right: 15px;
+            }
         </style>
     </body>
 

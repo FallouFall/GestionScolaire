@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gestion des Administrateurs</title>
+        <title>Gerer Salles</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -73,7 +73,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item" style="margin-top: 20px;">
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -81,13 +81,6 @@
                     </a>
                 </li>
 
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
 
 
                 <li class="nav-item">
@@ -136,7 +129,7 @@
                                             <th>Description</th>
                                             <th>Superficie</th>
                                             <th>Capacite</th>
-                                            <th>Modifier</th>
+                                              <th>Type</th>
 
                                         </tr>
                                     </thead>
@@ -148,7 +141,8 @@
                                             <th>Description</th>
                                             <th>Superficie</th>
                                             <th>Capacite</th>
-                                            <th>Modifier</th>
+                                                <th>Type</th>
+                                          
 
 
 
@@ -165,7 +159,7 @@
                                                 <td>${element.description}</td>
                                                 <td>${element.superficie}</td>
                                                 <td>${element.capacite}</td>
-                                                <td> <a class="ti-reload" href="update"></a> </td>
+                                               <td>${element.type.nom}</td>
 
 
 

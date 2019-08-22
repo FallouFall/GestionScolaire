@@ -46,6 +46,7 @@ public class GererSecretaireController {
     List<Inscription> listeInscription;
     List<User> users;
     List<  Anneacad> an = new ArrayList<>();
+      List<User> actors;
     String id;
     int nbHommes;
     int nbFemmes;
@@ -55,6 +56,16 @@ public class GererSecretaireController {
      */
     public ModelAndView mav = new ModelAndView();
 
+    
+      /**
+     *
+     */
+    @RequestMapping(value = "AjouterSecretaire.htm", method = RequestMethod.GET)
+    public void ajouterSecretaire() {
+        ModelAndView mav = new ModelAndView("redirect:/AjouterSecretaire.htm");
+
+    }
+
     /**
      *
      * @return
@@ -63,7 +74,7 @@ public class GererSecretaireController {
     public ModelAndView welcome() {
         String sql = "SELECT distinct matricule,nom,prenom, adresse,telephone,photo,statut,profil.id from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount   ";
 
-        List<User> actors = new ArrayList<>();
+       actors = new ArrayList<>();
 
         actors = jdtbcTemplate.query(sql,
                 new Object[]{3}, (ResultSet rs, int rowNum) -> {
@@ -99,7 +110,7 @@ public class GererSecretaireController {
      * @param req
      */
     @RequestMapping(value = "AjouterSecretaire.htm", method = RequestMethod.POST)
-    public void saveAdmin(HttpServletRequest req) {
+    public ModelAndView saveAdmin(HttpServletRequest req) {
         try {
 
             User user = new User();
@@ -126,14 +137,19 @@ public class GererSecretaireController {
             if (count > 0) {
               
             }
-
+            user.setMatricule("SC" + count);
             sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, "SC" + count, user.getGenre());
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre());
 
+               actors = new ArrayList<>();
+               mav = new ModelAndView();
+               actors.add(user);
+               mav.addObject("liste", actors);              
+               mav.setViewName("GererSecretaire");
         } catch (Exception e) {
             System.out.println(e);
         }
-
+return mav;
     }
 
     /**

@@ -90,7 +90,7 @@
                 <div class="container-fluid">
 
 
-                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
+                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px;margin-top: -40px;  ">
 
 
                         <div class="example col-md-12 ml-auto mr-auto">
@@ -134,7 +134,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="ti-home"></i>
                                                             </span>
-                                                            <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true" minlength="2" maxlength="20">
+                                                            <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" required="true" minlength="2" maxlength="25">
                                                         </div>
                                                     </div>
 
@@ -150,7 +150,7 @@
 
                                                     <div class=" form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
-                                                            <input type="number" class="form-control" id="telephone" name="telephone" placeholder="Telephone"  minlength="9" maxlength="9"    >
+                                                            <input type="number" class="form-control" id="telephone" name="telephone" placeholder="Telephone"   data-minlength="9" minlength="9" maxlength="9"    >
                                                             <span class="input-group-addon">
                                                                 <i class="ti-mobile"></i>
                                                             </span>

@@ -167,7 +167,7 @@
                                                 <td>${element.filiere}</td>
                                                 <td>
                                                     <div class="form-label-group">
-                                                        <a href="${link}" class="ti-panel"></a>
+                                                        <a href="${link}" class="ti-settings"></a>
                                                     </div>
                                                 </td>
 

@@ -24,7 +24,7 @@
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/themify-icons.css" rel="stylesheet">
 
-        <link rel="stylesheet"  type="text/css" href="./css/police.css" >
+      
         <link href="css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="css/shards.min.css">
         <link rel="stylesheet" href="css/shards-demo.css?v=1.1.0">

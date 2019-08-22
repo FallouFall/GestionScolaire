@@ -5,10 +5,10 @@
 --%>
 
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
     <head>
 
@@ -18,26 +18,47 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Parametrer Classe</title>
+        <title>Parametrage Classe</title>
+
+        <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="css/themify-icons.css" rel="stylesheet">
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
-        <link rel="shortcut icon" href="images/webIcone.jpg"/>
         <link href="css/sb-admin.css" rel="stylesheet">
+        <link rel="shortcut icon" href="images/webIcone.jpg"/>
+        <link rel="stylesheet"  type="text/css" href="./css/police.css" >
         <link rel="stylesheet" href="css/shards.min.css">
         <link rel="stylesheet" href="css/shards-demo.css?v=1.1.0">
-        <link rel="stylesheet" href="./css/cardeffects.css">
+        <link rel="stylesheet" href="css/cardeffects.css">
+        <link rel="stylesheet" href="./css/themify-icons.css">
+
+
 
     </head>
 
-    <body id="page-top" >
+    <body id="page-top">
+        <%
+            String userName = null;
+            Cookie[] cookies = request.getCookies();
 
-        <%@include file="HeaderUser.jsp" %>
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("user")) {
+                        userName = cookie.getValue();
+                    }
+
+                }
+            }
+            if (userName == null) {
+                response.sendRedirect("index.htm");
+            }
+        %>
+
+        <%@include  file="HeaderUser.jsp" %>
 
         <div id="wrapper">
-
-             <ul class="sidebar navbar-nav" >
+            <ul class="sidebar navbar-nav" >
 
 
 
@@ -67,13 +88,13 @@
 
                         <a  class="dropdown-item" href="addClasse.htm">Ajouter Classe</a>
                         <a class="dropdown-item" href="#">Liste Classes</a>
-                           <a class="dropdown-item" href="parametrerClasse.htm">Parametrer Classes</a>
+                        <a class="dropdown-item" href="parametrerClasse.htm">Parametrer Classes</a>
 
 
                     </div>
                 </li>
 
-                   <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Gerer Domaines</span>
@@ -86,8 +107,8 @@
 
                     </div>
                 </li>
-                
-                 <li class="nav-item dropdown">
+
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Gerer Cycles</span>
@@ -100,8 +121,8 @@
 
                     </div>
                 </li>
-                
-                   <li class="nav-item dropdown">
+
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Filiere</span>
@@ -117,201 +138,176 @@
 
             </ul>
 
+
             <div id="content-wrapper">
 
-                <div class="container-fluid" style="    margin-top: -40px;">
-
-     <ol class="breadcrumb" style="font-family: dax-bold;
-                            box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,.1), 0 0.9375rem 1.40625rem rgba(90,97,105,.1), 0 0.25rem 0.53125rem rgba(90,97,105,.12), 0 0.125rem 0.1875rem rgba(90,97,105,.1);
-                            background-color: #fff;border-radius: 10px;color: #1f72b8; margin-top: 40px;
-                            ">
-                            <li class="breadcrumb-item">
-                                <span class="ti-settings"></span>
-                                   <span class="">    </span>
-                                <span>Choisir la filiere</span>
-                            </li>
-
-                        </ol>
-                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
+                <div class="container-fluid">
 
 
-                        <div class="example col-md-12 ml-auto mr-auto">
-                       
-                            <div class="row "  >
+
+                    <!-- DataTables Example -->
+                    <div class="card mb-3 ">
+                        <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
+
+                            <span style="font-family: dax-bold;    font-size: 2rem;">
+                                Filieres
 
 
-                                <section id="team" class="pb-5 " style="margin-top: -30px;">
-                                    <div class="row" style="margin-bottom: -100px; margin-top: 3px;">
+                            </span>  </div>
+
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" >
+                                    <thead>
+                                        <tr  style="text-align: center;vertical-align: middle;">
+                                            <th>Matricule</th>
+                                            <th>Nom</th>
+                                            <th>Description</th>
+
+
+                                            <th>Choisir</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr style="text-align: center;vertical-align: middle;">
+                                            <th>Matricule</th>
+                                            <th>Nom</th>
+                                            <th>Description</th>
+
+
+                                            <th>Choisir</th>
+
+
+
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
                                         <c:forEach var="element" items="${filieres}">
-                                            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                                       <c:url var="link" value="classeParamClasse.htm">
-                                                     
-                                                       <c:param name="id" value="${element.id}"/>
-                                                      <c:param name="annee" value="${element.creation}"/>
-                                              
-                                                   </c:url>
-                                                <a href="${link}"  style="   text-decoration: none; color: #5a6169;">
-                                                    <div class="frontside">
-                                                        <div class="card ">
-                                                            
-                                                            <div class="card-body text-center">
-                                                                <p>     <span class="ti-settings"   style="font-size: 3em;"></span></p>
-                                                                <span >    <h5 class="card-title">${element.nom}</h5></span> 
+                                            <c:url var="link" value="classeParamClasse.htm">
 
-                                                                <div class="row" style="text-align: left;">
+                                                <c:param name="id" value="${element.id}"/>
+                                                <c:param name="annee" value="${element.creation}"/>
 
-                                                                    <div class="col-6 text-muted">Matricule :</div>
-                                                                    <div class="col-6">${element.matricule}</div>
+                                            </c:url>
+                                            <tr style="text-align: center;vertical-align: middle;">
 
 
-
-                                                            
-
-                                                                    <div class="col-6 text-muted">Description</div>
-                                                                    <div class="col-6">${element.description}</div>
+                                                <td>${element.matricule}</td>
+                                                <td>${element.nom}</td>
+                                                <td>${element.description}</td>
 
 
-
-
-
-
-                                                                </div>
-
-
-
-
-
-
-
-                                                            </div>
-
-                                                        </div>
+                                                <td>
+                                                    <div class="form-label-group">
+                                                        <a href="${link}" class="ti-plus"></a>
                                                     </div>
-                                                </a>
+                                                </td>
 
 
-                                            </div>
+
+                                            </tr>
+
                                         </c:forEach>
-
-                                    </div>
-                                </section>
-
-
+                                    </tbody>
+                                </table>
                             </div>
+
+                            <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
+                                <i class="ti-printer">
+
+                                </i> Imprimer</button>
                         </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+
+
+            </div>
+            <!-- /.content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="ti-angle-up"></i>
+        </a>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">Voulez-Vous quitter ?</div>
+                    <div class="modal-footer">
+
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
+                            <div class="form-label-group">
+                                <a class="ti-close" >  Annuler</a> 
+                            </div>
+                        </button>
+
+
+
                     </div>
                 </div>
             </div>
-
-
         </div>
-        <!-- /.container-fluid -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js" ></script>
+        <script src="js/demo.min.js"></script>
+        <script src="js/shards.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+        <script src="js/sb-admin.min.js"></script>
+        <script src="js/demo/datatables-demo.js"></script>
+        <script>
+                             function printContent(el) {
+                                 var restorepage = $('body').html();
+                                 var printcontent = $('#' + el).clone();
+                                 var enteredtext = $('#text').val();
+                                 $('body').empty().html(printcontent);
+                                 window.print();
+                                 $('body').html(restorepage);
+                                 $('#text').html(enteredtext);
+                                 setTimeout(function () {
+                                     location.reload()
+                                 }, 1);
+                             }
 
-        <!-- Sticky Footer -->
+        </script>
+        <style>
+            table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+                border-bottom-width: 0;
+                font-family: titilliumWeb-regular;
+            }
+            .image--cover {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                margin: 5px;
 
+                object-fit: cover;
+                object-position: center right;
+            }
 
-    </div>
-    <!-- /.content-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-
-                <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Voulez-Vous quitter ?</div>
-            <div class="modal-footer">
-
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-
-                <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="index.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js" ></script>
-<script src="js/demo.min.js"></script>
-<script src="js/shards.min.js"></script>
-<script src="js/sb-admin.min.js"></script>
-<script src="js/bootstrap3-typeahead.js"></script>
+        </style>
 
 
 
-
-
-<script>
-    var $input = $(".filiere");
-    $input.typeahead({
-    source: [
-    <c:forEach var="element" items="${filieres}">
-    {id: '${element.matricule}', name: '${element.nom}'},
-    </c:forEach>
-
-    ],
-            autoSelect: true
-    });
-    $input.change(function () {
-    var current = $input.typeahead("getActive");
-    if (current) {
-
-    if (current.name == $input.val()) {
-    console.log(current['name']);
-    } else {
-    // This means it is only a partial match, you can either add a new item
-    // or take the active if you don't want new items
-    }
-    } else {
-    // Nothing is active so it is a new value (or maybe empty value)
-    }
-    });
-</script>
-
-<script>
-    var $input = $(".classe");
-    $input.typeahead({
-    source: [
-    <c:forEach var="element" items="${classes}">
-    {id: '${element.matricule}', name: '${element.nom}', inscription: '${element.inscription}'},
-    </c:forEach>
-    ],
-            autoSelect: true
-    });
-    $input.change(function () {
-    var current = $input.typeahead("getActive");
-    if (current) {
-
-    if (current.name == $input.val()) {
-
-
-    } else {
-    // This means it is only a partial match, you can either add a new item
-    // or take the active if you don't want new items
-    }
-    } else {
-    // Nothing is active so it is a new value (or maybe empty value)
-    }
-    });
-</script>
-
-
-
-</body>
+    </body>
 
 </html>
