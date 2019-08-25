@@ -73,7 +73,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item" style="margin-top: 20px;" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -105,10 +105,10 @@
 
 
                     <!-- DataTables Example -->
-                  <section id="team" class="pb-5 " style="margin-top: -30px;">
+                  <section id="team" class="pb-5 " style="margin-top: -60px;">
                      
 
-                        <div class="row" style="margin-bottom: -100px; margin-top: 3px;">
+                        <div class="row" style="margin-bottom: -100px;">
                           <c:forEach var="element" items="${evenements}">
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <a href="#"  style="   text-decoration: none; color: #5a6169;">

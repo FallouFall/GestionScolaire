@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title style="font-family: dax-bold;    font-size: 2rem;">LISTE DES CLASSES</title>
+        <title style="font-family: dax-bold;    font-size: 2rem;">Droit Inscription</title>
 
 
         <link rel="stylesheet"  type="text/css" href="./css/police.css" >
@@ -140,6 +140,20 @@
 
                         <a  class="dropdown-item" href="AjouterFiliere.htm" >Ajouter Filiere</a>
                         <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
+
+
+                    </div>
+                </li>
+                
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Droit Inscription</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
+
+                        <a  class="dropdown-item" href="ajouterDroitIns.htm" >Ajouter Droit Inscription</a>
+                        <a class="dropdown-item" href="detailclasseParamClasse.htm">Gerer Droit Inscription</a>
 
 
                     </div>

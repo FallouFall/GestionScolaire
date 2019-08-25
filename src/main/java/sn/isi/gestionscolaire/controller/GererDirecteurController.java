@@ -34,6 +34,7 @@ import sn.isi.gestionscolaire.domain.Cycle;
 import sn.isi.gestionscolaire.domain.Domaine;
 import sn.isi.gestionscolaire.domain.Droitinscription;
 import sn.isi.gestionscolaire.domain.Filiere;
+import sn.isi.gestionscolaire.domain.Formation;
 import sn.isi.gestionscolaire.domain.Inscription;
 import sn.isi.gestionscolaire.domain.Matiere;
 import sn.isi.gestionscolaire.domain.Profil;
@@ -64,6 +65,7 @@ public class GererDirecteurController {
     List<Programme> programmes = new ArrayList<>();
     List<Inscription> listeInscription;
     List<User> users;
+      List<Formation> listeForma;
  
     List<  Anneacad> an = new ArrayList<>();
     String id;
@@ -143,7 +145,7 @@ public class GererDirecteurController {
      */
     @RequestMapping(value = "filiereParamClasse.htm")
     public ModelAndView filiereClasseParaClassee(HttpServletRequest req) {
-        String sql = "SELECT * from filiere   ";
+      String sql = "SELECT  filiere.id,filiere.matricule,filiere.nom,filiere.creation,filiere.description ,cycle.nom ,cycle.id FROM filiere,cycle WHERE filiere.idcycle=cycle.id";
         filieres = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Filiere c = new Filiere();
@@ -153,8 +155,14 @@ public class GererDirecteurController {
                     c.setCreation(rs.getDate(4));
                     c.setDescription(rs.getString(5));
 
+                    Cycle cy = new Cycle();
+                    cy.setNom(rs.getString(6));
+                    cy.setId(rs.getInt(7));
+                    c.setIdcycle(cy);
+
                     return c;
                 });
+
         mav.setViewName("filiereParamClasse");
         mav.addObject("filieres", filieres);
 
@@ -195,6 +203,9 @@ public class GererDirecteurController {
      */
     @RequestMapping(value = "detailclasseParamClasse.htm")
     public ModelAndView detailclasseClasseParam(HttpServletRequest req) {
+        try {
+            
+     
         String sql = "SELECT * from classes where id =?  ";
         classes = jdtbcTemplate.query(sql,
                 new Object[]{req.getParameter("id")}, (ResultSet rs, int rowNum) -> {
@@ -210,8 +221,56 @@ public class GererDirecteurController {
         mav.setViewName("detailclasseParamClasse");
         mav.addObject("classes", classes.get(0));
         mav.addObject("idclasse", classes.get(0).getId());
+           } catch (Exception e) {
+        }
         return mav;
 
+    }
+    
+    
+    
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "ajouterDroitIns.htm")
+    public ModelAndView ajouterDrt() {
+       
+        mav.setViewName("ajouterDroitIns");
+      
+        return mav;
+
+    }
+
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "ajouterDroitIns.htm", method = RequestMethod.POST)
+    public ModelAndView ajouterDrtInscription(HttpServletRequest req) {
+        try {
+            
+      
+   
+        String matricule = ("DRT" + (int) (Math.random() * 9999999));
+       
+        String sql = "insert into  droitinscription values (?,?,?,?)";
+        jdtbcTemplate.update(sql, null, matricule,req.getParameter("inscription"),req.getParameter("mensualite"));
+
+        Droitinscription d= new Droitinscription();
+        d.setMatricule(matricule);
+        d.setInscription(Integer.valueOf(req.getParameter("inscription")));
+        d.setMensualite(Integer.valueOf(req.getParameter("mensualite")));
+         mav.setViewName("modalite");
+         List<Droitinscription> drt= new ArrayList<>();
+         drt.add(d);
+         
+          mav.addObject("droit", drt);
+            } catch (Exception e) {
+        }
+         return mav;
     }
 
     /**
@@ -264,6 +323,33 @@ public class GererDirecteurController {
                 });
         mav.setViewName("gererdomaines");
         mav.addObject("domaines", domaines);
+        return mav;
+    }
+
+    
+      /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("gererformations.htm")
+    public ModelAndView gestionFormation() {
+        String sql = "SELECT formation.id,formation.matricule,formation.nom,formation.date,formation.description,domaine.nom from formation,domaine where formation.iddomaine=domaine.id  ";
+        listeForma = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Formation c = new Formation();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setDate(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+                   Domaine d= new Domaine();
+                   d.setNom(rs.getString(6));
+                   c.setIddomaine(d);
+
+                    return c;
+                });
+        mav.setViewName("gererFormation");
+        mav.addObject("formations", listeForma);
         return mav;
     }
 
@@ -393,6 +479,62 @@ public class GererDirecteurController {
         return mav;
     }
 
+    
+      /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping("ajouterFormation.htm")
+    public ModelAndView ajouterFormation() {
+        String sql = "SELECT * from domaine  ";
+      List<Domaine>  dom = jdtbcTemplate.query(sql,
+                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                    Domaine c = new Domaine();
+                    c.setId(rs.getInt(1));
+                    c.setMatricule(rs.getString(2));
+                    c.setNom(rs.getString(3));
+                    c.setDate(rs.getString(4));
+                    c.setDescription(rs.getString(5));
+
+                    return c;
+                });
+
+        mav.addObject("domaine", dom);
+        
+        mav.setViewName("AjouterFormation");
+
+        return mav;
+    }
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "ajouterFormation.htm", method = RequestMethod.POST)
+    public ModelAndView ajouterForm(HttpServletRequest req) {
+        Formation f=new Formation();
+        f.setNom(req.getParameter("nom"));
+     
+     f.setDescription(req.getParameter("description")); 
+        String acad = req.getParameter("id");
+        Domaine d=new Domaine();
+        d.setNom(req.getParameter("nomFor"));
+        f.setIddomaine(d);
+
+        f.setDate(req.getParameter("date"));
+       f.setMatricule("FOR" + (int) (Math.random() * 9999999));
+        String sql = "insert into formation values (?,?,?,?,?,?)";
+
+        jdtbcTemplate.update(sql, null, f.getMatricule(), f.getNom(), f.getDate(), f.getDescription(), acad);
+        
+      listeForma= new ArrayList<>();
+      listeForma.add(f);
+      mav.setViewName("gererFormation");
+      mav.addObject("formations", listeForma);
+
+        return mav;
+    }
+    
     /**
      *
      * @param req
@@ -465,6 +607,8 @@ public class GererDirecteurController {
                     c.setDescription(rs.getString(5));
                     Filiere f = new Filiere();
                     f.setId(rs.getInt(6));
+                    c.setOuverture(rs.getString(8));
+                    c.setNbmois(rs.getInt(9));
 
                     c.setFiliere(filieres.stream().filter(fil -> fil.getId() == f.getId()).findFirst().orElse(null));
 
@@ -1261,7 +1405,7 @@ public class GererDirecteurController {
      */
     @RequestMapping(value = "addClasse.htm")
     public ModelAndView addClassee() {
-        String sql = "SELECT * from filiere  ";
+         String sql = "SELECT  filiere.id,filiere.matricule,filiere.nom,filiere.creation,filiere.description ,cycle.nom ,cycle.id FROM filiere,cycle WHERE filiere.idcycle=cycle.id";
         filieres = jdtbcTemplate.query(sql,
                 new Object[]{}, (ResultSet rs, int rowNum) -> {
                     Filiere c = new Filiere();
@@ -1271,8 +1415,14 @@ public class GererDirecteurController {
                     c.setCreation(rs.getDate(4));
                     c.setDescription(rs.getString(5));
 
+                    Cycle cy = new Cycle();
+                    cy.setNom(rs.getString(6));
+                    cy.setId(rs.getInt(7));
+                    c.setIdcycle(cy);
+
                     return c;
                 });
+
         mav.setViewName("addClasse");
         mav.addObject("filieres", filieres);
 
@@ -1344,9 +1494,9 @@ public class GererDirecteurController {
     @RequestMapping(value = "savedetailClasseParam.htm", method = RequestMethod.POST)
     public ModelAndView confirsavedetailClassePara(HttpServletRequest req) {
 
-        String sql = "update classes set droitIns = ? where id = ? ";
+        String sql = "update classes set droitIns = ?,nbmois= ?,ouverture= ? where id = ? ";
         int i = 0;
-        i = jdtbcTemplate.update(sql, req.getParameter("idDroit"), req.getParameter("idClasse"));
+        i = jdtbcTemplate.update(sql, req.getParameter("idDroit"), req.getParameter("mois"), req.getParameter("ouverture") ,req.getParameter("idClasse"));
 
         mav.setViewName("resultclasseParam");
         if (i != 0) {
@@ -1369,7 +1519,7 @@ public class GererDirecteurController {
         mav.setViewName("saisirClasse");
         mav.addObject("nomFiliere", req.getParameter("nomFiliere"));
         mav.addObject("idFiliere", req.getParameter("id"));
-
+          mav.addObject("cycle", req.getParameter("cycle"));
         return mav;
 
     }
@@ -1405,11 +1555,11 @@ public class GererDirecteurController {
      */
     @RequestMapping(value = "confirmerClasse.htm")
     public ModelAndView confirmerClasse(HttpServletRequest req) throws ParseException {
-        String sql = "insert into classes values (?,?,?,?,?,?,?)";
+        String sql = "insert into classes values (?,?,?,?,?,?,?,?,?)";
 
         jdtbcTemplate.update(sql, null, req.getParameter("matricule"), req.getParameter("nom"),
                 req.getParameter("date"), req.getParameter("description"),
-                req.getParameter("idFiliere"),null);
+                req.getParameter("idFiliere"),1,null,null);
         return gestionsClasses();
     }
 
@@ -1433,6 +1583,7 @@ public class GererDirecteurController {
                     Cycle cy = new Cycle();
                     cy.setNom(rs.getString(6));
                     cy.setId(rs.getInt(7));
+                    c.setIdcycle(cy);
 
                     return c;
                 });
@@ -1518,7 +1669,7 @@ public class GererDirecteurController {
     public ModelAndView detailClasse(HttpServletRequest req) {
 
         nbFemmes = nbHommes = 0;
-    
+       
         String classeId = req.getParameter("id");
         String nomClasse = req.getParameter("nomClasse");
         String nomFiliere = req.getParameter("nomFiliere");
@@ -1561,6 +1712,8 @@ public class GererDirecteurController {
         mav.addObject("nbFeminin", nbFemmes);
         mav.addObject("nbMasculin", nbHommes);
         mav.addObject("classeId", classeId);
+          mav.addObject("ouverture", req.getParameter("ouverture"));
+        mav.addObject("nbmois", req.getParameter("nbmois"));
         mav.addObject("effectif", nbFemmes + nbHommes);
         mav.setViewName("detailClasse");
         return mav;

@@ -8,7 +8,9 @@ package sn.isi.gestionscolaire.controller;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +25,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import sn.isi.gestionscolaire.config.Connexion;
+import sn.isi.gestionscolaire.domain.Absence;
 import sn.isi.gestionscolaire.domain.Account;
 import sn.isi.gestionscolaire.domain.Anneacad;
 import sn.isi.gestionscolaire.domain.Classes;
 import sn.isi.gestionscolaire.domain.Filiere;
 import sn.isi.gestionscolaire.domain.Inscription;
 import sn.isi.gestionscolaire.domain.Matiere;
+import sn.isi.gestionscolaire.domain.Mensualite;
 import sn.isi.gestionscolaire.domain.Note;
 import sn.isi.gestionscolaire.domain.Profil;
 import sn.isi.gestionscolaire.domain.Programme;
@@ -377,11 +381,168 @@ return mav;
     @RequestMapping(value = "feuilleDeNote.htm", method = RequestMethod.GET)
     public ModelAndView getNote(HttpServletRequest req) {
 
-       
-
-    
         mav.setViewName("feuilleDeNote");
         return mav;
+    }
+
+     
+    
+     /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "absences.htm")
+    public ModelAndView mensualite() {
+        mav.addObject("findEtudiant", null);
+        mav.setViewName("absence");
+        return mav;
+
+    }
+
+    
+    /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "absenceJustification.htm")
+    public ModelAndView absencejusti() {
+    
+        mav.setViewName("absenceJustification");
+        return mav;
+
+    }
+    
+     /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "absenceJustification.htm",method = RequestMethod.POST)
+    public ModelAndView validerJusti(HttpServletRequest req,HttpServletResponse rep) throws IOException {
+    
+       String    sql = "insert into absence  values (?,?,?,?,?,?)";
+      
+                
+        try {
+            
+       
+         jdtbcTemplate.update(sql, null, ins.getIduser().getId(),req.getParameter("donnee").trim(),req.getParameter("justification"), java.sql.Date.valueOf(LocalDate.now()),req.getParameter("jour"));
+             } catch (Exception e) {
+        } 
+         mav.addObject("delivre", java.sql.Date.valueOf(LocalDate.now()));
+          mav.addObject("justification", req.getParameter("justification"));
+          if(req.getParameter("donnee").equalsIgnoreCase("1"))
+          {
+           mav.addObject("motif", "RETARD");
+          }
+          else
+          {
+                mav.addObject("motif", "ABSENCE");
+          }
+          mav.setViewName("billetAbsence");
+          rep.sendRedirect("billetAbsence.htm");
+        return mav;
+
+    }
+    
+    
+     /**
+     *
+     * @return ModelView
+     */
+    @RequestMapping(value = "billetAbsence.htm")
+    public ModelAndView billetAb(HttpServletRequest req,HttpServletResponse rep) {
+    
+     
+          mav.setViewName("billetAbsence");
+        
+        return mav;
+
+    }
+    Inscription     ins;
+     /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "absences.htm", method = RequestMethod.POST)
+    public ModelAndView findEtudiant(HttpServletRequest req,HttpServletResponse rep) throws IOException {
+        mav = new ModelAndView();
+        String matricule = req.getParameter("matricule");
+        String sql = "SELECT DISTINCT user.id,user.matricule,user.nom,prenom,adresse,telephone,inscription.matricule , inscription.idclasse,inscription.date,filiere.nom ,classes.nom,droitinscription.mensualite,droitinscription.inscription from user,inscription,filiere,classes,droitinscription where user.matricule =? AND user.id=inscription.iduser AND filiere.id=classes.filiere and classes.droitIns=droitinscription.id AND inscription.idclasse=classes.id";
+
+        List<User> actors = jdtbcTemplate.query(
+                sql,
+                new Object[]{matricule},
+                new RowMapper<User>() {
+            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+                User c = new User();
+                c.setId(rs.getInt(1));
+                c.setMatricule(rs.getString(2));
+                c.setNom(rs.getString(3));
+                c.setPrenom(rs.getString(4));
+                c.setAdresse(rs.getString(5));
+                c.setTelephone(rs.getString(6));
+
+             ins = new Inscription();
+                ins.setMatricule(rs.getString(7));
+                ins.setDate(rs.getDate(9));
+                ins.setIduser(c);
+
+                Classes s = new Classes();
+                s.setId(rs.getInt(8));
+
+                Filiere f = new Filiere();
+                f.setNom(rs.getString(11));
+
+                s.setFiliere(f);
+                ins.setIdclasse(s);
+                mav.addObject("fil", rs.getString(10));
+                mav.addObject("cls", rs.getString(11));
+                mav.addObject("mensu", rs.getInt(12));
+                mav.addObject("inscrip", ins);
+                mav.addObject("prixinscrip", rs.getInt(13));
+                //  payement = rs.getInt(12);
+
+                return c;
+            }
+        });
+          sql = "SELECT motif FROM absence where idetudiant = ?";
+
+        List<Absence> abs = jdtbcTemplate.query(
+                sql,
+                new Object[]{ins.getIduser().getId()},
+                new RowMapper<Absence>() {
+            public Absence mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Absence c = new Absence();
+                c.setMotif(rs.getInt(1));
+                
+               
+
+                return c;
+            }
+        });
+   int absences=0;
+   int retards=0;
+        for (Absence ab : abs) {
+            if(ab.getMotif()==1)
+                retards++;
+            else
+                absences++;
+        }
+        
+        if (!actors.isEmpty()) {
+            mav.addObject("findEtudiant", actors.get(0));
+             mav.setViewName("absenceJustification");
+              mav.addObject("absences", absences);
+               mav.addObject("retards", retards);
+            
+        } else {
+            mav.addObject("findEtudiant", null);
+             mav.setViewName("absence");
+        }
+        rep.sendRedirect("absenceJustification.htm");
+        return mav;
+
     }
 
      List<Note> notes ;

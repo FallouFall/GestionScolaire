@@ -164,7 +164,7 @@
                                             <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Description</th>
-
+                                                <th>Cycle</th>
 
                                             <th>Choisir</th>
 
@@ -175,7 +175,7 @@
                                             <th>Matricule</th>
                                             <th>Nom</th>
                                             <th>Description</th>
-
+                                             <th>Cycle</th>
 
                                             <th>Choisir</th>
 
@@ -197,7 +197,7 @@
                                                 <td>${element.matricule}</td>
                                                 <td>${element.nom}</td>
                                                 <td>${element.description}</td>
-
+                                                 <td>${element.idcycle.nom}</td>
 
                                                 <td>
                                                     <div class="form-label-group">

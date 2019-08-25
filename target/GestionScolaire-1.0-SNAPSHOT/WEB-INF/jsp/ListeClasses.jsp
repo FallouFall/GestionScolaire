@@ -208,7 +208,8 @@
                                <c:param name="matricule" value="${element.matricule}"/>
                                <c:param name="nomClasse" value="${element.nom}"/>
                                <c:param name="nomFiliere" value="${element.filiere}"/>
-                                  
+                                   <c:param name="nbmois" value="${element.nbmois}"/>
+                               <c:param name="ouverture" value="${element.ouverture}"/>
                               </c:url>
                                             
                                             <tr style="text-align: center;vertical-align: middle;">

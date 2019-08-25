@@ -251,7 +251,7 @@ window.print();
 $('body').html(restorepage);
 $('#text').html(enteredtext);
 setTimeout(function (){
-    location.reload()
+    location.reload();
 },1);
 }
 

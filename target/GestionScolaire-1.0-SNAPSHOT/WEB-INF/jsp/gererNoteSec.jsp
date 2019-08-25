@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Inscription Etudiant</title>
+        <title>Notes</title>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/themify-icons.css" rel="stylesheet">
@@ -65,16 +65,11 @@
 
             <div id="content-wrapper">
 
-                <div class="container-fluid" style="    margin-top: -40px;">
+                <div class="container-fluid" style="    margin-top: 5px;">
                   
 
-             <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
-
-
-                        <div class="example col-md-12 ml-auto mr-auto">
-                            <div class="row " >
-
-                                <div class="card card-signin mx-auto mt-5">
+             <div class="card mb-3 ">
+                  
                                     <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
 
                                         <span style="font-family: dax-bold;    font-size: 2rem;">
@@ -145,11 +140,7 @@
                                         </form>
 
                                     </div>
-                                </div>
-
-                           
-                            </div>
-                        </div>
+                              
                     </div>
                 </div>
             </div>

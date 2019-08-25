@@ -40,7 +40,13 @@
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
 
+  <li class="nav-item" style="margin-top: 20px;">
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
+                        <i class="fas fa-bars">    </i>
+
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="comptable.htm">
                         <i class=" fas fa-home"></i>
@@ -98,10 +104,28 @@
                                                             
                                                             <div class="card-body text-center">
                                                                  
+                                                                <c:if test="${element.nom == 'Prescolaire' || element.nom == 'prescolaire'}">
                                                                     
-                                                                <p>     <span class="ti-desktop"   style="font-size: 3em;"></span></p>
-                                                         
+                                                            
+                                                                <p>     <span class="fas fa-puzzle-piece"   style="font-size: 3em;"></span></p>
+                                                             </c:if>
                                                               
+                                                                
+                                                                  <c:if test="${element.nom == 'Primaire' || element.nom == 'primaire'}">
+                                                                    
+                                                            
+                                                                <p>     <span class="fas fa-child"   style="font-size: 3em;"></span></p>
+                                                             </c:if>
+                                                                    <c:if test="${element.nom == 'Moyen' || element.nom == 'moyen'}">
+                                                                    
+                                                            
+                                                                <p>     <span class="fas fa-user"   style="font-size: 3em;"></span></p>
+                                                             </c:if>
+                                                                  <c:if test="${element.nom == 'Secondaire' || element.nom == 'secondaire'}">
+                                                                    
+                                                            
+                                                                <p>     <span class="fas fa-user-graduate"   style="font-size: 3em;"></span></p>
+                                                             </c:if>
                                                              
                                                                 <span >    <h5 class="card-title">${element.nom}</h5></span> 
 
@@ -115,8 +139,6 @@
                                                                     <div class="col-6 text-muted">Nom :</div>
                                                                     <div class="col-6">${element.nom}</div>
 
-                                                                    <div class="col-6 text-muted">Descript :</div>
-                                                                    <div class="col-6">${element.description}</div>
 
 
 
@@ -198,65 +220,14 @@
 <script src="js/demo.min.js"></script>
 <script src="js/shards.min.js"></script>
 <script src="js/sb-admin.min.js"></script>
-<script src="js/bootstrap3-typeahead.js"></script>
 
 
 
 
 
-<script>
-    var $input = $(".filiere");
-    $input.typeahead({
-    source: [
-    <c:forEach var="element" items="${filieres}">
-    {id: '${element.matricule}', name: '${element.nom}'},
-    </c:forEach>
-
-    ],
-            autoSelect: true
-    });
-    $input.change(function () {
-    var current = $input.typeahead("getActive");
-    if (current) {
-
-    if (current.name == $input.val()) {
-    console.log(current['name']);
-    } else {
-    // This means it is only a partial match, you can either add a new item
-    // or take the active if you don't want new items
-    }
-    } else {
-    // Nothing is active so it is a new value (or maybe empty value)
-    }
-    });
-</script>
-
-<script>
-    var $input = $(".classe");
-    $input.typeahead({
-    source: [
-    <c:forEach var="element" items="${classes}">
-    {id: '${element.matricule}', name: '${element.nom}', inscription: '${element.inscription}'},
-    </c:forEach>
-    ],
-            autoSelect: true
-    });
-    $input.change(function () {
-    var current = $input.typeahead("getActive");
-    if (current) {
-
-    if (current.name == $input.val()) {
 
 
-    } else {
-    // This means it is only a partial match, you can either add a new item
-    // or take the active if you don't want new items
-    }
-    } else {
-    // Nothing is active so it is a new value (or maybe empty value)
-    }
-    });
-</script>
+
 
 
 

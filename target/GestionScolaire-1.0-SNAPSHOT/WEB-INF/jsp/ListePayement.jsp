@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>     ${cls} ${ms}</title>
+        <title>    Controle</title>
 
 
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -63,13 +63,12 @@
         <div id="wrapper">
 
             <!-- Sidebar -->
-
-            <ul class="sidebar navbar-nav" >
-
+   <ul class="sidebar navbar-nav" >
 
 
 
-                <li class="nav-item" >
+
+                <li class="nav-item" style="margin-top: 20px;" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -84,6 +83,17 @@
                     <a class="nav-link" href="comptable.htm">
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
+                </li>
+                   <li class="nav-item">
+                    <a class="nav-link" href="controlePaye.htm">
+                        <i class=" ti-money"></i>
+                        <span>Liste Payements </span></a>
+                </li>
+                
+                 <li class="nav-item">
+                    <a class="nav-link" href="controleNonPaye.htm">
+                        <i class=" ti-close"></i>
+                        <span>Liste des Non Paye </span></a>
                 </li>
 
 

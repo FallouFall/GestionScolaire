@@ -214,10 +214,7 @@
                                 </table>
                             </div>
 
-                            <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
-                                <i class="ti-printer">
-
-                                </i> Imprimer</button>
+                            
                         </div>
 
 

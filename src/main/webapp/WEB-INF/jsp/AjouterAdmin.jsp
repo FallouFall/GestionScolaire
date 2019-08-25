@@ -276,7 +276,18 @@
         <script src="js/demo.min.js"></script>
         <script src="js/shards.min.js"></script>
         <script src="js/sb-admin.min.js"></script>
+        <script>
+            $("#datepicker-example-1").datepicker({
 
+                format: "dd/mm/yyyy",
+                language:'fr',
+           
+                
+            
+
+
+            });
+        </script>
         <style>
             .avatar-pic {
                 width: 150px;

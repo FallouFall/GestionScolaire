@@ -39,7 +39,13 @@
 
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
+  <li class="nav-item" style="margin-top: 20px;">
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
+                        <i class="fas fa-bars">    </i>
+
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="comptable.htm">
@@ -62,21 +68,21 @@
 
                 <div class="container-fluid" style="    margin-top: -40px;">
 
-         <ol class="breadcrumb" style="font-family: dax-bold;
-                            box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,.1), 0 0.9375rem 1.40625rem rgba(90,97,105,.1), 0 0.25rem 0.53125rem rgba(90,97,105,.12), 0 0.125rem 0.1875rem rgba(90,97,105,.1);
-                            background-color: #fff;border-radius: 10px;color: #1f72b8; margin-top: 40px;
-                            ">
-                            <li class="breadcrumb-item">
-                                 <span>Annee : ${annee}  <span class="ti-arrow-right" style="color: #5a6169;"> </span> Etudiant : ${matriculeEtu} <span class="ti-arrow-right" style="color: #5a6169;"> </span>  Domaine : ${dmn}<span class="ti-arrow-right" style="color: #5a6169;"> </span>   Formation : ${frn} <span class="ti-arrow-right" style="color: #5a6169;"> </span>  Cycle : ${cyn}  </span>
-                            </li>
-                           
+                    <ol class="breadcrumb" style="font-family: dax-bold;
+                        box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,.1), 0 0.9375rem 1.40625rem rgba(90,97,105,.1), 0 0.25rem 0.53125rem rgba(90,97,105,.12), 0 0.125rem 0.1875rem rgba(90,97,105,.1);
+                        background-color: #fff;border-radius: 10px;color: #1f72b8; margin-top: 40px;
+                        ">
+                        <li class="breadcrumb-item">
+                            <span>Annee : ${annee}  <span class="ti-arrow-right" style="color: #5a6169;"> </span> Etudiant : ${matriculeEtu} <span class="ti-arrow-right" style="color: #5a6169;"> </span>  Domaine : ${dmn}<span class="ti-arrow-right" style="color: #5a6169;"> </span>   Formation : ${frn} <span class="ti-arrow-right" style="color: #5a6169;"> </span>  Cycle : ${cyn}  </span>
+                        </li>
 
-                        </ol>
+
+                    </ol>
                     <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
 
 
                         <div class="example col-md-12 ml-auto mr-auto">
-                       
+
                             <div class="row "  >
 
 
@@ -84,27 +90,27 @@
                                     <div class="row" style="margin-bottom: -100px; margin-top: 3px;">
                                         <c:forEach var="element" items="${filieres}">
                                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                                       <c:url var="link" value="classeIns.htm">
-                                                           
-                                                        <c:param name="annee" value="${annee}"/>
-                                                       <c:param name="domaine" value="${domaine}"/>
-                                                       <c:param name="formation" value="${formation}"/>
-                                                        <c:param name="cycle" value="${cyn}"/>
-                                                       <c:param name="filiere" value="${element.nom}"/>
-                                                         <c:param name="idfiliere" value="${element.id}"/>
-                                              
-                                                   </c:url>
+                                                <c:url var="link" value="classeIns.htm">
+
+                                                    <c:param name="annee" value="${annee}"/>
+                                                    <c:param name="domaine" value="${domaine}"/>
+                                                    <c:param name="formation" value="${formation}"/>
+                                                    <c:param name="cycle" value="${cyn}"/>
+                                                    <c:param name="filiere" value="${element.nom}"/>
+                                                    <c:param name="idfiliere" value="${element.id}"/>
+
+                                                </c:url>
                                                 <a href="${link}"  style="   text-decoration: none; color: #5a6169;">
                                                     <div class="frontside">
                                                         <div class="card ">
-                                                            
+
                                                             <div class="card-body text-center">
-                                                                 
-                                                                    
-                                                                <p>     <span class="ti-desktop"   style="font-size: 3em;"></span></p>
-                                                         
-                                                              
-                                                             
+
+
+                                                                <p>     <span class="ti-layout-slider"   style="font-size: 3em;"></span></p>
+
+
+
                                                                 <span >    <h5 class="card-title">${element.nom}</h5></span> 
 
                                                                 <div class="row" style="text-align: left;">
@@ -117,10 +123,31 @@
                                                                     <div class="col-6 text-muted">Nom :</div>
                                                                     <div class="col-6">${element.nom}</div>
 
-                                                                    <div class="col-6 text-muted">Descript :</div>
-                                                                    <div class="col-6">${element.description}</div>
-
-
+                                                                  
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
 
 
 
@@ -200,77 +227,21 @@
 <script src="js/demo.min.js"></script>
 <script src="js/shards.min.js"></script>
 <script src="js/sb-admin.min.js"></script>
-<script src="js/bootstrap3-typeahead.js"></script>
 
-
-
-
-
-<script>
-    var $input = $(".filiere");
-    $input.typeahead({
-    source: [
-    <c:forEach var="element" items="${filieres}">
-    {id: '${element.matricule}', name: '${element.nom}'},
-    </c:forEach>
-
-    ],
-            autoSelect: true
-    });
-    $input.change(function () {
-    var current = $input.typeahead("getActive");
-    if (current) {
-
-    if (current.name == $input.val()) {
-    console.log(current['name']);
-    } else {
-    // This means it is only a partial match, you can either add a new item
-    // or take the active if you don't want new items
-    }
-    } else {
-    // Nothing is active so it is a new value (or maybe empty value)
-    }
-    });
-</script>
 <style>
-      .table-responsive {
-    font-family: dax;
-    
-}
-.sidebar{
-      font-family: titilliumWeb-regular;
-}
-         table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
-  
-    font-family: titilliumWeb-regular;
-}
+    .table-responsive {
+        font-family: dax;
+
+    }
+    .sidebar{
+        font-family: titilliumWeb-regular;
+    }
+    table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+
+        font-family: titilliumWeb-regular;
+    }
 </style>
-<script>
-    var $input = $(".classe");
-    $input.typeahead({
-    source: [
-    <c:forEach var="element" items="${classes}">
-    {id: '${element.matricule}', name: '${element.nom}', inscription: '${element.inscription}'},
-    </c:forEach>
-    ],
-            autoSelect: true
-    });
-    $input.change(function () {
-    var current = $input.typeahead("getActive");
-    if (current) {
 
-    if (current.name == $input.val()) {
-
-
-    } else {
-    // This means it is only a partial match, you can either add a new item
-    // or take the active if you don't want new items
-    }
-    } else {
-    // Nothing is active so it is a new value (or maybe empty value)
-    }
-    });
-</script>
 
 
 

@@ -224,7 +224,7 @@
 
                                         <div class=" form-group col-md-6">
                                             <div class="input-group with-addon-icon-left">
-                                                <input type="number" class="form-control" name="paye"  placeholder="Montant Recu"  min="5000"> 
+                                                <input type="number" class="form-control" name="paye"  placeholder="Montant Recu" max="${mensu}" min="5000"> 
                                                 <span class="input-group-addon">
                                                     <i class="ti-money"></i>
                                                 </span>

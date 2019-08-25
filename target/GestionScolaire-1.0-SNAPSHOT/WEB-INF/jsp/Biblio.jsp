@@ -96,7 +96,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="ti-tag"></i>
                                                 </span>
-                                                <input type="text" class="form-control" name="matricule" id="matricule" placeholder="Numero Inscription Etudiant" required="true">
+                                                <input type="text" class="form-control" name="matricule" id="matricule" placeholder="Numero  Etudiant" required="true">
                                             </div>
                                         </div>
                                         <div class=" form-group col-md-6">       

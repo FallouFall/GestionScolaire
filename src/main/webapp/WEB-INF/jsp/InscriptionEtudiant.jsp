@@ -39,7 +39,13 @@
 
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
+  <li class="nav-item" style="margin-top: 20px;">
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
+                        <i class="fas fa-bars">    </i>
+
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="comptable.htm">
@@ -81,7 +87,7 @@
 
                                 <section id="team" class="pb-5 " style="margin-top: -30px;">
                                     <div class="row" style="margin-bottom: -100px; margin-top: 3px;">
-                                        <c:forEach var="element" items="${annees}">
+                                     <c:forEach var="element" items="${annees}">
                                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                                        <c:url var="link" value="domaineById.htm">
                                                      
@@ -93,9 +99,11 @@
                                                     <div class="frontside">
                                                         <div class="card ">
                                                             
+                                                        
+                                                            
                                                             <div class="card-body text-center">
                                                                 <p>     <span class="ti-plus"   style="font-size: 3em;"></span></p>
-                                                                <span >    <h5 class="card-title">${element.date}</h5></span> 
+                                                                <span >    <h5 class="card-title"> ${element.date}</h5></span> 
 
                                                                 <div class="row" style="text-align: left;">
 
@@ -109,9 +117,28 @@
 
                                                                     <div class="col-6 text-muted">Description</div>
                                                                     <div class="col-6">${element.description}</div>
+                                                                 
+                                                                      <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
 
-
-
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
 
 
 
@@ -155,42 +182,34 @@
 
 </div>
 <!-- /#wrapper -->
-  <a class="scroll-to-top rounded" href="#page-top">
-            <i class="ti-angle-up"></i>
-        </a>
 
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                        <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
-                        
-                    </div>
-                    <div class="modal-body" style=" font-family: titilliumWeb-regular;">
-                        
-                        <span  class="ti-alert" style="font-size: 1.5em;">
-                            
-                        </span>Voulez-Vous quitter ?</div>
-                    <div class="modal-footer">
-
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal" style=" font-family: titilliumWeb-regular;">
-                            <div class="form-label-group">
-                                <a class="ti-close" >  Annuler</a> 
-                            </div>
-                        </button>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
 
-                        <button type="submit" class="btn btn-primary" style="background-color: #0272bd; font-family: titilliumWeb-regular;">
-                            <div class="form-label-group">
-                                <a class="ti-power-off" style="background-color: #0272bd; color: #fff;" href="deconnecter.htm">  Deconnceter</a> 
-                            </div></button>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
 
+                <h5 class="modal-title" id="exampleModalLabel">Se Deconnecter?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Voulez-Vous quitter ?</div>
+            <div class="modal-footer">
 
-                    </div>
-                </div>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+
+                <button type="submit" class="btn btn-primary" style="background-color: #0272bd;">     <a href="index.htm"  style="   text-decoration: none;  color: #fff;">Deconnceter</a></button>
+
             </div>
         </div>
+    </div>
+</div>
 
 
 <script src="vendor/jquery/jquery.min.js"></script>
@@ -199,6 +218,8 @@
 <script src="js/shards.min.js"></script>
 <script src="js/sb-admin.min.js"></script>
 <script src="js/bootstrap3-typeahead.js"></script>
+
+
 
 
 

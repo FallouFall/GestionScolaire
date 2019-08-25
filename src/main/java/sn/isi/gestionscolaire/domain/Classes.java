@@ -54,17 +54,39 @@ public class Classes implements Serializable {
     @Basic(optional = false)
     @Column(name = "description")
     private String description;
-    @Basic(optional = false)
-    @Column(name = "droitIns")
-    private int droitIns;
+     @JoinColumn(name = "droitins", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Droitinscription droitIns;
     @JoinColumn(name = "filiere", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Filiere filiere;
+     @Basic(optional = false)
+    @Column(name = "ouverture")
+    private String ouverture;
+      @Basic(optional = false)
+    @Column(name = "nbmois")
+    private int nbmois;
 
     /**
      *
      */
     public Classes() {
+    }
+
+    public String getOuverture() {
+        return ouverture;
+    }
+
+    public void setOuverture(String ouverture) {
+        this.ouverture = ouverture;
+    }
+
+    public int getNbmois() {
+        return nbmois;
+    }
+
+    public void setNbmois(int nbmois) {
+        this.nbmois = nbmois;
     }
 
     /**
@@ -84,7 +106,7 @@ public class Classes implements Serializable {
      * @param description
      * @param droitIns
      */
-    public Classes(Integer id, String matricule, String nom, String creation, String description, int droitIns) {
+    public Classes(Integer id, String matricule, String nom, String creation, String description, Droitinscription droitIns) {
         this.id = id;
         this.matricule = matricule;
         this.nom = nom;
@@ -177,7 +199,7 @@ public class Classes implements Serializable {
      *
      * @return
      */
-    public int getDroitIns() {
+    public Droitinscription getDroitIns() {
         return droitIns;
     }
 
@@ -185,7 +207,7 @@ public class Classes implements Serializable {
      *
      * @param droitIns
      */
-    public void setDroitIns(int droitIns) {
+    public void setDroitIns(Droitinscription droitIns) {
         this.droitIns = droitIns;
     }
 

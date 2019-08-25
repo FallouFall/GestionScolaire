@@ -161,6 +161,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
+                                                <th>Cycle</th>
                                               <th>Ajouter</th>
 
 
@@ -173,6 +174,7 @@
                                             <th>Nom</th>
                                             <th>Date Creation</th>
                                             <th>Description</th>
+                                                <th>Cycle</th>
                                               <th>Ajouter</th>
 
 
@@ -186,6 +188,7 @@
                                                 <c:url var="link" value="saisirClasse.htm">
                                <c:param name="id" value="${element.id}"/>
                               <c:param name="nomFiliere" value="${element.nom}"/>
+                               <c:param name="cycle" value="${element.idcycle.nom}"/>
                                   
                               </c:url>
 
@@ -196,6 +199,7 @@
                                                 <td>${element.nom}</td>
                                                 <td>${element.creation}</td>
                                                 <td>${element.description}</td>
+                                                    <td>${element.idcycle.nom}</td>
                                                     <td>
                                                     
                                                     <div class="form-label-group">

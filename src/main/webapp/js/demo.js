@@ -149,7 +149,16 @@
     });
 
     // Datepicker example 1.
-    $('#datepicker-example-1').datepicker({});
+    $('#datepicker-example-1').datepicker({
+               format: "dd/mm/yyyy",
+                language:'fr',
+                        days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimance"],
+                daysShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+                        daysMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"],
+                months: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
+                        monthsShort: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jui", "Juil", "Aou", "Sep", "Oct", "Nov", "Dec"],
+                today: "Aujourd'hui"
+    });
 
     // Datepicker example 2.
     $('#datepicker-example-2').datepicker({});

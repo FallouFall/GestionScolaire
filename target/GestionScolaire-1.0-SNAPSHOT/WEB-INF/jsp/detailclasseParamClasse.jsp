@@ -63,7 +63,7 @@
 
                                     
 
-                                                  <span > Parametrage ${classes.description} </span>   
+                                                  <span > Parametrage  de la classe ${classes.description} </span>   
                                         
 
 

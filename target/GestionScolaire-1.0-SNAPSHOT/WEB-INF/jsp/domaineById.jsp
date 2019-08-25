@@ -39,7 +39,13 @@
 
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav" >
+  <li class="nav-item" style="margin-top: 20px;">
+                    <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
+                        <i class="fas fa-bars">    </i>
+
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="comptable.htm">
@@ -96,17 +102,17 @@
                                                             <div class="card-body text-center">
                                                                    <c:if test="${element.id == 1}">
                                                                     
-                                                                <p>     <span class="ti-desktop"   style="font-size: 3em;"></span></p>
+                                                                <p>     <span class="ti-world"   style="font-size: 3em;"></span></p>
                                                                 </c:if>
                                                                 
                                                                  <c:if test="${element.id == 2}">
                                                                     
-                                                                <p>     <span class="ti-stats-up"   style="font-size: 3em;"></span></p>
+                                                                <p>     <span class="ti-desktop"   style="font-size: 3em;"></span></p>
                                                                 </c:if>
                                                                 
                                                                  <c:if test="${element.id == 3}">
                                                                     
-                                                                <p>     <span class="ti-filter"   style="font-size: 3em;"></span></p>
+                                                                <p>     <span class="ti-stats-up"   style="font-size: 3em;"></span></p>
                                                                 </c:if>
                                                                 
                                                                   <c:if test="${element.id == 4}">
@@ -125,8 +131,27 @@
                                                                     <div class="col-6 text-muted">Domaine :</div>
                                                                     <div class="col-6">${element.nom}</div>
 
-                                                                    <div class="col-6 text-muted">Descript :</div>
-                                                                    <div class="col-6">${element.description}</div>
+                                                                      <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
+                                                                    <div class="col-6 text-muted"></div>
+                                                                    <div class="col-6"></div>
 
 
 

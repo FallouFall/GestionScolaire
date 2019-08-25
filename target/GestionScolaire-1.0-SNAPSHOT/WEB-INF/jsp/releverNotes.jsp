@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>    Notes   ${nomClasse}   ${nomFiliere} en ${nomMatiere} du ${semestre} ${acad}</title>
+        <title>    Notes  </title>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/themify-icons.css" rel="stylesheet">
@@ -36,7 +36,7 @@
 
         <%@include file="HeaderUser.jsp" %> 
         <div id="wrapper">
-   <ul class="sidebar navbar-nav " >
+            <ul class="sidebar navbar-nav " >
 
 
 
@@ -57,9 +57,9 @@
                         <i class=" fas fa-home"></i>
                         <span>Accueil </span></a>
                 </li>
-            
-              
-                
+
+
+
             </ul>
 
 
@@ -67,24 +67,24 @@
 
                 <div class="container-fluid">
 
-                 
-                        <div class="card " id="ue" style=" margin-top: 3px;">
-                            <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
-                                <span style="font-family: dax-bold;    font-size: 1.7rem;">
-                                 Notes   ${nomClasse}   en ${nomMatiere} du ${semestre} ${acad}
+                    <div class="card " id="ue" style=" margin-top: 3px;">
+                        <div class="card-header" style="text-align: center;background-color: #fff;color: #1f72b8;">
 
-
-                                </span>  </div>
-
-                            <div class="card-body">
+                            <span style="font-family: dax-bold;    font-size: 1.7rem;">
+                                Notes   ${nomClasse}   en ${nomMatiere} du ${semestre} ${acad}
 
 
-                                <div class="table-responsive">
-                                    <form method="POST">
+                            </span>  </div>
+
+                        <div class="card-body">
+
+
+                            <div class="table-responsive">
+                                <form method="POST">
                                     <table class="table table-bordered" id="dataTable" width="100%">
                                         <thead>
-                                                           <tr style="text-align: center;vertical-align: middle;">
+                                            <tr style="text-align: center;vertical-align: middle;">
 
                                                 <th>Name</th>
                                                 <th>Note 1</th>
@@ -97,7 +97,7 @@
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                                                <tr style="text-align: center;vertical-align: middle;">
+                                            <tr style="text-align: center;vertical-align: middle;">
 
                                                 <th>Name</th>
                                                 <th>Note 1</th>
@@ -118,35 +118,35 @@
                                                 <tr>
                                                     <td>${etud.idetudiant.prenom} ${etud.idetudiant.nom} </td>
                                                     <td>${etud.noteA}</td>
-                                                        <td>${etud.note2}</td>
-                                                           <td>${etud.examen}</td>
-                                               
-                                                        
+                                                    <td>${etud.note2}</td>
+                                                    <td>${etud.examen}</td>
+
+
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
                                     </table>
-                                        <input type="text" id="data"  name="data"  hidden="">
-                                         <input type="text" id="idUser"  name="idUser" hidden="" >
-                                        <input type="text" id="idMatiere"  name="idMatiere" hidden=""  value="${idMatiere}" >
-                                        <input type="text" id="idClasse"  name="classeId"   hidden="" value="${classeId}" >
-                                        
-                                        <input type="text" id="idSemestre"  name="semestre"  hidden="" value="${numSemestre}" >
-                                        <input type="text" id="idSemestre"  name="annee"  hidden="" value="${annee}" >
-                                        <input type="text" id="idAcad"  name="idAcad"   value="${idAcad}" hidden="" >
-                                   
-                                </form>
-                                </div>
-                             <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
-                                                            <i class="ti-printer">
+                                    <input type="text" id="data"  name="data"  hidden="">
+                                    <input type="text" id="idUser"  name="idUser" hidden="" >
+                                    <input type="text" id="idMatiere"  name="idMatiere" hidden=""  value="${idMatiere}" >
+                                    <input type="text" id="idClasse"  name="classeId"   hidden="" value="${classeId}" >
 
-                    </i> Imprimer</button>
-                   
+                                    <input type="text" id="idSemestre"  name="semestre"  hidden="" value="${numSemestre}" >
+                                    <input type="text" id="idSemestre"  name="annee"  hidden="" value="${annee}" >
+                                    <input type="text" id="idAcad"  name="idAcad"   value="${idAcad}" hidden="" >
+
+                                </form>
                             </div>
+                            <button id="print" onclick="printContent('dataTable');" class="btn btn-primary" style="background-color:#1f72b8; font-family: titilliumWeb-regular;">
+                                <i class="ti-printer">
+
+                                </i> Imprimer</button>
 
                         </div>
 
-                   
+                    </div>
+
+
                 </div>
 
             </div>
@@ -228,65 +228,64 @@
         visibility: hidden;
     }
     .dataTables_filter{
-         visibility: hidden;
+        visibility: hidden;
     }
     .dataTables_info{
-          visibility: hidden;
+        visibility: hidden;
     }
     .paginate_button page-item previous disabled{
-         visibility: hidden;
+        visibility: hidden;
     }
     .form-control{
-            background-color: #fff;
-    
-    border: 0px solid #ffffff;
+        background-color: #fff;
+
+        border: 0px solid #ffffff;
     }
     .dataTables_paginate paging_simple_numbers{
-              visibility: hidden;
+        visibility: hidden;
     }
     table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
- text-align: center;
-}
+        text-align: center;
+    }
 </style>
 <script>
 
-   var $listeUser = new Array();
-            <c:forEach var="element" items="${findListEtudiants}">
-            $listeUser.push('${element.iduser.id}');
-            </c:forEach>
-    document.getElementById("idUser").value=$listeUser;
-  
-  
-    var $data  ="";
-$('input').on('change', function() {
-    if (this)
-    {
-     
-        $data= $data.concat(this.value).concat('-');
+                                var $listeUser = new Array();
+    <c:forEach var="element" items="${findListEtudiants}">
+                                $listeUser.push('${element.iduser.id}');
+    </c:forEach>
+                                document.getElementById("idUser").value = $listeUser;
+
+
+                                var $data = "";
+                                $('input').on('change', function () {
+                                    if (this)
+                                    {
+
+                                        $data = $data.concat(this.value).concat('-');
+                                    } else
+                                    {
+                                        $data = $data.concat('00').concat('-');
+                                    }
+                                    document.getElementById("data").value = $data;
+
+                                });
+
+</script>
+
+<script>
+    function printContent(el) {
+        var restorepage = $('body').html();
+        var printcontent = $('#' + el).clone();
+        var enteredtext = $('#text').val();
+        $('body').empty().html(printcontent);
+        window.print();
+        $('body').html(restorepage);
+        $('#text').html(enteredtext);
+        setTimeout(function () {
+            location.reload();
+        }, 1);
     }
-    else
-    {
-          $data= $data.concat('00').concat('-');
-      }
-       document.getElementById("data").value=$data;
-       
-});
-
-    </script>
-
-   <script>
-function printContent(el){
-var restorepage = $('body').html();
-var printcontent = $('#' + el).clone();
-var enteredtext = $('#text').val();
-$('body').empty().html(printcontent);
-window.print();
-$('body').html(restorepage);
-$('#text').html(enteredtext);
-setTimeout(function (){
-    location.reload()
-},1);
-}
 
 </script>
 </body>

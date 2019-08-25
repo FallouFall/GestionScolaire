@@ -60,7 +60,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item"  style="margin-top: 20px;">
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -116,7 +116,7 @@
                 <div class="container-fluid">
 
 
-                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
+                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px;margin-top: -40px;  ">
 
 
                         <div class="example col-md-12 ml-auto mr-auto">
@@ -126,7 +126,7 @@
                                     <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
 
                                         <span style="font-family: dax-bold;    font-size: 2rem;">
-                                            Nouvelle Classe ${nomFiliere}
+                                            Nouvelle Classe ${nomFiliere} du Cycle ${cycle}
 
 
                                         </span>  </div>
@@ -164,23 +164,7 @@
                                                 </div>
 
                                              
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-money"></i>
-                                                        </span>
-                                                        <input type="number" class="form-control" id="PrixInscription" placeholder="Prix Inscription" required="true" name="inscription" min="10000" max="200000">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <div class="input-group with-addon-icon-left">
-                                                        <span class="input-group-addon">
-                                                            <i class="ti-alert"></i>
-                                                        </span>
-                                                        <input type="number" class="form-control" id="mensualite" placeholder="Mensualite" name="mensualite" equired="true" name="inscription" min="10000" max="200000">
-                                                    </div>
-                                                </div>
+                                              
                                                
                                                    <div class="form-group col-md-6 ">
                                                     <div class="input-group with-addon-icon-left">

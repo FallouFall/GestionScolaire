@@ -29,7 +29,7 @@
                 <prop key="domaineById.htm">gererComptableController</prop>
                 <prop key="filiereIns.htm">gererComptableController</prop>
                 <prop key="cycleInscription.htm">gererComptableController</prop>
-                          
+                      <prop key="confirmerMensualite.htm">gererComptableController</prop>       
                 <prop key="infoInscription.htm">gererComptableController</prop>
                 <prop key="planifierCour.htm">gererDirecteurController</prop> 
                 <prop key="plageHoraire.htm">gererDirecteurController</prop>   
@@ -81,6 +81,9 @@
                 <prop key="documentsMathProf.htm">gererProfesseurController</prop>
                 <prop key="impression.htm">gererSecretaireController</prop>
                 <prop key="bulletin.htm">gererSecretaireController</prop>
+                   <prop key="absences.htm">gererSecretaireController</prop>
+                      <prop key="absenceJustification.htm">gererSecretaireController</prop>
+                        <prop key="billetAbsence.htm">gererSecretaireController</prop>
                 <prop key="imprimerBulletinDetailClasse.htm">gererSecretaireController</prop>
                  <prop key="coursProf.htm">gererProfesseurController</prop>   
                 <prop key="getNotesEtudiant.htm">gererSecretaireController</prop>
@@ -133,7 +136,9 @@
                 <prop key="gerercycles.htm">gererDirecteurController</prop>
                 <prop key="gereracad.htm">gererDirecteurController</prop>
                 <prop key="gererdomaines.htm">gererDirecteurController</prop>
-                    
+                <prop key="gererformations.htm">gererDirecteurController</prop>
+                <prop key="ajouterDroitIns.htm">gererDirecteurController</prop>
+                <prop key="ajouterFormation.htm">gererDirecteurController</prop> 
                 <prop key="ajouterDomaines.htm">gererDirecteurController</prop>
                 <prop key="ajouterCycles.htm">gererDirecteurController</prop>
                 <prop key="ajouterAcad.htm">gererDirecteurController</prop>

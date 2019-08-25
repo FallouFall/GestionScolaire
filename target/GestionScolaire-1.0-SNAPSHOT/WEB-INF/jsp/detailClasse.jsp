@@ -154,9 +154,9 @@
 
                             </span>  </div>
 
-                        <div class="row">
+                                <div class="row" style="margin: 2%;">
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                <div style=" margin-left: 5%; font-size: 2.2em; font-family: titilliumWeb-regular;">
+                                <div style="  font-size: 2.2em; font-family: titilliumWeb-regular;">
 
                                     <span class="fa fa-users" style="color:#5a6169  ; ">
                                         ${effectif} 
@@ -194,11 +194,24 @@
 
                                 <a href="${linkCalendar}" >
                                     <button type="button" class="btn btn-primary" style=" color:#1B81C5;background-color:#fff; font-family: titilliumWeb-regular;">
-                                        <i class="ti-timer">
+                                        <i class="ti-notepad">
 
                                         </i> Calendrier</button>
                                 </a>      
 
+                            </div>
+                                    
+                                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                                <div style="  font-size: 1.5em; font-family: titilliumWeb-regular;">
+
+                                    <span class="ti-key" style="color:#5a6169  ; ">
+                                       ${ouverture} 
+                                    </span>
+                                   
+                                    <span class="ti-timer" style="color: #75b5e4 ;">
+                                        ${nbmois} 
+                                    </span>
+                                </div>
                             </div>
 
 

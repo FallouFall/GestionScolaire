@@ -122,12 +122,12 @@
                    <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownFiliere" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-fw fa-folder"></i>
-                        <span>Filiere</span>
+                        <span>Formation</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="pagesDropdownFiliere">
 
-                        <a  class="dropdown-item" href="AjouterFiliere.htm" >Ajouter Filiere</a>
-                        <a class="dropdown-item" href="gererfiliere.htm">Gerer Filieres</a>
+                        <a  class="dropdown-item" href="ajouterFormation.htm" >Ajouter Formation</a>
+                        <a class="dropdown-item" href="gererformations.htm">Gerer Formation</a>
 
 
                     </div>

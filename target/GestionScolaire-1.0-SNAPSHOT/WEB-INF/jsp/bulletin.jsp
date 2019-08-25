@@ -65,17 +65,12 @@
 
             <div id="content-wrapper">
 
-                <div class="container-fluid" style="    margin-top: -40px;">
+                <div class="container-fluid" style="    margin-top: 5px;">
 
 
-                    <div id="cards" class="container mb-2 " style="padding-bottom: 1px  ">
-
-
-                        <div class="example col-md-12 ml-auto mr-auto">
-                            <div class="row " >
-
-                                <div class="card card-signin mx-auto mt-5">
-                                    <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
+                  <div class="card mb-3 ">
+                  
+                               <div class="card-header" style="text-align: center;background-color: #fff;color:#1f72b8;">
 
                                         <span style="font-family: dax-bold;    font-size: 2rem;">
                                             Imprimer Bulletin
@@ -116,14 +111,14 @@
                                                     <div class="form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
 
-                                                            <input type="text" class=" classe form-control" name="idAnnee" id="idAnnee"   >
+                                                            <input type="text" class=" classe form-control" name="idAnnee" id="idAnnee" hidden="" >
                                                         </div>
                                                     </div>
                                                     
                                                       <div class="form-group col-md-6">
                                                         <div class="input-group with-addon-icon-left">
 
-                                                            <input type="text" class=" classe form-control" name="semestre" id="semestre"  >
+                                                            <input type="text" class=" classe form-control" name="semestre" id="semestre" hidden="" >
                                                         </div>
                                                     </div>
 
@@ -152,11 +147,7 @@
                                         </form>
 
                                     </div>
-                                </div>
-
-
-                            </div>
-                        </div>
+                              
                     </div>
                 </div>
             </div>

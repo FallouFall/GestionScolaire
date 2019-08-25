@@ -54,7 +54,7 @@ if(userName == null) response.sendRedirect("index.htm");
                 <div class="container-fluid ">
 
 
-                    <section id="team" class="pb-5 " style="margin-top: -60px;">
+                    <section id="team" class="pb-5 " style="margin-top: -30px;">
 
 
                         <div class="row" style="margin-bottom: -100px; margin-top: 3px;">

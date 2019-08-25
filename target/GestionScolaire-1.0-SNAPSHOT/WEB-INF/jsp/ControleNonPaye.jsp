@@ -69,7 +69,7 @@
 
 
 
-                <li class="nav-item" >
+                <li class="nav-item" style="margin-top: 20px;" >
                     <a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 
                         <i class="fas fa-bars">    </i>
@@ -249,7 +249,7 @@ setTimeout(function (){
             var $input = $(".classe");
             $input.typeahead({
                 source: [
-            <c:forEach var="element" items="${classes}">
+            <c:forEach var="element" items="${classe}">
                     {id: '${element.matricule}', name: '${element.description}'},
             </c:forEach>
                 ],
