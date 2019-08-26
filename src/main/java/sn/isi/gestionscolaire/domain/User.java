@@ -68,6 +68,16 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "matricule")
     private String matricule;
+    
+     @Basic(optional = false)
+    @Column(name = "naissance")
+    private String naissance;
+     
+      @Basic(optional = false)
+    @Column(name = "log")
+    private int log;
+    
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
     private List<Inscription> inscriptionList;
     @JoinColumn(name = "idprofil", referencedColumnName = "id")
@@ -102,6 +112,22 @@ public class User implements Serializable {
      *
      */
     public User() {
+    }
+
+    public String getNaissance() {
+        return naissance;
+    }
+
+    public void setNaissance(String naissance) {
+        this.naissance = naissance;
+    }
+
+    public int getLog() {
+        return log;
+    }
+
+    public void setLog(int log) {
+        this.log = log;
     }
 
     /**

@@ -105,12 +105,12 @@
 
                                         </span>  </div>
                                     <div class="card-body">
-                                        <form id="file-upload-form" class="uploader" method="POST" enctype="multipart/form-data">
+                                        <form id="file-upload-form" class="uploader" method="POST" >
                                             <div class="form-group">
                                                 <div class="form-row">
 
-                                                    <input type="text" class="form-control "  hidden="true" id="idprofil" name="idprofil"  value="${idprofil}" >
-                                                    <input type="text" class="form-control " id="id" name="id"  value="${id}" hidden="true">
+                                                    <input type="text" class="form-control " hidden=""   id="idprofil" name="profilUpdate"  value="${idprofil}" >
+                                                    <input type="text" class="form-control " hidden="" id="id" name="idUpdate"  value="${id}">
                                                       
 
                                                     

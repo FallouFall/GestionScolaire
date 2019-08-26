@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,11 +45,20 @@ public class SecretaireController {
      * @return
      */
     @RequestMapping("secretaire.htm")
-    public ModelAndView welcome() {
+    public ModelAndView welcome(HttpServletRequest req, HttpServletResponse rep) throws IOException {
         mav.addObject("nbQuestion",getNbQuestion());
-
+    HttpSession sessions = req.getSession();
+              String log = (String) sessions.getAttribute("log");
+       if(log.equalsIgnoreCase("0"))
+        {
+           rep.sendRedirect("changePassword.htm");
+           mav.setViewName("changePassword");
+        }
+       else
+       {
         mav.setViewName("Secreteriat");
-        return mav;
+       }
+         return mav;
     }
 
     /**

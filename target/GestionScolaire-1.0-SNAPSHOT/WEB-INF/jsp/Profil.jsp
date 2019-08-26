@@ -82,8 +82,8 @@
                                                         <div>
                                                            
                                                             <div class="text-muted font-13 mb-3">
-                                                                <span class="mr-3"><i class="ti-location-pin mr-2"></i>${adresse}</span>
-                                                                <span><i class="ti-calendar mr-2"></i>12.04.2018</span>
+                                                                <span class="mr-3"><i class="ti-location-pin mr-2"></i> ${adresse}</span>
+                                                                <span><i class="ti-calendar mr-2">  ${naissance}</i></span>
                                                             </div>
                                                                <div class="form-label-group">
                                                                    <a class="ti-reload" style="color: #1f72b8;" href="updateUser.htm">  Modifier</a> 

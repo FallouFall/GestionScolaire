@@ -46,14 +46,15 @@ public class HeaderController {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("url")) {
                     loginCookie = cookie;
-                    System.out.println(loginCookie);
+                  
                     break;
                 }
             }
         }
         
          
-        return new ModelAndView("Profil");
+       mav.setViewName("Profil");
+       return mav;
     }
 
     /**
@@ -86,28 +87,28 @@ public class HeaderController {
        user.setPrenom(req.getParameter("prenom"));
        user.setAdresse(req.getParameter("adresse"));
        user.setTelephone(req.getParameter("telephone"));
-       user.setId(Integer.valueOf(req.getParameter("id").trim()));
-    
-   
+      // user.setId();
+          
        Profil profil=new Profil();
-       profil.setId(Integer.valueOf(req.getParameter("idprofil").trim()));
+//       profil.setId(Integer.valueOf(req.getParameter("idprofil").trim()));
        profil.setPassword(req.getParameter("password"));
        profil.setUsername(req.getParameter("username"));
        user.setIdprofil(profil);
        
        String sql="update  profil set username=? ,password=? where id=?";
-       jdtbcTemplate.update(sql,profil.getUsername(),profil.getPassword(),profil.getId());
+       jdtbcTemplate.update(sql,profil.getUsername(),profil.getPassword(),req.getParameter("profilUpdate"));
       
      
  
      sql="update user set adresse=?,telephone=? where id=?";
-      jdtbcTemplate.update(sql,user.getAdresse(),user.getTelephone(),user.getId());
+      jdtbcTemplate.update(sql,user.getAdresse(),user.getTelephone(),req.getParameter("idUpdate"));
     
   } catch (Exception e) {
             System.out.println(e);
         }
     
-          return new ModelAndView("UpdateUser");
+        mav.setViewName("Profil");
+        return mav;
       
     }
     

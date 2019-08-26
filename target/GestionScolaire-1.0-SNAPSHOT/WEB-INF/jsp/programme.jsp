@@ -126,9 +126,10 @@
 
                                             <th>Matricule</th>
                                             <th>Nom</th>
-                                            <th>Date Creation</th>
+                                         
                                             <th>Description</th>
                                             <th>Filiere</th>
+                                               <th>Ouverture</th>
                                             <th>Programme</th>
 
 
@@ -139,10 +140,11 @@
 
                                             <th>Matricule</th>
                                             <th>Nom</th>
-                                            <th>Date Creation</th>
+
                                             <th>Description</th>
                                             <th>Filiere</th>
                                             <th>Programme</th>
+                                               <th>Ouverture</th>
 
 
 
@@ -162,12 +164,23 @@
 
                                                 <td>${element.matricule}</td>
                                                 <td>${element.nom}</td>
-                                                <td>${element.creation}</td>
+                                              
                                                 <td>${element.description}</td>
                                                 <td>${element.filiere}</td>
+                                                <c:if test="${element.ouverture==null}">
+                                                      <td>
+                                                    <div class="form-label-group">
+                                                        <a  class="ti-timer" style="color: #1f72b8;"></a>
+                                                    </div>
+                                                </td>
+                                                </c:if>
+                                                 <c:if test="${element.ouverture!=null}">
+                                                  <td>${element.ouverture}</td>
+                                                </c:if>
+                                                
                                                 <td>
                                                     <div class="form-label-group">
-                                                        <a href="${link}" class="ti-settings"></a>
+                                                        <a href="${link}" class="ti-settings" style="color: #1f72b8;"></a>
                                                     </div>
                                                 </td>
 

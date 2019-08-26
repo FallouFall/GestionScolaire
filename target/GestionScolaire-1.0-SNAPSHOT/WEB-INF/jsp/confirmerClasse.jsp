@@ -158,12 +158,7 @@
                                                 <div class="col-6">Date :</div>
                                                 <div class="col-6">${date}</div>
 
-                                                <div class="col-6 ">Inscription :</div>
-                                                <div class="col-6">${inscription} Fcfa</div>
-
-
-                                                <div class="col-6 ">Mensualite :</div>
-                                                <div class="col-6">${mensualite} Fcfa</div>
+                                          
 
 
 

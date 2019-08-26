@@ -90,7 +90,7 @@ if(userName == null) response.sendRedirect("index.htm");
 
         <div class="container-fluid">
 
-                  <div class="loader"><div class="page-loader"></div></div>
+                 
                 
           <!-- DataTables Example -->
           <div class="card mb-3 ">
@@ -144,6 +144,9 @@ if(userName == null) response.sendRedirect("index.htm");
                                     <c:url var="link2" value="listeMatiereProf.htm">
                               
                                    <c:param name="idProf" value="${element.id}"/>
+                                       <c:param name="matriculeProf" value="${element.matricule}"/>
+                               <c:param name="prenomProf" value="${element.prenom}"/>
+                                   <c:param name="nomProf" value="${element.nom}"/>
                                
                                    </c:url>
                                             <tr style="text-align: center;vertical-align: middle;">

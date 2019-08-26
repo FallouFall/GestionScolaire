@@ -178,8 +178,9 @@
                                  
                                              <th>Matricule</th>
                                             <th>Nom</th>
-                                            <th>Date Creation</th>
+                                       
                                             <th>Description</th>
+                                                 <th>Coefficicent</th>
                                               <th>Choisir</th>
                                          
 
@@ -188,11 +189,12 @@
                                     <tfoot>
                                         <tr style="text-align: center;vertical-align: middle;">
                                           
-                                           <th>Matricule</th>
+                                              <th>Matricule</th>
                                             <th>Nom</th>
-                                            <th>Date Creation</th>
+                                       
                                             <th>Description</th>
-                                            <th>Choisir</th>
+                                                 <th>Coefficicent</th>
+                                              <th>Choisir</th>
 
 
                                         </tr>
@@ -205,8 +207,9 @@
                                           
                                                 <td>${element.matricule}</td>
                                                 <td>${element.nom}</td>
-                                                <td>${element.creation}</td>
+                                           
                                                 <td>${element.description}</td>
+                                                  <td>${element.coefficient}</td>
                                                  <td> 
                                                      
                                                      <input type="checkbox" name="checkbox1" id="checkbox1" class="btn-primary" value="${element.id}" />

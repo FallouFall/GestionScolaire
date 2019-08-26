@@ -38,16 +38,15 @@ public class ProfesseurController {
     @RequestMapping("professeur.htm")
     public ModelAndView welcome(HttpServletRequest req, HttpServletResponse rep) throws IOException
     {
-          HttpSession session = req.getSession();
-          String user=(String)session.getAttribute("user");
-      
-        if(user==null)
+       HttpSession sessions = req.getSession();
+              String log = (String) sessions.getAttribute("log");
+       if(log.equalsIgnoreCase("0"))
         {
-            
-              rep.sendRedirect("index");
+           rep.sendRedirect("changePassword.htm");
+           mav.setViewName("changePassword");
         }
-        else
-        {
+       else
+       {
         mav.setViewName("AccueilProfesseur");
         }
      return mav; 

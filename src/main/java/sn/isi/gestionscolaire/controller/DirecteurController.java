@@ -5,6 +5,7 @@
  */
 package sn.isi.gestionscolaire.controller;
 
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -34,14 +35,16 @@ public class DirecteurController {
      * @return ModelView
      */
     @RequestMapping("directeur.htm")
-    public ModelAndView welcome(HttpServletRequest req, HttpServletResponse rep) {
-        HttpSession session = req.getSession();
-        String user = (String) session.getAttribute("user");
-
-        if (user == null) {
-
-            return new ModelAndView("index");
-        } else {
+    public ModelAndView welcome(HttpServletRequest req, HttpServletResponse rep) throws IOException {
+         HttpSession sessions = req.getSession();
+              String log = (String) sessions.getAttribute("log");
+       if(log.equalsIgnoreCase("0"))
+        {
+           rep.sendRedirect("changePassword.htm");
+           mav.setViewName("changePassword");
+        }
+       else
+       {
             mav.setViewName("AccueilDirecteur");
 
         }

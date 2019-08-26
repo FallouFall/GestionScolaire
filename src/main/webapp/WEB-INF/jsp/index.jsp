@@ -184,7 +184,7 @@
         <!-- Form -->
         <form class="form-inline">
           <div class="input-group with-addon-icon-left">
-                                                            <input type="text" class="form-control" name="annee" id="datepicker-example-1" placeholder="Annee Academique" >
+                                                            <input type="text" class="form-control" name="annee" id="datepicker-example-1" placeholder="2019" >
                                                             <span class="input-group-addon">
                                                                 <i class="ti-calendar"></i>
                                                             </span>
@@ -239,6 +239,7 @@
                 format: "yyyy",
                 viewMode: "years",
                 minViewMode: "years"
+           
                 
                
             });

@@ -5,7 +5,9 @@
  */
 package sn.isi.gestionscolaire.controller;
 
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -32,16 +34,18 @@ public class ComptableController {
      * @return ModelView
      */
     @RequestMapping("comptable.htm")
-    public ModelAndView welcome(HttpServletRequest req) {
+    public ModelAndView welcome(HttpServletRequest req,HttpServletResponse rep) throws IOException {
         HttpSession sessions = req.getSession();
-        String user = (String) sessions.getAttribute("user");
-
-        if (user == null) {
-
-            return new ModelAndView("index");
-        } else {
-            mav.setViewName("Comptable");
+              String log = (String) sessions.getAttribute("log");
+       if(log.equalsIgnoreCase("0"))
+        {
+           rep.sendRedirect("changePassword.htm");
+           mav.setViewName("changePassword");
         }
+       else
+       {
+            mav.setViewName("Comptable");
+       }
         return mav;
     }
 

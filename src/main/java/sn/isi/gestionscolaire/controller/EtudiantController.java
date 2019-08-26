@@ -57,18 +57,20 @@ public class EtudiantController {
      * @return ModelView
      */
     @RequestMapping("etudiant.htm")
-    public ModelAndView welcome(HttpServletRequest req) {
-        HttpSession session = req.getSession();
-        String user = (String) session.getAttribute("user");
-
-        if (user == null) {
-
-            return new ModelAndView("index");
-        } else {
-
-            mav.setViewName("AccueilEtudiant");
+    public ModelAndView welcome(HttpServletRequest req,HttpServletResponse rep) throws IOException {
+       HttpSession sessions = req.getSession();
+              String log = (String) sessions.getAttribute("log");
+       if(log.equalsIgnoreCase("0"))
+        {
+           rep.sendRedirect("changePassword.htm");
+           mav.setViewName("changePassword");
         }
-        return mav;
+       else
+       {
+            mav.setViewName("AccueilEtudiant");
+       }
+         return  mav;
+     
     }
 
     /**

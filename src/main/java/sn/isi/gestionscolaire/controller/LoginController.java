@@ -152,7 +152,7 @@ public class LoginController {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        String sql = "SELECT user.id,matricule,nom,prenom,adresse,telephone, photo, idaccount,type,profil.id,profil.statut from user, profil,account where username=? AND password=? AND account.id=profil.idaccount and user.idprofil=profil.id";
+        String sql = "SELECT user.id,matricule,nom,prenom,adresse,telephone, photo, idaccount,type,profil.id,profil.statut,user.naissance,user.log from user, profil,account where username=? AND password=? AND account.id=profil.idaccount and user.idprofil=profil.id";
 
         List<User> actors = jdtbcTemplate.query(
                 sql,
@@ -173,7 +173,8 @@ public class LoginController {
                 p.setUsername(username);
                 p.setPassword(password);
                 p.setStatut(rs.getString(11));
-
+                c.setNaissance(rs.getString(12));
+                c.setLog(rs.getInt(13));
                 Account account = new Account(rs.getInt(8));
                 account.setType(rs.getString(9));
                 p.setIdaccount(account);
@@ -188,7 +189,8 @@ public class LoginController {
                 session.setAttribute("nom", c.getNom());
                 session.setAttribute("id", c.getId() + "");
                 session.setAttribute("idprofil", p.getId() + "");
-
+            session.setAttribute("naissance", c.getNaissance());
+                session.setAttribute("log", c.getLog()+"");
                 session.setAttribute("prenom", c.getPrenom());
                 session.setAttribute("adresse", c.getAdresse());
                 session.setAttribute("telephone", c.getTelephone());
@@ -221,8 +223,10 @@ public class LoginController {
             {
             switch (actors.get(0).getIdprofil().getIdaccount().getId()) {
                 case 1:
+                {
+                   
                     redirect = "redirect:/administration.htm";
-                    break;
+                } break;
                 case 2:
                     redirect = "redirect:/comptable.htm";
                     break;

@@ -181,7 +181,8 @@ public class GererProfesseurController {
             user.setAdresse(req.getParameter("adresse"));
             user.setTelephone(req.getParameter("telephone"));
             user.setGenre(req.getParameter("genre"));
-
+                  user.setNaissance(req.getParameter("naissance"));
+            user.setLog(0);
             Account account = new Account(4);
 
             Profil profil = new Profil();
@@ -200,9 +201,9 @@ public class GererProfesseurController {
               
             }
 
-            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?,?,?)";
               user.setMatricule("PROF" + count);
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre());
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre(),user.getNaissance(),user.getLog());
                actors = new ArrayList<>();
                mav = new ModelAndView();
                actors.add(user);

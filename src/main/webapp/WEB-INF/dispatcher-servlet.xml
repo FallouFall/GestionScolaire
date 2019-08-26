@@ -19,6 +19,8 @@
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
+                
+                 <prop key="changePassword.htm">administrationController</prop>
                 <prop key="index.htm">loginController</prop>
                 <prop key="forget.htm">loginController</prop>
                 <prop key="printInscriptions.htm">gererDirecteurController</prop>
@@ -87,7 +89,7 @@
                 <prop key="imprimerBulletinDetailClasse.htm">gererSecretaireController</prop>
                  <prop key="coursProf.htm">gererProfesseurController</prop>   
                 <prop key="getNotesEtudiant.htm">gererSecretaireController</prop>
-                    
+                      <prop key="getBulletinEtudiant.htm">gererSecretaireController</prop>
                 <prop key="imprimerListeClasseNote.htm">gererSecretaireController</prop>
                 <prop key=" GererProfesseur.htm">gererProfesseurController</prop>
                 <prop key="ressources.htm">administrationController</prop>

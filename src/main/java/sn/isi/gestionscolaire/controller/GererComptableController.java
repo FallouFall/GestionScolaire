@@ -656,7 +656,8 @@ public class GererComptableController {
             user.setAdresse(req.getParameter("adresse"));
             user.setTelephone(req.getParameter("telephone"));
             user.setGenre(req.getParameter("genre"));
-
+                  user.setNaissance(req.getParameter("naissance"));
+            user.setLog(0);
             Account account = new Account(2);
 
             Profil profil = new Profil();
@@ -675,8 +676,8 @@ public class GererComptableController {
 
             }
             user.setMatricule("CP" + count);
-            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre());
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre(),user.getNaissance(),user.getLog());
             actors = new ArrayList<>();
             mav = new ModelAndView();
             actors.add(user);
@@ -857,46 +858,48 @@ public class GererComptableController {
     
         try {
       
-//            user.setGenre(req.getParameter("genre"));
+            user.setGenre(req.getParameter("genre"));
            user.setNom(req.getParameter("nom"));
            user.setPrenom(req.getParameter("prenom"));
-//            user.setAdresse(req.getParameter("adresse"));
-//            user.setTelephone(req.getParameter("telephone"));
-//
-//            user.setPhoto(null);
+            user.setAdresse(req.getParameter("adresse"));
+            user.setTelephone(req.getParameter("telephone"));
+
+            user.setPhoto(null);
         user.setMatricule("ETU" + (int) (Math.random() * 9999999) + "");
-//            Account account = new Account(6);
-//            Profil profil = new Profil();
-//            profil.setIdaccount(account);
-//            profil.setPassword(user.getMatricule());
-//            profil.setUsername(req.getParameter("mail"));
-//            user.setIdprofil(profil);
-//
-//            String sql = "insert into profil values (?,?,?,?,?)";
-//            jdtbcTemplate.update(sql, null, profil.getIdaccount().getId(), profil.getPassword(), profil.getUsername(), 0);
-//
-//            sql = "Select Max(id) from profil";
-//
-//            int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
-//            if (count > 0) {
-//
-//            }
-//            System.out.println(count);
-//            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-//            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre());
-//
-//            sql = "Select Max(id) from user";
-//
-//            count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
-//            if (count > 0) {
-//
-//            }
-//            user.setId(count);
-//
-//            sql = "insert into inscription values (?,?,?,?,?,?)";
+            Account account = new Account(6);
+            Profil profil = new Profil();
+            profil.setIdaccount(account);
+            profil.setPassword(user.getMatricule());
+            profil.setUsername(req.getParameter("mail"));
+            user.setIdprofil(profil);
+                  user.setNaissance(req.getParameter("naissance"));
+            user.setLog(0);
+
+            String sql = "insert into profil values (?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, profil.getIdaccount().getId(), profil.getPassword(), profil.getUsername(), 0);
+
+            sql = "Select Max(id) from profil";
+
+            int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
+            if (count > 0) {
+
+            }
+            System.out.println(count);
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre(),user.getNaissance(),user.getLog());
+
+            sql = "Select Max(id) from user";
+
+            count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
+            if (count > 0) {
+
+            }
+            user.setId(count);
+
+            sql = "insert into inscription values (?,?,?,?,?,?)";
 //
          matri = "INS" + (int) (Math.random() * 9999999) + "";
-//          jdtbcTemplate.update(sql, null, matri, java.sql.Date.valueOf(LocalDate.now()), req.getParameter("idClasse"), user.getId(), 3);
+       jdtbcTemplate.update(sql, null, matri, java.sql.Date.valueOf(LocalDate.now()), req.getParameter("idClasse"), user.getId(), 3);
 
         } catch (Exception e) {
             System.out.println(e);

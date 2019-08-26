@@ -176,9 +176,10 @@
 
                                             <th>Matricule</th>
                                             <th>Nom</th>
-                                            <th>Date Creation</th>
+                                       
                                             <th>Description</th>
                                             <th>Filiere</th>
+                                            
                                              <th>Details</th>
 
 
@@ -190,7 +191,7 @@
 
                                             <th>Matricule</th>
                                             <th>Nom</th>
-                                            <th>Date Creation</th>
+                                      
                                             <th>Description</th>
                                             <th>Filiere</th>
                                               <th>Details</th>
@@ -217,7 +218,7 @@
 
                                                 <td>${element.matricule}</td>
                                                 <td>${element.nom}</td>
-                                                <td>${element.creation}</td>
+                                            
                                                 <td>${element.description}</td>
                                                  <td>${element.filiere}</td>
 

@@ -171,7 +171,7 @@
 
                                                                     <button type="submit" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
                                                                         <div class="form-label-group">
-                                                                            <a class="ti-reload" style="background-color: #5a6169; color: #fff;"href=validerInscription.htm>  Annuler</a> 
+                                                                            <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;"href=validerInscription.htm>  Annuler</a> 
                                                                         </div></button>
 
                                                                 </div>
@@ -198,7 +198,7 @@
                                                                     </c:url>
                                                                     <button type="submit" class="btn btn-secondary" onclick="" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
                                                                         <div class="form-label-group">
-                                                                            <a class="ti-reload" style="background-color: #5a6169; color: #fff;"href="${link}" >  Annuler</a> 
+                                                                            <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;"href="${link}" >  Annuler</a> 
                                                                         </div></button>
                                                                 </div>
 
@@ -221,7 +221,7 @@
 
                                                                     <button type="submit" class="btn btn-secondary" style="background-color:#5a6169; font-family: titilliumWeb-regular;">
                                                                         <div class="form-label-group">
-                                                                            <a class="ti-reload" style="background-color: #5a6169; color: #fff;"href=validerInscription.htm>  Annuler</a> 
+                                                                            <a class="ti-angle-double-left" style="background-color: #5a6169; color: #fff;"href=validerInscription.htm>  Annuler</a> 
                                                                         </div>
 
                                                                 </div>

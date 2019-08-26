@@ -641,12 +641,12 @@ public class GererDirecteurController {
     @RequestMapping("calendrierClasse.htm")
     public ModelAndView gererCalendrierClasse(HttpServletRequest req) {
         
-           String sql = "SELECT calendrier.heure,calendrier.jour ,matiere.nom,salle.nom,user.nom,calendrier.professeur  FROM `calendrier`,matiere,user,salle WHERE idclasse = 1 AND calendrier.professeur= user.id and calendrier.idclasse= salle.id and calendrier.idmatiere= matiere.id;";
+           String sql = "SELECT calendrier.heure,calendrier.jour ,matiere.nom,salle.nom,user.nom,calendrier.professeur  FROM `calendrier`,matiere,user,salle WHERE idclasse = ? AND calendrier.professeur= user.id and calendrier.idclasse= salle.id and calendrier.idmatiere= matiere.id;";
 
         List<Calendrier> actors = new ArrayList<>();
 
         actors = jdtbcTemplate.query(sql,
-                new Object[]{}, (ResultSet rs, int rowNum) -> {
+                new Object[]{req.getParameter("id")}, (ResultSet rs, int rowNum) -> {
                     Calendrier c = new Calendrier();
                     c.setHeure(rs.getString(1));
                     c.setJour(rs.getString(2));
@@ -1222,7 +1222,8 @@ public class GererDirecteurController {
             user.setAdresse(req.getParameter("adresse"));
             user.setTelephone(req.getParameter("telephone"));
             user.setGenre(req.getParameter("genre"));
-
+            user.setNaissance(req.getParameter("naissance"));
+            user.setLog(0);
             Account account = new Account(5);
 
             Profil profil = new Profil();
@@ -1241,8 +1242,8 @@ public class GererDirecteurController {
             
             }
             user.setMatricule( "DG" + count);
-            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count,user.getMatricule(), user.getGenre());
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count,user.getMatricule(), user.getGenre(),user.getNaissance(),user.getLog());
                users = new ArrayList<>();
                mav = new ModelAndView();
                users.add(user);
@@ -1557,10 +1558,11 @@ public class GererDirecteurController {
     public ModelAndView confirmerClasse(HttpServletRequest req) throws ParseException {
         String sql = "insert into classes values (?,?,?,?,?,?,?,?,?)";
 
-        jdtbcTemplate.update(sql, null, req.getParameter("matricule"), req.getParameter("nom"),
-                req.getParameter("date"), req.getParameter("description"),
-                req.getParameter("idFiliere"),1,null,null);
-        return gestionsClasses();
+//        jdtbcTemplate.update(sql, null, req.getParameter("matricule"), req.getParameter("nom"),
+//                req.getParameter("date"), req.getParameter("description"),
+//                req.getParameter("idFiliere"),1,null,null);
+              mav.setViewName("imprimerAjoutClasse");
+        return mav;
     }
 
     /**
@@ -1807,7 +1809,7 @@ public class GererDirecteurController {
      * @return ModelView
      */
     @RequestMapping("listeProfeMatiere.htm")
-    public ModelAndView welcome() {
+    public ModelAndView listeprof(HttpServletRequest req) {
 
         String sql = "SELECT distinct matricule,nom,prenom, adresse,telephone,photo,statut,profil.id,user.id from user,profil,account WHERE account.id=? and profil.id=user.idprofil and account.id=profil.idaccount  ";
 
@@ -1835,7 +1837,7 @@ public class GererDirecteurController {
         mav.addObject("affecter", "");
         mav.setViewName("ListeProfMatiere");
         mav.addObject("liste", actors);
-
+     
         return mav;
     }
 
@@ -1856,12 +1858,16 @@ public class GererDirecteurController {
                     c.setNom(rs.getString(3));
                     c.setCreation(rs.getDate(4));
                     c.setDescription(rs.getString(5));
+                    c.setCoefficient(rs.getInt(6));
 
                     return c;
                 });
 
         mav.setViewName("ListeMatiereProf");
         mav.addObject("matieres", matiere);
+           mav.addObject("nomProf", req.getParameter("nomProf"));
+            mav.addObject("prenomProf", req.getParameter("prenomProf"));
+                mav.addObject("matriculeProf", req.getParameter("matriculeProf"));
 
         return mav;
 
@@ -1874,10 +1880,23 @@ public class GererDirecteurController {
      */
     @RequestMapping(value = "listeMatiereProf.htm", method = RequestMethod.POST)
     public ModelAndView validerAjoutMatiereProf(HttpServletRequest req) {
-
+        try {
+            
+      
         String data = req.getParameter("data");
         data = data.replaceAll("[<>\\[\\],-]", "");
         data = data.substring(1);
+        List<Matiere> m=new ArrayList<>();
+        for (Matiere mat : matiere) {
+              for (int i = 0; i < data.length(); i++) {
+              if(Integer.parseInt(data.charAt(i)+ "") == mat.getId())
+              {
+                  m.add(mat);
+              }
+          }
+            
+        }
+        
 
         String sql = "insert into enseigne values (?,?,?)";
         for (int i = 0; i < data.length(); i++) {
@@ -1885,8 +1904,10 @@ public class GererDirecteurController {
             jdtbcTemplate.update(sql, null, Integer.parseInt(data.charAt(i) + ""), req.getParameter("idProf"));
         }
 
-        mav.setViewName("ListeProfMatiere");
-        mav.addObject("affecter", " Matiere affectees");
+        mav.setViewName("confirmerAssignation");
+        mav.addObject("matAssi", m);
+      } catch (Exception e) {
+        }
         return mav;
 
     }

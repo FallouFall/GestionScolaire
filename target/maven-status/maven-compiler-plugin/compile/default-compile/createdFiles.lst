@@ -42,6 +42,7 @@ sn\isi\gestionscolaire\domain\Evenement.class
 sn\isi\gestionscolaire\domain\Anneacad.class
 sn\isi\gestionscolaire\domain\Note_.class
 sn\isi\gestionscolaire\domain\Filiere_.class
+sn\isi\gestionscolaire\controller\GererSecretaireController$7.class
 sn\isi\gestionscolaire\domain\Programme_.class
 sn\isi\gestionscolaire\domain\Inscription_.class
 sn\isi\gestionscolaire\domain\Note.class

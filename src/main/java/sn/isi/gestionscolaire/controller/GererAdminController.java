@@ -107,7 +107,8 @@ public class GererAdminController {
             user.setAdresse(req.getParameter("adresse"));
             user.setTelephone(req.getParameter("telephone"));
             user.setGenre(req.getParameter("genre"));
-
+            user.setNaissance(req.getParameter("naissance"));
+            user.setLog(0);
             Account account = new Account(1);
             
             Profil profil = new Profil();
@@ -129,8 +130,8 @@ public class GererAdminController {
           
             }
             user.setMatricule("AD" + count);
-            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count,user.getMatricule(), user.getGenre());
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count,user.getMatricule(), user.getGenre(),user.getNaissance(),user.getLog());
                actors = new ArrayList<>();
                mav = new ModelAndView();
                actors.add(user);

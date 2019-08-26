@@ -123,7 +123,8 @@ public class GererSecretaireController {
             user.setAdresse(req.getParameter("adresse"));
             user.setTelephone(req.getParameter("telephone"));
             user.setGenre(req.getParameter("genre"));
-
+                  user.setNaissance(req.getParameter("naissance"));
+            user.setLog(0);
             Account account = new Account(3);
 
             Profil profil = new Profil();
@@ -142,8 +143,8 @@ public class GererSecretaireController {
               
             }
             user.setMatricule("SC" + count);
-            sql = "insert into user values (?,?,?,?,?,?,?,?,?)";
-            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre());
+            sql = "insert into user values (?,?,?,?,?,?,?,?,?,?,?)";
+            jdtbcTemplate.update(sql, null, user.getAdresse(), user.getNom(), user.getPhoto(), user.getPrenom(), user.getTelephone(), count, user.getMatricule(), user.getGenre(),user.getNaissance(),user.getLog());
 
                actors = new ArrayList<>();
                mav = new ModelAndView();
@@ -1024,7 +1025,7 @@ return mav;
 
  
         
-       String    sql ="SELECT DISTINCT matiere.nom ,user.prenom,user.nom,note.noteA,note.note2,note.examen FROM user,matiere,note,classes ,anneacad WHERE user.id=note.idetudiant and matiere.id=note.idmatiere AND note.idacad=anneacad.id AND note.idacad=? and user.id=? AND note.semestre=? AND classes.id=?" ;
+       String    sql ="SELECT DISTINCT matiere.nom ,user.prenom,user.nom,note.noteA,note.note2,note.examen,matiere.coefficient FROM user,matiere,note,classes ,anneacad WHERE user.id=note.idetudiant and matiere.id=note.idmatiere AND note.idacad=anneacad.id AND note.idacad=? and user.id=? AND note.semestre=? AND classes.id=?" ;
         notes = jdtbcTemplate.query(
                 sql,
                 new Object[]{req.getParameter("idAnnee"),req.getParameter("idEtudiant"),req.getParameter("semestre"),req.getParameter("idClasse")},
@@ -1039,7 +1040,7 @@ return mav;
                 c.setPrenom(rs.getString(2));
                 n.setIdmatiere(m);
                 n.setIdetudiant(c);
-                
+                m.setCoefficient(rs.getInt(7));
                 n.setNoteA(rs.getInt(4));
                 n.setNote2(rs.getInt(5));
                 n.setExamen(rs.getInt(6));
@@ -1048,8 +1049,35 @@ return mav;
                 return n;
             }
         });
+    sql = "SELECT * FROM absence where idetudiant = ?";
 
-       
+        List<Absence> abs = jdtbcTemplate.query(
+                sql,
+                new Object[]{req.getParameter("idEtudiant")},
+                new RowMapper<Absence>() {
+            public Absence mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Absence c = new Absence();
+                c.setMotif(rs.getInt(1));
+                
+               
+
+                return c;
+            }
+        });
+   int absences=0;
+   int retards=0;
+        for (Absence ab : abs) {
+            if(ab.getMotif()==1)
+                retards++;
+            else
+                absences++;
+        }
+        
+        if (!abs.isEmpty()) {
+      
+              mav.addObject("absences", absences);
+               mav.addObject("retards", retards);
+        }
          mav.setViewName("getNotesEtudiant");
         mav.addObject("acad", req.getParameter("acad")); 
        
@@ -1062,5 +1090,26 @@ return mav;
        }
         return mav;
     }
+    
+    
+     /**
+     *
+     * @param req
+     * @param rep
+     * @return ModelView
+     * @throws java.io.IOException
+     */
+    @RequestMapping(value = "getBulletinEtudiant.htm")
+    public ModelAndView getBulletinEtudiant(HttpServletRequest req,HttpServletResponse rep) throws IOException, IOException {
+
+     mav.setViewName("getNotesBulletin");
+       
+     
+       
+     
+        return mav;
+    }
+    
+    
     
 }

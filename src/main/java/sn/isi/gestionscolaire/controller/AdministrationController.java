@@ -38,13 +38,53 @@ public class AdministrationController {
     JdbcTemplate jdtbcTemplate = new JdbcTemplate(con.Connection());
     ModelAndView mav = new ModelAndView();
 
+    
+       /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping("changePassword.htm")
+    public ModelAndView changerpass(HttpServletRequest req,HttpServletResponse rep) throws IOException {
+      mav.setViewName("changePassword");
+        return mav;
+    }
+
+        /**
+     *
+     * @param req
+     * @return ModelView
+     */
+    @RequestMapping(value = "changePassword.htm",method = RequestMethod.POST)
+    public ModelAndView changerpasseword(HttpServletRequest req,HttpServletResponse rep) throws IOException {
+         if(!req.getParameter("confirme").equals(req.getParameter("password")))
+          {
+            
+            mav.addObject("errorchange", "Les mots de passes ne correcpondent pas");
+           
+            }
+        else
+         {
+        String sql="update  profil set password=? where id=?";
+       jdtbcTemplate.update(sql,req.getParameter("confirme"),req.getParameter("profilUpdate"));
+    
+            sql="update user set log=? where id=?";
+      jdtbcTemplate.update(sql,1,req.getParameter("idUpdate"));
+       mav.setViewName("index");
+        mav.addObject("error", "Changement de mot passe Reussi");
+        rep.sendRedirect("index.htm");
+        return mav;
+         }
+        return mav;
+    }
+    
     /**
      *
      * @param req
      * @return ModelView
      */
     @RequestMapping("administration.htm")
-    public ModelAndView welcome(HttpServletRequest req) {
+    public ModelAndView welcome(HttpServletRequest req,HttpServletResponse rep) throws IOException {
         ModelAndView mav = new ModelAndView();
         HttpSession session = req.getSession();
         String photo = (String) session.getAttribute("photo");
@@ -53,13 +93,18 @@ public class AdministrationController {
         String login = (String) session.getAttribute("login");
         String password = (String) session.getAttribute("password");
         String profil = (String) session.getAttribute("profil");
-    
      
+
         String id = (String) session.getAttribute("id");
         String idprofil = (String) session.getAttribute("idprofil");
+        String naissance = (String) session.getAttribute("naissance");
+        mav.addObject("naissance", naissance);
+        System.out.println(naissance);
         String url = (String) session.getAttribute("url");
-        mav.setViewName("Administration");
+      
         mav.addObject("tel", tel);
+     
+       
         mav.addObject("adresse", adresse);
         mav.addObject("login", login);
         mav.addObject("id", id);
@@ -67,9 +112,19 @@ public class AdministrationController {
         mav.addObject("profil", profil);
         mav.addObject("idprofil", idprofil);
         mav.addObject("url", url);
-        mav.addObject("nbQuestion",getNbQuestion());
+        mav.addObject("nbQuestion", getNbQuestion());
+         String log = (String) session.getAttribute("log");
+            mav.addObject("log", log);
+             mav.addObject("photo", photo);
+        if(log.equalsIgnoreCase("0"))
+        {
+            rep.sendRedirect("changePassword.htm");
+           mav.setViewName("changePassword");
+        }
+        else
+              mav.setViewName("Administration");
 
-        return mav.addObject("photo", photo);
+        return mav;
     }
 
     /**
@@ -147,12 +202,11 @@ public class AdministrationController {
 
         String sql = "SELECT COUNT(questions.statut) FROM questions WHERE questions.statut=0; ";
 
-          int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
-          return  count;
+        int count = jdtbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
+        return count;
 
     }
-    
-    
+
     /**
      *
      * @param req
@@ -195,7 +249,7 @@ public class AdministrationController {
                     String photoEtudiant = Base64.encodeBase64String(u.getPhoto());
                     mav.addObject("photoEtudiant", photoEtudiant);
                     c.setDescription(rs.getString(10));
- c.setReponse(rs.getString(11));
+                    c.setReponse(rs.getString(11));
                     return c;
                 });
 
@@ -243,25 +297,22 @@ public class AdministrationController {
         }
 
     }
-    
+
     /**
      *
      * @param req
      * @param rep
      * @throws IOException
      */
-    @RequestMapping(value = "detailquestion.htm",method = RequestMethod.POST)
+    @RequestMapping(value = "detailquestion.htm", method = RequestMethod.POST)
     public void repondreQuestion(HttpServletRequest req, HttpServletResponse rep) throws IOException {
 
         String id = req.getParameter("id");
         String reponse = req.getParameter("reponse");
-       
-      
 
         String sql = "update questions set reponse=?,statut=? where id=?";
-        jdtbcTemplate.update(sql, reponse,1, id);
+        jdtbcTemplate.update(sql, reponse, 1, id);
         rep.sendRedirect("faqResponse.htm");
-       
 
     }
 

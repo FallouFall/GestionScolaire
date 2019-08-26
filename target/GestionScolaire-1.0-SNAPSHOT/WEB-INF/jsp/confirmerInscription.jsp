@@ -139,12 +139,12 @@
 
                                                                             <div class="row" style="text-align: left;margin: 20px;" >
 
-                                                                                <span style="font-size: 1.2em; ">Matricule   : </span>
-                                                                                <span style="font-size: 1.2em; "> ${matriculeEtu} </span>
-                                                                                <span style="font-size: 1.2em; ">Nom   :</span>
-                                                                                <span style="font-size: 1.2em; ">${nomEtu}</span><br>
-                                                                                <span style="font-size: 1.2em; ">Prenom :</span>
-                                                                                <span style="font-size: 1.2em; ">${prenomEtu}</span><br>
+                                                                                <span style="font-size: 1.5em; ">Matricule   : </span>
+                                                                                <span style="font-size: 1.5em; "> ${matriculeEtu} </span>
+                                                                                <span style="font-size: 1.5em; ">Nom   :</span>
+                                                                                <span style="font-size: 1.5em; ">${nomEtu}</span><br>
+                                                                                <span style="font-size: 1.5em; ">Prenom :</span>
+                                                                                <span style="font-size: 1.5em; ">${prenomEtu}</span><br>
 
 
 
@@ -179,12 +179,12 @@
 
                                                                             <span class="ti-infinite" style="font-size: 3em;color: #1f72b8 !important;"></span>
                                                                             <div class="row" style="text-align: left;margin: 20px;">
-                                                                                <span style="font-size: 1.2em; ">Domaine :</span>
-                                                                                <span style="font-size: 1.2em; ">${dmn}</span><br>
-                                                                                <span style="font-size: 1.2em; ">Formation :</span>
-                                                                                <span style="font-size: 1.2em; ">${frn}</span><br>
-                                                                                <span style="font-size: 1.2em;">Cycle :</span>
-                                                                                <span style="font-size: 1.2em; ">${cyn}</span><br>
+                                                                                <span style="font-size: 1.5em; ">Dom :</span>
+                                                                                <span style="font-size: 1.5em; ">${dmn}</span><br>
+                                                                                <span style="font-size: 1.5em; ">Forma :</span>
+                                                                                <span style="font-size: 1.5em; ">${frn}</span><br>
+                                                                                <span style="font-size: 1.5em;">Cycle :</span>
+                                                                                <span style="font-size: 1.5em; ">${cyn}</span><br>
 
 
 
@@ -218,12 +218,12 @@
                                                                             <span class="ti-home" style="font-size: 3em;color: #1f72b8 !important;"></span>
                                                                             <div class="row" style="text-align: left;margin: 20px;">
 
-                                                                                <span style="font-size: 1.2em; ">Classe :</span>
-                                                                                <span style="font-size: 1.2em; ">${classe} ${Filiere}</span><br>
-                                                                                <span style="font-size: 1.2em; ">Inscription :</span>
-                                                                                <span style="font-size: 1.2em; ">${inscription}</span><br>
-                                                                                <span style="font-size: 1.2em;">Mensualite :</span>
-                                                                                <span style="font-size: 1.2em; ">${mensualite}</span><br>
+                                                                                <span style="font-size: 1.5em; ">Classe :</span>
+                                                                                <span style="font-size: 1.5em; ">${classe} ${Filiere}</span><br>
+                                                                                <span style="font-size: 1.5em; ">Inscription :</span>
+                                                                                <span style="font-size: 1.5em; ">${inscription}</span><br>
+                                                                                <span style="font-size: 1.5em;">Mensualite :</span>
+                                                                                <span style="font-size: 1.5em; ">${mensualite}</span><br>
 
 
 
